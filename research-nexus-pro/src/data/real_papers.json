@@ -1,0 +1,734 @@
+{
+  "problems": [
+    {
+      "id": "root_general_robotics",
+      "name": "General Robot Manipulation",
+      "year": 2015,
+      "status": "unsolved",
+      "category": "Root",
+      "description": "Ultimate goal: dexterous manipulation in unstructured environments",
+      "depth": 0,
+      "value_score": 100,
+      "unsolved_level": 85,
+      "children": [
+        "sub_perception",
+        "sub_policy"
+      ]
+    },
+    {
+      "id": "sub_perception",
+      "name": "Multi-Modal Perception",
+      "year": 2016,
+      "status": "active",
+      "category": "Perception",
+      "description": "Understanding physical world through vision and touch",
+      "depth": 1,
+      "parent_id": "root_general_robotics",
+      "value_score": 90,
+      "unsolved_level": 70,
+      "children": [
+        "prob_tactile",
+        "prob_visual_3d"
+      ]
+    },
+    {
+      "id": "sub_policy",
+      "name": "Policy Learning",
+      "year": 2017,
+      "status": "active",
+      "category": "Policy",
+      "description": "Learning control policies from demonstrations",
+      "depth": 1,
+      "parent_id": "root_general_robotics",
+      "value_score": 95,
+      "unsolved_level": 60,
+      "children": [
+        "prob_diffusion",
+        "prob_vla"
+      ]
+    },
+    {
+      "id": "prob_tactile",
+      "name": "Tactile Encoding",
+      "year": 2018,
+      "status": "partial",
+      "category": "Tactile",
+      "description": "Encoding tactile signals into representations",
+      "depth": 2,
+      "parent_id": "sub_perception",
+      "value_score": 75,
+      "unsolved_level": 55
+    },
+    {
+      "id": "prob_visual_3d",
+      "name": "3D Visual Understanding",
+      "year": 2019,
+      "status": "active",
+      "category": "Perception",
+      "description": "3D scene understanding from sensor data",
+      "depth": 2,
+      "parent_id": "sub_perception",
+      "value_score": 80,
+      "unsolved_level": 65
+    },
+    {
+      "id": "prob_diffusion",
+      "name": "Diffusion Policy",
+      "year": 2023,
+      "status": "active",
+      "category": "Diffusion/Flow",
+      "description": "Denoising diffusion for action generation",
+      "depth": 2,
+      "parent_id": "sub_policy",
+      "value_score": 92,
+      "unsolved_level": 35
+    },
+    {
+      "id": "prob_vla",
+      "name": "Vision-Language-Action",
+      "year": 2023,
+      "status": "active",
+      "category": "VLA",
+      "description": "Foundation models integrating V-L-A",
+      "depth": 2,
+      "parent_id": "sub_policy",
+      "value_score": 95,
+      "unsolved_level": 70
+    },
+    {
+      "id": "leaf_tac_deform",
+      "name": "Deformable Object Tactile",
+      "year": 2022,
+      "status": "unsolved",
+      "category": "Tactile",
+      "description": "Tactile modeling for deformable objects",
+      "depth": 3,
+      "parent_id": "prob_tactile",
+      "value_score": 60,
+      "unsolved_level": 95
+    },
+    {
+      "id": "leaf_tac_diffusion",
+      "name": "Tactile-Conditioned Diffusion",
+      "year": 2024,
+      "status": "unsolved",
+      "category": "Diffusion/Flow",
+      "description": "Integrating tactile into diffusion policy",
+      "depth": 3,
+      "parent_id": "prob_diffusion",
+      "value_score": 85,
+      "unsolved_level": 80
+    },
+    {
+      "id": "leaf_3d_diffusion",
+      "name": "3D Diffusion Policy",
+      "year": 2024,
+      "status": "active",
+      "category": "Diffusion/Flow",
+      "description": "Diffusion policy on 3D point clouds",
+      "depth": 3,
+      "parent_id": "prob_diffusion",
+      "value_score": 80,
+      "unsolved_level": 50
+    },
+    {
+      "id": "leaf_vla_tac",
+      "name": "VLA + Tactile",
+      "year": 2025,
+      "status": "unsolved",
+      "category": "VLA",
+      "description": "Tactile sensing in VLA models",
+      "depth": 3,
+      "parent_id": "prob_vla",
+      "value_score": 90,
+      "unsolved_level": 95
+    },
+    {
+      "id": "leaf_vla_3d",
+      "name": "VLA + 3D Point Cloud",
+      "year": 2025,
+      "status": "unsolved",
+      "category": "VLA",
+      "description": "3D spatial representations for VLA",
+      "depth": 3,
+      "parent_id": "prob_vla",
+      "value_score": 88,
+      "unsolved_level": 85
+    }
+  ],
+  "methods": [
+    {
+      "id": "pointnet",
+      "name": "PointNet",
+      "status": "verified",
+      "solves": [
+        "prob_visual_3d"
+      ],
+      "description": "Point cloud permutation invariance"
+    },
+    {
+      "id": "pointnetpp",
+      "name": "PointNet++",
+      "status": "verified",
+      "solves": [
+        "prob_visual_3d",
+        "prob_tactile"
+      ],
+      "description": "Hierarchical point features"
+    },
+    {
+      "id": "diffusion_policy",
+      "name": "Diffusion Policy",
+      "status": "verified",
+      "solves": [
+        "prob_diffusion"
+      ],
+      "description": "Denoising diffusion for actions"
+    },
+    {
+      "id": "flow_matching",
+      "name": "Flow Matching",
+      "status": "verified",
+      "solves": [
+        "prob_diffusion"
+      ],
+      "description": "Conditional flow matching"
+    },
+    {
+      "id": "vla_rt2",
+      "name": "RT-2 / VLA",
+      "status": "verified",
+      "solves": [
+        "prob_vla"
+      ],
+      "description": "Vision-language-action models"
+    },
+    {
+      "id": "cross_attention",
+      "name": "Cross-Attention",
+      "status": "partial",
+      "solves": [],
+      "description": "Multi-modal fusion"
+    },
+    {
+      "id": "tac_diffusion",
+      "name": "Tactile-Diffusion",
+      "status": "untested",
+      "solves": [
+        "leaf_tac_diffusion"
+      ],
+      "description": "Tactile-conditioned diffusion"
+    },
+    {
+      "id": "tac_vla",
+      "name": "Tactile-VLA",
+      "status": "untested",
+      "solves": [
+        "leaf_vla_tac"
+      ],
+      "description": "VLA with tactile"
+    }
+  ],
+  "papers": [
+    {
+      "id": "3D-ViTac_2410.24091",
+      "title": "3D-ViTac",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2410.24091",
+      "category": "Tactile",
+      "core_methodology": "Tactile",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "3DDiffusionPolicy_2403.03954",
+      "title": "3DDiffusionPolicy",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2403.03954",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "3D_Flow_Diffusion_Policy_2509.18676",
+      "title": "3D Flow Diffusion Policy",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2509.18676",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "AnyTouch_2502.12191",
+      "title": "AnyTouch",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2502.12191",
+      "category": "Tactile",
+      "core_methodology": "Tactile",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Contractive_Diffusion_Policies_Robust_Action_Diffusion_via_Contractive_Score-Based_Sampling_with_Differential_Equations_2601.01003",
+      "title": "Contractive Diffusion Policies Robust Action Diffusion via C",
+      "year": 2026,
+      "venue": "arXiv",
+      "arxiv_id": "2601.01003",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Data_Scaling_Laws_in_Imitation_Learning_for_Robotic_Manipulation_2410.18647",
+      "title": "Data Scaling Laws in Imitation Learning for Robotic Manipula",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2410.18647",
+      "category": "Manipulation",
+      "core_methodology": "Manipulation",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Diffusion_Policy_Policy_Optimization_2409.00588",
+      "title": "Diffusion Policy Policy Optimization",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2409.00588",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Embodied_Robot_Manipulation_in_the_Era_of_Foundation_Models_Planning_and_Learning_Perspectives_2512.22983",
+      "title": "Embodied Robot Manipulation in the Era of Foundation Models ",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2512.22983",
+      "category": "Manipulation",
+      "core_methodology": "Manipulation",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Generalizable_3D_Diffusion_Policies_2410.10803",
+      "title": "Generalizable 3D Diffusion Policies",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2410.10803",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "ImplicitRDP_2512.10946",
+      "title": "ImplicitRDP",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2512.10946",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "OmniVTLA_2508.08706",
+      "title": "OmniVTLA",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2508.08706",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "PointNet4D_A_Lightweight_4D_Point_Cloud_Video_Backbone_for_Online_and_Offline_Perception_in_Robotic_Applications_2512.01383",
+      "title": "PointNet4D A Lightweight 4D Point Cloud Video Backbone for O",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2512.01383",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "RETRO_2505.14319",
+      "title": "RETRO",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2505.14319",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "ReactiveDiffusionPolicy_2503.02881",
+      "title": "ReactiveDiffusionPolicy",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2503.02881",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Sparsh_2410.24090",
+      "title": "Sparsh",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2410.24090",
+      "category": "Tactile",
+      "core_methodology": "Tactile",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Spatially_anchored_Tactile_Awareness_for_Robust_Dexterous_Manipulation_2510.14647",
+      "title": "Spatially anchored Tactile Awareness for Robust Dexterous Ma",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2510.14647",
+      "category": "Tactile",
+      "core_methodology": "Tactile",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "TLA_2503.08548",
+      "title": "TLA",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2503.08548",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "TVL_Dataset_2402.13232",
+      "title": "TVL Dataset",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2402.13232",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Tactile-ConditionedDiffusionPolicy_2510.13324",
+      "title": "Tactile-ConditionedDiffusionPolicy",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2510.13324",
+      "category": "Tactile",
+      "core_methodology": "Tactile",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Tactile-VLA_2507.09160",
+      "title": "Tactile-VLA",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2507.09160",
+      "category": "Tactile",
+      "core_methodology": "Tactile",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Task-Optimized_ConvRNN_2505.18361",
+      "title": "Task-Optimized ConvRNN",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2505.18361",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "TextToucher_2409.05427",
+      "title": "TextToucher",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2409.05427",
+      "category": "Tactile",
+      "core_methodology": "Tactile",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Towards_a_Unified_Understanding_of_Robot_Manipulation_A_Comprehensive_Survey_2510.10903",
+      "title": "Towards a Unified Understanding of Robot Manipulation A Comp",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2510.10903",
+      "category": "Manipulation",
+      "core_methodology": "Manipulation",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "UniTac-NV_2506.19699",
+      "title": "UniTac-NV",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2506.19699",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "ViTaMIn_Learning_Contact-Rich_Tasks_Through_Robot-Free_Visuo-Tactile_Manipulation_Interface_2504.06156",
+      "title": "ViTaMIn Learning Contact-Rich Tasks Through Robot-Free Visuo",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2504.06156",
+      "category": "Tactile",
+      "core_methodology": "Tactile",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "ForceVLA_2505.22159",
+      "title": "ForceVLA",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2505.22159",
+      "category": "VLA",
+      "core_methodology": "VLA",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "TacDiffusion_2409.11047",
+      "title": "TacDiffusion",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2409.11047",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "ManiCM_Real-time_3D_Diffusion_Policy_via_Consistency_Model_2406.01586",
+      "title": "ManiCM Real-time 3D Diffusion Policy via Consistency Model",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2406.01586",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "FlowPolicy_2412.04987",
+      "title": "FlowPolicy",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2412.04987",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "PointFlowMatch_Learning_Robotic_Manipulation_Policies_from_Point_Clouds_with_Conditional_Flow_Matching_2409.07343",
+      "title": "PointFlowMatch Learning Robotic Manipulation Policies from P",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2409.07343",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Scaling_Diffusion_Policy_in_Transformer_to_1_Billion_Parameters_2409.14411",
+      "title": "Scaling Diffusion Policy in Transformer to 1 Billion Paramet",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2409.14411",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Helix_02_Unified_Whole-Body_Loco-Manipulation_VLA_NA",
+      "title": "Helix 02 Unified Whole-Body Loco-Manipulation VLA NA",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "N/A",
+      "category": "VLA",
+      "core_methodology": "VLA",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "GR00T_N1_Open_Foundation_Model_for_Generalist_Humanoid_Robots_2503.14734",
+      "title": "GR00T N1 Open Foundation Model for Generalist Humanoid Robot",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2503.14734",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Gemini_Robotics_Bringing_AI_into_the_Physical_World_2503.20020",
+      "title": "Gemini Robotics Bringing AI into the Physical World",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2503.20020",
+      "category": "VLA",
+      "core_methodology": "VLA",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "PointVLA_2503.07511",
+      "title": "PointVLA",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2503.07511",
+      "category": "VLA",
+      "core_methodology": "VLA",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "SpatialVLA_Exploring_Spatial_Representations_for_Visual-Language-Action_Model_2501.15830",
+      "title": "SpatialVLA Exploring Spatial Representations for Visual-Lang",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2501.15830",
+      "category": "VLA",
+      "core_methodology": "VLA",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Spec-VLA_Speculative_Decoding_for_Vision-Language-Action_Models_2507.22424",
+      "title": "Spec-VLA Speculative Decoding for Vision-Language-Action Mod",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2507.22424",
+      "category": "VLA",
+      "core_methodology": "VLA",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "ET-SEED_Efficient_Trajectory-Level_SE(3)_Equivariant_Diffusion_Policy_2411.03990",
+      "title": "ET-SEED Efficient Trajectory-Level SE(3) Equivariant Diffusi",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2411.03990",
+      "category": "Diffusion/Flow",
+      "core_methodology": "Diffusion/Flow",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "CordViP_2502.08449",
+      "title": "CordViP",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2502.08449",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "ViViDex_Learning_Vision-based_Dexterous_Manipulation_from_Human_Videos_2404.15709",
+      "title": "ViViDex Learning Vision-based Dexterous Manipulation from Hu",
+      "year": 2024,
+      "venue": "arXiv",
+      "arxiv_id": "2404.15709",
+      "category": "Manipulation",
+      "core_methodology": "Manipulation",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "FACTR_2502.17432",
+      "title": "FACTR",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2502.17432",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    },
+    {
+      "id": "Bi-LAT_2504.01301",
+      "title": "Bi-LAT",
+      "year": 2025,
+      "venue": "arXiv",
+      "arxiv_id": "2504.01301",
+      "category": "Other",
+      "core_methodology": "Other",
+      "authority_score": 7.5,
+      "status": "survived"
+    }
+  ],
+  "branches": [
+    {
+      "id": "b_root",
+      "name": "Root Goal",
+      "y_position": 0,
+      "color": "#6366f1"
+    },
+    {
+      "id": "b_perception",
+      "name": "Perception",
+      "y_position": 1,
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "b_policy",
+      "name": "Policy",
+      "y_position": 2,
+      "color": "#ec4899"
+    },
+    {
+      "id": "b_tactile",
+      "name": "Tactile",
+      "y_position": 3,
+      "color": "#f59e0b"
+    },
+    {
+      "id": "b_diffusion",
+      "name": "Diffusion",
+      "y_position": 4,
+      "color": "#22c55e"
+    },
+    {
+      "id": "b_vla",
+      "name": "VLA",
+      "y_position": 5,
+      "color": "#3b82f6"
+    }
+  ]
+}

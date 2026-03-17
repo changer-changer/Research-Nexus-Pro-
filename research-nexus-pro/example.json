@@ -1,0 +1,42 @@
+{
+  "problems": [
+    {"id": "p_root", "name": "通用机器人操作", "year": 2015, "status": "active", "branchId": "b_root", "description": "终极目标", "children": ["p_perception", "p_policy"], "solvedPercentage": 40},
+    {"id": "p_perception", "name": "多模态感知", "year": 2016, "status": "active", "branchId": "b_perception", "parentId": "p_root", "children": ["p_tactile", "p_fusion"], "solvedPercentage": 50},
+    {"id": "p_tactile", "name": "触觉编码", "year": 2018, "status": "partial", "branchId": "b_encoder", "parentId": "p_perception", "evolvedFrom": "p_pointcloud", "children": ["p_tac_def"], "solvedPercentage": 60},
+    {"id": "p_pointcloud", "name": "点云特征提取", "year": 2017, "status": "solved", "branchId": "b_encoder", "children": ["p_tactile"], "solvedPercentage": 95},
+    {"id": "p_tac_def", "name": "触觉形变建模", "year": 2021, "status": "unsolved", "branchId": "b_encoder", "parentId": "p_tactile", "solvedPercentage": 20},
+    {"id": "p_fusion", "name": "视觉-触觉融合", "year": 2019, "status": "unsolved", "branchId": "b_fusion", "parentId": "p_perception", "children": ["p_multimodal"], "solvedPercentage": 30},
+    {"id": "p_multimodal", "name": "多模态对齐", "year": 2022, "status": "active", "branchId": "b_fusion", "parentId": "p_fusion", "evolvedFrom": "p_fusion", "solvedPercentage": 35},
+    {"id": "p_policy", "name": "策略学习", "year": 2018, "status": "active", "branchId": "b_policy", "parentId": "p_root", "children": ["p_diffusion", "p_vla"], "solvedPercentage": 55},
+    {"id": "p_diffusion", "name": "扩散策略", "year": 2023, "status": "active", "branchId": "b_policy", "parentId": "p_policy", "children": ["p_tac_diff"], "solvedPercentage": 70},
+    {"id": "p_tac_diff", "name": "扩散策略+触觉", "year": 2024, "status": "unsolved", "branchId": "b_policy", "parentId": "p_diffusion", "evolvedFrom": "p_multimodal", "solvedPercentage": 10},
+    {"id": "p_vla", "name": "VLA基础模型", "year": 2023, "status": "active", "branchId": "b_vla", "parentId": "p_policy", "children": ["p_tac_vla"], "solvedPercentage": 60},
+    {"id": "p_tac_vla", "name": "VLA+触觉融合", "year": 2025, "status": "unsolved", "branchId": "b_vla", "parentId": "p_vla", "evolvedFrom": "p_tac_diff", "solvedPercentage": 5}
+  ],
+  "methods": [
+    {"id": "m_pointnet", "name": "PointNet", "type": "verified", "targets": ["p_pointcloud"], "description": "点云置换不变性编码"},
+    {"id": "m_pointnetpp", "name": "PointNet++", "type": "verified", "targets": ["p_tactile", "p_pointcloud"], "description": "分层点云特征提取"},
+    {"id": "m_diffusion", "name": "Diffusion Policy", "type": "verified", "targets": ["p_diffusion"], "description": "去噪扩散策略学习"},
+    {"id": "m_vla_rt2", "name": "RT-2", "type": "verified", "targets": ["p_vla"], "description": "视觉语言动作模型"},
+    {"id": "m_crossattn", "name": "Cross-Attention", "type": "partial", "targets": ["p_fusion", "p_multimodal"], "description": "跨模态注意力融合"},
+    {"id": "m_tac_dp", "name": "Tactile-Diffusion", "type": "untested", "targets": ["p_tac_diff"], "description": "触觉条件扩散策略（未验证）"},
+    {"id": "m_tac_vla", "name": "Tactile-VLA", "type": "untested", "targets": ["p_tac_vla"], "description": "触觉VLA融合（未验证）"}
+  ],
+  "branches": [
+    {"id": "b_root", "name": "机器人操作", "yPosition": 0, "color": "#6366f1"},
+    {"id": "b_perception", "name": "感知", "yPosition": 1, "color": "#8b5cf6", "parentId": "b_root"},
+    {"id": "b_encoder", "name": "编码器", "yPosition": 2, "color": "#a78bfa", "parentId": "b_perception"},
+    {"id": "b_fusion", "name": "融合策略", "yPosition": 3, "color": "#c4b5fd", "parentId": "b_perception"},
+    {"id": "b_policy", "name": "策略学习", "yPosition": 4, "color": "#ec4899", "parentId": "b_root"},
+    {"id": "b_vla", "name": "VLA模型", "yPosition": 5, "color": "#f472b6", "parentId": "b_policy"}
+  ],
+  "domains": [
+    {"id": "d_root", "name": "机器人操作", "level": 0, "children": ["d_perception", "d_policy"]},
+    {"id": "d_perception", "name": "感知", "level": 1, "parentId": "d_root", "children": ["d_encoder", "d_fusion"]},
+    {"id": "d_encoder", "name": "编码器", "level": 2, "parentId": "d_perception"},
+    {"id": "d_fusion", "name": "融合", "level": 2, "parentId": "d_perception"},
+    {"id": "d_policy", "name": "策略", "level": 1, "parentId": "d_root", "children": ["d_diffusion", "d_vla"]},
+    {"id": "d_diffusion", "name": "扩散", "level": 2, "parentId": "d_policy"},
+    {"id": "d_vla", "name": "VLA", "level": 2, "parentId": "d_policy"}
+  ]
+}

@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-surface;
+  }
+  
+  body {
+    @apply bg-background text-text-primary;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background-secondary;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface hover:bg-surface-hover rounded-full;
+  }
+  
+  /* 选中文字样式 */
+  ::selection {
+    @apply bg-accent-primary/30;
+  }
+}
+
+@layer components {
+  /* 玻璃态效果 */
+  .glass {
+    @apply bg-surface/80 backdrop-blur-xl border border-surface-hover;
+  }
+  
+  /* 发光效果 */
+  .glow {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  
+  .glow-strong {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+  }
+  
+  /* 节点样式 */
+  .node-base {
+    @apply rounded-full border-2 transition-all duration-300 cursor-pointer;
+  }
+  
+  .node-solved {
+    @apply bg-status-solved border-white/50;
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+  }
+  
+  .node-active {
+    @apply bg-status-active border-white/50;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+  }
+  
+  .node-unsolved {
+    @apply bg-status-unsolved border-white/50;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+  }
+  
+  .node-partial {
+    @apply bg-status-partial border-white/50;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+  }
+  
+  /* 连线动画 */
+  .connection-line {
+    stroke-dasharray: 5, 5;
+    animation: dash 20s linear infinite;
+  }
+  
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -100;
+    }
+  }
+  
+  /* 悬浮卡片 */
+  .hover-card {
+    @apply opacity-0 translate-y-2 transition-all duration-300;
+  }
+  
+  .group:hover .hover-card {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+/* React Flow 自定义样式 */
+.react-flow {
+  --xy-edge-stroke: #6366f1;
+  --xy-edge-stroke-width: 2;
+  --xy-handle-background: #6366f1;
+  --xy-handle-border-color: #fff;
+}
+
+.react-flow__node {
+  @apply transition-all duration-300;
+}
+
+.react-flow__node:hover {
+  @apply scale-110;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+  transition: stroke-width 0.3s;
+}
+
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke-width: 4;
+}

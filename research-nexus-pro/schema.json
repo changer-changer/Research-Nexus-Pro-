@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Research-Nexus Pro Data Schema",
+  "type": "object",
+  "required": ["problems", "methods", "branches"],
+  "properties": {
+    "problems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "year", "status", "branchId"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "year": { "type": "integer", "minimum": 2000, "maximum": 2030 },
+          "status": { "enum": ["solved", "partial", "active", "unsolved", "evolving", "birth"] },
+          "branchId": { "type": "string" },
+          "description": { "type": "string" },
+          "evolvedFrom": { "type": "string" },
+          "children": { "type": "array", "items": { "type": "string" } },
+          "solvedPercentage": { "type": "integer", "minimum": 0, "maximum": 100 }
+        }
+      }
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type", "targets"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "enum": ["verified", "partial", "failed", "untested"] },
+          "targets": { "type": "array", "items": { "type": "string" } },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "branches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "yPosition", "color"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "yPosition": { "type": "number" },
+          "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+          "parentId": { "type": "string" }
+        }
+      }
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "level"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "level": { "type": "integer", "minimum": 0 },
+          "parentId": { "type": "string" },
+          "children": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
