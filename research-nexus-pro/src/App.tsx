@@ -4,7 +4,7 @@ import {
   GitBranch, Clock, Network, Layers, Download, Settings, Sparkles,
   Sun, Moon, RotateCcw, Layout, PanelLeft, Eye, Filter,
   BookOpen, Target, Workflow, ArrowRight, Image, FileJson,
-  Bookmark, Undo2, Redo2
+  Bookmark, Undo2, Redo2, Play
 } from 'lucide-react'
 import { useAppStore } from './store/appStore'
 import ProblemTree from './components/ProblemTree'
@@ -15,6 +15,7 @@ import TimelineView from './components/TimelineView'
 import CitationView from './components/CitationView'
 import PaperTimelineView from './components/PaperTimelineView'
 import BookmarkPanel from './components/BookmarkPanel'
+import PresentationMode from './components/PresentationMode'
 
 type NavItem = {
   id: string
@@ -39,6 +40,8 @@ function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [showExport, setShowExport] = useState(false)
   const [showBookmarks, setShowBookmarks] = useState(false)
+  const [showPresentation, setShowPresentation] = useState(false)
+  const [screenSize, setScreenSize] = useState<'desktop' | 'tablet' | 'mobile'>('desktop')
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -59,6 +62,19 @@ function App() {
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [undo, redo])
+
+  // Responsive detection
+  useEffect(() => {
+    const check = () => {
+      const w = window.innerWidth
+      if (w < 640) { setScreenSize('mobile'); setSidebarCollapsed(true) }
+      else if (w < 1024) { setScreenSize('tablet'); setSidebarCollapsed(true) }
+      else { setScreenSize('desktop') }
+    }
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   useEffect(() => {
     import('./data/real_papers.json').then((data) => {
@@ -167,6 +183,8 @@ function App() {
           />
           <ToolBtn icon={Download} label="Export" collapsed={sidebarCollapsed} dark={viewConfig.darkMode}
             onClick={() => setShowExport(!showExport)} />
+          <ToolBtn icon={Play} label="Present" collapsed={sidebarCollapsed} dark={viewConfig.darkMode}
+            onClick={() => setShowPresentation(true)} />
           <ToolBtn icon={sidebarCollapsed ? PanelLeft : Layout}
             label={sidebarCollapsed ? 'Expand' : 'Collapse'}
             collapsed={sidebarCollapsed} dark={viewConfig.darkMode}
@@ -195,7 +213,7 @@ function App() {
           {showExport && (
             <motion.div
               initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }}
-              className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-4 flex items-center gap-3">
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-4 flex items-center gap-3 z-50">
               <button onClick={exportPNG}
                 className="px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 rounded-lg text-sm text-indigo-300 flex items-center gap-2 transition-colors">
                 <Image size={16} /> Export PNG
@@ -208,6 +226,26 @@ function App() {
                 className="p-2 hover:bg-zinc-800 rounded-lg text-zinc-500">✕</button>
             </motion.div>
           )}
+        </AnimatePresence>
+        
+        {/* Bookmark Panel */}
+        <AnimatePresence>
+          {showBookmarks && (
+            <motion.div
+              initial={{ x: 400, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 400, opacity: 0 }}
+              className="absolute right-0 top-0 bottom-0 w-80 bg-zinc-900/95 backdrop-blur-xl border-l border-zinc-800 overflow-y-auto z-40">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-800">
+                <h3 className="text-sm font-semibold text-white">Bookmarks</h3>
+                <button onClick={() => setShowBookmarks(false)} className="text-zinc-500 hover:text-zinc-300">✕</button>
+              </div>
+              <BookmarkPanel />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        {/* Presentation Mode */}
+        <AnimatePresence>
+          {showPresentation && <PresentationMode onClose={() => setShowPresentation(false)} />}
         </AnimatePresence>
       </main>
     </div>
