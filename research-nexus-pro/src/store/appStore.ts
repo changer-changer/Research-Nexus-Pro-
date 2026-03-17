@@ -25,7 +25,7 @@ export interface Method {
   parentId?: string
   children: string[]
   depth: number
-  targets: string[] // problem IDs
+  targets: string[]
   description: string
   year: number
   branchId: string
@@ -41,20 +41,34 @@ export interface Paper {
   category: string
   methodology: string
   authorityScore: number
-  targets: string[] // problem IDs
-  methods: string[] // method IDs
-  citations: string[] // paper IDs
+  targets: string[]
+  methods: string[]
+  citations: string[]
   isLatest?: boolean
   isBest?: boolean
 }
 
-type NodeType = 'problem' | 'method' | 'paper' | null
+export interface Bookmark {
+  id: string
+  nodeType: 'problem' | 'method' | 'paper'
+  nodeId: string
+  note: string
+  color: string
+  createdAt: number
+}
+
+interface HistoryEntry {
+  timestamp: number
+  action: string
+  snapshot: string
+}
 
 interface AppState {
   // Data
   problems: Problem[]
   methods: Method[]
   papers: Paper[]
+  bookmarks: Bookmark[]
   
   // UI State
   activeView: string
@@ -65,11 +79,17 @@ interface AppState {
   viewConfig: {
     darkMode: boolean
     showConnections: boolean
+    showCrossDomain: boolean
+    virtualRender: boolean
     zoom: number
     pan: { x: number; y: number }
   }
   
-  // Core Linkage: Computed highlight sets
+  // History
+  history: HistoryEntry[]
+  historyIndex: number
+  
+  // Linkage
   getLinkedProblemIds: (nodeType: string, nodeId: string) => string[]
   getLinkedMethodIds: (nodeType: string, nodeId: string) => string[]
   getLinkedPaperIds: (nodeType: string, nodeId: string) => string[]
@@ -85,6 +105,17 @@ interface AppState {
   collapseAll: () => void
   setTimelineFilter: (filter: any) => void
   updateViewConfig: (config: any) => void
+  
+  // Bookmarks
+  addBookmark: (nodeType: string, nodeId: string, note?: string, color?: string) => void
+  removeBookmark: (id: string) => void
+  updateBookmarkNote: (id: string, note: string) => void
+  isBookmarked: (nodeId: string) => boolean
+  
+  // Undo/Redo
+  undo: () => void
+  redo: () => void
+  pushHistory: (action: string) => void
   
   // Getters
   getProblemById: (id: string) => Problem | undefined
@@ -104,147 +135,153 @@ export const useAppStore = create<AppState>()(
       problems: [],
       methods: [],
       papers: [],
+      bookmarks: [],
       activeView: 'problem-tree',
       selectedNode: null,
       hoveredNode: null,
       expandedNodes: new Set(['root']),
       timelineFilter: { startYear: 2015, endYear: 2026, domain: null },
-      viewConfig: { darkMode: true, showConnections: true, zoom: 1, pan: { x: 0, y: 0 } },
+      viewConfig: { 
+        darkMode: true, 
+        showConnections: true, 
+        showCrossDomain: true,
+        virtualRender: true,
+        zoom: 1, 
+        pan: { x: 0, y: 0 } 
+      },
+      history: [],
+      historyIndex: -1,
       
-      // ============ Core Linkage Logic ============
+      // ============ Linkage ============
       getLinkedProblemIds: (nodeType, nodeId) => {
         const state = get()
-        if (nodeType === 'method') {
-          const method = state.methods.find(m => m.id === nodeId)
-          return method?.targets || []
-        }
-        if (nodeType === 'paper') {
-          const paper = state.papers.find(p => p.id === nodeId)
-          return paper?.targets || []
-        }
+        if (nodeType === 'method') return state.methods.find(m => m.id === nodeId)?.targets || []
+        if (nodeType === 'paper') return state.papers.find(p => p.id === nodeId)?.targets || []
         return []
       },
-      
       getLinkedMethodIds: (nodeType, nodeId) => {
         const state = get()
-        if (nodeType === 'problem') {
-          // Find all methods that target this problem
-          return state.methods
-            .filter(m => m.targets.includes(nodeId))
-            .map(m => m.id)
-        }
-        if (nodeType === 'paper') {
-          const paper = state.papers.find(p => p.id === nodeId)
-          return paper?.methods || []
-        }
+        if (nodeType === 'problem') return state.methods.filter(m => m.targets.includes(nodeId)).map(m => m.id)
+        if (nodeType === 'paper') return state.papers.find(p => p.id === nodeId)?.methods || []
         return []
       },
-      
       getLinkedPaperIds: (nodeType, nodeId) => {
         const state = get()
-        if (nodeType === 'problem') {
-          const problem = state.problems.find(p => p.id === nodeId)
-          return problem?.papers || []
-        }
-        if (nodeType === 'method') {
-          // Find papers that use this method
-          return state.papers
-            .filter(p => p.methods.includes(nodeId))
-            .map(p => p.id)
-        }
+        if (nodeType === 'problem') return state.problems.find(p => p.id === nodeId)?.papers || []
+        if (nodeType === 'method') return state.papers.filter(p => p.methods.includes(nodeId)).map(p => p.id)
         return []
       },
-      
-      // Core: Check if a node should be highlighted based on current selection
       isNodeHighlighted: (nodeType, nodeId) => {
         const state = get()
-        const sel = state.selectedNode
-        const hov = state.hoveredNode
-        const active = sel || hov
+        const active = state.selectedNode || state.hoveredNode
         if (!active) return false
-        if (active.type === nodeType && active.id === nodeId) return false // Don't self-highlight
+        if (active.type === nodeType && active.id === nodeId) return false
         
         if (active.type === 'problem') {
-          if (nodeType === 'method') {
-            const method = state.methods.find(m => m.id === nodeId)
-            return method?.targets.includes(active.id) || false
-          }
-          if (nodeType === 'paper') {
-            const problem = state.problems.find(p => p.id === active.id)
-            return problem?.papers.includes(nodeId) || false
-          }
+          if (nodeType === 'method') return state.methods.find(m => m.id === nodeId)?.targets.includes(active.id) || false
+          if (nodeType === 'paper') return state.problems.find(p => p.id === active.id)?.papers.includes(nodeId) || false
         }
-        
         if (active.type === 'method') {
-          if (nodeType === 'problem') {
-            const method = state.methods.find(m => m.id === active.id)
-            return method?.targets.includes(nodeId) || false
-          }
-          if (nodeType === 'paper') {
-            const paper = state.papers.find(p => p.id === nodeId)
-            return paper?.methods.includes(active.id) || false
-          }
+          if (nodeType === 'problem') return state.methods.find(m => m.id === active.id)?.targets.includes(nodeId) || false
+          if (nodeType === 'paper') return state.papers.find(p => p.id === nodeId)?.methods.includes(active.id) || false
         }
-        
         if (active.type === 'paper') {
-          if (nodeType === 'problem') {
-            const paper = state.papers.find(p => p.id === active.id)
-            return paper?.targets.includes(nodeId) || false
-          }
-          if (nodeType === 'method') {
-            const paper = state.papers.find(p => p.id === active.id)
-            return paper?.methods.includes(nodeId) || false
-          }
+          const paper = state.papers.find(p => p.id === active.id)
+          if (nodeType === 'problem') return paper?.targets.includes(nodeId) || false
+          if (nodeType === 'method') return paper?.methods.includes(nodeId) || false
         }
-        
         return false
       },
       
       // ============ Actions ============
       loadData: (data) => {
-        const problems = (data.problems || []).map((p: any) => ({
-          ...p, children: p.children || [], papers: p.papers || [], methods: p.methods || [],
-        }))
-        const methods = (data.methods || []).map((m: any) => ({
-          ...m, children: m.children || [], targets: m.targets || [], crossDomain: m.crossDomain || [],
-        }))
-        const papers = (data.papers || []).map((p: any) => ({
-          ...p, targets: p.targets || [], methods: p.methods || [], citations: p.citations || [],
-        }))
+        const problems = (data.problems || []).map((p: any) => ({ ...p, children: p.children || [], papers: p.papers || [], methods: p.methods || [] }))
+        const methods = (data.methods || []).map((m: any) => ({ ...m, children: m.children || [], targets: m.targets || [], crossDomain: m.crossDomain || [] }))
+        const papers = (data.papers || []).map((p: any) => ({ ...p, targets: p.targets || [], methods: p.methods || [], citations: p.citations || [] }))
         set({ problems, methods, papers })
       },
-      
       setActiveView: (view) => set({ activeView: view }),
-      
-      selectNode: (type, id) => set({ 
-        selectedNode: id ? { type: type as any, id } : null 
-      }),
-      
-      hoverNode: (type, id) => set({ 
-        hoveredNode: id ? { type: type as any, id } : null 
-      }),
-      
+      selectNode: (type, id) => set({ selectedNode: id ? { type: type as any, id } : null }),
+      hoverNode: (type, id) => set({ hoveredNode: id ? { type: type as any, id } : null }),
       toggleExpand: (id) => {
         const next = new Set(get().expandedNodes)
         if (next.has(id)) next.delete(id); else next.add(id)
         set({ expandedNodes: next })
       },
-      
       expandAll: () => {
         const all = new Set<string>(get().problems.map(p => p.id))
         get().methods.forEach(m => all.add(m.id))
         set({ expandedNodes: all })
       },
-      
       collapseAll: () => set({ expandedNodes: new Set(['root']) }),
+      setTimelineFilter: (filter) => set({ timelineFilter: { ...get().timelineFilter, ...filter } }),
+      updateViewConfig: (config) => set({ viewConfig: { ...get().viewConfig, ...config } }),
       
-      setTimelineFilter: (filter) => set({ 
-        timelineFilter: { ...get().timelineFilter, ...filter } 
-      }),
+      // ============ Bookmarks ============
+      addBookmark: (nodeType, nodeId, note = '', color = '#6366f1') => {
+        const bm: Bookmark = {
+          id: `bm_${Date.now()}`,
+          nodeType: nodeType as any,
+          nodeId,
+          note,
+          color,
+          createdAt: Date.now(),
+        }
+        set({ bookmarks: [...get().bookmarks, bm] })
+        get().pushHistory('add bookmark')
+      },
+      removeBookmark: (id) => {
+        set({ bookmarks: get().bookmarks.filter(b => b.id !== id) })
+        get().pushHistory('remove bookmark')
+      },
+      updateBookmarkNote: (id, note) => {
+        set({ bookmarks: get().bookmarks.map(b => b.id === id ? { ...b, note } : b) })
+      },
+      isBookmarked: (nodeId) => get().bookmarks.some(b => b.nodeId === nodeId),
       
-      updateViewConfig: (config) => set({
-        viewConfig: { ...get().viewConfig, ...config }
-      }),
+      // ============ Undo/Redo ============
+      pushHistory: (action) => {
+        const state = get()
+        const snapshot = JSON.stringify({
+          expandedNodes: Array.from(state.expandedNodes),
+          selectedNode: state.selectedNode,
+          activeView: state.activeView,
+        })
+        const history = state.history.slice(0, state.historyIndex + 1)
+        history.push({ timestamp: Date.now(), action, snapshot })
+        if (history.length > 50) history.shift()
+        set({ history, historyIndex: history.length - 1 })
+      },
+      undo: () => {
+        const { historyIndex, history } = get()
+        if (historyIndex > 0) {
+          const entry = history[historyIndex - 1]
+          try {
+            const data = JSON.parse(entry.snapshot)
+            set({
+              expandedNodes: new Set(data.expandedNodes),
+              selectedNode: data.selectedNode,
+              activeView: data.activeView,
+              historyIndex: historyIndex - 1,
+            })
+          } catch {}
+        }
+      },
+      redo: () => {
+        const { historyIndex, history } = get()
+        if (historyIndex < history.length - 1) {
+          const entry = history[historyIndex + 1]
+          try {
+            const data = JSON.parse(entry.snapshot)
+            set({
+              expandedNodes: new Set(data.expandedNodes),
+              selectedNode: data.selectedNode,
+              activeView: data.activeView,
+              historyIndex: historyIndex + 1,
+            })
+          } catch {}
+        }
+      },
       
       // ============ Getters ============
       getProblemById: (id) => get().problems.find(p => p.id === id),
@@ -267,23 +304,23 @@ export const useAppStore = create<AppState>()(
         if (!problem) return []
         return get().papers.filter(paper => problem.papers.includes(paper.id) || paper.targets.includes(id))
       },
-      getMethodPapers: (id) => {
-        return get().papers.filter(p => p.methods.includes(id))
-      },
+      getMethodPapers: (id) => get().papers.filter(p => p.methods.includes(id)),
     }),
     {
-      name: 'research-nexus-pro-v2',
-      version: 2,
+      name: 'research-nexus-pro-v3',
+      version: 3,
       partialize: (state) => ({
         activeView: state.activeView,
         viewConfig: state.viewConfig,
         timelineFilter: state.timelineFilter,
         expandedNodes: Array.from(state.expandedNodes),
+        bookmarks: state.bookmarks,
       }),
       merge: (persisted: any, current) => ({
         ...current,
         ...persisted,
         expandedNodes: new Set(persisted?.expandedNodes || ['root']),
+        bookmarks: persisted?.bookmarks || [],
       }),
     }
   )

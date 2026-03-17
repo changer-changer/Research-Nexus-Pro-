@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { 
   GitBranch, Clock, Network, Layers, Download, Settings, Sparkles,
   Sun, Moon, RotateCcw, Layout, PanelLeft, Eye, Filter,
-  BookOpen, Target, Workflow, ArrowRight, Image, FileJson
+  BookOpen, Target, Workflow, ArrowRight, Image, FileJson,
+  Bookmark, Undo2, Redo2
 } from 'lucide-react'
 import { useAppStore } from './store/appStore'
 import ProblemTree from './components/ProblemTree'
@@ -13,6 +14,7 @@ import DualTreeView from './components/DualTreeView'
 import TimelineView from './components/TimelineView'
 import CitationView from './components/CitationView'
 import PaperTimelineView from './components/PaperTimelineView'
+import BookmarkPanel from './components/BookmarkPanel'
 
 type NavItem = {
   id: string
@@ -33,9 +35,30 @@ const NAV_ITEMS: NavItem[] = [
 ]
 
 function App() {
-  const { activeView, setActiveView, viewConfig, updateViewConfig, loadData } = useAppStore()
+  const { activeView, setActiveView, viewConfig, updateViewConfig, loadData, undo, redo } = useAppStore()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [showExport, setShowExport] = useState(false)
+  const [showBookmarks, setShowBookmarks] = useState(false)
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'z' && !e.shiftKey) {
+        e.preventDefault()
+        undo()
+      }
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'y' || (e.key === 'z' && e.shiftKey))) {
+        e.preventDefault()
+        redo()
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+        e.preventDefault()
+        setShowBookmarks(v => !v)
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [undo, redo])
 
   useEffect(() => {
     import('./data/real_papers.json').then((data) => {
@@ -130,6 +153,13 @@ function App() {
 
         {/* Bottom tools */}
         <div className={`p-3 border-t ${viewConfig.darkMode ? 'border-zinc-800' : 'border-gray-200'} space-y-1`}>
+          <ToolBtn icon={Bookmark} label="Bookmarks (Ctrl+B)" collapsed={sidebarCollapsed} dark={viewConfig.darkMode}
+            onClick={() => setShowBookmarks(!showBookmarks)} active={showBookmarks} />
+          <div className="flex gap-1">
+            <ToolBtn icon={Undo2} label="Undo" collapsed={sidebarCollapsed} dark={viewConfig.darkMode} onClick={undo} />
+            <ToolBtn icon={Redo2} label="Redo" collapsed={sidebarCollapsed} dark={viewConfig.darkMode} onClick={redo} />
+          </div>
+          <div className={`my-1 border-t ${viewConfig.darkMode ? 'border-zinc-800' : 'border-gray-200'}`} />
           <ToolBtn icon={viewConfig.darkMode ? Sun : Moon}
             label={viewConfig.darkMode ? 'Light Mode' : 'Dark Mode'}
             collapsed={sidebarCollapsed} dark={viewConfig.darkMode}
