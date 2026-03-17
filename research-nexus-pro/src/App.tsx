@@ -1,36 +1,41 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   GitBranch, Clock, Network, Layers, Download, Settings, Sparkles,
   Sun, Moon, RotateCcw, Layout, PanelLeft, Eye, Filter,
-  BookOpen, Target, Workflow
+  BookOpen, Target, Workflow, ArrowRight, Image, FileJson
 } from 'lucide-react'
 import { useAppStore } from './store/appStore'
 import ProblemTree from './components/ProblemTree'
 import MethodTree from './components/MethodTree'
+import MethodArrowView from './components/MethodArrowView'
 import DualTreeView from './components/DualTreeView'
 import TimelineView from './components/TimelineView'
 import CitationView from './components/CitationView'
+import PaperTimelineView from './components/PaperTimelineView'
 
 type NavItem = {
   id: string
   label: string
   icon: any
   badge?: string
-  group: 'problems' | 'methods' | 'papers' | 'tools'
+  group: string
 }
 
 const NAV_ITEMS: NavItem[] = [
   { id: 'problem-tree', label: 'Problem Tree', icon: GitBranch, group: 'problems' },
+  { id: 'timeline', label: 'Time Evolution', icon: Clock, group: 'problems' },
+  { id: 'method-arrows', label: 'Method → Problem', icon: ArrowRight, group: 'methods' },
   { id: 'method-tree', label: 'Method Tree', icon: Target, group: 'methods' },
   { id: 'dual-tree', label: 'Dual Tree Fusion', icon: Workflow, group: 'methods', badge: 'NEW' },
-  { id: 'timeline', label: 'Timeline View', icon: Clock, group: 'problems' },
+  { id: 'paper-timeline', label: 'Paper Timeline', icon: BookOpen, group: 'papers' },
   { id: 'citation', label: 'Citation Network', icon: Network, group: 'papers' },
 ]
 
 function App() {
   const { activeView, setActiveView, viewConfig, updateViewConfig, loadData } = useAppStore()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [showExport, setShowExport] = useState(false)
 
   useEffect(() => {
     import('./data/real_papers.json').then((data) => {
@@ -38,125 +43,161 @@ function App() {
     })
   }, [])
 
+  // Export functions
+  const exportPNG = useCallback(() => {
+    const svg = document.querySelector('svg')
+    if (!svg) return
+    const svgData = new XMLSerializer().serializeToString(svg)
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+    const img = new window.Image()
+    img.onload = () => {
+      canvas.width = img.width
+      canvas.height = img.height
+      ctx?.drawImage(img, 0, 0)
+      const a = document.createElement('a')
+      a.href = canvas.toDataURL('image/png')
+      a.download = `research-nexus-${activeView}-${Date.now()}.png`
+      a.click()
+    }
+    img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)))
+  }, [activeView])
+
+  const exportJSON = useCallback(() => {
+    const store = useAppStore.getState()
+    const data = {
+      problems: store.problems,
+      methods: store.methods,
+      papers: store.papers,
+      exportedAt: new Date().toISOString()
+    }
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+    const a = document.createElement('a')
+    a.href = URL.createObjectURL(blob)
+    a.download = `research-nexus-data-${Date.now()}.json`
+    a.click()
+  }, [])
+
   return (
-    <div className={`h-screen w-screen flex overflow-hidden ${viewConfig.darkMode ? 'dark' : ''}`}>
+    <div className={`h-screen w-screen flex overflow-hidden ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
       {/* Sidebar */}
-      <aside className={`${sidebarCollapsed ? 'w-16' : 'w-60'} border-r border-zinc-800 bg-zinc-950 flex flex-col shrink-0 transition-all duration-300`}>
+      <aside className={`${sidebarCollapsed ? 'w-16' : 'w-60'} border-r ${viewConfig.darkMode ? 'border-zinc-800 bg-zinc-950' : 'border-gray-200 bg-white'} flex flex-col shrink-0 transition-all duration-300`}>
         {/* Logo */}
-        <div className="p-4 border-b border-zinc-800 flex items-center gap-3">
+        <div className={`p-4 border-b ${viewConfig.darkMode ? 'border-zinc-800' : 'border-gray-200'} flex items-center gap-3`}>
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/20 shrink-0">
             <Sparkles size={18} />
           </div>
           {!sidebarCollapsed && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="overflow-hidden">
-              <h1 className="font-bold text-sm text-white tracking-tight">Research Nexus</h1>
-              <p className="text-[10px] text-zinc-500 font-mono tracking-widest">PRO v2.0</p>
-            </motion.div>
+            <div>
+              <h1 className={`font-bold text-sm tracking-tight ${viewConfig.darkMode ? 'text-white' : 'text-gray-900'}`}>Research Nexus</h1>
+              <p className={`text-[10px] font-mono tracking-widest ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-400'}`}>PRO v2.2</p>
+            </div>
           )}
         </div>
 
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-1">
           {!sidebarCollapsed && (
-            <div className="text-[10px] text-zinc-600 uppercase tracking-wider px-3 py-2 font-medium">
+            <div className={`text-[10px] uppercase tracking-wider px-3 py-2 font-medium ${viewConfig.darkMode ? 'text-zinc-600' : 'text-gray-400'}`}>
               Problem System
             </div>
           )}
           {NAV_ITEMS.filter(i => i.group === 'problems').map(item => (
-            <NavButton 
-              key={item.id}
-              item={item}
-              active={activeView === item.id}
-              onClick={() => setActiveView(item.id)}
-              collapsed={sidebarCollapsed}
-            />
+            <NavButton key={item.id} item={item} active={activeView === item.id}
+              onClick={() => setActiveView(item.id)} collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
           ))}
           
           {!sidebarCollapsed && (
-            <div className="text-[10px] text-zinc-600 uppercase tracking-wider px-3 py-2 font-medium mt-3">
+            <div className={`text-[10px] uppercase tracking-wider px-3 py-2 font-medium mt-3 ${viewConfig.darkMode ? 'text-zinc-600' : 'text-gray-400'}`}>
               Method System
             </div>
           )}
           {NAV_ITEMS.filter(i => i.group === 'methods').map(item => (
-            <NavButton
-              key={item.id}
-              item={item}
-              active={activeView === item.id}
-              onClick={() => setActiveView(item.id)}
-              collapsed={sidebarCollapsed}
-            />
+            <NavButton key={item.id} item={item} active={activeView === item.id}
+              onClick={() => setActiveView(item.id)} collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
           ))}
           
           {!sidebarCollapsed && (
-            <div className="text-[10px] text-zinc-600 uppercase tracking-wider px-3 py-2 font-medium mt-3">
+            <div className={`text-[10px] uppercase tracking-wider px-3 py-2 font-medium mt-3 ${viewConfig.darkMode ? 'text-zinc-600' : 'text-gray-400'}`}>
               Paper System
             </div>
           )}
           {NAV_ITEMS.filter(i => i.group === 'papers').map(item => (
-            <NavButton
-              key={item.id}
-              item={item}
-              active={activeView === item.id}
-              onClick={() => setActiveView(item.id)}
-              collapsed={sidebarCollapsed}
-            />
+            <NavButton key={item.id} item={item} active={activeView === item.id}
+              onClick={() => setActiveView(item.id)} collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
           ))}
         </nav>
 
         {/* Bottom tools */}
-        <div className="p-3 border-t border-zinc-800 space-y-1">
+        <div className={`p-3 border-t ${viewConfig.darkMode ? 'border-zinc-800' : 'border-gray-200'} space-y-1`}>
           <ToolBtn icon={viewConfig.darkMode ? Sun : Moon}
             label={viewConfig.darkMode ? 'Light Mode' : 'Dark Mode'}
-            collapsed={sidebarCollapsed}
+            collapsed={sidebarCollapsed} dark={viewConfig.darkMode}
             onClick={() => updateViewConfig({ darkMode: !viewConfig.darkMode })}
           />
+          <ToolBtn icon={Download} label="Export" collapsed={sidebarCollapsed} dark={viewConfig.darkMode}
+            onClick={() => setShowExport(!showExport)} />
           <ToolBtn icon={sidebarCollapsed ? PanelLeft : Layout}
             label={sidebarCollapsed ? 'Expand' : 'Collapse'}
-            collapsed={sidebarCollapsed}
-            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-          />
-          <ToolBtn icon={Settings} label="Settings" collapsed={sidebarCollapsed} />
+            collapsed={sidebarCollapsed} dark={viewConfig.darkMode}
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)} />
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 relative overflow-hidden bg-zinc-950">
+      <main className={`flex-1 relative overflow-hidden ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeView}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="h-full"
-          >
+          <motion.div key={activeView}
+            initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }} className="h-full">
             {activeView === 'problem-tree' && <ProblemTree />}
+            {activeView === 'method-tree' && <MethodTree />}
+            {activeView === 'method-arrows' && <MethodArrowView />}
+            {activeView === 'dual-tree' && <DualTreeView />}
             {activeView === 'timeline' && <TimelineView />}
             {activeView === 'citation' && <CitationView />}
-            {activeView === 'method-tree' && <MethodTree />}
-            {activeView === 'dual-tree' && <DualTreeView />}
+            {activeView === 'paper-timeline' && <PaperTimelineView />}
           </motion.div>
+        </AnimatePresence>
+        
+        {/* Export Panel */}
+        <AnimatePresence>
+          {showExport && (
+            <motion.div
+              initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }}
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-4 flex items-center gap-3">
+              <button onClick={exportPNG}
+                className="px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 rounded-lg text-sm text-indigo-300 flex items-center gap-2 transition-colors">
+                <Image size={16} /> Export PNG
+              </button>
+              <button onClick={exportJSON}
+                className="px-4 py-2 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 rounded-lg text-sm text-green-300 flex items-center gap-2 transition-colors">
+                <FileJson size={16} /> Export JSON
+              </button>
+              <button onClick={() => setShowExport(false)}
+                className="p-2 hover:bg-zinc-800 rounded-lg text-zinc-500">✕</button>
+            </motion.div>
+          )}
         </AnimatePresence>
       </main>
     </div>
   )
 }
 
-// ============ Nav Button ============
-function NavButton({ item, active, onClick, collapsed }: any) {
+const NavButton = ({ item, active, onClick, collapsed, dark }: any) => {
   const Icon = item.icon
   return (
-    <button
-      onClick={onClick}
+    <button onClick={onClick}
       className={`flex items-center gap-3 w-full rounded-lg transition-all duration-200 ${
         collapsed ? 'px-0 py-2 justify-center' : 'px-3 py-2'
       } ${
         active
           ? 'bg-indigo-500/10 text-indigo-400 font-medium border border-indigo-500/20'
-          : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 border border-transparent'
+          : dark
+            ? 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 border border-transparent'
+            : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100 border border-transparent'
       }`}
-      title={collapsed ? item.label : undefined}
-    >
+      title={collapsed ? item.label : undefined}>
       <Icon size={16} className="shrink-0" />
       {!collapsed && (
         <>
@@ -172,47 +213,17 @@ function NavButton({ item, active, onClick, collapsed }: any) {
   )
 }
 
-// ============ Tool Button ============
-function ToolBtn({ icon: Icon, label, collapsed, onClick }: any) {
-  return (
-    <button
-      onClick={onClick}
-      className={`flex items-center gap-3 w-full rounded-lg text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800/50 transition-all ${
-        collapsed ? 'px-0 py-2 justify-center' : 'px-3 py-2'
-      }`}
-      title={collapsed ? label : undefined}
-    >
-      <Icon size={14} />
-      {!collapsed && <span className="text-xs">{label}</span>}
-    </button>
-  )
-}
-
-// ============ Placeholder Views ============
-function MethodTreePlaceholder() {
-  return (
-    <div className="h-full flex items-center justify-center text-zinc-500 flex-col gap-4">
-      <Target size={48} className="opacity-20" />
-      <div className="text-center">
-        <p className="text-lg font-medium">Method Tree View</p>
-        <p className="text-sm mt-1">Hierarchical method decomposition</p>
-        <p className="text-xs mt-2 text-zinc-600">Coming in next iteration</p>
-      </div>
-    </div>
-  )
-}
-
-function DualTreePlaceholder() {
-  return (
-    <div className="h-full flex items-center justify-center text-zinc-500 flex-col gap-4">
-      <Workflow size={48} className="opacity-20" />
-      <div className="text-center">
-        <p className="text-lg font-medium">Dual Tree Fusion View</p>
-        <p className="text-sm mt-1">Problem tree + Method tree with cross-links</p>
-        <p className="text-xs mt-2 text-zinc-600">Coming in next iteration</p>
-      </div>
-    </div>
-  )
-}
+const ToolBtn = ({ icon: Icon, label, collapsed, dark, onClick }: any) => (
+  <button onClick={onClick}
+    className={`flex items-center gap-3 w-full rounded-lg transition-all ${
+      collapsed ? 'px-0 py-2 justify-center' : 'px-3 py-2'
+    } ${
+      dark ? 'text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800/50' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
+    }`}
+    title={collapsed ? label : undefined}>
+    <Icon size={14} />
+    {!collapsed && <span className="text-xs">{label}</span>}
+  </button>
+)
 
 export default App
