@@ -158,75 +158,336 @@
   ],
   "methods": [
     {
-      "id": "pointnet",
-      "name": "PointNet",
+      "id": "m_perception",
+      "name": "Perception Methods",
       "status": "verified",
-      "solves": [
-        "prob_visual_3d"
-      ],
-      "description": "Point cloud permutation invariance"
+      "depth": 0,
+      "targets": [],
+      "description": "All perception-related methods",
+      "year": 2015,
+      "branchId": "b_perception",
+      "crossDomain": [],
+      "children": [
+        "m_pointcloud",
+        "m_tactile_enc",
+        "m_visual_enc"
+      ]
     },
     {
-      "id": "pointnetpp",
+      "id": "m_policy",
+      "name": "Policy Learning Methods",
+      "status": "verified",
+      "depth": 0,
+      "targets": [],
+      "description": "All policy learning methods",
+      "year": 2016,
+      "branchId": "b_policy",
+      "crossDomain": [],
+      "children": [
+        "m_imitation",
+        "m_diffusion",
+        "m_rl"
+      ]
+    },
+    {
+      "id": "m_foundation",
+      "name": "Foundation Model Methods",
+      "status": "partial",
+      "depth": 0,
+      "targets": [],
+      "description": "VLA and large-scale models",
+      "year": 2023,
+      "branchId": "b_vla",
+      "crossDomain": [],
+      "children": [
+        "m_vla",
+        "m_llm"
+      ]
+    },
+    {
+      "id": "m_pointcloud",
+      "name": "Point Cloud Processing",
+      "status": "verified",
+      "parentId": "m_perception",
+      "depth": 1,
+      "targets": [
+        "prob_visual_3d"
+      ],
+      "description": "PointNet, PointNet++, DGCNN",
+      "year": 2017,
+      "branchId": "b_perception",
+      "crossDomain": [
+        "m_tactile_enc"
+      ],
+      "children": [
+        "m_pointnet",
+        "m_pointnetpp"
+      ]
+    },
+    {
+      "id": "m_tactile_enc",
+      "name": "Tactile Encoding",
+      "status": "partial",
+      "parentId": "m_perception",
+      "depth": 1,
+      "targets": [
+        "prob_tactile"
+      ],
+      "description": "Tactile signal encoding methods",
+      "year": 2020,
+      "branchId": "b_tactile",
+      "crossDomain": [
+        "m_pointcloud"
+      ],
+      "children": [
+        "m_tac_point",
+        "m_tac_cnn"
+      ]
+    },
+    {
+      "id": "m_visual_enc",
+      "name": "Visual Encoding",
+      "status": "verified",
+      "parentId": "m_perception",
+      "depth": 1,
+      "targets": [
+        "prob_visual_3d"
+      ],
+      "description": "CNN, ViT, DINO features",
+      "year": 2016,
+      "branchId": "b_perception",
+      "crossDomain": [],
+      "children": []
+    },
+    {
+      "id": "m_pointnet",
+      "name": "PointNet",
+      "status": "verified",
+      "parentId": "m_pointcloud",
+      "depth": 2,
+      "targets": [
+        "prob_visual_3d"
+      ],
+      "description": "Permutation-invariant point cloud processing",
+      "year": 2017,
+      "branchId": "b_perception",
+      "crossDomain": []
+    },
+    {
+      "id": "m_pointnetpp",
       "name": "PointNet++",
       "status": "verified",
-      "solves": [
+      "parentId": "m_pointcloud",
+      "depth": 2,
+      "targets": [
         "prob_visual_3d",
         "prob_tactile"
       ],
-      "description": "Hierarchical point features"
+      "description": "Hierarchical point set feature learning",
+      "year": 2018,
+      "branchId": "b_perception",
+      "crossDomain": [
+        "m_tac_point"
+      ]
     },
     {
-      "id": "diffusion_policy",
+      "id": "m_tac_point",
+      "name": "Tactile-as-Point-Cloud",
+      "status": "partial",
+      "parentId": "m_tactile_enc",
+      "depth": 2,
+      "targets": [
+        "prob_tactile"
+      ],
+      "description": "Treating tactile data as point clouds",
+      "year": 2021,
+      "branchId": "b_tactile",
+      "crossDomain": [
+        "m_pointnet"
+      ]
+    },
+    {
+      "id": "m_tac_cnn",
+      "name": "Tactile CNN",
+      "status": "partial",
+      "parentId": "m_tactile_enc",
+      "depth": 2,
+      "targets": [
+        "prob_tactile"
+      ],
+      "description": "CNN-based tactile feature extraction",
+      "year": 2020,
+      "branchId": "b_tactile",
+      "crossDomain": []
+    },
+    {
+      "id": "m_imitation",
+      "name": "Imitation Learning",
+      "status": "verified",
+      "parentId": "m_policy",
+      "depth": 1,
+      "targets": [
+        "sub_policy"
+      ],
+      "description": "Behavioral cloning and variants",
+      "year": 2018,
+      "branchId": "b_policy",
+      "crossDomain": [],
+      "children": [
+        "m_bc",
+        "m_dagger"
+      ]
+    },
+    {
+      "id": "m_diffusion",
       "name": "Diffusion Policy",
       "status": "verified",
-      "solves": [
+      "parentId": "m_policy",
+      "depth": 1,
+      "targets": [
         "prob_diffusion"
       ],
-      "description": "Denoising diffusion for actions"
+      "description": "Denoising diffusion for action generation",
+      "year": 2023,
+      "branchId": "b_diffusion",
+      "crossDomain": [],
+      "children": [
+        "m_ddpm",
+        "m_flow"
+      ]
     },
     {
-      "id": "flow_matching",
+      "id": "m_rl",
+      "name": "Reinforcement Learning",
+      "status": "partial",
+      "parentId": "m_policy",
+      "depth": 1,
+      "targets": [
+        "sub_policy"
+      ],
+      "description": "Model-free and model-based RL",
+      "year": 2016,
+      "branchId": "b_policy",
+      "crossDomain": [],
+      "children": []
+    },
+    {
+      "id": "m_bc",
+      "name": "Behavioral Cloning",
+      "status": "verified",
+      "parentId": "m_imitation",
+      "depth": 2,
+      "targets": [
+        "sub_policy"
+      ],
+      "description": "Simple supervised policy learning",
+      "year": 2018,
+      "branchId": "b_policy",
+      "crossDomain": []
+    },
+    {
+      "id": "m_dagger",
+      "name": "DAgger",
+      "status": "verified",
+      "parentId": "m_imitation",
+      "depth": 2,
+      "targets": [
+        "sub_policy"
+      ],
+      "description": "Dataset aggregation for imitation",
+      "year": 2019,
+      "branchId": "b_policy",
+      "crossDomain": []
+    },
+    {
+      "id": "m_ddpm",
+      "name": "DDPM Policy",
+      "status": "verified",
+      "parentId": "m_diffusion",
+      "depth": 2,
+      "targets": [
+        "prob_diffusion",
+        "leaf_3d_diffusion"
+      ],
+      "description": "Denoising Diffusion Probabilistic Models",
+      "year": 2023,
+      "branchId": "b_diffusion",
+      "crossDomain": []
+    },
+    {
+      "id": "m_flow",
       "name": "Flow Matching",
-      "status": "verified",
-      "solves": [
-        "prob_diffusion"
+      "status": "partial",
+      "parentId": "m_diffusion",
+      "depth": 2,
+      "targets": [
+        "prob_diffusion",
+        "leaf_3d_diffusion"
       ],
-      "description": "Conditional flow matching"
+      "description": "Conditional flow matching",
+      "year": 2024,
+      "branchId": "b_diffusion",
+      "crossDomain": []
     },
     {
-      "id": "vla_rt2",
-      "name": "RT-2 / VLA",
-      "status": "verified",
-      "solves": [
+      "id": "m_vla",
+      "name": "Vision-Language-Action",
+      "status": "partial",
+      "parentId": "m_foundation",
+      "depth": 1,
+      "targets": [
         "prob_vla"
       ],
-      "description": "Vision-language-action models"
+      "description": "VLA models (RT-2, PaLM-E, etc)",
+      "year": 2023,
+      "branchId": "b_vla",
+      "crossDomain": [],
+      "children": [
+        "m_rt2",
+        "m_palm"
+      ]
     },
     {
-      "id": "cross_attention",
-      "name": "Cross-Attention",
+      "id": "m_llm",
+      "name": "LLM for Planning",
       "status": "partial",
-      "solves": [],
-      "description": "Multi-modal fusion"
+      "parentId": "m_foundation",
+      "depth": 1,
+      "targets": [
+        "prob_vla"
+      ],
+      "description": "Using LLMs for task planning",
+      "year": 2023,
+      "branchId": "b_vla",
+      "crossDomain": []
     },
     {
-      "id": "tac_diffusion",
-      "name": "Tactile-Diffusion",
-      "status": "untested",
-      "solves": [
-        "leaf_tac_diffusion"
+      "id": "m_rt2",
+      "name": "RT-2",
+      "status": "verified",
+      "parentId": "m_vla",
+      "depth": 2,
+      "targets": [
+        "prob_vla"
       ],
-      "description": "Tactile-conditioned diffusion"
+      "description": "Robotic Transformer 2",
+      "year": 2023,
+      "branchId": "b_vla",
+      "crossDomain": []
     },
     {
-      "id": "tac_vla",
-      "name": "Tactile-VLA",
-      "status": "untested",
-      "solves": [
-        "leaf_vla_tac"
+      "id": "m_palm",
+      "name": "PaLM-E",
+      "status": "verified",
+      "parentId": "m_vla",
+      "depth": 2,
+      "targets": [
+        "prob_vla"
       ],
-      "description": "VLA with tactile"
+      "description": "Embodied PaLM",
+      "year": 2023,
+      "branchId": "b_vla",
+      "crossDomain": []
     }
   ],
   "papers": [

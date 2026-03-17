@@ -7,6 +7,8 @@ import {
 } from 'lucide-react'
 import { useAppStore } from './store/appStore'
 import ProblemTree from './components/ProblemTree'
+import MethodTree from './components/MethodTree'
+import DualTreeView from './components/DualTreeView'
 import TimelineView from './components/TimelineView'
 import CitationView from './components/CitationView'
 
@@ -131,8 +133,8 @@ function App() {
             {activeView === 'problem-tree' && <ProblemTree />}
             {activeView === 'timeline' && <TimelineView />}
             {activeView === 'citation' && <CitationView />}
-            {activeView === 'method-tree' && <MethodTreePlaceholder />}
-            {activeView === 'dual-tree' && <DualTreePlaceholder />}
+            {activeView === 'method-tree' && <MethodTree />}
+            {activeView === 'dual-tree' && <DualTreeView />}
           </motion.div>
         </AnimatePresence>
       </main>
