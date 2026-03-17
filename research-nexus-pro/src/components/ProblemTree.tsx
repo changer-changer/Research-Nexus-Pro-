@@ -4,9 +4,11 @@ import {
   ChevronRight, ChevronDown, CheckCircle2, AlertCircle, Circle,
   ZoomIn, ZoomOut, Maximize2, RotateCcw, Expand, Minimize,
   MousePointer2, Hand, Search, Filter, MoreHorizontal,
-  Eye, EyeOff, Star, Bookmark, Copy, ArrowUpRight
+  Eye, EyeOff, Star, Bookmark, Copy, ArrowUpRight, Clock, BookOpen
 } from 'lucide-react'
 import { useAppStore } from '../store/appStore'
+import TimeEvolutionModal from './TimeEvolutionModal'
+import PaperSidebar from './PaperSidebar'
 
 // ============ Constants ============
 const NODE_W = 240
@@ -39,6 +41,10 @@ export default function ProblemTree() {
   
   // Context menu
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; nodeId: string } | null>(null)
+  
+  // Modals
+  const [showTimeEvolution, setShowTimeEvolution] = useState<string | null>(null)
+  const [showPaperSidebar, setShowPaperSidebar] = useState<string | null>(null)
   
   // Search
   const [searchQuery, setSearchQuery] = useState('')
@@ -159,7 +165,7 @@ export default function ProblemTree() {
           className="node-interactive"
           style={{ cursor: 'pointer' }}
           onClick={() => selectNode('problem', isSelected ? null : id)}
-          onDoubleClick={() => {/* TODO: Open time evolution view */}}
+          onDoubleClick={() => setShowTimeEvolution(id)}
           onContextMenu={(e) => onContextMenu(e, id)}
           onMouseEnter={() => hoverNode('problem', id)}
           onMouseLeave={() => hoverNode('problem', null)}
@@ -357,7 +363,7 @@ export default function ProblemTree() {
       
       {/* Detail panel */}
       <AnimatePresence>
-        {selectedNode && selectedNode.type === 'problem' && (
+        {selectedNode && selectedNode.type === 'problem' && !showPaperSidebar && (
           <motion.div
             initial={{ x: 400, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -365,8 +371,34 @@ export default function ProblemTree() {
             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
             className="w-[380px] border-l border-zinc-800 bg-zinc-900/60 backdrop-blur-xl overflow-y-auto shrink-0"
           >
-            <ProblemDetailPanel nodeId={selectedNode.id} />
+            <ProblemDetailPanel 
+              nodeId={selectedNode.id} 
+              onOpenTimeEvolution={() => setShowTimeEvolution(selectedNode.id)}
+              onOpenPapers={() => setShowPaperSidebar(selectedNode.id)}
+            />
           </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {/* Paper Sidebar */}
+      <AnimatePresence>
+        {showPaperSidebar && (
+          <PaperSidebar
+            nodeId={showPaperSidebar}
+            nodeType="problem"
+            onClose={() => setShowPaperSidebar(null)}
+          />
+        )}
+      </AnimatePresence>
+      
+      {/* Time Evolution Modal */}
+      <AnimatePresence>
+        {showTimeEvolution && (
+          <TimeEvolutionModal
+            nodeId={showTimeEvolution}
+            nodeType="problem"
+            onClose={() => setShowTimeEvolution(null)}
+          />
         )}
       </AnimatePresence>
       
@@ -378,6 +410,8 @@ export default function ProblemTree() {
             y={contextMenu.y}
             nodeId={contextMenu.nodeId}
             onClose={() => setContextMenu(null)}
+            onOpenTimeEvolution={() => { setShowTimeEvolution(contextMenu.nodeId); setContextMenu(null) }}
+            onOpenPapers={() => { setShowPaperSidebar(contextMenu.nodeId); setContextMenu(null) }}
           />
         )}
       </AnimatePresence>
@@ -386,7 +420,11 @@ export default function ProblemTree() {
 }
 
 // ============ Detail Panel ============
-function ProblemDetailPanel({ nodeId }: { nodeId: string }) {
+function ProblemDetailPanel({ nodeId, onOpenTimeEvolution, onOpenPapers }: { 
+  nodeId: string
+  onOpenTimeEvolution: () => void
+  onOpenPapers: () => void
+}) {
   const { getProblemById, getProblemChildren, getProblemMethods, selectNode } = useAppStore()
   const node = getProblemById(nodeId)
   if (!node) return null
@@ -421,7 +459,17 @@ function ProblemDetailPanel({ nodeId }: { nodeId: string }) {
         </span>
       </div>
       
-      {/* Metrics */}
+      {/* Action buttons */}
+      <div className="flex gap-2 mb-5">
+        <button onClick={onOpenTimeEvolution}
+          className="flex-1 px-3 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 rounded-lg text-xs text-indigo-300 flex items-center justify-center gap-2 transition-colors">
+          <Clock size={13} /> Time Evolution
+        </button>
+        <button onClick={onOpenPapers}
+          className="flex-1 px-3 py-2 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 rounded-lg text-xs text-blue-300 flex items-center justify-center gap-2 transition-colors">
+          <BookOpen size={13} /> Papers ({node.papers.length})
+        </button>
+      </div>
       <div className="grid grid-cols-2 gap-3 mb-5">
         <MetricCard label="Value Score" value={node.valueScore}
           color={node.valueScore > 70 ? '#22c55e' : node.valueScore > 40 ? '#f59e0b' : '#ef4444'} />
@@ -510,7 +558,8 @@ function ProblemDetailPanel({ nodeId }: { nodeId: string }) {
 }
 
 // ============ Context Menu ============
-function ContextMenu({ x, y, nodeId, onClose }: { x: number; y: number; nodeId: string; onClose: () => void }) {
+function ContextMenu({ x, y, nodeId, onClose, onOpenTimeEvolution, onOpenPapers }: 
+  { x: number; y: number; nodeId: string; onClose: () => void; onOpenTimeEvolution?: () => void; onOpenPapers?: () => void }) {
   const { toggleExpand, expandAll, collapseAll, selectNode, problems, expandedNodes } = useAppStore()
   const node = problems.find(p => p.id === nodeId)
   if (!node) return null
@@ -521,6 +570,9 @@ function ContextMenu({ x, y, nodeId, onClose }: { x: number; y: number; nodeId: 
   const menuItems = [
     { label: 'Select Node', icon: MousePointer2, action: () => selectNode('problem', nodeId) },
     { label: 'Go to Parent', icon: ArrowUpRight, action: () => node.parentId && selectNode('problem', node.parentId), disabled: !node.parentId },
+    { divider: true },
+    { label: 'Time Evolution', icon: Clock, action: () => onOpenTimeEvolution?.() },
+    { label: 'View Papers', icon: BookOpen, action: () => onOpenPapers?.() },
     { divider: true },
     ...(hasKids ? [
       { label: isExpanded ? 'Collapse' : 'Expand', icon: isExpanded ? ChevronDown : ChevronRight, action: () => toggleExpand(nodeId) },
