@@ -1,12 +1,12 @@
-import React, { useMemo, useState, useCallback, useRef, useEffect } from 'react'
+import React, { useMemo, useState, useCallback, useRef } from 'react'
 import { Clock, Filter, ZoomIn, ZoomOut, Maximize2, X } from 'lucide-react'
-import { useNexusStore } from '../store/nexusStore'
+import { useAppStore } from '../store/appStore'
 
 export default function TimelineView() {
-  const problems = useNexusStore(s => s.problems)
-  const selectedLeaves = useNexusStore((s: any) => s.selectedLeaves) || []
-  const setSelectedProblem = useNexusStore(s => s.setSelectedProblem)
-  const selectedProblem = useNexusStore(s => s.selectedProblem)
+  const problems = useAppStore(s => s.problems)
+  const selectedNode = useAppStore(s => s.selectedNode)
+  const selectNode = useAppStore(s => s.selectNode)
+  const isNodeHighlighted = useAppStore(s => s.isNodeHighlighted)
 
   const [zoom, setZoom] = useState(1)
   const [pan, setPan] = useState({ x: 30, y: 30 })
@@ -14,24 +14,10 @@ export default function TimelineView() {
   const panStart = useRef({ x: 0, y: 0 })
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
   const [filterDomain, setFilterDomain] = useState<string | null>(null)
-  const [draggingNode, setDraggingNode] = useState<string | null>(null)
-  const [nodeDragPos, setNodeDragPos] = useState<{ x: number; y: number } | null>(null)
-  const nodeDragStart = useRef({ x: 0, y: 0, nodeX: 0, nodeY: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Filter problems
-  const displayProblems = useMemo(() => {
-    if (selectedLeaves.length === 0) return problems
-    const showIds = new Set<string>()
-    const addFamily = (id: string) => {
-      showIds.add(id)
-      const node = problems.find(p => p.id === id)
-      if (node?.parentId) addFamily(node.parentId)
-      problems.filter(p => p.parentId === id).forEach(c => addFamily(c.id))
-    }
-    selectedLeaves.forEach((id: string) => addFamily(id))
-    return problems.filter(p => showIds.has(p.id))
-  }, [problems, selectedLeaves])
+  // Get all problems to display
+  const displayProblems = useMemo(() => problems, [problems])
 
   // Domains
   const domains = useMemo(() => {
@@ -61,11 +47,10 @@ export default function TimelineView() {
   const LANE_H = 130, YEAR_W = 130, LEFT = 180, TOP = 70
   const getX = (year: number) => LEFT + ((year - minYear) / yearRange) * (yearRange * YEAR_W)
   const getY = (di: number) => TOP + di * LANE_H + LANE_H / 2
-
-  const statusColor = (s: string) => s === 'solved' ? '#22c55e' : s === 'partial' ? '#f59e0b' : s === 'active' ? '#3b82f6' : '#ef4444'
   const getDomainIndex = (bid: string) => domains.findIndex(d => d.id === bid)
+  const statusColor = (s: string) => s === 'solved' ? '#22c55e' : s === 'partial' ? '#f59e0b' : s === 'active' ? '#3b82f6' : '#ef4444'
 
-  // === Canvas pan (native pointer) ===
+  // Canvas pan
   const onCanvasPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('.tl-node')) return
     isPanning.current = true
@@ -73,53 +58,15 @@ export default function TimelineView() {
     ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
   }
   const onCanvasPointerMove = (e: React.PointerEvent) => {
-    if (draggingNode && nodeDragPos) {
-      // Node drag handled in separate handler
-      return
-    }
     if (isPanning.current) {
       setPan({ x: e.clientX - panStart.current.x, y: e.clientY - panStart.current.y })
     }
   }
-  const onCanvasPointerUp = () => {
-    isPanning.current = false
-    if (draggingNode) setDraggingNode(null)
-  }
-
+  const onCanvasPointerUp = () => { isPanning.current = false }
   const onWheel = useCallback((e: React.WheelEvent) => {
     e.preventDefault()
     setZoom(z => Math.max(0.25, Math.min(2.5, z * (e.deltaY > 0 ? 0.93 : 1.07))))
   }, [])
-
-  // === Node drag (native pointer) ===
-  const onNodePointerDown = (e: React.PointerEvent, nodeId: string) => {
-    e.stopPropagation()
-    const node = problems.find(p => p.id === nodeId)
-    if (!node) return
-    const di = getDomainIndex(node.branchId)
-    const nx = getX(node.year)
-    const ny = getY(di)
-
-    setDraggingNode(nodeId)
-    setNodeDragPos({ x: nx, y: ny })
-    nodeDragStart.current = { x: e.clientX, y: e.clientY, nodeX: nx, nodeY: ny }
-    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
-  }
-
-  const onNodePointerMove = (e: React.PointerEvent) => {
-    if (!draggingNode || !nodeDragPos) return
-    const dx = (e.clientX - nodeDragStart.current.x) / zoom
-    const dy = (e.clientY - nodeDragStart.current.y) / zoom
-    setNodeDragPos({
-      x: nodeDragStart.current.nodeX + dx,
-      y: nodeDragStart.current.nodeY + dy,
-    })
-  }
-
-  const onNodePointerUp = () => {
-    setDraggingNode(null)
-    setNodeDragPos(null)
-  }
 
   // Edges
   const renderEdges = () => {
@@ -132,12 +79,8 @@ export default function TimelineView() {
       const nDi = getDomainIndex(node.branchId)
       if (pDi === -1 || nDi === -1) return
 
-      const isDraggingThis = draggingNode === node.id
-      const x1 = draggingNode === parent.id && nodeDragPos ? nodeDragPos.x : getX(parent.year)
-      const y1 = draggingNode === parent.id && nodeDragPos ? nodeDragPos.y : getY(pDi)
-      const x2 = isDraggingThis && nodeDragPos ? nodeDragPos.x : getX(node.year)
-      const y2 = isDraggingThis && nodeDragPos ? nodeDragPos.y : getY(nDi)
-
+      const x1 = getX(parent.year), y1 = getY(pDi)
+      const x2 = getX(node.year), y2 = getY(nDi)
       const isHov = hoveredNode === node.id || hoveredNode === parent.id
       const color = parent.status === 'solved' ? '#22c55e' : '#ef4444'
       const mx = (x1 + x2) / 2
@@ -171,13 +114,6 @@ export default function TimelineView() {
           </select>
         </div>
 
-        {selectedLeaves.length > 0 && (
-          <div className="flex items-center gap-2 ml-3 px-3 py-1 bg-indigo-500/10 rounded-full border border-indigo-500/20">
-            <span className="text-xs text-indigo-300">{selectedLeaves.length} selected</span>
-            <button onClick={() => useNexusStore.getState().setSelectedLeaves([])} className="text-indigo-400 hover:text-red-400 transition-colors"><X size={12} /></button>
-          </div>
-        )}
-
         <div className="ml-auto flex items-center gap-1">
           <button onClick={() => setZoom(z => Math.min(2.5, z * 1.15))} className="p-2 hover:bg-zinc-800 rounded-lg transition-colors"><ZoomIn size={14} className="text-zinc-400" /></button>
           <button onClick={() => setZoom(z => Math.max(0.25, z * 0.85))} className="p-2 hover:bg-zinc-800 rounded-lg transition-colors"><ZoomOut size={14} className="text-zinc-400" /></button>
@@ -188,12 +124,11 @@ export default function TimelineView() {
 
       {/* Canvas */}
       <div ref={containerRef} className="flex-1 overflow-hidden"
-        style={{ cursor: draggingNode ? 'grabbing' : isPanning.current ? 'grabbing' : 'grab' }}
+        style={{ cursor: isPanning.current ? 'grabbing' : 'grab' }}
         onPointerDown={onCanvasPointerDown}
-        onPointerMove={(e) => { onCanvasPointerMove(e); onNodePointerMove(e) }}
-        onPointerUp={(e) => { onCanvasPointerUp(); onNodePointerUp() }}
-        onWheel={onWheel}
-      >
+        onPointerMove={onCanvasPointerMove}
+        onPointerUp={onCanvasPointerUp}
+        onWheel={onWheel}>
         <svg width="100%" height="100%"
           style={{
             transform: `translate(${pan.x}px,${pan.y}px) scale(${zoom})`,
@@ -201,8 +136,7 @@ export default function TimelineView() {
             minWidth: `${LEFT + yearRange * YEAR_W + 200}px`,
             minHeight: `${TOP + domains.length * LANE_H + 100}px`,
             touchAction: 'none',
-          }}
-        >
+          }}>
           {/* Swimlanes */}
           {domains.map((d, i) => (
             <g key={d.id}>
@@ -240,43 +174,33 @@ export default function TimelineView() {
           {displayProblems.map(node => {
             const di = getDomainIndex(node.branchId)
             if (di === -1) return null
-            const isDraggingThis = draggingNode === node.id
-            const x = isDraggingThis && nodeDragPos ? nodeDragPos.x : getX(node.year)
-            const y = isDraggingThis && nodeDragPos ? nodeDragPos.y : getY(di)
+            const x = getX(node.year)
+            const y = getY(di)
             const isHov = hoveredNode === node.id
-            const isSel = selectedProblem === node.id
+            const isSel = selectedNode?.id === node.id
             const color = statusColor(node.status)
             const r = Math.max(10, Math.min(22, 8 + (node.valueScore || 50) / 12))
 
             return (
               <g key={node.id} className="tl-node" style={{ cursor: 'pointer' }}
-                onClick={() => !isDraggingThis && setSelectedProblem(isSel ? null : node.id)}
+                onClick={() => selectNode('problem', isSel ? null : node.id)}
                 onMouseEnter={() => setHoveredNode(node.id)}
-                onMouseLeave={() => setHoveredNode(null)}
-                onPointerDown={(e) => onNodePointerDown(e, node.id)}
-              >
-                {/* Selection ring */}
+                onMouseLeave={() => setHoveredNode(null)}>
                 {(isSel || isHov) && (
                   <circle cx={x} cy={y} r={r + 5} fill="none" stroke={color} strokeWidth={2} opacity={0.4}
                     style={{ transition: 'r 0.15s' }} />
                 )}
-
-                {/* Node */}
                 <circle cx={x} cy={y} r={r} fill={color}
-                  opacity={isDraggingThis ? 1 : node.status === 'solved' ? 0.85 : 0.6}
-                  style={{ transition: 'opacity 0.15s', filter: isDraggingThis ? 'brightness(1.2)' : 'none' }} />
+                  opacity={node.status === 'solved' ? 0.85 : 0.6}
+                  style={{ transition: 'opacity 0.15s' }} />
                 <circle cx={x - r * 0.2} cy={y - r * 0.2} r={r * 0.2} fill="white" opacity={0.1} />
-
-                {/* Name */}
                 <text x={x} y={y + r + 16} textAnchor="middle"
                   fill={isHov ? '#e4e4e7' : '#52525b'}
                   fontSize={isHov ? 11 : 9} fontWeight={isHov ? 600 : 400}
                   style={{ transition: 'fill 0.15s, font-size 0.15s' }}>
                   {node.name.length > 18 ? node.name.slice(0, 16) + '…' : node.name}
                 </text>
-
-                {/* Tooltip */}
-                {(isHov || isSel) && !isDraggingThis && (
+                {(isHov || isSel) && (
                   <g style={{ transition: 'opacity 0.15s' }}>
                     <rect x={x - 50} y={y - r - 30} width={100} height={22} rx={6} fill="#18181b" stroke="#3f3f46" />
                     <text x={x} y={y - r - 15} textAnchor="middle" fill={color} fontSize={10} fontWeight={600}>
@@ -284,8 +208,6 @@ export default function TimelineView() {
                     </text>
                   </g>
                 )}
-
-                {/* Unsolved badge */}
                 {node.status === 'unsolved' && (
                   <g>
                     <circle cx={x + r * 0.65} cy={y - r * 0.65} r={7} fill="#ef4444" />
