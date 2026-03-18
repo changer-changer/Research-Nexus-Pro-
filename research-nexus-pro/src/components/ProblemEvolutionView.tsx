@@ -129,13 +129,14 @@ function makePaperNode(paper: any, laneIdx: number, selected: boolean, dimmed: b
     position: { x, y },
     data: { label: '' },
     style: {
-      width: selected ? 12 : 6,
-      height: selected ? 12 : 6,
+      width: selected ? 16 : 10,
+      height: selected ? 16 : 10,
       borderRadius: '50%',
       background: selected ? info.border : info.bg,
-      border: selected ? `2px solid white` : 'none',
-      opacity: dimmed ? 0.1 : (selected ? 1 : 0.6),
+      border: selected ? `2px solid white` : `1px solid ${info.border}`,
+      opacity: dimmed ? 0.15 : (selected ? 1 : 0.8),
       padding: 0,
+      boxShadow: dimmed ? 'none' : `0 0 6px ${info.bg}60`,
     }
   }
 }
@@ -281,7 +282,7 @@ export default function ProblemEvolutionView() {
           source: `paper-${paper.id}`,
           target: tid,
           type: 'straight' as const,
-          style: { stroke: '#27272a', strokeWidth: 0.5, opacity: dimmed ? 0.05 : 0.15 },
+          style: { stroke: '#3f3f46', strokeWidth: 0.8, opacity: dimmed ? 0.08 : 0.25 },
         }
       })
     )

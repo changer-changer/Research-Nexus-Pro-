@@ -3,7 +3,7 @@
     {
       "id": "p_root",
       "name": "Dexterous Manipulation",
-      "year": 2017,
+      "year": 2024,
       "branch": "manipulation",
       "status": "active",
       "level": 0,
@@ -43,7 +43,7 @@
     {
       "id": "p_perception",
       "name": "Tactile Perception",
-      "year": 2018,
+      "year": 2024,
       "branch": "perception",
       "status": "active",
       "level": 1,
@@ -108,7 +108,7 @@
     {
       "id": "p_fusion",
       "name": "Visuo-Tactile Fusion",
-      "year": 2019,
+      "year": 2025,
       "branch": "perception",
       "status": "active",
       "level": 1,
@@ -219,7 +219,7 @@
     {
       "id": "p_sim2real",
       "name": "Sim-to-Real Transfer",
-      "year": 2018,
+      "year": 2025,
       "branch": "sim2real",
       "status": "active",
       "level": 1,
@@ -320,7 +320,7 @@
     {
       "id": "p_force",
       "name": "Force Estimation",
-      "year": 2019,
+      "year": 2025,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -369,7 +369,7 @@
     {
       "id": "p_slip",
       "name": "Slip Detection",
-      "year": 2018,
+      "year": 2024,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -562,7 +562,7 @@
     {
       "id": "p_contact",
       "name": "Contact-rich Policy",
-      "year": 2022,
+      "year": 2025,
       "branch": "policy",
       "status": "active",
       "level": 2,
