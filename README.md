@@ -435,3 +435,34 @@ git add -A && git commit -m "update: 描述" && git push origin main
 | 时间轴点分布奇怪 | year 字段不准确 | 从 arxiv ID 提取正确年份 |
 | 方法树展不开 | methods 缺少 children | 从 parent 字段推导 children |
 
+
+## Recent Fixes (2026-03-18)
+
+### Time Evolution Network (问题随时间演化) - COMPLETE REWRITE
+- **Interactive network graph** using ReactFlow: X-axis = time, Y-axis = domain lanes
+- **8 domain lanes**: Root Goal, Perception, Fusion, Policy, Diffusion, Tactile, VLA, Manipulation
+- **Problem nodes**: Full cards with branch-colored borders, positioned by year
+- **Method nodes**: Dashed cards (italic), positioned near their domain lane
+- **Paper nodes**: Small dots (6px), mapped by category to domain lanes, spread by hash
+- **70 papers** visible as dots from 2017 to 2026 (32 papers in 2025, 2 in 2026)
+- **Click interaction**: Click any node → highlight connected graph, dim others; click again to deselect
+- **Parent-child edges**: Smooth step arrows between related problems
+- **Method→Problem edges**: Dashed lines from methods to their target problems
+- **Paper→Problem edges**: Subtle lines from paper dots to their target problems
+
+### Data Store Sync Fix
+- **Root cause**: App.tsx loaded data into `appStore` but 7 components read from `nexusStore` (empty!)
+- **Fix**: After `loadData()`, also sync to `useNexusStore.getState().loadData()`
+- Affected: ProblemEvolutionView, ProblemTreeView, TreeView, MethodTargetView, DataPanel, ExportPanel, LayerOverlay
+
+### Default Expanded State Fix
+- `expandedNodes` default changed from `'root'` to `'p_root'` (matching actual data ID)
+- Also fixed in `collapseAll()` and persisted state restore
+
+### Method Status
+- Root methods (level 0): `status: "verified"` (5 methods)
+- Sub-methods (level 1): `status: "partial"` (12 methods)
+
+### Data Fields (required by components)
+- Problems: `branchId`, `parentId`, `depth` (not `branch`, `parent`, `level`)
+- All nodes have `branchId` (simple string like `'b_perception'`, not prefixed)
