@@ -155,50 +155,56 @@ export default function PaperTimelineView() {
           <rect x={getX(2026) - 18} y={TOP - 42} width={36} height={16} rx={4} fill="#ef4444" />
           <text x={getX(2026)} y={TOP - 30} textAnchor="middle" fill="white" fontSize={9} fontWeight={700}>NOW</text>
           
-          {/* Paper nodes */}
-          {lanes.map((lane, li) => lane.papers.map(paper => {
-            const x = getX(paper.year)
-            const y = getY(li)
-            const isHov = hoveredPaper === paper.id
-            const isSel = selectedPaper === paper.id
-            const isBest = paper.isBest || (paper.authorityScore || 0) >= 8.5
-            const isLatest = paper.isLatest || paper.year >= 2025
-            const r = Math.max(10, Math.min(22, 8 + (paper.authorityScore || 5)))
-            
-            return (
-              <g key={paper.id} style={{ cursor: 'pointer' }}
-                onClick={() => setSelectedPaper(isSel ? null : paper.id)}
-                onMouseEnter={() => setHoveredPaper(paper.id)}
-                onMouseLeave={() => setHoveredPaper(null)}>
-                {/* Glow */}
-                {(isHov || isSel) && (
-                  <circle cx={x} cy={y} r={r + 5} fill="none" stroke={lane.color} strokeWidth={2} opacity={0.4} />
-                )}
-                
-                {/* Node */}
-                <circle cx={x} cy={y} r={r} fill={lane.color}
-                  opacity={isLatest ? 0.9 : 0.6} />
-                
-                {/* Best marker */}
-                {isBest && (
-                  <g>
-                    <circle cx={x + r * 0.6} cy={y - r * 0.6} r={8} fill="#a855f7" />
-                    <text x={x + r * 0.6} y={y - r * 0.6 + 3.5} textAnchor="middle" fill="white" fontSize={8} fontWeight={700}>★</text>
-                  </g>
-                )}
-                
-                {/* Tooltip */}
-                {(isHov || isSel) && (
-                  <g>
-                    <rect x={x - 65} y={y - r - 28} width={130} height={22} rx={5} fill="#18181b" stroke="#3f3f46" />
-                    <text x={x} y={y - r - 13} textAnchor="middle" fill={lane.color} fontSize={9} fontWeight={600}>
-                      {paper.title.length > 18 ? paper.title.slice(0, 16) + '…' : paper.title}
-                    </text>
-                  </g>
-                )}
-              </g>
-            )
-          }))}
+          {/* Paper nodes - spread within year/lane to avoid overlap */}
+          {lanes.map((lane, li) => {
+            const yearGroups = new Map<number, typeof lane.papers>()
+            lane.papers.forEach(p => {
+              if (!yearGroups.has(p.year)) yearGroups.set(p.year, [])
+              yearGroups.get(p.year)!.push(p)
+            })
+            return [lane, yearGroups] as const
+          }).flatMap(([lane, yearGroups]) =>
+            lane.papers.map(paper => {
+              const yearPapers = yearGroups.get(paper.year) || [paper]
+              const idx = yearPapers.indexOf(paper)
+              const total = yearPapers.length
+              const cols = Math.ceil(Math.sqrt(total * 1.5))
+              const row = Math.floor(idx / cols)
+              const col = idx % cols
+              const x = getX(paper.year) + (col - (cols - 1) / 2) * 16
+              const y = getY(lanes.indexOf(lane)) + row * 14 - ((Math.ceil(total / cols) - 1) / 2) * 7
+              const isHov = hoveredPaper === paper.id
+              const isSel = selectedPaper === paper.id
+              const isBest = paper.isBest || (paper.authorityScore || 0) >= 8.5
+              const isLatest = paper.isLatest || paper.year >= 2025
+              const r = Math.max(10, Math.min(22, 8 + (paper.authorityScore || 5)))
+              return { paper, lane, x, y, isHov, isSel, isBest, isLatest, r }
+            })
+          ).map(({ paper, lane, x, y, isHov, isSel, isBest, isLatest, r }) => (
+            <g key={paper.id} style={{ cursor: 'pointer' }}
+              onClick={() => setSelectedPaper(isSel ? null : paper.id)}
+              onMouseEnter={() => setHoveredPaper(paper.id)}
+              onMouseLeave={() => setHoveredPaper(null)}>
+              {(isHov || isSel) && (
+                <circle cx={x} cy={y} r={r + 5} fill="none" stroke={lane.color} strokeWidth={2} opacity={0.4} />
+              )}
+              <circle cx={x} cy={y} r={r} fill={lane.color} opacity={isLatest ? 0.9 : 0.6} />
+              {isBest && (
+                <g>
+                  <circle cx={x + r * 0.6} cy={y - r * 0.6} r={8} fill="#a855f7" />
+                  <text x={x + r * 0.6} y={y - r * 0.6 + 3.5} textAnchor="middle" fill="white" fontSize={8} fontWeight={700}>★</text>
+                </g>
+              )}
+              {(isHov || isSel) && (
+                <g>
+                  <rect x={x - 65} y={y - r - 28} width={130} height={22} rx={5} fill="#18181b" stroke="#3f3f46" />
+                  <text x={x} y={y - r - 13} textAnchor="middle" fill={lane.color} fontSize={9} fontWeight={600}>
+                    {paper.title.length > 18 ? paper.title.slice(0, 16) + '…' : paper.title}
+                  </text>
+                </g>
+              )}
+            </g>
+          ))}
         </svg>
       </div>
       
