@@ -7,7 +7,28 @@
       "branch": "manipulation",
       "status": "active",
       "level": 0,
-      "parent": null
+      "parent": null,
+      "children": [
+        "p_perception",
+        "p_fusion",
+        "p_policy",
+        "p_sim2real",
+        "p_hardware"
+      ],
+      "papers": [
+        "2303.12076",
+        "1709.02924",
+        "2304.00736",
+        "2308.05386",
+        "2404.15709",
+        "2407.07885",
+        "2502.08449",
+        "2508.08706",
+        "2509.17812",
+        "2601.01675",
+        "2603.04531"
+      ],
+      "methods": []
     },
     {
       "id": "p_perception",
@@ -16,7 +37,53 @@
       "branch": "perception",
       "status": "active",
       "level": 1,
-      "parent": "p_root"
+      "parent": "p_root",
+      "children": [
+        "p_cross_sensor",
+        "p_force",
+        "p_slip",
+        "p_dynamic"
+      ],
+      "papers": [
+        "2503.08548",
+        "2507.09160",
+        "2303.12076",
+        "2403.11898",
+        "2505.07455",
+        "2309.10886",
+        "2502.12191",
+        "1409.4972",
+        "1809.05551",
+        "2002.03236",
+        "2003.13165",
+        "2004.00136",
+        "2008.05404",
+        "2103.00410",
+        "2103.13460",
+        "2301.06698",
+        "2304.00736",
+        "2305.03051",
+        "2305.04660",
+        "2306.05902",
+        "2308.05386",
+        "2312.09863",
+        "2403.16764",
+        "2407.07885",
+        "2503.17501",
+        "2503.23835",
+        "2504.19341",
+        "2505.16062",
+        "2505.18361",
+        "2508.08706",
+        "2509.17812",
+        "2510.13324",
+        "2510.14647",
+        "2511.05855",
+        "2511.05858",
+        "2601.01675",
+        "2603.04531"
+      ],
+      "methods": []
     },
     {
       "id": "p_fusion",
@@ -25,7 +92,73 @@
       "branch": "perception",
       "status": "active",
       "level": 1,
-      "parent": "p_root"
+      "parent": "p_root",
+      "children": [
+        "p_align",
+        "p_temporal",
+        "p_pretrain"
+      ],
+      "papers": [
+        "2503.02881",
+        "2503.08548",
+        "2403.03954",
+        "2503.14734",
+        "2507.09160",
+        "2406.01586",
+        "2503.20020",
+        "2505.22159",
+        "2303.12076",
+        "2403.11898",
+        "2409.11047",
+        "2410.24091",
+        "2501.15830",
+        "2502.17432",
+        "2505.07455",
+        "2509.18676",
+        "2409.07343",
+        "2411.03990",
+        "2502.12191",
+        "2503.07511",
+        "2504.01301",
+        "2507.22424",
+        "2510.10903",
+        "1409.4972",
+        "1809.05551",
+        "2003.13165",
+        "2004.00136",
+        "2008.05404",
+        "2103.13460",
+        "2304.00736",
+        "2305.03051",
+        "2305.04660",
+        "2312.09863",
+        "2404.15709",
+        "2407.07885",
+        "2409.00588",
+        "2409.09276",
+        "2409.14411",
+        "2410.18647",
+        "2410.24090",
+        "2411.12503",
+        "2412.04987",
+        "2502.08449",
+        "2503.17501",
+        "2503.23835",
+        "2504.19341",
+        "2505.18361",
+        "2508.08706",
+        "2509.17684",
+        "2510.13324",
+        "2510.14647",
+        "2511.05855",
+        "2511.05858",
+        "2512.01383",
+        "2512.10946",
+        "2512.22983",
+        "2601.01675",
+        "2603.04531"
+      ],
+      "methods": []
     },
     {
       "id": "p_policy",
@@ -34,7 +167,14 @@
       "branch": "policy",
       "status": "active",
       "level": 1,
-      "parent": "p_root"
+      "parent": "p_root",
+      "children": [
+        "p_data",
+        "p_generalize",
+        "p_contact"
+      ],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_sim2real",
@@ -43,7 +183,42 @@
       "branch": "sim2real",
       "status": "active",
       "level": 1,
-      "parent": "p_root"
+      "parent": "p_root",
+      "children": [
+        "p_fidelity",
+        "p_distill"
+      ],
+      "papers": [
+        "2503.08548",
+        "2505.22159",
+        "2303.12076",
+        "2409.11047",
+        "2410.10803",
+        "2410.24091",
+        "2502.12191",
+        "2503.07511",
+        "2510.10903",
+        "2003.13165",
+        "2004.00136",
+        "2103.00410",
+        "2304.00736",
+        "2305.04660",
+        "2407.07885",
+        "2409.00588",
+        "2410.24090",
+        "2411.12503",
+        "2502.08449",
+        "2503.17501",
+        "2503.23835",
+        "2509.17812",
+        "2511.05855",
+        "2511.05858",
+        "2512.01383",
+        "2512.22983",
+        "2601.01675",
+        "2603.04531"
+      ],
+      "methods": []
     },
     {
       "id": "p_hardware",
@@ -52,7 +227,13 @@
       "branch": "hardware",
       "status": "active",
       "level": 1,
-      "parent": "p_root"
+      "parent": "p_root",
+      "children": [
+        "p_cost",
+        "p_durability"
+      ],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_cross_sensor",
@@ -61,7 +242,10 @@
       "branch": "perception",
       "status": "active",
       "level": 2,
-      "parent": "p_perception"
+      "parent": "p_perception",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_force",
@@ -70,7 +254,37 @@
       "branch": "perception",
       "status": "active",
       "level": 2,
-      "parent": "p_perception"
+      "parent": "p_perception",
+      "children": [],
+      "papers": [
+        "2503.02881",
+        "2503.08548",
+        "2507.09160",
+        "2505.22159",
+        "2502.17432",
+        "2505.07455",
+        "2504.01301",
+        "2510.10903",
+        "1409.4972",
+        "2003.13165",
+        "2004.00136",
+        "2103.00410",
+        "2304.00736",
+        "2308.05386",
+        "2403.16764",
+        "2407.07885",
+        "2410.24090",
+        "2503.17501",
+        "2503.23835",
+        "2505.16062",
+        "2509.17812",
+        "2510.13324",
+        "2511.05855",
+        "2511.05858",
+        "2512.10946",
+        "2512.22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_slip",
@@ -79,7 +293,49 @@
       "branch": "perception",
       "status": "active",
       "level": 2,
-      "parent": "p_perception"
+      "parent": "p_perception",
+      "children": [],
+      "papers": [
+        "2503.02881",
+        "2507.09160",
+        "2303.12076",
+        "2410.24091",
+        "2505.07455",
+        "2510.10903",
+        "1409.4972",
+        "1709.02924",
+        "1809.05551",
+        "2002.03236",
+        "2003.13165",
+        "2004.00136",
+        "2008.05404",
+        "2103.00410",
+        "2103.13460",
+        "2301.06698",
+        "2304.00736",
+        "2305.03051",
+        "2305.04660",
+        "2306.05902",
+        "2312.09863",
+        "2403.16764",
+        "2407.07885",
+        "2410.18647",
+        "2410.24090",
+        "2411.12503",
+        "2502.08449",
+        "2503.17501",
+        "2503.23835",
+        "2504.19341",
+        "2505.16062",
+        "2508.08706",
+        "2509.17812",
+        "2510.13324",
+        "2510.14647",
+        "2511.05858",
+        "2512.22983",
+        "2603.04531"
+      ],
+      "methods": []
     },
     {
       "id": "p_dynamic",
@@ -88,7 +344,10 @@
       "branch": "perception",
       "status": "active",
       "level": 2,
-      "parent": "p_perception"
+      "parent": "p_perception",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_align",
@@ -97,7 +356,10 @@
       "branch": "perception",
       "status": "active",
       "level": 2,
-      "parent": "p_fusion"
+      "parent": "p_fusion",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_temporal",
@@ -106,7 +368,10 @@
       "branch": "perception",
       "status": "active",
       "level": 2,
-      "parent": "p_fusion"
+      "parent": "p_fusion",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_pretrain",
@@ -115,7 +380,10 @@
       "branch": "perception",
       "status": "active",
       "level": 2,
-      "parent": "p_fusion"
+      "parent": "p_fusion",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_data",
@@ -124,7 +392,10 @@
       "branch": "policy",
       "status": "active",
       "level": 2,
-      "parent": "p_policy"
+      "parent": "p_policy",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_generalize",
@@ -133,7 +404,10 @@
       "branch": "policy",
       "status": "active",
       "level": 2,
-      "parent": "p_policy"
+      "parent": "p_policy",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_contact",
@@ -142,7 +416,68 @@
       "branch": "policy",
       "status": "active",
       "level": 2,
-      "parent": "p_policy"
+      "parent": "p_policy",
+      "children": [],
+      "papers": [
+        "2503.02881",
+        "2503.08548",
+        "2403.03954",
+        "2503.14734",
+        "2507.09160",
+        "2406.01586",
+        "2503.20020",
+        "2505.22159",
+        "2403.11898",
+        "2409.11047",
+        "2410.10803",
+        "2410.24091",
+        "2501.15830",
+        "2502.17432",
+        "2505.07455",
+        "2509.18676",
+        "2309.10886",
+        "2409.07343",
+        "2411.03990",
+        "2503.07511",
+        "2504.01301",
+        "2507.22424",
+        "2510.10903",
+        "1409.4972",
+        "1709.02924",
+        "2002.03236",
+        "2008.05404",
+        "2103.00410",
+        "2301.06698",
+        "2305.03051",
+        "2305.04660",
+        "2306.05902",
+        "2308.05386",
+        "2312.09863",
+        "2404.15709",
+        "2407.07885",
+        "2409.00588",
+        "2409.14411",
+        "2410.18647",
+        "2410.24090",
+        "2412.04987",
+        "2502.08449",
+        "2502.11161",
+        "2503.23835",
+        "2504.19341",
+        "2505.16062",
+        "2508.08706",
+        "2509.17684",
+        "2509.17812",
+        "2510.13324",
+        "2510.14647",
+        "2511.05855",
+        "2511.05858",
+        "2512.01383",
+        "2512.10946",
+        "2512.22983",
+        "2603.04531"
+      ],
+      "methods": []
     },
     {
       "id": "p_fidelity",
@@ -151,7 +486,10 @@
       "branch": "sim2real",
       "status": "active",
       "level": 2,
-      "parent": "p_sim2real"
+      "parent": "p_sim2real",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_distill",
@@ -160,7 +498,10 @@
       "branch": "sim2real",
       "status": "active",
       "level": 2,
-      "parent": "p_sim2real"
+      "parent": "p_sim2real",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_cost",
@@ -169,7 +510,10 @@
       "branch": "hardware",
       "status": "active",
       "level": 2,
-      "parent": "p_hardware"
+      "parent": "p_hardware",
+      "children": [],
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_durability",
@@ -178,7 +522,10 @@
       "branch": "hardware",
       "status": "active",
       "level": 2,
-      "parent": "p_hardware"
+      "parent": "p_hardware",
+      "children": [],
+      "papers": [],
+      "methods": []
     }
   ],
   "methods": [
@@ -191,7 +538,13 @@
       ],
       "level": 0,
       "parent": null,
-      "approach": "diffusion"
+      "approach": "diffusion",
+      "children": [
+        "m_dp1",
+        "m_dp2",
+        "m_dp3"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_dp1",
@@ -202,7 +555,9 @@
       ],
       "level": 1,
       "parent": "m_dp",
-      "approach": "diffusion"
+      "approach": "diffusion",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_dp2",
@@ -213,7 +568,9 @@
       ],
       "level": 1,
       "parent": "m_dp",
-      "approach": "diffusion"
+      "approach": "diffusion",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_dp3",
@@ -224,7 +581,9 @@
       ],
       "level": 1,
       "parent": "m_dp",
-      "approach": "diffusion"
+      "approach": "diffusion",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_ssl",
@@ -235,7 +594,12 @@
       ],
       "level": 0,
       "parent": null,
-      "approach": "contrastive"
+      "approach": "contrastive",
+      "children": [
+        "m_ssl1",
+        "m_ssl2"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_ssl1",
@@ -245,7 +609,9 @@
       ],
       "level": 1,
       "parent": "m_ssl",
-      "approach": "mae"
+      "approach": "mae",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_ssl2",
@@ -256,7 +622,9 @@
       ],
       "level": 1,
       "parent": "m_ssl",
-      "approach": "contrastive"
+      "approach": "contrastive",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla",
@@ -267,7 +635,12 @@
       ],
       "level": 0,
       "parent": null,
-      "approach": "transformer"
+      "approach": "transformer",
+      "children": [
+        "m_vla1",
+        "m_vla2"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_vla1",
@@ -278,7 +651,9 @@
       ],
       "level": 1,
       "parent": "m_vla",
-      "approach": "transformer"
+      "approach": "transformer",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla2",
@@ -289,7 +664,9 @@
       ],
       "level": 1,
       "parent": "m_vla",
-      "approach": "transformer"
+      "approach": "transformer",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_distill",
@@ -300,7 +677,12 @@
       ],
       "level": 0,
       "parent": null,
-      "approach": "other"
+      "approach": "other",
+      "children": [
+        "m_distill1",
+        "m_distill2"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_distill1",
@@ -311,7 +693,9 @@
       ],
       "level": 1,
       "parent": "m_distill",
-      "approach": "other"
+      "approach": "other",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_distill2",
@@ -322,7 +706,9 @@
       ],
       "level": 1,
       "parent": "m_distill",
-      "approach": "other"
+      "approach": "other",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_rep",
@@ -333,7 +719,13 @@
       ],
       "level": 0,
       "parent": null,
-      "approach": "mae"
+      "approach": "mae",
+      "children": [
+        "m_rep1",
+        "m_rep2",
+        "m_rep3"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_rep1",
@@ -344,7 +736,9 @@
       ],
       "level": 1,
       "parent": "m_rep",
-      "approach": "mae"
+      "approach": "mae",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_rep2",
@@ -355,7 +749,9 @@
       ],
       "level": 1,
       "parent": "m_rep",
-      "approach": "mae"
+      "approach": "mae",
+      "children": [],
+      "crossDomain": []
     },
     {
       "id": "m_rep3",
@@ -366,7 +762,9 @@
       ],
       "level": 1,
       "parent": "m_rep",
-      "approach": "mae"
+      "approach": "mae",
+      "children": [],
+      "crossDomain": []
     }
   ],
   "papers": [
@@ -395,6 +793,12 @@
       ],
       "methods": [
         "m_dp"
+      ],
+      "targets": [
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -422,6 +826,13 @@
       ],
       "methods": [
         "m_ssl"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -446,6 +857,10 @@
       "methods": [
         "m_dp",
         "m_vla"
+      ],
+      "targets": [
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -467,7 +882,11 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2507.09160",
@@ -490,7 +909,14 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2406.01586",
@@ -511,6 +937,10 @@
       ],
       "methods": [
         "m_dp"
+      ],
+      "targets": [
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -530,7 +960,11 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2505.22159",
@@ -551,7 +985,13 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2303.12076",
@@ -575,6 +1015,13 @@
       "methods": [
         "m_ssl",
         "m_rep"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion"
       ]
     },
     {
@@ -596,6 +1043,11 @@
       ],
       "methods": [
         "m_ssl"
+      ],
+      "targets": [
+        "p_perception",
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -615,7 +1067,12 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2410.10803",
@@ -633,7 +1090,11 @@
         "p_sim2real",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_contact"
+      ]
     },
     {
       "id": "2410.24091",
@@ -653,7 +1114,13 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2501.15830",
@@ -671,7 +1138,11 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2502.17432",
@@ -692,6 +1163,11 @@
       ],
       "methods": [
         "m_vla"
+      ],
+      "targets": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -715,6 +1191,13 @@
       ],
       "methods": [
         "m_vla"
+      ],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -736,6 +1219,10 @@
       "methods": [
         "m_dp",
         "m_rep"
+      ],
+      "targets": [
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -753,7 +1240,11 @@
         "p_perception",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_contact"
+      ]
     },
     {
       "id": "2409.07343",
@@ -770,7 +1261,11 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2411.03990",
@@ -787,7 +1282,11 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2502.12191",
@@ -808,6 +1307,11 @@
       "methods": [
         "m_ssl",
         "m_rep"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion"
       ]
     },
     {
@@ -826,7 +1330,12 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2504.01301",
@@ -844,7 +1353,12 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2507.22424",
@@ -861,7 +1375,11 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2510.10903",
@@ -881,7 +1399,14 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "1409.4972",
@@ -899,7 +1424,14 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "1709.02924",
@@ -915,7 +1447,12 @@
         "p_root",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_slip",
+        "p_root",
+        "p_contact"
+      ]
     },
     {
       "id": "1809.05551",
@@ -933,6 +1470,11 @@
       ],
       "methods": [
         "m_rep"
+      ],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion"
       ]
     },
     {
@@ -949,7 +1491,12 @@
         "p_slip",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ]
     },
     {
       "id": "2003.13165",
@@ -967,7 +1514,14 @@
         "p_fusion",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
+      ]
     },
     {
       "id": "2004.00136",
@@ -987,6 +1541,13 @@
       ],
       "methods": [
         "m_rep"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
       ]
     },
     {
@@ -1004,7 +1565,13 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2103.00410",
@@ -1022,7 +1589,14 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2103.13460",
@@ -1038,7 +1612,12 @@
         "p_slip",
         "p_fusion"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion"
+      ]
     },
     {
       "id": "2301.06698",
@@ -1054,7 +1633,12 @@
         "p_slip",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ]
     },
     {
       "id": "2304.00736",
@@ -1073,7 +1657,15 @@
         "p_fusion",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_force"
+      ]
     },
     {
       "id": "2305.03051",
@@ -1092,6 +1684,12 @@
       ],
       "methods": [
         "m_rep"
+      ],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -1110,7 +1708,14 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2306.05902",
@@ -1126,7 +1731,12 @@
         "p_slip",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ]
     },
     {
       "id": "2308.05386",
@@ -1143,7 +1753,13 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_root",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2312.09863",
@@ -1160,7 +1776,13 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2403.16764",
@@ -1176,7 +1798,12 @@
         "p_slip",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_force"
+      ]
     },
     {
       "id": "2404.15709",
@@ -1195,6 +1822,11 @@
       "methods": [
         "m_dp",
         "m_rep"
+      ],
+      "targets": [
+        "p_root",
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -1217,6 +1849,15 @@
       ],
       "methods": [
         "m_vla"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -1233,7 +1874,12 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2409.09276",
@@ -1247,7 +1893,10 @@
       "problems": [
         "p_fusion"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion"
+      ]
     },
     {
       "id": "2409.14411",
@@ -1262,7 +1911,11 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2410.18647",
@@ -1278,7 +1931,12 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2410.24090",
@@ -1296,7 +1954,14 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2411.12503",
@@ -1312,7 +1977,12 @@
         "p_slip",
         "p_fusion"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion"
+      ]
     },
     {
       "id": "2412.04987",
@@ -1327,7 +1997,11 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2502.08449",
@@ -1347,6 +2021,13 @@
       ],
       "methods": [
         "m_dp"
+      ],
+      "targets": [
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -1363,6 +2044,9 @@
       ],
       "methods": [
         "m_vla"
+      ],
+      "targets": [
+        "p_contact"
       ]
     },
     {
@@ -1381,7 +2065,14 @@
         "p_fusion",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
+      ]
     },
     {
       "id": "2503.23835",
@@ -1400,7 +2091,15 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2504.19341",
@@ -1420,6 +2119,12 @@
       "methods": [
         "m_dp",
         "m_vla"
+      ],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -1437,7 +2142,13 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2505.18361",
@@ -1452,7 +2163,11 @@
         "p_perception",
         "p_fusion"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_fusion"
+      ]
     },
     {
       "id": "2508.08706",
@@ -1470,7 +2185,14 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2509.17684",
@@ -1487,6 +2209,10 @@
       ],
       "methods": [
         "m_dp"
+      ],
+      "targets": [
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -1506,7 +2232,15 @@
         "p_contact",
         "p_force"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_contact",
+        "p_force"
+      ]
     },
     {
       "id": "2510.13324",
@@ -1526,6 +2260,13 @@
       ],
       "methods": [
         "m_dp"
+      ],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -1543,7 +2284,13 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": []
+      "methods": [],
+      "targets": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ]
     },
     {
       "id": "2511.05855",
@@ -1564,6 +2311,13 @@
       "methods": [
         "m_dp",
         "m_rep"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -1585,6 +2339,14 @@
       ],
       "methods": [
         "m_rep"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -1603,6 +2365,11 @@
       ],
       "methods": [
         "m_dp"
+      ],
+      "targets": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
       ]
     },
     {
@@ -1621,6 +2388,11 @@
       ],
       "methods": [
         "m_rep"
+      ],
+      "targets": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -1642,6 +2414,13 @@
       "methods": [
         "m_dp",
         "m_rep"
+      ],
+      "targets": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
       ]
     },
     {
@@ -1661,6 +2440,12 @@
       ],
       "methods": [
         "m_rep"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_root",
+        "p_fusion"
       ]
     },
     {
@@ -1682,45 +2467,53 @@
       ],
       "methods": [
         "m_vla"
+      ],
+      "targets": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
       ]
     }
   ],
   "branches": [
     {
-      "id": "b_root",
+      "id": "manipulation",
       "name": "Dexterous Manipulation",
       "y_position": 0,
       "color": "#6366f1"
     },
     {
-      "id": "b_perception",
+      "id": "perception",
       "name": "Tactile Perception",
       "y_position": 1,
       "color": "#8b5cf6"
     },
     {
-      "id": "b_fusion",
-      "name": "Visuo-Tactile Fusion",
-      "y_position": 2,
-      "color": "#ec4899"
-    },
-    {
-      "id": "b_policy",
+      "id": "policy",
       "name": "Policy Learning",
       "y_position": 3,
       "color": "#f59e0b"
     },
     {
-      "id": "b_sim2real",
+      "id": "sim2real",
       "name": "Sim-to-Real",
       "y_position": 4,
       "color": "#22c55e"
     },
     {
-      "id": "b_hardware",
+      "id": "hardware",
       "name": "Sensor Hardware",
       "y_position": 5,
       "color": "#06b6d4"
+    },
+    {
+      "id": "fusion",
+      "name": "Visuo-Tactile Fusion",
+      "y_position": 2,
+      "color": "#ec4899"
     }
   ],
   "citation_edges": [
