@@ -3,7 +3,7 @@
     {
       "id": "p_root",
       "name": "Dexterous Manipulation",
-      "year": 2024,
+      "year": 2017,
       "branch": "manipulation",
       "status": "active",
       "level": 0,
@@ -29,12 +29,14 @@
         "2603.04531"
       ],
       "methods": [],
-      "description": "Research problem: Dexterous Manipulation"
+      "description": "Research problem: Dexterous Manipulation",
+      "month": 1,
+      "y_position": 1
     },
     {
       "id": "p_perception",
       "name": "Tactile Perception",
-      "year": 2024,
+      "year": 2018,
       "branch": "perception",
       "status": "active",
       "level": 1,
@@ -85,12 +87,14 @@
         "2603.04531"
       ],
       "methods": [],
-      "description": "Research problem: Tactile Perception"
+      "description": "Research problem: Tactile Perception",
+      "month": 3,
+      "y_position": 4
     },
     {
       "id": "p_fusion",
       "name": "Visuo-Tactile Fusion",
-      "year": 2024,
+      "year": 2019,
       "branch": "perception",
       "status": "active",
       "level": 1,
@@ -161,12 +165,14 @@
         "2603.04531"
       ],
       "methods": [],
-      "description": "Research problem: Visuo-Tactile Fusion"
+      "description": "Research problem: Visuo-Tactile Fusion",
+      "month": 6,
+      "y_position": 4
     },
     {
       "id": "p_policy",
       "name": "Policy Learning",
-      "year": 2024,
+      "year": 2020,
       "branch": "policy",
       "status": "active",
       "level": 1,
@@ -178,12 +184,14 @@
       ],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Policy Learning"
+      "description": "Research problem: Policy Learning",
+      "month": 9,
+      "y_position": 7
     },
     {
       "id": "p_sim2real",
       "name": "Sim-to-Real Transfer",
-      "year": 2024,
+      "year": 2018,
       "branch": "sim2real",
       "status": "active",
       "level": 1,
@@ -223,12 +231,14 @@
         "2603.04531"
       ],
       "methods": [],
-      "description": "Research problem: Sim-to-Real Transfer"
+      "description": "Research problem: Sim-to-Real Transfer",
+      "month": 6,
+      "y_position": 10
     },
     {
       "id": "p_hardware",
       "name": "Sensor Hardware",
-      "year": 2024,
+      "year": 2017,
       "branch": "hardware",
       "status": "active",
       "level": 1,
@@ -239,12 +249,14 @@
       ],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Sensor Hardware"
+      "description": "Research problem: Sensor Hardware",
+      "month": 9,
+      "y_position": 13
     },
     {
       "id": "p_cross_sensor",
       "name": "Cross-sensor Generalization",
-      "year": 2024,
+      "year": 2020,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -252,12 +264,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Cross-sensor Generalization"
+      "description": "Research problem: Cross-sensor Generalization",
+      "month": 3,
+      "y_position": 4
     },
     {
       "id": "p_force",
       "name": "Force Estimation",
-      "year": 2024,
+      "year": 2019,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -292,12 +306,14 @@
         "2512.22983"
       ],
       "methods": [],
-      "description": "Research problem: Force Estimation"
+      "description": "Research problem: Force Estimation",
+      "month": 9,
+      "y_position": 4
     },
     {
       "id": "p_slip",
       "name": "Slip Detection",
-      "year": 2024,
+      "year": 2018,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -344,12 +360,14 @@
         "2603.04531"
       ],
       "methods": [],
-      "description": "Research problem: Slip Detection"
+      "description": "Research problem: Slip Detection",
+      "month": 12,
+      "y_position": 4
     },
     {
       "id": "p_dynamic",
       "name": "Dynamic Tactile Perception",
-      "year": 2024,
+      "year": 2021,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -357,12 +375,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Dynamic Tactile Perception"
+      "description": "Research problem: Dynamic Tactile Perception",
+      "month": 6,
+      "y_position": 4
     },
     {
       "id": "p_align",
       "name": "Cross-modal Alignment",
-      "year": 2024,
+      "year": 2020,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -370,12 +390,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Cross-modal Alignment"
+      "description": "Research problem: Cross-modal Alignment",
+      "month": 6,
+      "y_position": 4
     },
     {
       "id": "p_temporal",
       "name": "Temporal Synchronization",
-      "year": 2024,
+      "year": 2022,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -383,12 +405,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Temporal Synchronization"
+      "description": "Research problem: Temporal Synchronization",
+      "month": 3,
+      "y_position": 4
     },
     {
       "id": "p_pretrain",
       "name": "Multimodal Pre-training",
-      "year": 2024,
+      "year": 2021,
       "branch": "perception",
       "status": "active",
       "level": 2,
@@ -396,12 +420,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Multimodal Pre-training"
+      "description": "Research problem: Multimodal Pre-training",
+      "month": 3,
+      "y_position": 4
     },
     {
       "id": "p_data",
       "name": "Data Efficiency",
-      "year": 2024,
+      "year": 2021,
       "branch": "policy",
       "status": "active",
       "level": 2,
@@ -409,12 +435,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Data Efficiency"
+      "description": "Research problem: Data Efficiency",
+      "month": 9,
+      "y_position": 7
     },
     {
       "id": "p_generalize",
       "name": "Cross-task Generalization",
-      "year": 2024,
+      "year": 2022,
       "branch": "policy",
       "status": "active",
       "level": 2,
@@ -422,12 +450,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Cross-task Generalization"
+      "description": "Research problem: Cross-task Generalization",
+      "month": 6,
+      "y_position": 7
     },
     {
       "id": "p_contact",
       "name": "Contact-rich Policy",
-      "year": 2024,
+      "year": 2022,
       "branch": "policy",
       "status": "active",
       "level": 2,
@@ -493,12 +523,14 @@
         "2603.04531"
       ],
       "methods": [],
-      "description": "Research problem: Contact-rich Policy"
+      "description": "Research problem: Contact-rich Policy",
+      "month": 9,
+      "y_position": 7
     },
     {
       "id": "p_fidelity",
       "name": "Simulation Fidelity",
-      "year": 2024,
+      "year": 2020,
       "branch": "sim2real",
       "status": "active",
       "level": 2,
@@ -506,12 +538,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Simulation Fidelity"
+      "description": "Research problem: Simulation Fidelity",
+      "month": 12,
+      "y_position": 10
     },
     {
       "id": "p_distill",
       "name": "Privileged Knowledge Distillation",
-      "year": 2024,
+      "year": 2021,
       "branch": "sim2real",
       "status": "active",
       "level": 2,
@@ -519,12 +553,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Privileged Knowledge Distillation"
+      "description": "Research problem: Privileged Knowledge Distillation",
+      "month": 6,
+      "y_position": 10
     },
     {
       "id": "p_cost",
       "name": "Low-cost Sensors",
-      "year": 2024,
+      "year": 2019,
       "branch": "hardware",
       "status": "active",
       "level": 2,
@@ -532,12 +568,14 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Low-cost Sensors"
+      "description": "Research problem: Low-cost Sensors",
+      "month": 3,
+      "y_position": 13
     },
     {
       "id": "p_durability",
       "name": "Sensor Durability",
-      "year": 2024,
+      "year": 2023,
       "branch": "hardware",
       "status": "active",
       "level": 2,
@@ -545,7 +583,9 @@
       "children": [],
       "papers": [],
       "methods": [],
-      "description": "Research problem: Sensor Durability"
+      "description": "Research problem: Sensor Durability",
+      "month": 3,
+      "y_position": 13
     }
   ],
   "methods": [
@@ -567,7 +607,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Diffusion Policy",
-      "year": 2024
+      "year": 2023,
+      "month": 6
     },
     {
       "id": "m_dp1",
@@ -583,7 +624,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for 3D Diffusion Policy (DP3)",
-      "year": 2024
+      "year": 2024,
+      "month": 1
     },
     {
       "id": "m_dp2",
@@ -599,7 +641,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Tactile-conditioned Diffusion",
-      "year": 2024
+      "year": 2024,
+      "month": 6
     },
     {
       "id": "m_dp3",
@@ -615,7 +658,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Reactive Diffusion (slow-fast)",
-      "year": 2024
+      "year": 2025,
+      "month": 3
     },
     {
       "id": "m_ssl",
@@ -634,7 +678,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Self-supervised Learning",
-      "year": 2024
+      "year": 2020,
+      "month": 3
     },
     {
       "id": "m_ssl1",
@@ -649,7 +694,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for MAE (Masked Autoencoder)",
-      "year": 2024
+      "year": 2021,
+      "month": 6
     },
     {
       "id": "m_ssl2",
@@ -665,7 +711,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Tactile-Visual Contrastive",
-      "year": 2024
+      "year": 2022,
+      "month": 3
     },
     {
       "id": "m_vla",
@@ -684,7 +731,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Vision-Language-Action Models",
-      "year": 2024
+      "year": 2023,
+      "month": 3
     },
     {
       "id": "m_vla1",
@@ -700,7 +748,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Tactile-VLA",
-      "year": 2024
+      "year": 2024,
+      "month": 9
     },
     {
       "id": "m_vla2",
@@ -716,7 +765,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for ForceVLA",
-      "year": 2024
+      "year": 2025,
+      "month": 1
     },
     {
       "id": "m_distill",
@@ -735,7 +785,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Knowledge Distillation",
-      "year": 2024
+      "year": 2021,
+      "month": 9
     },
     {
       "id": "m_distill1",
@@ -751,7 +802,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Privileged Distillation (PTLD)",
-      "year": 2024
+      "year": 2024,
+      "month": 6
     },
     {
       "id": "m_distill2",
@@ -767,7 +819,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Tactile→Visual Distillation",
-      "year": 2024
+      "year": 2023,
+      "month": 9
     },
     {
       "id": "m_rep",
@@ -787,7 +840,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Tactile Representation Learning",
-      "year": 2024
+      "year": 2022,
+      "month": 6
     },
     {
       "id": "m_rep1",
@@ -803,7 +857,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Sparsh (self-supervised)",
-      "year": 2024
+      "year": 2023,
+      "month": 9
     },
     {
       "id": "m_rep2",
@@ -819,7 +874,8 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for AnyTouch (multi-sensor)",
-      "year": 2024
+      "year": 2024,
+      "month": 3
     },
     {
       "id": "m_rep3",
@@ -835,14 +891,15 @@
       "crossDomain": [],
       "status": "untested",
       "description": "Method for Sparsh-X (multisensory)",
-      "year": 2024
+      "year": 2025,
+      "month": 6
     }
   ],
   "papers": [
     {
       "id": "2503.02881",
       "title": "Reactive Diffusion Policy:",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2503.02881",
@@ -870,12 +927,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 12,
+      "y_position": 2
     },
     {
       "id": "2503.08548",
       "title": "TLA: Tactile-Language-Action Model for Contact-Rich Manipulation",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2503.08548",
@@ -904,7 +964,10 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 2,
+      "y_position": 0
     },
     {
       "id": "2403.03954",
@@ -932,12 +995,15 @@
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 3,
+      "y_position": 2
     },
     {
       "id": "2503.14734",
       "title": "GR00T N1: An Open Foundation Model for Generalist",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2503.14734",
@@ -957,12 +1023,15 @@
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Perception",
+      "month": 6,
+      "y_position": 8
     },
     {
       "id": "2507.09160",
       "title": "TACTILE-VLA:",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2507.09160",
@@ -980,14 +1049,19 @@
         "p_contact",
         "p_force"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_slip",
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 2,
+      "y_position": 0
     },
     {
       "id": "2406.01586",
@@ -1012,12 +1086,15 @@
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 4,
+      "y_position": 2
     },
     {
       "id": "2503.20020",
       "title": "Gemini Robotics: Bringing AI into the Physical",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2503.20020",
@@ -1035,12 +1112,15 @@
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Other",
+      "month": 5,
+      "y_position": 14
     },
     {
       "id": "2505.22159",
       "title": "ForceVLA: Enhancing VLA Models with a",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2505.22159",
@@ -1062,12 +1142,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "VLA",
+      "month": 11,
+      "y_position": 6
     },
     {
       "id": "2303.12076",
       "title": "Dexterity from Touch: Self-Supervised Pre-Training",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2303.12076",
@@ -1093,7 +1176,10 @@
         "p_slip",
         "p_root",
         "p_fusion"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 6,
+      "y_position": 0
     },
     {
       "id": "2403.11898",
@@ -1119,7 +1205,10 @@
         "p_perception",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 1,
+      "y_position": 0
     },
     {
       "id": "2409.11047",
@@ -1138,12 +1227,19 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1",
+        "m_dp1",
+        "m_dp"
+      ],
       "targets": [
         "p_sim2real",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 2,
+      "y_position": 0
     },
     {
       "id": "2410.10803",
@@ -1161,11 +1257,17 @@
         "p_sim2real",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_dp1",
+        "m_dp"
+      ],
       "targets": [
         "p_sim2real",
         "p_contact"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 7,
+      "y_position": 2
     },
     {
       "id": "2410.24091",
@@ -1185,18 +1287,23 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_dp1"
+      ],
       "targets": [
         "p_sim2real",
         "p_slip",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Manipulation",
+      "month": 3,
+      "y_position": 4
     },
     {
       "id": "2501.15830",
       "title": "SpatialVLA: Exploring Spatial Representations",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2501.15830",
@@ -1209,16 +1316,21 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_rep"
+      ],
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "VLA",
+      "month": 3,
+      "y_position": 6
     },
     {
       "id": "2502.17432",
       "title": "FACTR: Force-Attending Curriculum Training for",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2502.17432",
@@ -1239,12 +1351,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14
     },
     {
       "id": "2505.07455",
       "title": "arXiv:2505.07455v1  [cs.RO]  12 May 2025",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2505.07455",
@@ -1269,12 +1384,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Other",
+      "month": 11,
+      "y_position": 14
     },
     {
       "id": "2509.18676",
       "title": "3D Flow Diffusion Policy:",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2509.18676",
@@ -1294,12 +1412,15 @@
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 2,
+      "y_position": 2
     },
     {
       "id": "2309.10886",
       "title": "GelSight Svelte Hand: A Three-finger, Two-DoF, Tactile-rich, Low-cost",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2309.10886",
@@ -1311,11 +1432,16 @@
         "p_perception",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 4,
+      "y_position": 0
     },
     {
       "id": "2409.07343",
@@ -1336,7 +1462,10 @@
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Manipulation",
+      "month": 7,
+      "y_position": 4
     },
     {
       "id": "2411.03990",
@@ -1357,12 +1486,15 @@
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Other",
+      "month": 5,
+      "y_position": 14
     },
     {
       "id": "2502.12191",
       "title": "Published as a conference paper at ICLR 2025",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2502.12191",
@@ -1383,12 +1515,15 @@
         "p_perception",
         "p_sim2real",
         "p_fusion"
-      ]
+      ],
+      "category": "Other",
+      "month": 12,
+      "y_position": 14
     },
     {
       "id": "2503.07511",
       "title": "PointVLA: Injecting the 3D World into Vision-Language-Action Models",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2503.07511",
@@ -1401,17 +1536,23 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_dp1",
+        "m_vla1"
+      ],
       "targets": [
         "p_sim2real",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "VLA",
+      "month": 11,
+      "y_position": 6
     },
     {
       "id": "2504.01301",
       "title": "Bi-LAT: Bilateral Control-Based Imitation Learning via Natural",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2504.01301",
@@ -1429,12 +1570,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Policy",
+      "month": 10,
+      "y_position": 10
     },
     {
       "id": "2507.22424",
       "title": "Spec-VLA: Speculative Decoding for Vision-Language-Action Models with",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2507.22424",
@@ -1446,16 +1590,21 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_vla1"
+      ],
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "VLA",
+      "month": 3,
+      "y_position": 6
     },
     {
       "id": "2510.10903",
       "title": "A Comprehensive Survey on Robot Manipulation",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2510.10903",
@@ -1477,7 +1626,10 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Manipulation",
+      "month": 8,
+      "y_position": 4
     },
     {
       "id": "1409.4972",
@@ -1502,12 +1654,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Other",
+      "month": 4,
+      "y_position": 14
     },
     {
       "id": "1709.02924",
       "title": "Robust Object Manipulation for Tactile-based Blind Grasping",
-      "year": 2024,
+      "year": 2017,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "1709.02924",
@@ -1518,17 +1673,22 @@
         "p_root",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_slip",
         "p_root",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0
     },
     {
       "id": "1809.05551",
       "title": "Non-Matrix Tactile Sensors: How Can Be Exploited Their Local",
-      "year": 2024,
+      "year": 2018,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "1809.05551",
@@ -1546,12 +1706,15 @@
         "p_perception",
         "p_slip",
         "p_fusion"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0
     },
     {
       "id": "2002.03236",
       "title": "Tactile Dexterity: Manipulation Primitives with Tactile Feedback",
-      "year": 2024,
+      "year": 2020,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2002.03236",
@@ -1562,17 +1725,22 @@
         "p_slip",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_slip",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 1,
+      "y_position": 0
     },
     {
       "id": "2003.13165",
       "title": "In-Hand Object-Dynamics Inference using Tactile Fingertips",
-      "year": 2024,
+      "year": 2020,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2003.13165",
@@ -1585,19 +1753,24 @@
         "p_fusion",
         "p_force"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_sim2real",
         "p_slip",
         "p_fusion",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 2,
+      "y_position": 0
     },
     {
       "id": "2004.00136",
       "title": "Sim-to-Real Transfer for Optical Tactile Sensing",
-      "year": 2024,
+      "year": 2020,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2004.00136",
@@ -1619,12 +1792,15 @@
         "p_slip",
         "p_fusion",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 9,
+      "y_position": 0
     },
     {
       "id": "2008.05404",
       "title": "GelTip: A Finger-shaped Optical Tactile Sensor for Robotic",
-      "year": 2024,
+      "year": 2020,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2008.05404",
@@ -1636,18 +1812,23 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_slip",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 12,
+      "y_position": 0
     },
     {
       "id": "2103.00410",
       "title": "Sim-to-Real Transfer for Robotic Manipulation with Tactile Sensory",
-      "year": 2024,
+      "year": 2021,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2103.00410",
@@ -1660,19 +1841,24 @@
         "p_contact",
         "p_force"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_sim2real",
         "p_slip",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 4,
+      "y_position": 0
     },
     {
       "id": "2103.13460",
       "title": "Under Pressure: Learning to Detect Slip with Barometric Tactile Sensors",
-      "year": 2024,
+      "year": 2021,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2103.13460",
@@ -1683,17 +1869,22 @@
         "p_slip",
         "p_fusion"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_slip",
         "p_fusion"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0
     },
     {
       "id": "2301.06698",
       "title": "Tactile Tool Manipulation",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2301.06698",
@@ -1704,17 +1895,22 @@
         "p_slip",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_slip",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 5,
+      "y_position": 0
     },
     {
       "id": "2304.00736",
       "title": "IEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED MARCH, 2023",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2304.00736",
@@ -1736,12 +1932,15 @@
         "p_root",
         "p_fusion",
         "p_force"
-      ]
+      ],
+      "category": "Other",
+      "month": 5,
+      "y_position": 14
     },
     {
       "id": "2305.03051",
       "title": "Controllable Visual-Tactile Synthesis",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2305.03051",
@@ -1761,12 +1960,15 @@
         "p_slip",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 8,
+      "y_position": 0
     },
     {
       "id": "2305.04660",
       "title": "Rotational Slippage Prediction from Segmentation of Tactile Images",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2305.04660",
@@ -1779,19 +1981,24 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_sim2real",
         "p_slip",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 11,
+      "y_position": 0
     },
     {
       "id": "2306.05902",
       "title": "Augmenting Off-the-Shelf Grippers with Tactile",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2306.05902",
@@ -1802,17 +2009,22 @@
         "p_slip",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_slip",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 3,
+      "y_position": 0
     },
     {
       "id": "2308.05386",
       "title": "A novel tactile palm for robotic object",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2308.05386",
@@ -1824,18 +2036,23 @@
         "p_contact",
         "p_force"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_root",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 12,
+      "y_position": 0
     },
     {
       "id": "2312.09863",
       "title": "PROPRIOCEPTIVE STATE ESTIMATION FOR",
-      "year": 2024,
+      "year": 2023,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2312.09863",
@@ -1853,7 +2070,10 @@
         "p_slip",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14
     },
     {
       "id": "2403.16764",
@@ -1874,7 +2094,10 @@
         "p_perception",
         "p_slip",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 10,
+      "y_position": 0
     },
     {
       "id": "2404.15709",
@@ -1898,7 +2121,10 @@
         "p_root",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Manipulation",
+      "month": 2,
+      "y_position": 4
     },
     {
       "id": "2407.07885",
@@ -1929,7 +2155,10 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0
     },
     {
       "id": "2409.00588",
@@ -1945,12 +2174,18 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_dp1",
+        "m_dp"
+      ],
       "targets": [
         "p_sim2real",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 9,
+      "y_position": 2
     },
     {
       "id": "2409.09276",
@@ -1967,7 +2202,10 @@
       "methods": [],
       "targets": [
         "p_fusion"
-      ]
+      ],
+      "category": "Other",
+      "month": 8,
+      "y_position": 14
     },
     {
       "id": "2409.14411",
@@ -1982,11 +2220,18 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_vla",
+        "m_dp1",
+        "m_dp"
+      ],
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 11,
+      "y_position": 2
     },
     {
       "id": "2410.18647",
@@ -2007,7 +2252,10 @@
         "p_slip",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Other",
+      "month": 11,
+      "y_position": 14
     },
     {
       "id": "2410.24090",
@@ -2025,14 +2273,21 @@
         "p_contact",
         "p_force"
       ],
-      "methods": [],
+      "methods": [
+        "m_rep",
+        "m_ssl",
+        "m_rep1"
+      ],
       "targets": [
         "p_sim2real",
         "p_slip",
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 12,
+      "y_position": 0
     },
     {
       "id": "2411.12503",
@@ -2053,7 +2308,10 @@
         "p_sim2real",
         "p_slip",
         "p_fusion"
-      ]
+      ],
+      "category": "Manipulation",
+      "month": 5,
+      "y_position": 4
     },
     {
       "id": "2412.04987",
@@ -2068,16 +2326,21 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_dp1"
+      ],
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 3,
+      "y_position": 2
     },
     {
       "id": "2502.08449",
       "title": "CordViP: Correspondence-based Visuomotor Policy",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2502.08449",
@@ -2099,12 +2362,15 @@
         "p_root",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Policy",
+      "month": 11,
+      "y_position": 10
     },
     {
       "id": "2502.11161",
       "title": "arXiv:2502.11161v3  [cs.RO]  28 Jun 2025",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2502.11161",
@@ -2118,12 +2384,15 @@
       ],
       "targets": [
         "p_contact"
-      ]
+      ],
+      "category": "Other",
+      "month": 10,
+      "y_position": 14
     },
     {
       "id": "2503.17501",
       "title": "IEEE TRANSACTIONS ON ROBOTICS, VOL. XX, NO. X, XXXX",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2503.17501",
@@ -2143,12 +2412,15 @@
         "p_slip",
         "p_fusion",
         "p_force"
-      ]
+      ],
+      "category": "Other",
+      "month": 9,
+      "y_position": 14
     },
     {
       "id": "2503.23835",
       "title": "Disambiguate Gripper State in Grasp-Based Tasks:",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2503.23835",
@@ -2170,12 +2442,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Manipulation",
+      "month": 11,
+      "y_position": 4
     },
     {
       "id": "2504.19341",
       "title": "PolyTouch: A Robust Multi-Modal Tactile Sensor for Contact-rich",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2504.19341",
@@ -2196,12 +2471,15 @@
         "p_slip",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 8,
+      "y_position": 0
     },
     {
       "id": "2505.16062",
       "title": "arXiv:2505.16062v1  [cs.RO]  21 May 2025",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2505.16062",
@@ -2219,12 +2497,15 @@
         "p_slip",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14
     },
     {
       "id": "2505.18361",
       "title": "Task-Optimized Convolutional Recurrent Networks",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2505.18361",
@@ -2238,12 +2519,15 @@
       "targets": [
         "p_perception",
         "p_fusion"
-      ]
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14
     },
     {
       "id": "2508.08706",
       "title": "OmniVTLA: Vision-Tactile-Language-Action Model",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2508.08706",
@@ -2256,19 +2540,26 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1",
+        "m_vla1",
+        "m_ssl2"
+      ],
       "targets": [
         "p_perception",
         "p_slip",
         "p_root",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 9,
+      "y_position": 0
     },
     {
       "id": "2509.17684",
       "title": "DINOv3-Diffusion Policy: Self-Supervised Large Visual Model for",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2509.17684",
@@ -2284,12 +2575,15 @@
       "targets": [
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 8,
+      "y_position": 2
     },
     {
       "id": "2509.17812",
       "title": "Tac2Motion: Contact-Aware Reinforcement Learning with Tactile",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2509.17812",
@@ -2303,7 +2597,9 @@
         "p_contact",
         "p_force"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_sim2real",
@@ -2311,12 +2607,15 @@
         "p_root",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 6,
+      "y_position": 0
     },
     {
       "id": "2510.13324",
       "title": "Tactile-Conditioned Diffusion Policy for",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2510.13324",
@@ -2338,12 +2637,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0
     },
     {
       "id": "2510.14647",
       "title": "Spatially-anchored Tactile Awareness for Robust Dexterous",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2510.14647",
@@ -2355,18 +2657,23 @@
         "p_fusion",
         "p_contact"
       ],
-      "methods": [],
+      "methods": [
+        "m_ssl1"
+      ],
       "targets": [
         "p_perception",
         "p_slip",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 11,
+      "y_position": 0
     },
     {
       "id": "2511.05855",
       "title": "Gentle Manipulation Policy Learning via Demonstrations from VLM Planned",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2511.05855",
@@ -2389,12 +2696,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "VLA",
+      "month": 5,
+      "y_position": 6
     },
     {
       "id": "2511.05858",
       "title": "ViTaMIn-B: A Reliable and Efficient Visuo-Tactile Bimanual",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2511.05858",
@@ -2418,12 +2728,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 1,
+      "y_position": 0
     },
     {
       "id": "2512.01383",
       "title": "PointNet4D: A Lightweight 4D Point Cloud Video Backbone for Online and",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2512.01383",
@@ -2441,12 +2754,15 @@
         "p_sim2real",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Other",
+      "month": 4,
+      "y_position": 14
     },
     {
       "id": "2512.10946",
       "title": "ImplicitRDP: An End-to-End Visual-Force Diffusion Policy",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2512.10946",
@@ -2464,12 +2780,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Diffusion/Flow",
+      "month": 10,
+      "y_position": 2
     },
     {
       "id": "2512.22983",
       "title": "Embodied Robot Manipulation in the Era of Foundation Models:",
-      "year": 2024,
+      "year": 2025,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2512.22983",
@@ -2492,12 +2811,15 @@
         "p_fusion",
         "p_contact",
         "p_force"
-      ]
+      ],
+      "category": "Manipulation",
+      "month": 1,
+      "y_position": 4
     },
     {
       "id": "2601.01675",
       "title": "IEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED JANUARY, 2022",
-      "year": 2024,
+      "year": 2026,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2601.01675",
@@ -2517,12 +2839,15 @@
         "p_sim2real",
         "p_root",
         "p_fusion"
-      ]
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14
     },
     {
       "id": "2603.04531",
       "title": "PTLD: Sim-to-Real Privileged Tactile Latent",
-      "year": 2024,
+      "year": 2026,
       "venue": "arXiv",
       "status": "survived",
       "arxivId": "2603.04531",
@@ -2546,7 +2871,10 @@
         "p_root",
         "p_fusion",
         "p_contact"
-      ]
+      ],
+      "category": "Tactile",
+      "month": 3,
+      "y_position": 0
     }
   ],
   "branches": [
