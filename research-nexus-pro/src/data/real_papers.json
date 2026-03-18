@@ -154,7 +154,8 @@
         "2504.19341",
         "2509.17812",
         "2511.05855",
-        "2603.04531"
+        "2603.04531",
+        "2506.14754"
       ],
       "methods": []
     },
@@ -252,7 +253,10 @@
         "2505.07455",
         "2502.11161",
         "2505.18361",
-        "2601.01675"
+        "2601.01675",
+        "2505.18472",
+        "2510.06539",
+        "2510.14930"
       ],
       "methods": []
     },
@@ -271,7 +275,9 @@
         "2505.07455",
         "2508.08706",
         "2510.14647",
-        "2511.05855"
+        "2511.05855",
+        "2506.15953",
+        "2504.06156"
       ],
       "methods": []
     },
@@ -287,7 +293,8 @@
       "papers": [
         "2410.24091",
         "2502.08449",
-        "2601.01675"
+        "2601.01675",
+        "2510.06539"
       ],
       "methods": []
     },
@@ -304,7 +311,8 @@
         "2410.24090",
         "2505.16062",
         "2510.14647",
-        "2512.01383"
+        "2512.01383",
+        "2506.14754"
       ],
       "methods": []
     },
@@ -335,7 +343,8 @@
       "papers": [
         "2502.12191",
         "2410.24090",
-        "2503.17501"
+        "2503.17501",
+        "2506.14754"
       ],
       "methods": []
     },
@@ -360,7 +369,8 @@
         "2412.04987",
         "2509.17684",
         "2511.05855",
-        "2512.01383"
+        "2512.01383",
+        "2502.05855"
       ],
       "methods": []
     },
@@ -380,7 +390,8 @@
         "2501.15830",
         "2503.07511",
         "2507.22424",
-        "2508.08706"
+        "2508.08706",
+        "2502.05855"
       ],
       "methods": []
     },
@@ -425,7 +436,8 @@
         "2511.05855",
         "2511.05858",
         "2512.01383",
-        "2603.04531"
+        "2603.04531",
+        "2510.14930"
       ],
       "methods": []
     },
@@ -467,7 +479,8 @@
       "year": 2018,
       "status": "active",
       "papers": [
-        "2511.05858"
+        "2511.05858",
+        "2504.06156"
       ],
       "methods": []
     },
@@ -545,7 +558,11 @@
         "2511.05855",
         "2512.01383",
         "2512.10946",
-        "2603.04531"
+        "2603.04531",
+        "2506.15953",
+        "2505.18472",
+        "2510.06539",
+        "2510.14930"
       ],
       "methods": []
     },
@@ -3200,6 +3217,131 @@
       "y_position": 0,
       "branchId": "b_tactile",
       "parentId": null,
+      "isBest": false,
+      "isLatest": true
+    },
+    {
+      "id": "2506.15953",
+      "title": "ViTacFormer: Learning Cross-Modal Representation for Visuo-Tactile Dexterous Manipulation",
+      "year": 2025,
+      "category": "Tactile",
+      "targets": [
+        "p_cross_modal",
+        "p_force_control"
+      ],
+      "citations": [],
+      "methods": [
+        "m_tactile_vla"
+      ],
+      "authorityScore": 9.0,
+      "isBest": true,
+      "isLatest": true
+    },
+    {
+      "id": "2504.06156",
+      "title": "ViTaMIn: Learning Contact-Rich Tasks Through Robot-Free Visuo-Tactile Manipulation Interface",
+      "year": 2025,
+      "category": "Tactile",
+      "targets": [
+        "p_cross_modal",
+        "p_sensor_design"
+      ],
+      "citations": [],
+      "methods": [
+        "m_anytouch"
+      ],
+      "authorityScore": 8.5,
+      "isBest": true,
+      "isLatest": true
+    },
+    {
+      "id": "2502.05855",
+      "title": "DexVLA: Vision-Language Model with Plug-In Diffusion Expert for General Robot Control",
+      "year": 2025,
+      "category": "VLA",
+      "targets": [
+        "p_vla_tactile",
+        "p_diffusion_3d"
+      ],
+      "citations": [],
+      "methods": [
+        "m_tactile_vla",
+        "m_dp_base"
+      ],
+      "authorityScore": 8.0,
+      "isBest": false,
+      "isLatest": true
+    },
+    {
+      "id": "2505.18472",
+      "title": "ManiFeel: Dexterous In-Hand Manipulation with Visuo-Tactile Sensing",
+      "year": 2025,
+      "category": "Tactile",
+      "targets": [
+        "p_fusion_arch",
+        "p_force_control"
+      ],
+      "citations": [],
+      "methods": [
+        "m_anytouch"
+      ],
+      "authorityScore": 8.0,
+      "isBest": false,
+      "isLatest": true
+    },
+    {
+      "id": "2510.06539",
+      "title": "Vi-TacMan: Articulated Object Manipulation via Vision and Touch",
+      "year": 2025,
+      "category": "Tactile",
+      "targets": [
+        "p_occlusion",
+        "p_fusion_arch",
+        "p_force_control"
+      ],
+      "citations": [],
+      "methods": [
+        "m_tactile_vla"
+      ],
+      "authorityScore": 8.5,
+      "isBest": true,
+      "isLatest": true
+    },
+    {
+      "id": "2506.14754",
+      "title": "Sparsh-X: Multisensory Tactile Representation for Robot Manipulation",
+      "year": 2025,
+      "category": "Tactile",
+      "targets": [
+        "p_cross_sensor",
+        "p_tactile_ssl",
+        "p_tactile_repr"
+      ],
+      "citations": [],
+      "methods": [
+        "m_sparsh",
+        "m_anytouch"
+      ],
+      "authorityScore": 9.0,
+      "isBest": true,
+      "isLatest": true
+    },
+    {
+      "id": "2510.14930",
+      "title": "VT-Refine: Learning Bimanual Assembly with Visuo-Tactile Feedback via Simulation Fine-Tuning",
+      "year": 2025,
+      "category": "Tactile",
+      "targets": [
+        "p_fusion_arch",
+        "p_sim2real",
+        "p_force_control"
+      ],
+      "citations": [],
+      "methods": [
+        "m_tactile_vla",
+        "m_priv_distill"
+      ],
+      "authorityScore": 8.0,
       "isBest": false,
       "isLatest": true
     }
