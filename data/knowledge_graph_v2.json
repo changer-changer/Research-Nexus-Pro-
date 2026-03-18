@@ -4,7 +4,7 @@
     "total_papers": 70,
     "total_problems": 20,
     "total_methods": 17,
-    "total_citations": 62,
+    "total_citations": 111,
     "source": "PDF全文提取 + Paper Mining"
   },
   "problem_tree": [
@@ -273,16 +273,26 @@
   "papers": [
     {
       "id": "1409.4972",
-      "title": "November 22, 2021",
+      "title": "Inferring Object Properties with a Tactile Sensing Array Given Varying Joint Stiffness and Velocity",
       "text_len": 82907,
       "problems": [
         "p_perception",
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_force"
+        "p_force",
+        "Generalizing tactile property inference across robot motion parameters",
+        "Inferring object mechanical properties from incidental contact",
+        "Cross-validation across varying joint stiffness and velocity",
+        "Binary classification: rigid vs soft, moved vs unmoved"
       ],
-      "methods": [],
+      "methods": [
+        "Multivariate HMM for tactile time series",
+        "LSTM network for tactile sequence classification",
+        "1-Nearest Neighbor classifier",
+        "Physics-based lumped element model for generalization analysis",
+        "Multi-feature extraction (max force, contact area, contact motion)"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
@@ -293,22 +303,43 @@
       "problems": [
         "p_perception",
         "p_slip",
-        "p_root"
+        "p_root",
+        "Asymptotically stable in-hand manipulation without visual feedback",
+        "Handling model uncertainty (mass/inertia/shape unknown)",
+        "Rolling contact dynamics in blind grasping",
+        "Robustness to external disturbances and Coriolis terms",
+        "Eliminating steady-state error under constant disturbance (gravity)"
       ],
-      "methods": [],
+      "methods": [
+        "Robust PID controller with singular perturbation analysis",
+        "Equivalent disturbance framework",
+        "Approximate Jacobian and grasp mapping matrices",
+        "Single-parameter gain parameterization (epsilon)",
+        "Gravity and static friction compensation"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "1809.05551",
-      "title": "Non-Matrix Tactile Sensors: How Can Be Exploited Their Local",
+      "title": "Non-Matrix Tactile Sensors: How Can Be Exploited Their Local Connectivity For Predicting Grasp Stability?",
       "text_len": 21430,
       "problems": [
         "p_perception",
         "p_slip",
-        "p_root"
+        "p_root",
+        "Predicting grasp stability from tactile sensing",
+        "Processing non-matrix tactile sensor data as images for CNN",
+        "Preserving physical electrode layout in image representation",
+        "Fusing multi-finger tactile images"
       ],
-      "methods": [],
+      "methods": [
+        "Non-matrix sensor to tactile image mapping (D1/D2/D3 layouts)",
+        "CNN for tactile image classification (CNN1/CNN2/CNN3)",
+        "K-nearest neighbor pixel filling for blank regions",
+        "Three-channel multi-finger fusion",
+        "Data augmentation (flip + small rotation)"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
@@ -319,17 +350,28 @@
       "problems": [
         "p_perception",
         "p_slip",
-        "p_root"
+        "p_root",
+        "Structuring manipulation planning for tactile feedback utility",
+        "Integrating tactile perception into full manipulation pipeline",
+        "Real-time contact state control (slip prevention)",
+        "Object pose tracking from tactile geometric features",
+        "Trajectory replanning under tactile-detected perturbations"
       ],
       "methods": [
-        "m_dp1"
+        "m_dp1",
+        "4 manipulation primitives (grasp/push/pivot/pull)",
+        "Dual parallel controller architecture",
+        "Contact state controller (QP-based slip prevention)",
+        "Object state controller (tactile pose estimation + replanning)",
+        "Graph search primitive sequence planner (Dijkstra)",
+        "Tactile-first manipulation design methodology"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2003.13165",
-      "title": "1",
+      "title": "In-Hand Object-Dynamics Inference using Tactile Fingertips",
       "text_len": 73309,
       "problems": [
         "p_perception",
@@ -337,10 +379,17 @@
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_force"
+        "p_force",
+        "Estimating grasped object dynamics without external sensing",
+        "Friction parameter estimation via slip detection",
+        "Inertial parameter estimation during object motion",
+        "Robust sensor fusion for dynamics inference"
       ],
       "methods": [
-        "m_ssl"
+        "m_ssl",
+        "Active slip-based friction estimation",
+        "Factor graph fusion on physically consistent manifolds",
+        "Tactile force sensing at multiple fingertips"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
@@ -355,25 +404,44 @@
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_force"
+        "p_force",
+        "Efficiently acquiring large-scale tactile training data",
+        "Zero-shot sim-to-real transfer for tactile sensors",
+        "Accurate soft-body tactile simulation without FEA",
+        "Optimal tactile data representation for neural networks"
       ],
       "methods": [
-        "m_ssl"
+        "m_ssl",
+        "Unity-based custom soft-body deformation model",
+        "Domain Randomisation for tactile sim-to-real",
+        "Raw pin position representation (182-dim)",
+        "Spatial normalization of tactile data",
+        "4-layer fully connected network"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2008.05404",
-      "title": "GelTip: A Finger-shaped Optical Tactile Sensor for Robotic",
+      "title": "GelTip: A Finger-shaped Optical Tactile Sensor for Robotic Manipulation",
       "text_len": 30884,
       "problems": [
         "p_perception",
         "p_slip",
         "p_root",
-        "p_fusion"
+        "p_fusion",
+        "Full-surface tactile sensing on robotic fingers",
+        "Detecting contacts on finger sides and tip",
+        "Projection mapping for non-flat optical tactile surfaces",
+        "Contact localization on curved tactile surfaces"
       ],
-      "methods": [],
+      "methods": [
+        "Finger-shaped optical tactile sensor (cylinder+hemisphere)",
+        "Cylinder-hemisphere projection model",
+        "Silicone membrane + opaque elastic paint coating",
+        "170° wide-angle camera with 15mm tube diameter",
+        "Image differencing + contour-based contact detection"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
@@ -386,13 +454,24 @@
         "p_sim2real",
         "p_slip",
         "p_root",
-        "p_force"
+        "p_force",
+        "Zero-shot sim-to-real transfer of tactile RL policies",
+        "Tactile sensor modeling in simulation for RL",
+        "Bridging reality gap for continuous tactile signals",
+        "Contact-rich manipulation (door opening) with tactile RL"
       ],
       "methods": [
-        "m_ssl"
+        "m_ssl",
+        "Binary tactile signal thresholding (kappa)",
+        "TD3 RL algorithm with tactile observation augmentation",
+        "Comprehensive domain randomisation (dynamics + noise + delay)",
+        "Tactile flip noise for sensor inconsistency robustness",
+        "Multi-component reward function with tactile bonus"
       ],
       "cited_by_count": 0,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2004.00136"
+      ]
     },
     {
       "id": "2103.13460",
@@ -402,9 +481,17 @@
         "p_perception",
         "p_slip",
         "p_root",
-        "p_fusion"
+        "p_fusion",
+        "Reliable slip detection for industrial robotics",
+        "Slip detection with low-resolution tactile sensors",
+        "Robustness to slip speed and direction variation",
+        "Generalization to unseen objects and scenarios"
       ],
-      "methods": [],
+      "methods": [
+        "Learning-based slip detection with barometric sensors",
+        "Temporal Convolutional Neural Network (TCN)",
+        "Barometric tactile sensor array"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
@@ -415,51 +502,84 @@
       "problems": [
         "p_perception",
         "p_slip",
-        "p_root"
+        "p_root",
+        "Closed-loop control for tool-mediated manipulation",
+        "Multi-contact formation constraint satisfaction (robot-tool-object)",
+        "Object pose estimation through intermediate tool",
+        "Robustness to parameter uncertainty and unexpected contacts",
+        "MPC-based online replanning for tool operations"
       ],
       "methods": [
-        "m_dp1"
+        "m_dp1",
+        "MPC-based closed-loop tactile tool control",
+        "Tactile stiffness regression for tool slip estimation",
+        "Nonlinear least squares object pose regression",
+        "Quasi-static mechanics model with friction cones",
+        "Track-object-pose-only control design"
       ],
       "cited_by_count": 0,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2002.03236"
+      ]
     },
     {
       "id": "2303.12076",
-      "title": "Dexterity from Touch: Self-Supervised Pre-Training",
+      "title": "Dexterity from Touch: Self-Supervised Pre-Training of Tactile Representations with Robotic Play",
       "text_len": 60580,
       "problems": [
         "p_perception",
         "p_sim2real",
         "p_slip",
         "p_root",
-        "p_fusion"
+        "p_fusion",
+        "Teaching dexterous skills with minimal demonstration data",
+        "Learning transferable tactile representations",
+        "Multi-finger tactile-visual fusion for dexterous manipulation",
+        "Handling visual occlusion in multi-finger manipulation"
       ],
       "methods": [
         "m_vla",
         "m_ssl",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "BYOL self-supervised tactile pre-training",
+        "Play data collection for tactile representation learning",
+        "Spatial arrangement of tactile pads as tactile image",
+        "Nearest-neighbor imitation learning policy",
+        "Visual-tactile feature fusion (distance summation)",
+        "AlexNet tactile encoder + ResNet-18 visual encoder"
       ],
       "cited_by_count": 2,
       "cites_in_collection": []
     },
     {
       "id": "2304.00736",
-      "title": "IEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED MARCH, 2023",
+      "title": "TacGNN: Learning Tactile-based In-hand Manipulation with a Blind Robot Using Hierarchical Graph Neural Network",
       "text_len": 44133,
       "problems": [
         "p_perception",
         "p_sim2real",
         "p_slip",
         "p_root",
-        "p_fusion"
+        "p_fusion",
+        "In-hand manipulation without visual sensing (blind robot)",
+        "Extracting object states from raw tactile signals",
+        "Learning dexterous policies with tactile and proprioception only",
+        "Sim-to-real transfer for tactile manipulation policies",
+        "Handling tactile blind areas between sensor arrays"
       ],
       "methods": [
         "m_ssl",
-        "m_dp1"
+        "m_dp1",
+        "Hierarchical Graph Neural Network (TacGNN) for tactile perception",
+        "PPO reinforcement learning for in-hand manipulation",
+        "Graph-based tactile sensor topology modeling",
+        "Two-stage framework: perception model + policy learning"
       ],
       "cited_by_count": 0,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2103.00410"
+      ]
     },
     {
       "id": "2305.03051",
@@ -469,12 +589,23 @@
         "p_perception",
         "p_slip",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Visual-tactile multi-modal content synthesis from user input",
+        "Scale discrepancy between visual (global) and tactile (local) modalities",
+        "Lack of end-to-end data-driven haptic rendering pipeline",
+        "Sparse tactile data supervision for dense tactile generation",
+        "Overfitting in single-image generative training"
       ],
       "methods": [
         "m_dp",
         "m_ssl",
-        "m_dp1"
+        "m_dp1",
+        "Dual-branch conditional GAN with shared encoder + branched decoders",
+        "Sparse tactile patch supervision for dense generation",
+        "CLIP-assisted discriminator for single-image GAN training",
+        "Multi-scale PatchGAN discriminator",
+        "Surface gradient representation (gx, gy) for tactile data",
+        "Sinusoidal Position Encoding (SPE) for texture uniformity"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
@@ -488,74 +619,113 @@
         "p_sim2real",
         "p_slip",
         "p_root",
-        "p_fusion"
+        "p_fusion",
+        "Quantitative rotational slippage angle estimation during robotic grasping",
+        "Lack of tactile segmentation datasets",
+        "Inapplicability of marker-based methods to markerless tactile sensors (Digit)",
+        "Circular contact region rotation estimation failure"
       ],
-      "methods": [],
+      "methods": [
+        "DeepLabV3+ tactile image segmentation",
+        "Skeleton thinning algorithm for rotation angle computation",
+        "Focal Loss for imbalanced tactile segmentation"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2306.05902",
-      "title": "Augmenting Off-the-Shelf Grippers with Tactile",
+      "title": "Augmenting Off-the-Shelf Grippers with Tactile Sensing",
       "text_len": 15206,
       "problems": [
         "p_perception",
         "p_slip",
-        "p_root"
+        "p_root",
+        "Commercial grippers lack tactile feedback for narrow/thin object manipulation",
+        "GelSight-type sensors have high data processing and wiring integration complexity",
+        "Sensor hardware heterogeneity prevents fair algorithmic comparison"
       ],
-      "methods": [],
+      "methods": [
+        "IR transmission tactile fingertip (LED + photodiode pairs)",
+        "BLE wireless 8-bit tactile data transmission at 55Hz",
+        "4mm ultra-thin slanted fingertip design for sliding under fabric",
+        "Threshold segmentation + weighted centroid contact boundary analysis"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2308.05386",
-      "title": "A novel tactile palm for robotic object",
+      "title": "A Novel Tactile Palm for Robotic Object Manipulation",
       "text_len": 24275,
       "problems": [
         "p_perception",
         "p_root",
-        "p_force"
+        "p_force",
+        "Tactile palm perception gap for in-hand manipulation",
+        "Vision-based tactile sensors suffer from non-uniform illumination and perspective distortion",
+        "Active palm designs (variable friction/stiffness) cannot estimate contact state"
       ],
-      "methods": [],
+      "methods": [
+        "Biomimetic impedance-based tactile palm (conductive sponge + electrode array)",
+        "Weighted centroid method for contact position estimation",
+        "Gaussian Mixture Model (GMM) regression for contact force estimation",
+        "TPU 3D-printed elastic skin encapsulation"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2309.10886",
-      "title": "GelSight Svelte Hand: A Three-finger, Two-DoF, Tactile-rich, Low-cost",
+      "title": "GelSight Svelte Hand: A Three-finger, Two-DoF, Tactile-rich, Low-cost Robot Hand for Dexterous Manipulation",
       "text_len": 15336,
       "problems": [
         "p_perception",
-        "p_root"
+        "p_root",
+        "Multi-mode grasping with minimal actuation DoF while maintaining high-resolution tactile sensing",
+        "Prior GelSight EndoFlex limited to wrap grasp with 6 cameras and 3 motors",
+        "Fingertip-only tactile sensing misses contact at lateral/intermediate grasps"
       ],
-      "methods": [],
+      "methods": [
+        "3-finger 2-DoF hand with 15° motor offset angle for multi-mode grasps",
+        "Curved mirror single-camera full-length tactile sensing",
+        "Flipper concept (index+middle fingers as single unit)"
+      ],
       "cited_by_count": 1,
       "cites_in_collection": []
     },
     {
       "id": "2312.09863",
-      "title": "PROPRIOCEPTIVE STATE ESTIMATION FOR",
+      "title": "Proprioceptive State Estimation for Amphibious Tactile Sensing",
       "text_len": 88860,
       "problems": [
         "p_perception",
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Soft robotic finger state estimation for tactile reconstruction in both terrestrial and aquatic environments",
+        "Real-time deformation tracking of soft fingers across air-water boundary"
       ],
-      "methods": [],
+      "methods": [
+        "Vision-based proprioception with in-finger camera",
+        "Volumetric discretized model with geometry constraints optimization",
+        "Metamaterial structure for omni-directional passive adaptation"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2403.03954",
-      "title": "3D Diffusion Policy:",
+      "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations",
       "text_len": 72514,
       "problems": [
         "p_perception",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "2D image-based visuomotor policies suffer from viewpoint sensitivity and depth ambiguity",
+        "Complex 3D encoders (PointNet++, Point Transformer) overfit on small demonstration datasets"
       ],
       "methods": [
         "m_dp",
@@ -563,59 +733,85 @@
         "m_ssl",
         "m_distill",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "DP3: 3D point cloud conditioned diffusion policy",
+        "Lightweight MLP-based point cloud encoder (simplified PointNet without T-Net)",
+        "Point cloud data augmentation for robustness"
       ],
       "cited_by_count": 5,
       "cites_in_collection": []
     },
     {
       "id": "2403.11898",
-      "title": "VITaL Pretraining: Visuo-Tactile Pretraining for Tactile and Non-Tactile",
+      "title": "VITaL Pretraining: Visuo-Tactile Pretraining for Tactile and Non-Tactile Manipulation Policies",
       "text_len": 39613,
       "problems": [
         "p_perception",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Imitation learning policies do not benefit from tactile data without tactile inference",
+        "GelSight sensor wear (~30 insertions) causes domain shift in deployment",
+        "Vision-only policies underperform visuo-tactile policies for contact-rich tasks"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
-        "m_rep"
+        "m_rep",
+        "VITaL: Visuo-Tactile contrastive pretraining with temporal sampling",
+        "Temporal-aware contrastive loss (CLIP-inspired) from same-trajectory pairs",
+        "Tactile+position fusion projection head",
+        "Vision-only deployment after visuo-tactile pretraining (discard tactile encoder)"
       ],
       "cited_by_count": 2,
       "cites_in_collection": [
-        "2303.12076"
+        "2303.12076",
+        "2403.03954"
       ]
     },
     {
       "id": "2403.16764",
-      "title": "Low-Cost Teleoperation with Haptic Feedback through Vision-based",
+      "title": "Low-Cost Teleoperation with Haptic Feedback through Vision-based Tactile Sensors for Rigid and Soft Object Manipulation",
       "text_len": 40160,
       "problems": [
         "p_perception",
         "p_slip",
-        "p_root"
+        "p_root",
+        "Conveying tactile sensor information to human operator in teleoperation",
+        "Balancing grip force for fragile/soft object manipulation",
+        "Real-time slip detection with adaptive threshold during teleoperation"
       ],
-      "methods": [],
+      "methods": [
+        "Tactile-to-Haptic (T2H) framework: DIGIT + Oculus Quest 2 vibration feedback",
+        "Pixel variation detection with logarithmic mapping to vibration intensity",
+        "Adaptive threshold anti-slip mechanism with exponential threshold growth",
+        "Automatic background calibration (100 frames for reference + noise threshold)"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2404.15709",
-      "title": "ViViDex: Learning Vision-based Dexterous Manipulation",
+      "title": "ViViDex: Learning Vision-based Dexterous Manipulation from Human Videos",
       "text_len": 47464,
       "problems": [
         "p_perception",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Learning unified vision-based dexterous manipulation from noisy human video trajectories",
+        "Noisy trajectory estimates from human video limit policy learning",
+        "Reliance on privileged object state information limits real-world applicability"
       ],
       "methods": [
         "m_dp",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "Three-stage framework: video trajectory estimation → trajectory-guided RL → distillation to visual policy",
+        "Trajectory-guided reward for pre-grasp and manipulation phases",
+        "Hand-centric coordinate point cloud transformation for representation stability",
+        "Behavior cloning vs diffusion policy comparison for visual policy training"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
@@ -626,20 +822,28 @@
       "text_len": 44761,
       "problems": [
         "p_root",
-        "p_contact"
+        "p_contact",
+        "High inference latency of 3D diffusion policies (162-178ms/step) impedes real-time closed-loop control",
+        "Multi-step denoising in diffusion models causes decision delay"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_distill",
-        "m_dp1"
+        "m_dp1",
+        "Manipulation Consistency Distillation (consistency model for robot action generation)",
+        "Sample prediction instead of noise prediction in low-dimensional action space",
+        "Online + target network consistency learning with EMA target updates",
+        "FPS point cloud → MLP encoding as consistency model condition"
       ],
       "cited_by_count": 3,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2403.03954"
+      ]
     },
     {
       "id": "2407.07885",
-      "title": "Learning In-Hand Translation Using Tactile Skin With Shear and",
+      "title": "Learning In-Hand Translation Using Tactile Skin With Shear and Normal Force Sensing",
       "text_len": 41870,
       "problems": [
         "p_perception",
@@ -647,11 +851,20 @@
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_force"
+        "p_force",
+        "Learning in-hand translation with tactile feedback under sliding contact",
+        "Default IsaacGym tactile simulation produces sparse unrealistic shear forces",
+        "Prior tactile RL work limited to normal force only, neglecting shear for sliding tasks",
+        "Sim-to-real gap for tactile signal transfer (ReSkin signal hysteresis)"
       ],
       "methods": [
         "m_vla",
-        "m_dp1"
+        "m_dp1",
+        "Heuristic tactile skin sensor model with signed/unsigned shear signals",
+        "Binarization (normal) + ternarization (shear) for sim-to-real robustness",
+        "Transformer observation encoder for tactile + proprioceptive temporal encoding",
+        "Two-stage training: Oracle policy with privileged info → tactile observation encoder",
+        "PPO training at 5000 FPS in IsaacGym"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
@@ -890,26 +1103,32 @@
     },
     {
       "id": "2501.15830",
-      "title": "SpatialVLA: Exploring Spatial Representations",
+      "title": "SpatialVLA: Exploring Spatial Representations for Visual-Language-Action Model",
       "text_len": 101249,
       "problems": [
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Lack of spatial alignment in 2D VLA models",
+        "Cross-robot spatial reasoning difficulty",
+        "High inference latency in VLA action prediction"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_distill",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "Ego3D Position Encoding",
+        "Adaptive Action Grids",
+        "Large-scale VLA pretraining"
       ],
       "cited_by_count": 2,
       "cites_in_collection": []
     },
     {
       "id": "2502.08449",
-      "title": "CordViP: Correspondence-based Visuomotor Policy",
+      "title": "CordViP: Correspondence Vision-Language-Action Model for Dexterous Manipulation",
       "text_len": 74105,
       "problems": [
         "p_perception",
@@ -917,14 +1136,20 @@
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Single-view point cloud occlusion in dexterous manipulation",
+        "Lack of hand-object contact correspondence",
+        "Poor robustness under occlusion and unseen objects"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "Interaction-aware Point Cloud Reconstruction",
+        "Contact Graph & Coordination Pretraining",
+        "Correspondence-driven Diffusion Policy"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
@@ -935,64 +1160,86 @@
     },
     {
       "id": "2502.11161",
-      "title": "arXiv:2502.11161v3  [cs.RO]  28 Jun 2025",
+      "title": "Best-Feature-Aware Fusion for Multi-View Fine-grained Manipulation",
       "text_len": 43830,
       "problems": [
         "p_root",
-        "p_contact"
+        "p_contact",
+        "View redundancy in multi-camera imitation learning",
+        "Dynamic attention switching across manipulation phases",
+        "Weak gradient signal for view importance learning via policy loss alone",
+        "Costly manual annotation of view importance"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "BFA Score Network",
+        "VLM Automatic Annotation System",
+        "Gradient Detached Dual-loss Training"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2502.12191",
-      "title": "Published as a conference paper at ICLR 2025",
+      "title": "AnyTouch: Universal Tactile Representation with Multi-sensory Alignment",
       "text_len": 81445,
       "problems": [
         "p_perception",
         "p_sim2real",
         "p_root",
-        "p_fusion"
+        "p_fusion",
+        "Cross-sensor tactile representation transfer",
+        "Lack of paired data across tactile sensors",
+        "Semantic alignment of heterogeneous tactile signals"
       ],
       "methods": [
         "m_vla",
         "m_ssl",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "TacQuad Dataset Construction",
+        "Multi-Modal Contrastive Alignment (Visual-Tactile-Text)",
+        "Modality-Missing-Aware Loss",
+        "Cross-Sensor Matching Task",
+        "Universal Sensor Token"
       ],
       "cited_by_count": 1,
       "cites_in_collection": []
     },
     {
       "id": "2502.17432",
-      "title": "FACTR: Force-Attending Curriculum Training for",
+      "title": "FACTR: Force-Adaptive Contact-Rich Task Representation for Robot Manipulation",
       "text_len": 62629,
       "problems": [
         "p_perception",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Over-reliance on vision in contact-rich tasks",
+        "Poor generalization to unseen objects in contact tasks",
+        "Insufficient force utilization during data collection"
       ],
       "methods": [
         "m_dp",
         "m_vla",
-        "m_rep"
+        "m_rep",
+        "Bilateral Teleoperation for Force-Aware Demonstration",
+        "FACTR Curriculum Training",
+        "Force-Input Behavioral Cloning Transformer"
       ],
       "cited_by_count": 2,
       "cites_in_collection": [
-        "2409.11047"
+        "2409.11047",
+        "2503.02881"
       ]
     },
     {
       "id": "2503.02881",
-      "title": "Reactive Diffusion Policy:",
+      "title": "Reactive Diffusion Policy: Slow-Fast Dual-Stream Architecture for Contact-Rich Manipulation",
       "text_len": 81363,
       "problems": [
         "p_perception",
@@ -1000,77 +1247,111 @@
         "p_root",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "Frequency mismatch between diffusion inference and contact tasks",
+        "Loss of real-time reactivity during action chunk execution",
+        "High-frequency force control in contact-rich tasks"
       ],
       "methods": [
         "m_dp",
-        "m_vla"
+        "m_vla",
+        "Slow Policy (Latent Diffusion Policy)",
+        "Fast Policy (Asymmetric Tokenizer Decoder)",
+        "Latent Space Planning"
       ],
       "cited_by_count": 7,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2502.17432"
+      ]
     },
     {
       "id": "2503.07511",
-      "title": "PointVLA: Injecting the 3D World into Vision-Language-Action Models",
+      "title": "PointVLA: Injecting 3D Point Cloud into Vision-Language-Action Models",
       "text_len": 51546,
       "problems": [
         "p_sim2real",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "VLA models' reliance on 2D vision limits spatial reasoning",
+        "High cost of retraining 3D VLA from scratch",
+        "Wasting existing 2D pretrained knowledge"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "PointVLA Injection Module",
+        "Skip-block Analysis for Injection Placement",
+        "Froze VLM + Action Expert Training"
       ],
       "cited_by_count": 1,
       "cites_in_collection": [
         "2410.10803",
-        "2501.15830"
+        "2501.15830",
+        "2503.14734",
+        "2503.20020"
       ]
     },
     {
       "id": "2503.08548",
-      "title": "TLA: Tactile-Language-Action Model for Contact-Rich Manipulation",
+      "title": "TLA: Tactile-Language-Action Cross-Modal Perception for Contact-Rich Manipulation",
       "text_len": 37600,
       "problems": [
         "p_perception",
         "p_sim2real",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Tactile data heterogeneity and low dimensionality",
+        "Poor few-shot generalization for precision assembly",
+        "Loss of spatial information when flattening tactile images",
+        "2D tactile limitation for Y-axis force perception"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "Tactile-Language Contrastive Pretraining",
+        "Multi-modal Action Prediction Network",
+        "SP-TLA and MP-TLA Shape Variants"
       ],
       "cited_by_count": 6,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2502.12191"
+      ]
     },
     {
       "id": "2503.14734",
-      "title": "2025-3-28",
+      "title": "GR00T N1: Open Foundation Model for Generalist Humanoid Robots",
       "text_len": 116455,
       "problems": [
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Scarcity of real humanoid robot data",
+        "Cross-morphology robot data alignment",
+        "Heterogeneous data utilization across web/sim/real"
       ],
       "methods": [
         "m_dp",
         "m_vla",
-        "m_rep"
+        "m_rep",
+        "Dual-System Architecture (VLM + DiT)",
+        "Data Pyramid Strategy",
+        "VQ-VAE / Inverse Dynamics Action Labeling",
+        "Flow Matching Action Generation"
       ],
       "cited_by_count": 5,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2503.20020"
+      ]
     },
     {
       "id": "2503.17501",
-      "title": "IEEE TRANSACTIONS ON ROBOTICS, VOL. XX, NO. X, XXXX",
+      "title": "Shear-based Grasp Control for Multi-fingered Underactuated Tactile Robotic Hands",
       "text_len": 89022,
       "problems": [
         "p_perception",
@@ -1078,81 +1359,135 @@
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_force"
+        "p_force",
+        "Measuring grasp force in soft underactuated hands",
+        "Real-time parallel processing of multiple high-resolution tactile sensors",
+        "Multi-sensor inconsistency due to manufacturing variation",
+        "Slip noise in force data collection"
       ],
       "methods": [
-        "m_ssl"
+        "m_ssl",
+        "microTac Miniaturized Optical Tactile Sensor",
+        "Parallel Jetson Nano Processing Architecture",
+        "Standard Transfer Learning (Pretrain + Fine-tune)",
+        "Force Label Post-hoc Filtering",
+        "Shear Force Rate PID Controller",
+        "Gravity-Adaptive Scaling"
       ],
       "cited_by_count": 0,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2502.12191",
+        "2502.17432",
+        "2503.08548"
+      ]
     },
     {
       "id": "2503.20020",
-      "title": "Gemini Robotics: Bringing AI into the Physical",
+      "title": "Gemini Robotics: Bringing AI into the Physical World",
       "text_len": 164137,
       "problems": [
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Transferring multimodal reasoning to physical robot control",
+        "Cross-task and cross-morphology generalization",
+        "Lack of embodied reasoning benchmarks"
       ],
       "methods": [
         "m_dp",
         "m_vla",
-        "m_rep"
+        "m_rep",
+        "Gemini Robotics-ER (Embodied Reasoning)",
+        "Gemini Robotics VLA",
+        "ERQA Benchmark"
       ],
       "cited_by_count": 3,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2501.15830",
+        "2503.07511",
+        "2503.14734"
+      ]
     },
     {
       "id": "2503.23835",
-      "title": "Disambiguate Gripper State in Grasp-Based Tasks:",
+      "title": "Disambiguate Gripper State in Grasp-Based Tasks: Pseudo-Tactile as Feedback Enables Pure Simulation Learning",
       "text_len": 43359,
       "problems": [
         "p_perception",
         "p_sim2real",
         "p_slip",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Gripper state ambiguity: binary state cannot distinguish empty-close vs grasp-close",
+        "Sim-to-real gap in continuous gripper joint angle observations",
+        "High cost of collecting real-world grasp failure data",
+        "Overhead of physical tactile sensors"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "Pseudo-Tactile Feedback via Force-Controlled Gripper",
+        "Closed-Loop Gripper Controller",
+        "Pure Simulation Training Pipeline",
+        "Admittance Control for Articulated Objects"
       ],
       "cited_by_count": 0,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2502.17432",
+        "2503.02881",
+        "2502.08449",
+        "2503.17501"
+      ]
     },
     {
       "id": "2504.01301",
-      "title": "Bi-LAT: Bilateral Control-Based Imitation Learning via Natural",
+      "title": "Bi-LAT: Bilateral Control-Based Imitation Learning via Language and Tactile Feedback",
       "text_len": 34653,
       "problems": [
         "p_perception",
-        "p_fusion"
+        "p_fusion",
+        "Force modulation in contact tasks",
+        "Language-force grounding gap",
+        "Bilateral teleoperation data scarcity"
       ],
       "methods": [
         "m_vla",
         "m_ssl",
-        "m_rep"
+        "m_rep",
+        "Bi-LAT framework",
+        "Bilateral teleoperation data collection",
+        "Language-driven force modulation"
       ],
       "cited_by_count": 1,
       "cites_in_collection": []
     },
     {
       "id": "2504.19341",
-      "title": "PolyTouch: A Robust Multi-Modal Tactile Sensor for Contact-rich",
+      "title": "PolyTouch: A Robust Multi-Modal Tactile Sensor for Contact-rich Manipulation Using Tactile-Diffusion Policies",
       "text_len": 38286,
       "problems": [
         "p_perception",
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Tactile sensor durability and manufacturability",
+        "Visual occlusion in contact-rich manipulation",
+        "Multi-modal tactile fusion for policy learning",
+        "High spatial resolution vs high temporal frequency trade-off",
+        "Silicone elastomer delamination"
       ],
       "methods": [
         "m_dp",
-        "m_vla"
+        "m_vla",
+        "PolyTouch sensor",
+        "VHB tape elastomer",
+        "Fluorescent paint illumination",
+        "Curved mirror design",
+        "Tactile-Diffusion Policy",
+        "6-block 12-head cross-attention fusion"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
@@ -1161,61 +1496,81 @@
     },
     {
       "id": "2505.07455",
-      "title": "arXiv:2505.07455v1  [cs.RO]  12 May 2025",
+      "title": "GelFusion: Enhancing Robotic Manipulation under Visual Constraints via Visuotactile Fusion",
       "text_len": 45999,
       "problems": [
         "p_perception",
         "p_slip",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "Visual occlusion during contact moments",
+        "Simple concatenation fusion loses information",
+        "Tactile feature extraction for both static and dynamic events"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
-        "m_rep"
+        "m_rep",
+        "GelFusion framework",
+        "Dual-channel tactile encoding",
+        "Cross-attention fusion"
       ],
       "cited_by_count": 2,
       "cites_in_collection": [
         "2403.11898",
-        "2503.02881"
+        "2503.02881",
+        "2504.19341"
       ]
     },
     {
       "id": "2505.16062",
-      "title": "arXiv:2505.16062v1  [cs.RO]  21 May 2025",
+      "title": "WaveTouch: Active Tactile Sensing Using Vibro-Feedback for Classification of Variable Stiffness and Infill Density Objects",
       "text_len": 17893,
       "problems": [
         "p_perception",
         "p_slip",
         "p_root",
         "p_contact",
-        "p_force"
+        "p_force",
+        "Stiffness classification during grasp without sliding",
+        "Passive vibration sensing requires object motion",
+        "Expensive commercial tactile sensors (BioTac)"
       ],
-      "methods": [],
+      "methods": [
+        "Active vibration injection",
+        "FFT differential analysis",
+        "Dual-finger transmit-receive design"
+      ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2505.18361",
-      "title": "Task-Optimized Convolutional Recurrent Networks",
+      "title": "Task-Optimized ConvRNN for Visuo-Tactile Robotic Manipulation",
       "text_len": 67526,
       "problems": [
         "p_perception",
-        "p_fusion"
+        "p_fusion",
+        "Temporal dynamics modeling for tactile signals",
+        "ConvRNN architecture optimization for specific tasks",
+        "Real-time inference for tactile perception"
       ],
       "methods": [
         "m_vla",
         "m_ssl",
-        "m_rep"
+        "m_rep",
+        "Encoder-Attender-Decoder (EAD) architecture",
+        "IntersectionRNN cell",
+        "Tactile-specific data augmentation"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2505.22159",
-      "title": "ForceVLA: Enhancing VLA Models with a",
+      "title": "ForceVLA: Enhancing VLA Models with a Force-aware Mixture-of-Experts for Contact-rich Manipulation",
       "text_len": 54029,
       "problems": [
         "p_perception",
@@ -1223,14 +1578,21 @@
         "p_root",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "VLA lacks force/contact phase awareness",
+        "Force modality integration without breaking VLM pretraining",
+        "Contact-rich tasks (insertion, wiping, peeling) under visual occlusion"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "ForceVLA framework",
+        "FVLMoE module",
+        "Force token injection",
+        "ForceVLA-Data dataset"
       ],
       "cited_by_count": 3,
       "cites_in_collection": [
@@ -1242,7 +1604,7 @@
     },
     {
       "id": "2507.09160",
-      "title": "TACTILE-VLA:",
+      "title": "Tactile-VLA: Integrating Tactile Sensing with Vision-Language-Action Models",
       "text_len": 46597,
       "problems": [
         "p_perception",
@@ -1250,12 +1612,19 @@
         "p_root",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "VLA models are tactile-blind",
+        "Language instruction grounding with physical properties (soft/hard)",
+        "Real-time tactile-VLA inference latency"
       ],
       "methods": [
         "m_dp",
         "m_vla",
-        "m_rep"
+        "m_rep",
+        "Tactile-VLA",
+        "Tactile encoder (ResNet-based)",
+        "Tactile-VLA-CoT",
+        "Adverb-force grounding"
       ],
       "cited_by_count": 4,
       "cites_in_collection": [
@@ -1270,30 +1639,42 @@
       "text_len": 45828,
       "problems": [
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "VLA autoregressive decoding latency",
+        "Maintaining task success during acceleration"
       ],
       "methods": [
-        "m_rep"
+        "m_rep",
+        "Spec-VLA framework",
+        "Draft model parallel generation",
+        "Relaxed acceptance"
       ],
       "cited_by_count": 1,
       "cites_in_collection": []
     },
     {
       "id": "2508.08706",
-      "title": "OmniVTLA: Vision-Tactile-Language-Action Model",
+      "title": "OmniVTLA: Encoding Visuo-Tactile-Language-Action for Dexterous Manipulation",
       "text_len": 47641,
       "problems": [
         "p_perception",
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "VLA models are tactile-blind for dexterous manipulation",
+        "Tactile feature alignment to VLA semantic space",
+        "Multi-finger coordination without tactile feedback"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
-        "m_rep"
+        "m_rep",
+        "OmniVTLA",
+        "Dual-encoder tactile integration",
+        "Semantic-Aligned (SA) pretraining",
+        "ObjTac dataset"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
@@ -1310,51 +1691,73 @@
     },
     {
       "id": "2509.17684",
-      "title": "DINOv3-Diffusion Policy: Self-Supervised Large Visual Model for",
+      "title": "DINOv3-Diffusion Policy: Self-Supervised Large Visual Model for Visuomotor Diffusion Policy Learning",
       "text_len": 22013,
       "problems": [
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "ImageNet-supervised ResNet lacks fine-grained geometric features for manipulation",
+        "Sample efficiency of visual policy learning"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
-        "m_distill"
+        "m_distill",
+        "DINOv3-Diffusion Policy",
+        "DINOv3 feature adaptation",
+        "Fine-tuning vs Frozen evaluation"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2509.17812",
-      "title": "Tac2Motion: Contact-Aware Reinforcement Learning with Tactile",
+      "title": "Tac2Motion: Contact-Aware Reinforcement Learning with Tactile Feedback for Robotic Hand Manipulation",
       "text_len": 23926,
       "problems": [
         "p_perception",
         "p_slip",
         "p_root",
-        "p_force"
+        "p_force",
+        "In-hand torsional manipulation (lid opening)",
+        "Distance-based rewards fail for contact quality",
+        "Finger gaiting vs stable grasp trade-off",
+        "Sim-to-real transfer for tactile RL"
       ],
       "methods": [
-        "m_ssl"
+        "m_ssl",
+        "Tac2Motion framework",
+        "Contact Pressure Reward (CPR)",
+        "Contact Release Reward (CRR)",
+        "Grasp-quality-weighted rotation reward",
+        "Virtual torque technique",
+        "Gaiting penalty"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2509.18676",
-      "title": "3D Flow Diffusion Policy:",
+      "title": "3D Flow Diffusion Policy: Interaction-aware Robot Manipulation with Scene Flow as Intermediate Representation",
       "text_len": 40989,
       "problems": [
         "p_perception",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Implicit physics dynamics in visual policies",
+        "Non-prehensile manipulation with complex object dynamics",
+        "Scene flow ground truth in real world"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "3D Flow Diffusion Policy (3D FDP)",
+        "Interaction-aware representation",
+        "Dense flow tracking",
+        "Joint optimization"
       ],
       "cited_by_count": 2,
       "cites_in_collection": [
@@ -1364,7 +1767,7 @@
     },
     {
       "id": "2510.10903",
-      "title": "A Comprehensive Survey on Robot Manipulation",
+      "title": "Towards a Unified Understanding of Robot Manipulation: A Comprehensive Survey",
       "text_len": 632354,
       "problems": [
         "p_perception",
@@ -1373,7 +1776,11 @@
         "p_root",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "Methodological fragmentation in robot manipulation",
+        "Lack of systematic comparison between RL, IL, and classical control",
+        "No unified MDP framework for describing all manipulation methods",
+        "Unclear definition of 'ideal' robot manipulation policy"
       ],
       "methods": [
         "m_dp",
@@ -1381,7 +1788,11 @@
         "m_ssl",
         "m_distill",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "Unified control paradigm taxonomy",
+        "Non-learning vs Learning-based unified comparison",
+        "RL sub-taxonomy (Offline/Online/Offline-to-Online)",
+        "IL sub-taxonomy (BC/IRL/GAIL)"
       ],
       "cited_by_count": 1,
       "cites_in_collection": [
@@ -1398,12 +1809,16 @@
         "2505.07455",
         "2507.09160",
         "2507.22424",
-        "2509.18676"
+        "2509.18676",
+        "2410.18647",
+        "2409.00588",
+        "2409.14411",
+        "2512.22983"
       ]
     },
     {
       "id": "2510.13324",
-      "title": "Preprint",
+      "title": "Tactile-Conditioned Diffusion Policy for Force-Aware Robotic Manipulation (FARM)",
       "text_len": 47795,
       "problems": [
         "p_perception",
@@ -1411,64 +1826,99 @@
         "p_root",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "Force control integration in diffusion policy action space",
+        "Lack of explicit force control in imitation learning",
+        "Contact-rich manipulation requires force sensing",
+        "Vision-only policies fail on fragile objects"
       ],
       "methods": [
-        "m_dp"
+        "m_dp",
+        "FARM framework",
+        "FEATS force estimation from GelSight images",
+        "Extended action space with target grip force",
+        "Dual-mode controller (position ↔ force)",
+        "Tactile-conditioned 1D CNN diffusion policy with FiLM"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
-        "2505.07455"
+        "2505.07455",
+        "2403.03954",
+        "2510.14647",
+        "2512.10946"
       ]
     },
     {
       "id": "2510.14647",
-      "title": "Spatially-anchored Tactile Awareness for Robust Dexterous",
+      "title": "Spatially anchored Tactile Awareness for Robust Dexterous Manipulation (SaTA)",
       "text_len": 43407,
       "problems": [
         "p_perception",
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Tactile information lacks spatial anchoring",
+        "Local 2D tactile features are spatially inconsistent",
+        "Occlusion-heavy precision manipulation fails with vision only",
+        "Strategy network cannot infer 3D geometry from tactile signals"
       ],
       "methods": [
         "m_dp",
         "m_vla",
-        "m_dp1"
+        "m_dp1",
+        "SaTA framework",
+        "Spatial transformation via robot kinematics",
+        "FiLM spatial encoding injection",
+        "Fourier encoding for multi-scale geometry"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
         "2503.08548",
-        "2507.09160"
+        "2507.09160",
+        "2403.03954",
+        "2510.13324",
+        "2512.10946"
       ]
     },
     {
       "id": "2511.05855",
-      "title": "Gentle Manipulation Policy Learning via Demonstrations from VLM Planned",
+      "title": "Gentle Manipulation Policy Learning via Demonstrations from VLM Planned Atomic Skills (VASK/VT-DP)",
       "text_len": 39935,
       "problems": [
         "p_perception",
         "p_sim2real",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Data scarcity for long-horizon gentle manipulation",
+        "VLM hallucination in low-level control generation",
+        "VLM planning disconnects from physical constraints",
+        "Force-aware visuo-tactile fusion for contact-rich tasks"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_distill",
-        "m_dp1"
+        "m_dp1",
+        "VASK framework (VLM Planned Atomic Skills)",
+        "Force-aware atomic skill library (MoveTo, Grasp, Press, Wipe)",
+        "VLM task decomposition → RL atomic skill execution",
+        "VT-DP (Visual-Tactile Diffusion Policy)",
+        "Point cloud visuo-tactile representation"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
         "2403.03954",
-        "2503.02881"
+        "2503.02881",
+        "2410.24091",
+        "2410.24090",
+        "2511.05858"
       ]
     },
     {
       "id": "2511.05858",
-      "title": "ViTaMIn-B: A Reliable and Efficient Visuo-Tactile Bimanual",
+      "title": "ViTaMIn-B: A Reliable and Efficient Visuo-Tactile Bimanual Manipulation Interface",
       "text_len": 37506,
       "problems": [
         "p_perception",
@@ -1476,26 +1926,41 @@
         "p_slip",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "SLAM drift in handheld data collection systems",
+        "Bimanual manipulation data collection is unreliable",
+        "Tactile sensors lack mechanical robustness for heavy loads",
+        "Image-based tactile representations fail cross-sensor generalization"
       ],
       "methods": [
         "m_dp",
         "m_vla",
-        "m_dp1"
+        "m_dp1",
+        "ViTaMIn-B system",
+        "DuoTact sensor with flexible frame structure",
+        "SLAM-free tracking via Quest 3 controllers",
+        "Tactile point cloud representation (256 points)",
+        "Microsecond-level multimodal temporal alignment"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
-        "2410.24091"
+        "2410.24091",
+        "2410.24090",
+        "2511.05855",
+        "2504.06156"
       ]
     },
     {
       "id": "2512.01383",
-      "title": "PointNet4D: A Lightweight 4D Point Cloud Video Backbone for Online and",
+      "title": "PointNet4D: A Lightweight 4D Point Cloud Video Backbone for Online and Offline Perception in Robotic Applications",
       "text_len": 58310,
       "problems": [
         "p_sim2real",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "4D point cloud backbones are too heavy for real-time robotics",
+        "Existing 4D methods lack causal (online) processing",
+        "PointNet++ lacks temporal modeling"
       ],
       "methods": [
         "m_dp",
@@ -1503,38 +1968,57 @@
         "m_ssl",
         "m_distill",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "PointNet4D architecture",
+        "Hybrid Temporal Fusion Layer (inter-frame KNN + global temporal)",
+        "4DMAP pre-training (4D Masked Point Modeling with Tube Masking)",
+        "DP4 (4D Diffusion Policy) for downstream manipulation"
       ],
       "cited_by_count": 0,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2403.03954",
+        "2410.10803",
+        "2406.01586"
+      ]
     },
     {
       "id": "2512.10946",
-      "title": "ImplicitRDP: An End-to-End Visual-Force Diffusion Policy",
+      "title": "ImplicitRDP: Force-Reactive Policy for Contact-Rich Manipulation",
       "text_len": 41201,
       "problems": [
         "p_perception",
         "p_root",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "Hierarchical force-reactive policies lose information in latent compression",
+        "End-to-end force-reactive control is needed",
+        "Force signal covariate shift in imitation learning",
+        "Multi-modal frequency mismatch (vision slow, force fast)"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_distill",
-        "m_rep"
+        "m_rep",
+        "ImplicitRDP",
+        "Structural Slow-Fast Learning (SSL)",
+        "Virtual-Target-based Representation Regularization (VRR)",
+        "Custom Compliant Fingertip design"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
         "2502.17432",
         "2503.02881",
-        "2505.22159"
+        "2505.22159",
+        "2403.03954",
+        "2510.13324",
+        "2510.14647"
       ]
     },
     {
       "id": "2512.22983",
-      "title": "1",
+      "title": "Embodied Robot Manipulation in the Era of Foundation Models: Planning and Learning Perspectives",
       "text_len": 139501,
       "problems": [
         "p_perception",
@@ -1543,7 +2027,11 @@
         "p_root",
         "p_fusion",
         "p_contact",
-        "p_force"
+        "p_force",
+        "No systematic framework for FM-driven embodied manipulation",
+        "How FMs bridge to physical robot control",
+        "Data scarcity in robotics vs NLP/CV",
+        "Safety and interpretability of end-to-end FM policies"
       ],
       "methods": [
         "m_dp",
@@ -1551,7 +2039,11 @@
         "m_ssl",
         "m_distill",
         "m_dp1",
-        "m_rep"
+        "m_rep",
+        "Hierarchical FM architecture (High-level FM + Low-level policy)",
+        "LLM/VLM for task decomposition and code generation",
+        "3D scene representations (Gaussian Splatting, NDF)",
+        "Diffusion Policy as dominant IL paradigm"
       ],
       "cited_by_count": 0,
       "cites_in_collection": [
@@ -1561,28 +2053,38 @@
         "2503.20020",
         "2507.09160",
         "2509.18676",
-        "2510.10903"
+        "2510.10903",
+        "2403.03954",
+        "2410.18647",
+        "2410.10803"
       ]
     },
     {
       "id": "2601.01675",
-      "title": "IEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED JANUARY, 2022",
+      "title": "VisuoTactile 6D Pose Estimation of an In-Hand Object using Vision and Tactile Sensor Data",
       "text_len": 39360,
       "problems": [
         "p_perception",
         "p_sim2real",
         "p_root",
-        "p_fusion"
+        "p_fusion",
+        "Heavy occlusion in in-hand object pose estimation",
+        "Heterogeneous visuo-tactile data fusion",
+        "No standardized tactile representation for pose estimation"
       ],
       "methods": [
-        "m_dp1"
+        "m_dp1",
+        "Two-channel dense fusion network",
+        "Tactile invariant representation (object-surface point cloud)",
+        "Pixel-wise + Point-wise dense fusion",
+        "Siamese network for rotation estimation"
       ],
       "cited_by_count": 0,
       "cites_in_collection": []
     },
     {
       "id": "2603.04531",
-      "title": "PTLD: Sim-to-Real Privileged Tactile Latent",
+      "title": "PTLD: Sim-to-Real Privileged Tactile Latent Distillation for Dexterous Manipulation",
       "text_len": 56983,
       "problems": [
         "p_perception",
@@ -1590,23 +2092,60 @@
         "p_slip",
         "p_root",
         "p_fusion",
-        "p_contact"
+        "p_contact",
+        "Tactile sensors cannot be accurately simulated",
+        "Proprioceptive-only policies have limited performance ceiling",
+        "Traditional tactile adaptation is limited by teacher policy ceiling",
+        "Multi-finger dexterous manipulation via sim-to-real"
       ],
       "methods": [
         "m_dp",
         "m_vla",
         "m_ssl",
         "m_distill",
-        "m_rep"
+        "m_rep",
+        "PTLD framework",
+        "Real-world privileged sensor deployment (external cameras + ArUco + PGO)",
+        "AAC (Asymmetric Actor-Critic) with online latent distillation",
+        "Tactile encoder matching privileged latent (1D-TConv / Autoregressive Transformer)",
+        "DAgger for distribution shift correction"
       ],
       "cited_by_count": 0,
-      "cites_in_collection": []
+      "cites_in_collection": [
+        "2410.24090",
+        "2410.24091"
+      ]
     }
   ],
   "citation_edges": [
     {
+      "from": "2103.00410",
+      "to": "2004.00136",
+      "type": "cites"
+    },
+    {
+      "from": "2301.06698",
+      "to": "2002.03236",
+      "type": "cites"
+    },
+    {
+      "from": "2304.00736",
+      "to": "2103.00410",
+      "type": "cites"
+    },
+    {
       "from": "2403.11898",
       "to": "2303.12076",
+      "type": "cites"
+    },
+    {
+      "from": "2403.11898",
+      "to": "2403.03954",
+      "type": "cites"
+    },
+    {
+      "from": "2406.01586",
+      "to": "2403.03954",
       "type": "cites"
     },
     {
@@ -1650,6 +2189,16 @@
       "type": "cites"
     },
     {
+      "from": "2502.17432",
+      "to": "2503.02881",
+      "type": "cites"
+    },
+    {
+      "from": "2503.02881",
+      "to": "2502.17432",
+      "type": "cites"
+    },
+    {
       "from": "2503.07511",
       "to": "2410.10803",
       "type": "cites"
@@ -1657,6 +2206,76 @@
     {
       "from": "2503.07511",
       "to": "2501.15830",
+      "type": "cites"
+    },
+    {
+      "from": "2503.07511",
+      "to": "2503.14734",
+      "type": "cites"
+    },
+    {
+      "from": "2503.07511",
+      "to": "2503.20020",
+      "type": "cites"
+    },
+    {
+      "from": "2503.08548",
+      "to": "2502.12191",
+      "type": "cites"
+    },
+    {
+      "from": "2503.14734",
+      "to": "2503.20020",
+      "type": "cites"
+    },
+    {
+      "from": "2503.17501",
+      "to": "2502.12191",
+      "type": "cites"
+    },
+    {
+      "from": "2503.17501",
+      "to": "2502.17432",
+      "type": "cites"
+    },
+    {
+      "from": "2503.17501",
+      "to": "2503.08548",
+      "type": "cites"
+    },
+    {
+      "from": "2503.20020",
+      "to": "2501.15830",
+      "type": "cites"
+    },
+    {
+      "from": "2503.20020",
+      "to": "2503.07511",
+      "type": "cites"
+    },
+    {
+      "from": "2503.20020",
+      "to": "2503.14734",
+      "type": "cites"
+    },
+    {
+      "from": "2503.23835",
+      "to": "2502.17432",
+      "type": "cites"
+    },
+    {
+      "from": "2503.23835",
+      "to": "2503.02881",
+      "type": "cites"
+    },
+    {
+      "from": "2503.23835",
+      "to": "2502.08449",
+      "type": "cites"
+    },
+    {
+      "from": "2503.23835",
+      "to": "2503.17501",
       "type": "cites"
     },
     {
@@ -1672,6 +2291,11 @@
     {
       "from": "2505.07455",
       "to": "2503.02881",
+      "type": "cites"
+    },
+    {
+      "from": "2505.07455",
+      "to": "2504.19341",
       "type": "cites"
     },
     {
@@ -1835,8 +2459,43 @@
       "type": "cites"
     },
     {
+      "from": "2510.10903",
+      "to": "2410.18647",
+      "type": "cites"
+    },
+    {
+      "from": "2510.10903",
+      "to": "2409.00588",
+      "type": "cites"
+    },
+    {
+      "from": "2510.10903",
+      "to": "2409.14411",
+      "type": "cites"
+    },
+    {
+      "from": "2510.10903",
+      "to": "2512.22983",
+      "type": "cites"
+    },
+    {
       "from": "2510.13324",
       "to": "2505.07455",
+      "type": "cites"
+    },
+    {
+      "from": "2510.13324",
+      "to": "2403.03954",
+      "type": "cites"
+    },
+    {
+      "from": "2510.13324",
+      "to": "2510.14647",
+      "type": "cites"
+    },
+    {
+      "from": "2510.13324",
+      "to": "2512.10946",
       "type": "cites"
     },
     {
@@ -1850,6 +2509,21 @@
       "type": "cites"
     },
     {
+      "from": "2510.14647",
+      "to": "2403.03954",
+      "type": "cites"
+    },
+    {
+      "from": "2510.14647",
+      "to": "2510.13324",
+      "type": "cites"
+    },
+    {
+      "from": "2510.14647",
+      "to": "2512.10946",
+      "type": "cites"
+    },
+    {
       "from": "2511.05855",
       "to": "2403.03954",
       "type": "cites"
@@ -1860,8 +2534,53 @@
       "type": "cites"
     },
     {
+      "from": "2511.05855",
+      "to": "2410.24091",
+      "type": "cites"
+    },
+    {
+      "from": "2511.05855",
+      "to": "2410.24090",
+      "type": "cites"
+    },
+    {
+      "from": "2511.05855",
+      "to": "2511.05858",
+      "type": "cites"
+    },
+    {
       "from": "2511.05858",
       "to": "2410.24091",
+      "type": "cites"
+    },
+    {
+      "from": "2511.05858",
+      "to": "2410.24090",
+      "type": "cites"
+    },
+    {
+      "from": "2511.05858",
+      "to": "2511.05855",
+      "type": "cites"
+    },
+    {
+      "from": "2511.05858",
+      "to": "2504.06156",
+      "type": "cites"
+    },
+    {
+      "from": "2512.01383",
+      "to": "2403.03954",
+      "type": "cites"
+    },
+    {
+      "from": "2512.01383",
+      "to": "2410.10803",
+      "type": "cites"
+    },
+    {
+      "from": "2512.01383",
+      "to": "2406.01586",
       "type": "cites"
     },
     {
@@ -1877,6 +2596,21 @@
     {
       "from": "2512.10946",
       "to": "2505.22159",
+      "type": "cites"
+    },
+    {
+      "from": "2512.10946",
+      "to": "2403.03954",
+      "type": "cites"
+    },
+    {
+      "from": "2512.10946",
+      "to": "2510.13324",
+      "type": "cites"
+    },
+    {
+      "from": "2512.10946",
+      "to": "2510.14647",
       "type": "cites"
     },
     {
@@ -1912,6 +2646,31 @@
     {
       "from": "2512.22983",
       "to": "2510.10903",
+      "type": "cites"
+    },
+    {
+      "from": "2512.22983",
+      "to": "2403.03954",
+      "type": "cites"
+    },
+    {
+      "from": "2512.22983",
+      "to": "2410.18647",
+      "type": "cites"
+    },
+    {
+      "from": "2512.22983",
+      "to": "2410.10803",
+      "type": "cites"
+    },
+    {
+      "from": "2603.04531",
+      "to": "2410.24090",
+      "type": "cites"
+    },
+    {
+      "from": "2603.04531",
+      "to": "2410.24091",
       "type": "cites"
     }
   ],
