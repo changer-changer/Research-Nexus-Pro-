@@ -74,9 +74,7 @@
         "2404.15709",
         "2407.07885",
         "2502.08449",
-        "2508.08706",
         "2509.17812",
-        "2601.01675",
         "2603.04531"
       ],
       "methods": []
@@ -95,29 +93,8 @@
       "year": 2019,
       "status": "active",
       "papers": [
-        "2503.02881",
-        "2503.08548",
-        "2403.03954",
-        "2503.14734",
-        "2507.09160",
-        "2406.01586",
         "2503.20020",
-        "2505.22159",
         "2303.12076",
-        "2403.11898",
-        "2409.11047",
-        "2410.24091",
-        "2501.15830",
-        "2502.17432",
-        "2505.07455",
-        "2509.18676",
-        "2409.07343",
-        "2411.03990",
-        "2502.12191",
-        "2503.07511",
-        "2504.01301",
-        "2507.22424",
-        "2510.10903",
         "1409.4972",
         "1809.05551",
         "2003.13165",
@@ -130,29 +107,13 @@
         "2312.09863",
         "2404.15709",
         "2407.07885",
-        "2409.00588",
         "2409.09276",
-        "2409.14411",
-        "2410.18647",
-        "2410.24090",
         "2411.12503",
         "2412.04987",
         "2502.08449",
-        "2502.11161",
-        "2503.17501",
-        "2503.23835",
         "2504.19341",
-        "2505.18361",
-        "2508.08706",
-        "2509.17684",
-        "2510.13324",
-        "2510.14647",
         "2511.05855",
-        "2511.05858",
         "2512.01383",
-        "2512.10946",
-        "2512.22983",
-        "2601.01675",
         "2603.04531"
       ],
       "methods": []
@@ -171,13 +132,8 @@
       "year": 2020,
       "status": "active",
       "papers": [
-        "2503.08548",
-        "2507.09160",
         "2303.12076",
-        "2403.11898",
-        "2505.07455",
         "2309.10886",
-        "2502.12191",
         "1409.4972",
         "1809.05551",
         "2002.03236",
@@ -195,20 +151,9 @@
         "2312.09863",
         "2403.16764",
         "2407.07885",
-        "2410.24090",
-        "2502.11161",
-        "2503.17501",
-        "2503.23835",
         "2504.19341",
-        "2505.16062",
-        "2505.18361",
-        "2508.08706",
         "2509.17812",
-        "2510.13324",
-        "2510.14647",
         "2511.05855",
-        "2511.05858",
-        "2601.01675",
         "2603.04531"
       ],
       "methods": []
@@ -227,45 +172,12 @@
       "year": 2022,
       "status": "active",
       "papers": [
-        "2503.02881",
-        "2503.08548",
-        "2403.03954",
-        "2503.14734",
-        "2507.09160",
-        "2406.01586",
         "2503.20020",
-        "2505.22159",
-        "2409.11047",
-        "2410.10803",
-        "2410.24091",
-        "2501.15830",
-        "2502.17432",
-        "2505.07455",
-        "2509.18676",
-        "2409.07343",
-        "2411.03990",
-        "2503.07511",
-        "2504.01301",
-        "2507.22424",
-        "2510.10903",
         "2404.15709",
-        "2409.00588",
-        "2409.14411",
-        "2410.18647",
-        "2410.24090",
         "2412.04987",
         "2502.08449",
-        "2502.11161",
-        "2505.18361",
-        "2508.08706",
-        "2509.17684",
-        "2510.13324",
-        "2510.14647",
         "2511.05855",
-        "2511.05858",
-        "2512.01383",
-        "2512.10946",
-        "2512.22983"
+        "2512.01383"
       ],
       "methods": []
     },
@@ -283,33 +195,10 @@
       "year": 2021,
       "status": "active",
       "papers": [
-        "2503.08548",
-        "2403.03954",
-        "2503.14734",
-        "2507.09160",
-        "2406.01586",
         "2503.20020",
-        "2505.22159",
-        "2409.11047",
-        "2410.10803",
-        "2501.15830",
-        "2502.17432",
-        "2505.07455",
-        "2509.18676",
-        "2411.03990",
-        "2502.12191",
-        "2504.01301",
         "2510.10903",
-        "2409.14411",
-        "2410.18647",
-        "2410.24090",
         "2412.04987",
-        "2505.18361",
-        "2508.08706",
-        "2509.17684",
         "2511.05855",
-        "2511.05858",
-        "2512.10946",
         "2512.22983"
       ],
       "methods": []
@@ -327,27 +216,7 @@
       "year": 2017,
       "status": "active",
       "papers": [
-        "2507.09160",
-        "2505.22159",
-        "2409.11047",
-        "2410.10803",
-        "2410.24091",
-        "2502.17432",
-        "2505.07455",
-        "2502.12191",
-        "2510.10903",
-        "2410.24090",
-        "2502.11161",
-        "2505.18361",
-        "2508.08706",
-        "2509.17684",
-        "2510.13324",
-        "2510.14647",
-        "2511.05855",
-        "2511.05858",
-        "2512.10946",
-        "2512.22983",
-        "2601.01675"
+        "2511.05855"
       ],
       "methods": []
     },
@@ -365,21 +234,7 @@
       "year": 2020,
       "status": "active",
       "papers": [
-        "2503.02881",
-        "2503.08548",
-        "2507.09160",
-        "2505.22159",
-        "2409.11047",
-        "2505.07455",
-        "2504.01301",
-        "2410.24090",
-        "2505.18361",
-        "2509.17684",
-        "2510.13324",
-        "2510.14647",
-        "2511.05855",
-        "2511.05858",
-        "2512.10946"
+        "2511.05855"
       ],
       "methods": []
     },
@@ -395,6 +250,8 @@
       "papers": [
         "2410.24091",
         "2505.07455",
+        "2502.11161",
+        "2505.18361",
         "2601.01675"
       ],
       "methods": []
@@ -410,18 +267,11 @@
       "status": "active",
       "papers": [
         "2503.08548",
-        "2503.14734",
         "2507.09160",
-        "2505.22159",
-        "2410.24091",
-        "2501.15830",
-        "2502.12191",
-        "2410.24090",
-        "2505.18361",
+        "2505.07455",
         "2508.08706",
         "2510.14647",
-        "2511.05855",
-        "2511.05858"
+        "2511.05855"
       ],
       "methods": []
     },
@@ -435,16 +285,8 @@
       "year": 2021,
       "status": "active",
       "papers": [
-        "2503.08548",
-        "2505.22159",
         "2410.24091",
-        "2505.07455",
-        "2509.18676",
         "2502.08449",
-        "2502.11161",
-        "2505.18361",
-        "2509.17684",
-        "2510.14647",
         "2601.01675"
       ],
       "methods": []
@@ -459,13 +301,10 @@
       "year": 2023,
       "status": "active",
       "papers": [
-        "2509.18676",
         "2410.24090",
-        "2505.18361",
-        "2509.17684",
-        "2512.01383",
-        "2512.10946",
-        "2512.22983"
+        "2505.16062",
+        "2510.14647",
+        "2512.01383"
       ],
       "methods": []
     },
@@ -479,12 +318,8 @@
       "year": 2024,
       "status": "active",
       "papers": [
-        "2503.08548",
-        "2410.24091",
-        "2510.14647",
-        "2511.05855",
-        "2511.05858",
-        "2601.01675"
+        "2503.17501",
+        "2511.05855"
       ],
       "methods": []
     },
@@ -499,7 +334,8 @@
       "status": "active",
       "papers": [
         "2502.12191",
-        "2511.05858"
+        "2410.24090",
+        "2503.17501"
       ],
       "methods": []
     },
@@ -516,13 +352,15 @@
         "2403.03954",
         "2406.01586",
         "2410.10803",
-        "2410.24091",
         "2509.18676",
-        "2503.07511",
+        "2409.07343",
+        "2411.03990",
+        "2409.00588",
+        "2409.14411",
         "2412.04987",
+        "2509.17684",
         "2511.05855",
-        "2512.01383",
-        "2512.22983"
+        "2512.01383"
       ],
       "methods": []
     },
@@ -536,8 +374,12 @@
       "year": 2025,
       "status": "active",
       "papers": [
+        "2503.14734",
         "2507.09160",
         "2505.22159",
+        "2501.15830",
+        "2503.07511",
+        "2507.22424",
         "2508.08706"
       ],
       "methods": []
@@ -553,15 +395,9 @@
       "status": "active",
       "papers": [
         "2503.02881",
-        "2507.09160",
         "2503.20020",
         "2409.11047",
-        "2410.24090",
-        "2508.08706",
-        "2509.17684",
-        "2512.10946",
-        "2512.22983",
-        "2601.01675"
+        "2512.10946"
       ],
       "methods": []
     },
@@ -575,19 +411,7 @@
       "year": 2020,
       "status": "active",
       "papers": [
-        "2503.08548",
-        "2503.14734",
-        "2507.09160",
-        "2505.22159",
         "2303.12076",
-        "2409.11047",
-        "2410.10803",
-        "2410.24091",
-        "2505.07455",
-        "2509.18676",
-        "2502.12191",
-        "2503.07511",
-        "2510.10903",
         "2003.13165",
         "2004.00136",
         "2103.00410",
@@ -595,19 +419,12 @@
         "2305.04660",
         "2404.15709",
         "2407.07885",
-        "2409.00588",
-        "2410.18647",
-        "2410.24090",
         "2411.12503",
         "2502.08449",
-        "2503.17501",
-        "2503.23835",
         "2509.17812",
         "2511.05855",
         "2511.05858",
         "2512.01383",
-        "2512.22983",
-        "2601.01675",
         "2603.04531"
       ],
       "methods": []
@@ -622,11 +439,7 @@
       "year": 2024,
       "status": "active",
       "papers": [
-        "2403.03954",
-        "2410.10803",
-        "2409.14411",
-        "2410.18647",
-        "2512.22983"
+        "2410.18647"
       ],
       "methods": []
     },
@@ -640,11 +453,7 @@
       "year": 2023,
       "status": "active",
       "papers": [
-        "2503.08548",
-        "2503.20020",
-        "2503.07511",
-        "2410.24090",
-        "2509.17684"
+        "2503.20020"
       ],
       "methods": []
     },
@@ -671,12 +480,7 @@
       "branchId": "b_manipulation",
       "year": 2019,
       "status": "active",
-      "papers": [
-        "2505.22159",
-        "2502.17432",
-        "2502.11161",
-        "2511.05858"
-      ],
+      "papers": [],
       "methods": []
     },
     {
@@ -689,14 +493,7 @@
       "year": 2021,
       "status": "active",
       "papers": [
-        "2503.02881",
-        "2503.08548",
-        "2507.09160",
-        "2505.22159",
-        "2502.17432",
-        "2505.07455",
-        "2504.01301",
-        "2510.10903",
+        "2403.11898",
         "1409.4972",
         "2003.13165",
         "2004.00136",
@@ -705,17 +502,9 @@
         "2308.05386",
         "2403.16764",
         "2407.07885",
-        "2410.24090",
-        "2503.17501",
         "2503.23835",
-        "2505.16062",
-        "2505.18361",
         "2509.17812",
-        "2510.13324",
-        "2511.05855",
-        "2511.05858",
-        "2512.10946",
-        "2512.22983"
+        "2511.05855"
       ],
       "methods": []
     },
@@ -729,29 +518,12 @@
       "year": 2024,
       "status": "active",
       "papers": [
-        "2503.02881",
-        "2503.08548",
-        "2403.03954",
-        "2503.14734",
-        "2507.09160",
-        "2406.01586",
         "2503.20020",
         "2505.22159",
-        "2403.11898",
         "2409.11047",
-        "2410.10803",
-        "2410.24091",
-        "2501.15830",
         "2502.17432",
-        "2505.07455",
-        "2509.18676",
         "2309.10886",
-        "2409.07343",
-        "2411.03990",
-        "2503.07511",
         "2504.01301",
-        "2507.22424",
-        "2510.10903",
         "1409.4972",
         "1709.02924",
         "2002.03236",
@@ -765,26 +537,14 @@
         "2312.09863",
         "2404.15709",
         "2407.07885",
-        "2409.00588",
-        "2409.14411",
-        "2410.18647",
-        "2410.24090",
         "2412.04987",
         "2502.08449",
-        "2502.11161",
-        "2503.23835",
         "2504.19341",
-        "2505.16062",
-        "2508.08706",
-        "2509.17684",
         "2509.17812",
         "2510.13324",
-        "2510.14647",
         "2511.05855",
-        "2511.05858",
         "2512.01383",
         "2512.10946",
-        "2512.22983",
         "2603.04531"
       ],
       "methods": []
@@ -799,13 +559,7 @@
       "year": 2020,
       "status": "active",
       "papers": [
-        "2503.02881",
-        "2507.09160",
         "2303.12076",
-        "2410.24091",
-        "2505.07455",
-        "2502.12191",
-        "2510.10903",
         "1409.4972",
         "1709.02924",
         "1809.05551",
@@ -823,22 +577,12 @@
         "2312.09863",
         "2403.16764",
         "2407.07885",
-        "2410.18647",
-        "2410.24090",
         "2411.12503",
         "2502.08449",
-        "2503.17501",
         "2503.23835",
         "2504.19341",
-        "2505.16062",
-        "2505.18361",
-        "2508.08706",
         "2509.17812",
-        "2510.13324",
-        "2510.14647",
-        "2511.05858",
         "2512.01383",
-        "2512.22983",
         "2603.04531"
       ],
       "methods": []
@@ -1285,13 +1029,7 @@
         "m_dp"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_reactive",
-        "p_policy",
-        "p_force",
-        "p_slip",
-        "p_force_control",
-        "p_force_estimation"
+        "p_reactive"
       ],
       "category": "Diffusion/Flow",
       "month": 12,
@@ -1328,18 +1066,7 @@
         "m_ssl"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_cross_modal",
-        "p_few_shot",
-        "p_tactile_repr",
-        "p_sim2real",
-        "p_occlusion",
-        "p_policy",
-        "p_force",
-        "p_generalization",
-        "p_force_control",
-        "p_3d_tactile",
-        "p_force_estimation"
+        "p_cross_modal"
       ],
       "category": "Tactile",
       "month": 2,
@@ -1373,11 +1100,6 @@
         "m_vla"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_data_scaling",
-        "p_policy",
-        "p_generalization",
-        "p_force_control",
         "p_diffusion_3d"
       ],
       "category": "Diffusion/Flow",
@@ -1409,12 +1131,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_cross_modal",
-        "p_sim2real",
-        "p_policy",
-        "p_generalization",
-        "p_force_control"
+        "p_vla_tactile"
       ],
       "category": "Perception",
       "month": 6,
@@ -1449,19 +1166,8 @@
         "m_ssl1"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_reactive",
-        "p_cross_modal",
-        "p_generalization",
-        "p_tactile_repr",
-        "p_sim2real",
-        "p_policy",
-        "p_force",
-        "p_hardware",
-        "p_slip",
         "p_vla_tactile",
-        "p_force_control",
-        "p_force_estimation"
+        "p_cross_modal"
       ],
       "category": "Tactile",
       "month": 2,
@@ -1492,10 +1198,6 @@
         "m_dp"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_policy",
-        "p_generalization",
-        "p_force_control",
         "p_diffusion_3d"
       ],
       "category": "Diffusion/Flow",
@@ -1561,18 +1263,8 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_cross_modal",
-        "p_sim2real",
-        "p_occlusion",
-        "p_policy",
-        "p_force",
-        "p_hardware",
-        "p_generalization",
         "p_vla_tactile",
-        "p_force_control",
-        "p_low_cost",
-        "p_force_estimation"
+        "p_force_control"
       ],
       "category": "VLA",
       "month": 11,
@@ -1641,9 +1333,7 @@
         "m_ssl"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_tactile_repr",
-        "p_force_control"
+        "p_force_estimation"
       ],
       "category": "Tactile",
       "month": 1,
@@ -1676,14 +1366,8 @@
         "m_dp"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_reactive",
-        "p_sim2real",
-        "p_policy",
-        "p_force",
-        "p_hardware",
-        "p_generalization",
-        "p_force_control"
+        "p_force_control",
+        "p_reactive"
       ],
       "category": "Tactile",
       "month": 2,
@@ -1714,12 +1398,6 @@
         "m_dp"
       ],
       "targets": [
-        "p_sim2real",
-        "p_data_scaling",
-        "p_policy",
-        "p_hardware",
-        "p_generalization",
-        "p_force_control",
         "p_diffusion_3d"
       ],
       "category": "Diffusion/Flow",
@@ -1752,17 +1430,8 @@
         "m_dp1"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_cross_modal",
-        "p_sim2real",
-        "p_occlusion",
-        "p_policy",
-        "p_hardware",
         "p_fusion_arch",
-        "p_slip",
-        "p_force_control",
-        "p_3d_tactile",
-        "p_diffusion_3d"
+        "p_occlusion"
       ],
       "category": "Manipulation",
       "month": 3,
@@ -1792,11 +1461,7 @@
         "m_rep"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_cross_modal",
-        "p_policy",
-        "p_generalization",
-        "p_force_control"
+        "p_vla_tactile"
       ],
       "category": "VLA",
       "month": 3,
@@ -1827,13 +1492,7 @@
         "m_vla"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_policy",
-        "p_hardware",
-        "p_generalization",
-        "p_force_control",
-        "p_low_cost",
-        "p_force_estimation"
+        "p_force_control"
       ],
       "category": "Other",
       "month": 7,
@@ -1866,18 +1525,8 @@
         "m_vla"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_generalization",
-        "p_tactile_repr",
-        "p_sim2real",
-        "p_occlusion",
-        "p_policy",
-        "p_force",
-        "p_hardware",
         "p_fusion_arch",
-        "p_slip",
-        "p_force_control",
-        "p_force_estimation"
+        "p_cross_modal"
       ],
       "category": "Other",
       "month": 11,
@@ -1908,13 +1557,6 @@
         "m_rep"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_sim2real",
-        "p_occlusion",
-        "p_policy",
-        "p_tactile_ssl",
-        "p_generalization",
-        "p_force_control",
         "p_diffusion_3d"
       ],
       "category": "Diffusion/Flow",
@@ -1972,9 +1614,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_force_control",
-        "p_policy"
+        "p_diffusion_3d"
       ],
       "category": "Manipulation",
       "month": 7,
@@ -2001,10 +1641,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_force_control",
-        "p_policy",
-        "p_generalization"
+        "p_diffusion_3d"
       ],
       "category": "Other",
       "month": 5,
@@ -2035,14 +1672,7 @@
         "m_rep"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_cross_modal",
-        "p_slip",
-        "p_tactile_repr",
-        "p_sim2real",
-        "p_cross_sensor",
-        "p_hardware",
-        "p_generalization"
+        "p_cross_sensor"
       ],
       "category": "Other",
       "month": 12,
@@ -2073,12 +1703,7 @@
         "m_vla1"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_few_shot",
-        "p_sim2real",
-        "p_policy",
-        "p_force_control",
-        "p_diffusion_3d"
+        "p_vla_tactile"
       ],
       "category": "VLA",
       "month": 11,
@@ -2106,12 +1731,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_policy",
-        "p_force",
-        "p_generalization",
-        "p_force_control",
-        "p_force_estimation"
+        "p_force_control"
       ],
       "category": "Policy",
       "month": 10,
@@ -2140,9 +1760,7 @@
         "m_vla1"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_force_control",
-        "p_policy"
+        "p_vla_tactile"
       ],
       "category": "VLA",
       "month": 3,
@@ -2172,14 +1790,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_generalization",
-        "p_sim2real",
-        "p_policy",
-        "p_hardware",
-        "p_slip",
-        "p_force_control",
-        "p_force_estimation"
+        "p_generalization"
       ],
       "category": "Manipulation",
       "month": 8,
@@ -2815,10 +2426,7 @@
         "m_dp"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_sim2real",
-        "p_force_control",
-        "p_policy"
+        "p_diffusion_3d"
       ],
       "category": "Diffusion/Flow",
       "month": 9,
@@ -2871,11 +2479,7 @@
         "m_dp"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_data_scaling",
-        "p_policy",
-        "p_generalization",
-        "p_force_control"
+        "p_diffusion_3d"
       ],
       "category": "Diffusion/Flow",
       "month": 11,
@@ -2901,13 +2505,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_slip",
-        "p_sim2real",
-        "p_data_scaling",
-        "p_policy",
-        "p_generalization",
-        "p_force_control"
+        "p_data_scaling"
       ],
       "category": "Other",
       "month": 11,
@@ -2939,20 +2537,8 @@
         "m_rep1"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_reactive",
-        "p_cross_modal",
-        "p_few_shot",
-        "p_generalization",
-        "p_sim2real",
-        "p_tactile_repr",
-        "p_policy",
         "p_tactile_ssl",
-        "p_force",
-        "p_hardware",
-        "p_slip",
-        "p_force_control",
-        "p_force_estimation"
+        "p_cross_sensor"
       ],
       "category": "Tactile",
       "month": 12,
@@ -3073,13 +2659,7 @@
         "m_vla"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_tactile_repr",
-        "p_occlusion",
-        "p_policy",
-        "p_hardware",
-        "p_force_control",
-        "p_low_cost"
+        "p_fusion_arch"
       ],
       "category": "Other",
       "month": 10,
@@ -3107,11 +2687,8 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_tactile_repr",
-        "p_sim2real",
-        "p_slip",
-        "p_force_estimation"
+        "p_3d_tactile",
+        "p_cross_sensor"
       ],
       "category": "Other",
       "month": 9,
@@ -3140,11 +2717,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_tactile_repr",
-        "p_sim2real",
         "p_slip",
-        "p_force_control",
         "p_force_estimation"
       ],
       "category": "Manipulation",
@@ -3205,10 +2778,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_tactile_repr",
-        "p_force_control",
-        "p_force_estimation",
-        "p_slip"
+        "p_tactile_ssl"
       ],
       "category": "Other",
       "month": 7,
@@ -3233,17 +2803,7 @@
       ],
       "methods": [],
       "targets": [
-        "p_vt_fusion",
-        "p_cross_modal",
-        "p_slip",
-        "p_tactile_repr",
-        "p_occlusion",
-        "p_policy",
-        "p_tactile_ssl",
-        "p_force",
-        "p_hardware",
-        "p_generalization",
-        "p_force_estimation"
+        "p_fusion_arch"
       ],
       "category": "Other",
       "month": 7,
@@ -3275,17 +2835,8 @@
         "m_ssl2"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_reactive",
-        "p_cross_modal",
-        "p_generalization",
-        "p_tactile_repr",
-        "p_root",
-        "p_policy",
-        "p_hardware",
-        "p_slip",
         "p_vla_tactile",
-        "p_force_control"
+        "p_cross_modal"
       ],
       "category": "Tactile",
       "month": 9,
@@ -3312,16 +2863,7 @@
         "m_dp"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_reactive",
-        "p_few_shot",
-        "p_occlusion",
-        "p_policy",
-        "p_tactile_ssl",
-        "p_force",
-        "p_hardware",
-        "p_generalization",
-        "p_force_control"
+        "p_diffusion_3d"
       ],
       "category": "Diffusion/Flow",
       "month": 8,
@@ -3387,14 +2929,7 @@
         "m_dp"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_tactile_repr",
-        "p_policy",
-        "p_force",
-        "p_hardware",
-        "p_slip",
-        "p_force_control",
-        "p_force_estimation"
+        "p_force_control"
       ],
       "category": "Tactile",
       "month": 7,
@@ -3423,16 +2958,8 @@
         "m_ssl1"
       ],
       "targets": [
-        "p_vt_fusion",
         "p_cross_modal",
-        "p_tactile_repr",
-        "p_occlusion",
-        "p_policy",
-        "p_force",
-        "p_hardware",
-        "p_slip",
-        "p_force_control",
-        "p_3d_tactile"
+        "p_tactile_ssl"
       ],
       "category": "Tactile",
       "month": 11,
@@ -3505,21 +3032,8 @@
         "m_rep"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_cross_modal",
-        "p_generalization",
-        "p_tactile_repr",
         "p_sim2real",
-        "p_policy",
-        "p_cross_sensor",
-        "p_low_cost",
-        "p_force",
-        "p_hardware",
-        "p_sensor_design",
-        "p_slip",
-        "p_force_control",
-        "p_3d_tactile",
-        "p_force_estimation"
+        "p_sensor_design"
       ],
       "category": "Tactile",
       "month": 1,
@@ -3581,15 +3095,8 @@
         "m_rep"
       ],
       "targets": [
-        "p_vt_fusion",
         "p_reactive",
-        "p_policy",
-        "p_tactile_ssl",
-        "p_force",
-        "p_hardware",
-        "p_generalization",
-        "p_force_control",
-        "p_force_estimation"
+        "p_force_control"
       ],
       "category": "Diffusion/Flow",
       "month": 10,
@@ -3620,18 +3127,7 @@
         "m_rep"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_reactive",
-        "p_generalization",
-        "p_sim2real",
-        "p_data_scaling",
-        "p_policy",
-        "p_tactile_ssl",
-        "p_hardware",
-        "p_slip",
-        "p_force_control",
-        "p_diffusion_3d",
-        "p_force_estimation"
+        "p_generalization"
       ],
       "category": "Manipulation",
       "month": 1,
@@ -3660,15 +3156,8 @@
         "m_rep"
       ],
       "targets": [
-        "p_vt_fusion",
-        "p_reactive",
-        "p_tactile_repr",
-        "p_sim2real",
-        "p_occlusion",
-        "p_root",
-        "p_hardware",
         "p_fusion_arch",
-        "p_3d_tactile"
+        "p_occlusion"
       ],
       "category": "Other",
       "month": 7,
