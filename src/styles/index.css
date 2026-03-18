@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-zinc-100 antialiased;
+  }
+}
+
+.react-flow__node {
+  @apply shadow-lg border-0 bg-transparent;
+}
+.react-flow__edge-path {
+  stroke: #52525b !important;
+  stroke-width: 2 !important;
+}
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #6366f1 !important;
+}

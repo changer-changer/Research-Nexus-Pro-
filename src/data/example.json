@@ -1,0 +1,12 @@
+{
+  "problems": [
+    { "id": "p1", "name": "Tactile Sim2Real", "year": 2020, "branch": "sim2real", "status": "solved" },
+    { "id": "p2", "name": "Deformable Object", "year": 2022, "branch": "manipulation", "status": "active" },
+    { "id": "p3", "name": "High-Freq Feedback", "year": 2024, "branch": "control", "status": "unsolved" },
+    { "id": "p4", "name": "Multi-Modal Fusion", "year": 2023, "branch": "perception", "status": "partial" }
+  ],
+  "methods": [
+    { "id": "m1", "name": "Diffusion Policy", "targets": ["p2", "p4"] },
+    { "id": "m2", "name": "Transformer", "targets": ["p1"] }
+  ]
+}

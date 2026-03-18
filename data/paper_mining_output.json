@@ -1,0 +1,2839 @@
+{
+  "meta": {
+    "total_papers": 75,
+    "total_problems": 23,
+    "total_methods": 22,
+    "total_citation_edges": 69,
+    "generated": "2026-03-18",
+    "description": "Paper Mining Knowledge Graph - Tactile+Vision Fusion for Dexterous Manipulation",
+    "version": "1.2"
+  },
+  "problem_tree": [
+    {
+      "id": "p_root",
+      "name": "Dexterous Manipulation",
+      "level": 0,
+      "parent": null,
+      "branch": "root"
+    },
+    {
+      "id": "p_perception",
+      "name": "Tactile Perception",
+      "level": 1,
+      "parent": "p_root",
+      "branch": "perception"
+    },
+    {
+      "id": "p_p1",
+      "name": "Cross-sensor Generalization",
+      "level": 2,
+      "parent": "p_perception",
+      "branch": "perception"
+    },
+    {
+      "id": "p_p2",
+      "name": "Force Estimation",
+      "level": 2,
+      "parent": "p_perception",
+      "branch": "perception"
+    },
+    {
+      "id": "p_p3",
+      "name": "Slip Detection",
+      "level": 2,
+      "parent": "p_perception",
+      "branch": "perception"
+    },
+    {
+      "id": "p_p4",
+      "name": "Dynamic Tactile Perception",
+      "level": 2,
+      "parent": "p_perception",
+      "branch": "perception"
+    },
+    {
+      "id": "p_fusion",
+      "name": "Visuo-Tactile Fusion",
+      "level": 1,
+      "parent": "p_root",
+      "branch": "perception"
+    },
+    {
+      "id": "p_f1",
+      "name": "Cross-modal Alignment",
+      "level": 2,
+      "parent": "p_fusion",
+      "branch": "perception"
+    },
+    {
+      "id": "p_f2",
+      "name": "Temporal Synchronization",
+      "level": 2,
+      "parent": "p_fusion",
+      "branch": "perception"
+    },
+    {
+      "id": "p_f3",
+      "name": "Multimodal Pre-training",
+      "level": 2,
+      "parent": "p_fusion",
+      "branch": "perception"
+    },
+    {
+      "id": "p_policy",
+      "name": "Policy Learning",
+      "level": 1,
+      "parent": "p_root",
+      "branch": "policy"
+    },
+    {
+      "id": "p_pl1",
+      "name": "Data Efficiency",
+      "level": 2,
+      "parent": "p_policy",
+      "branch": "policy"
+    },
+    {
+      "id": "p_pl2",
+      "name": "Generalization",
+      "level": 2,
+      "parent": "p_policy",
+      "branch": "policy"
+    },
+    {
+      "id": "p_pl3",
+      "name": "Contact-rich Policy",
+      "level": 2,
+      "parent": "p_policy",
+      "branch": "policy"
+    },
+    {
+      "id": "p_pl4",
+      "name": "Diffusion-based Policy",
+      "level": 2,
+      "parent": "p_policy",
+      "branch": "policy"
+    },
+    {
+      "id": "p_sim",
+      "name": "Sim-to-Real Transfer",
+      "level": 1,
+      "parent": "p_root",
+      "branch": "simulation"
+    },
+    {
+      "id": "p_s1",
+      "name": "Tactile Simulation Fidelity",
+      "level": 2,
+      "parent": "p_sim",
+      "branch": "simulation"
+    },
+    {
+      "id": "p_s2",
+      "name": "Privileged Knowledge Distillation",
+      "level": 2,
+      "parent": "p_sim",
+      "branch": "simulation"
+    },
+    {
+      "id": "p_s3",
+      "name": "Domain Randomization",
+      "level": 2,
+      "parent": "p_sim",
+      "branch": "simulation"
+    },
+    {
+      "id": "p_hw",
+      "name": "Sensor Hardware",
+      "level": 1,
+      "parent": "p_root",
+      "branch": "hardware"
+    },
+    {
+      "id": "p_h1",
+      "name": "Low-cost High-resolution",
+      "level": 2,
+      "parent": "p_hw",
+      "branch": "hardware"
+    },
+    {
+      "id": "p_h2",
+      "name": "Multimodal Sensing",
+      "level": 2,
+      "parent": "p_hw",
+      "branch": "hardware"
+    },
+    {
+      "id": "p_h3",
+      "name": "Durability",
+      "level": 2,
+      "parent": "p_hw",
+      "branch": "hardware"
+    }
+  ],
+  "method_tree": [
+    {
+      "id": "m_dp",
+      "name": "Diffusion Policy",
+      "level": 0,
+      "parent": null,
+      "approach": "diffusion"
+    },
+    {
+      "id": "m_dp1",
+      "name": "3D Diffusion Policy (DP3)",
+      "level": 1,
+      "parent": "m_dp",
+      "approach": "diffusion"
+    },
+    {
+      "id": "m_dp2",
+      "name": "Tactile-conditioned Diffusion",
+      "level": 1,
+      "parent": "m_dp",
+      "approach": "diffusion"
+    },
+    {
+      "id": "m_dp3",
+      "name": "Reactive Diffusion (slow-fast)",
+      "level": 1,
+      "parent": "m_dp",
+      "approach": "diffusion"
+    },
+    {
+      "id": "m_ssl",
+      "name": "Self-supervised Pre-training",
+      "level": 0,
+      "parent": null,
+      "approach": "contrastive"
+    },
+    {
+      "id": "m_ssl1",
+      "name": "MAE (Masked Autoencoder)",
+      "level": 1,
+      "parent": "m_ssl",
+      "approach": "mae"
+    },
+    {
+      "id": "m_ssl2",
+      "name": "Tactile-Visual Contrastive",
+      "level": 1,
+      "parent": "m_ssl",
+      "approach": "contrastive"
+    },
+    {
+      "id": "m_ssl3",
+      "name": "Cross-modal Prediction",
+      "level": 1,
+      "parent": "m_ssl",
+      "approach": "contrastive"
+    },
+    {
+      "id": "m_vla",
+      "name": "Vision-Language-Action Models",
+      "level": 0,
+      "parent": null,
+      "approach": "transformer"
+    },
+    {
+      "id": "m_vla1",
+      "name": "Tactile-VLA",
+      "level": 1,
+      "parent": "m_vla",
+      "approach": "transformer"
+    },
+    {
+      "id": "m_vla2",
+      "name": "ForceVLA",
+      "level": 1,
+      "parent": "m_vla",
+      "approach": "transformer"
+    },
+    {
+      "id": "m_vla3",
+      "name": "OmniVTLA",
+      "level": 1,
+      "parent": "m_vla",
+      "approach": "transformer"
+    },
+    {
+      "id": "m_kd",
+      "name": "Knowledge Distillation",
+      "level": 0,
+      "parent": null,
+      "approach": "other"
+    },
+    {
+      "id": "m_kd1",
+      "name": "Privileged Distillation (PTLD)",
+      "level": 1,
+      "parent": "m_kd",
+      "approach": "other"
+    },
+    {
+      "id": "m_kd2",
+      "name": "Tactile→Visual Distillation (VITaL)",
+      "level": 1,
+      "parent": "m_kd",
+      "approach": "other"
+    },
+    {
+      "id": "m_rl",
+      "name": "Reinforcement Learning",
+      "level": 0,
+      "parent": null,
+      "approach": "rl"
+    },
+    {
+      "id": "m_rl1",
+      "name": "Tactile Reward Shaping",
+      "level": 1,
+      "parent": "m_rl",
+      "approach": "rl"
+    },
+    {
+      "id": "m_rl2",
+      "name": "Safe RL for Assembly",
+      "level": 1,
+      "parent": "m_rl",
+      "approach": "rl"
+    },
+    {
+      "id": "m_rep",
+      "name": "Tactile Representation Learning",
+      "level": 0,
+      "parent": null,
+      "approach": "mae"
+    },
+    {
+      "id": "m_rep1",
+      "name": "Sparsh (self-supervised touch)",
+      "level": 1,
+      "parent": "m_rep",
+      "approach": "mae"
+    },
+    {
+      "id": "m_rep2",
+      "name": "AnyTouch (multi-sensor)",
+      "level": 1,
+      "parent": "m_rep",
+      "approach": "mae"
+    },
+    {
+      "id": "m_rep3",
+      "name": "T3 (multi-task multi-sensor)",
+      "level": 1,
+      "parent": "m_rep",
+      "approach": "other"
+    }
+  ],
+  "papers": [
+    {
+      "id": "2503.08548",
+      "title": "TLA: Tactile-Language-Action Cross-Modal Perception for Contact-Rich Manipulation_2503.08548",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "3d",
+        "transformer",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2410.24090",
+      "title": "Sparsh: Self-supervised Touch Representations for Robotic Manipulation_2410.24090",
+      "year": 2024,
+      "tags": [
+        "tactile",
+        "vision",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2410.24091",
+        "2502.12191",
+        "2510.14647"
+      ]
+    },
+    {
+      "id": "2004.00136",
+      "title": "📄 Sim-to-Real Transfer for Optical Tactile Sensing",
+      "year": 2020,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2410.24090",
+        "2303.12076",
+        "2603.04531",
+        "2403.11898"
+      ]
+    },
+    {
+      "id": "2410.10803",
+      "title": "iDP3: Generalizable 3D Diffusion Policies_2410.10803",
+      "year": 2024,
+      "tags": [
+        "vision",
+        "diffusion",
+        "3d",
+        "rl",
+        "imitation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_pl4",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2504.01301",
+      "title": "Bi-LAT_2504.01301",
+      "year": 2025,
+      "tags": [
+        "vision",
+        "transformer",
+        "manipulation",
+        "multimodal"
+      ],
+      "problems": [
+        "p_fusion"
+      ],
+      "methods": [],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2509.18676",
+      "title": "3D Flow Diffusion Policy_2509.18676",
+      "year": 2025,
+      "tags": [
+        "vision",
+        "diffusion",
+        "3d",
+        "sim2real",
+        "rl",
+        "imitation",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2603.04531",
+      "title": "📄 PTLD: Sim-to-Real Privileged Tactile Latent Distillation for Dexterous Manipulation",
+      "year": 2026,
+      "tags": [
+        "tactile",
+        "vision",
+        "dexterous",
+        "sim2real",
+        "transformer",
+        "rl",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2511.05858",
+      "title": "ViTaMIn-B: A Reliable and Efficient Visuo-Tactile Bimanual Manipulation Interface",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "imitation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2002.03236",
+      "title": "📄 Tactile Dexterity: Manipulation Primitives with Tactile Feedback",
+      "year": 2020,
+      "tags": [
+        "tactile",
+        "vision",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2509.17812",
+        "2503.17501"
+      ]
+    },
+    {
+      "id": "2507.22424",
+      "title": "Spec-VLA_2507.22424",
+      "year": 2025,
+      "tags": [
+        "vla"
+      ],
+      "problems": [],
+      "methods": [
+        "m_vla"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2412.04987",
+      "title": "FlowPolicy_2412.04987",
+      "year": 2024,
+      "tags": [
+        "diffusion",
+        "3d",
+        "rl",
+        "representation"
+      ],
+      "problems": [
+        "p_pl4",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "1809.05551",
+      "title": "📄 Non-Matrix Tactile Sensors: How Can Be Exploited Their Local Connectivity For Predicting Grasp Stability?",
+      "year": 2018,
+      "tags": [
+        "tactile",
+        "vision",
+        "dexterous",
+        "sim2real",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2409.07343",
+      "title": "PointFlowMatch_2409.07343",
+      "year": 2024,
+      "tags": [
+        "diffusion",
+        "3d",
+        "rl",
+        "imitation",
+        "multimodal"
+      ],
+      "problems": [
+        "p_pl4",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2501.15830",
+      "title": "SpatialVLA_2501.15830",
+      "year": 2025,
+      "tags": [
+        "vision",
+        "diffusion",
+        "3d",
+        "sim2real",
+        "foundation",
+        "vla",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_ssl",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2503.07511",
+        "2507.09160"
+      ]
+    },
+    {
+      "id": "2406.01586",
+      "title": "ManiCM_Real-time_3D_Diffusion_Policy_via_Consistency_Model_2406.01586",
+      "year": 2024,
+      "tags": [
+        "diffusion",
+        "3d",
+        "rl",
+        "imitation",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2410.24091",
+      "title": "3D-ViTac: Learning Multi-Modal Manipulation Policies from 3D Point Clouds and Tactile Images_2410.24091",
+      "year": 2024,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "transformer",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_pl4",
+        "p_root",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2502.12191",
+        "2504.19341"
+      ]
+    },
+    {
+      "id": "2008.05404",
+      "title": "📄 GelTip: A Finger-shaped Optical Tactile Sensor for Robotic Manipulation",
+      "year": 2020,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [],
+      "cites": [],
+      "cited_by": [
+        "2504.19341"
+      ]
+    },
+    {
+      "id": "2509.17684",
+      "title": "DINOv3-Diffusion Policy: Self-Supervised Large Visual Model for Visuomotor Diffusion Policy Learning",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "sim2real",
+        "transformer",
+        "foundation",
+        "vla",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_ssl",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2305.03051",
+      "title": "📄 Controllable Visual-Tactile Synthesis",
+      "year": 2023,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "3d",
+        "imitation",
+        "foundation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_pl4",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2512.22983",
+      "title": "Embodied Robot Manipulation in the Era of Foundation Models: Planning and Learning Perspectives_2512.22983",
+      "year": 2025,
+      "tags": [
+        "vision",
+        "diffusion",
+        "3d",
+        "sim2real",
+        "rl",
+        "imitation",
+        "foundation",
+        "vla",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp",
+        "m_ssl",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2510.13324",
+      "title": "Tactile-Conditioned Diffusion Policy for Dexterous Manipulation_2510.13324",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "dexterous",
+        "imitation",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_pl4",
+        "p_root",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2411.12503",
+      "title": "📄 ManiSkill-ViTac 2025: Challenge on Manipulation Skill Learning With Vision and Tactile Sensing",
+      "year": 2024,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2502.17432",
+      "title": "FACTR_2502.17432",
+      "year": 2025,
+      "tags": [
+        "vision",
+        "transformer",
+        "imitation",
+        "manipulation",
+        "sensor"
+      ],
+      "problems": [
+        "p_hw"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2502.11161",
+      "title": "Best-Feature-Aware Fusion for Multi-View Fine-grained Manipulation",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "transformer",
+        "imitation",
+        "vla",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2601.01675",
+      "title": "VisuoTactile 6D Pose Estimation of an In-Hand Object using Vision and Tactile Sensor Data",
+      "year": 2026,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2306.05902",
+      "title": "📄 Augmenting Off-the-Shelf Grippers with Tactile Sensing",
+      "year": 2023,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "rl",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2512.10946",
+      "title": "ImplicitRDP: Force-Reactive Policy for Contact-Rich Manipulation_2512.10946",
+      "year": 2025,
+      "tags": [
+        "vision",
+        "diffusion",
+        "transformer",
+        "imitation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_pl4",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2510.10903",
+      "title": "Towards a Unified Understanding of Robot Manipulation: A Comprehensive Survey_2510.10903",
+      "year": 2025,
+      "tags": [
+        "diffusion",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "imitation",
+        "foundation",
+        "vla",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_root",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp",
+        "m_ssl",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2503.02881",
+      "title": "Reactive Diffusion Policy_2503.02881",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "diffusion",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2504.19341",
+      "title": "📄 PolyTouch: A Robust Multi-Modal Tactile Sensor for Contact-rich Manipulation Using Tactile-Diffusion Policies",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "transformer",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_pl4",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp",
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2409.11047",
+      "title": "TacDiffusion_2409.11047",
+      "year": 2024,
+      "tags": [
+        "tactile",
+        "diffusion",
+        "imitation",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_pl4",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2409.00588",
+      "title": "Diffusion Policy Policy Optimization_2409.00588",
+      "year": 2024,
+      "tags": [
+        "diffusion",
+        "sim2real",
+        "rl",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "multimodal"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp",
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2503.02881"
+      ]
+    },
+    {
+      "id": "2409.09276",
+      "title": "📄 Visuo-Tactile Zero-Shot Object Recognition with Vision-Language Model",
+      "year": 2024,
+      "tags": [
+        "tactile",
+        "vision",
+        "sim2real",
+        "rl",
+        "foundation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2503.23835",
+      "title": "📄 Disambiguate Gripper State in Grasp-Based Tasks: Pseudo-Tactile as Feedback Enables Pure Simulation Learning",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "transformer",
+        "imitation",
+        "foundation",
+        "vla",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_pl4",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp",
+        "m_ssl",
+        "m_vla"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2303.12076",
+      "title": "📄 Dexterity from Touch: Self-Supervised Pre-Training of Tactile Representations with Robotic Play",
+      "year": 2023,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "transformer",
+        "rl",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2410.24090",
+        "2410.24091",
+        "2403.11898",
+        "2404.15709",
+        "2509.17812"
+      ]
+    },
+    {
+      "id": "1709.02924",
+      "title": "📄 Robust Object Manipulation for Tactile-based Blind Grasping",
+      "year": 2017,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2301.06698",
+      "title": "📄 Tactile Tool Manipulation",
+      "year": 2023,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "rl",
+        "manipulation",
+        "sensor"
+      ],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_hw"
+      ],
+      "methods": [
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2510.14647",
+      "title": "Spatially anchored Tactile Awareness for Robust Dexterous Manipulation_2510.14647",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "imitation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2510.13324"
+      ]
+    },
+    {
+      "id": "2407.07885",
+      "title": "📄 Learning In-Hand Translation Using Tactile Skin With Shear and Normal Force Sensing",
+      "year": 2024,
+      "tags": [
+        "tactile",
+        "vision",
+        "dexterous",
+        "sim2real",
+        "transformer",
+        "rl",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2508.08706",
+      "title": "OmniVTLA: Encoding Visuo-Tactile-Language-Action for Dexterous Manipulation_2508.08706",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "dexterous",
+        "foundation",
+        "vla",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_pl4",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_ssl",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2507.09160",
+      "title": "Tactile-VLA: Integrating Tactile Sensing with VLA Models_2507.09160",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "sim2real",
+        "transformer",
+        "foundation",
+        "vla",
+        "manipulation",
+        "sensor",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_ssl",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2503.08548",
+        "2505.22159",
+        "2508.08706"
+      ]
+    },
+    {
+      "id": "2403.11898",
+      "title": "📄 VITaL Pretraining: Visuo-Tactile Pretraining for Tactile and Non-Tactile Manipulation Policies",
+      "year": 2024,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "dexterous",
+        "sim2real",
+        "transformer",
+        "rl",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_pl4",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2603.04531"
+      ]
+    },
+    {
+      "id": "2403.03954",
+      "title": "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations_2403.03954",
+      "year": 2024,
+      "tags": [
+        "vision",
+        "diffusion",
+        "3d",
+        "sim2real",
+        "transformer",
+        "rl",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2410.10803",
+        "2406.01586",
+        "2412.04987",
+        "2409.07343",
+        "2503.02881",
+        "2510.13324"
+      ]
+    },
+    {
+      "id": "2409.14411",
+      "title": "Scaling_Diffusion_Policy_in_Transformer_to_1_Billion_Parameters_2409.14411",
+      "year": 2024,
+      "tags": [
+        "diffusion",
+        "sim2real",
+        "transformer",
+        "rl",
+        "multimodal"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2308.05386",
+      "title": "📄 A Novel Tactile Palm for Robotic Object Manipulation",
+      "year": 2023,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2103.00410",
+      "title": "📄 Sim-to-Real Transfer for Robotic Manipulation with Tactile Sensory",
+      "year": 2021,
+      "tags": [
+        "tactile",
+        "vision",
+        "sim2real",
+        "rl",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2503.17501",
+      "title": "📄 Shear-based Grasp Control for Multi-fingered Underactuated Tactile Robotic Hands",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "sensor"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_dp",
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2509.17812",
+      "title": "📄 Tac2Motion: Contact-Aware Reinforcement Learning with Tactile Feedback for Robotic Hand Manipulation",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "imitation",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_root",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_dp",
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2502.12191",
+      "title": "AnyTouch: Universal Tactile Representation with Multi-sensory Alignment_2502.12191",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2410.18647",
+      "title": "Data Scaling Laws in Imitation Learning for Robotic Manipulation_2410.18647",
+      "year": 2024,
+      "tags": [
+        "diffusion",
+        "sim2real",
+        "transformer",
+        "rl",
+        "imitation",
+        "manipulation",
+        "multimodal"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2404.15709",
+      "title": "ViViDex_2404.15709",
+      "year": 2024,
+      "tags": [
+        "vision",
+        "3d",
+        "dexterous",
+        "sim2real",
+        "rl",
+        "manipulation",
+        "representation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_root",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2505.18361",
+      "title": "Task-Optimized ConvRNN for Visuo-Tactile Robotic Manipulation_2505.18361",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "transformer",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_pl4",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2403.16764",
+      "title": "📄 Low-Cost Teleoperation with Haptic Feedback through Vision-based Tactile Sensors for Rigid and Soft Object Manipulation",
+      "year": 2024,
+      "tags": [
+        "tactile",
+        "vision",
+        "dexterous",
+        "manipulation",
+        "sensor"
+      ],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_hw"
+      ],
+      "methods": [],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2505.16062",
+      "title": "📄 WaveTouch: Active Tactile Sensing Using Vibro-Feedback for Classification of Variable Stiffness and Infill Density Objects",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "rl",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2309.10886",
+      "title": "📄 GelSight Svelte Hand: A Three-finger, Two-DoF, Tactile-rich, Low-cost Robot Hand for Dexterous Manipulation",
+      "year": 2023,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "dexterous",
+        "rl",
+        "imitation",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_rl",
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2512.01383",
+      "title": "PointNet4D: A Lightweight 4D Point Cloud Video Backbone for Online and Offline Perception in Robotic Applications_2512.01383",
+      "year": 2025,
+      "tags": [
+        "diffusion",
+        "3d",
+        "sim2real",
+        "transformer",
+        "rl",
+        "foundation",
+        "manipulation",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2503.14734",
+      "title": "GR00T_N1_2503.14734",
+      "year": 2025,
+      "tags": [
+        "sim2real",
+        "foundation",
+        "manipulation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_f3"
+      ],
+      "methods": [
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2507.09160",
+        "2503.20020"
+      ]
+    },
+    {
+      "id": "2503.07511",
+      "title": "PointVLA_2503.07511",
+      "year": 2025,
+      "tags": [
+        "vision",
+        "diffusion",
+        "3d",
+        "sim2real",
+        "foundation",
+        "vla",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_ssl",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2508.08706"
+      ]
+    },
+    {
+      "id": "2305.04660",
+      "title": "📄 Rotational Slippage Prediction from Segmentation of Tactile Images",
+      "year": 2023,
+      "tags": [
+        "tactile",
+        "vision",
+        "3d",
+        "sim2real",
+        "transformer",
+        "rl",
+        "foundation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": [
+        "2503.23835"
+      ]
+    },
+    {
+      "id": "2505.07455",
+      "title": "GelFusion: Enhancing Robotic Manipulation under Visual Constraints via Visuotactile Fusion",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "sim2real",
+        "transformer",
+        "imitation",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2505.22159",
+      "title": "ForceVLA_2505.22159",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "foundation",
+        "vla",
+        "manipulation",
+        "sensor",
+        "multimodal",
+        "representation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_fusion",
+        "p_hw",
+        "p_f3"
+      ],
+      "methods": [
+        "m_ssl",
+        "m_vla",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2411.03990",
+      "title": "ET-SEED_2411.03990",
+      "year": 2024,
+      "tags": [
+        "diffusion"
+      ],
+      "problems": [
+        "p_pl4"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2503.20020",
+      "title": "Gemini_Robotics_2503.20020",
+      "year": 2025,
+      "tags": [
+        "3d",
+        "dexterous",
+        "rl",
+        "vla",
+        "manipulation",
+        "multimodal"
+      ],
+      "problems": [
+        "p_root",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_rl",
+        "m_vla"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2502.08449",
+      "title": "CordViP_2502.08449",
+      "year": 2025,
+      "tags": [
+        "diffusion",
+        "3d",
+        "dexterous",
+        "foundation",
+        "manipulation",
+        "representation"
+      ],
+      "problems": [
+        "p_pl4",
+        "p_root",
+        "p_f3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_ssl",
+        "m_rep"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "2511.05855",
+      "title": "Gentle Manipulation Policy Learning via Demonstrations from VLM Planned Atomic Skills",
+      "year": 2025,
+      "tags": [
+        "tactile",
+        "vision",
+        "diffusion",
+        "3d",
+        "sim2real",
+        "rl",
+        "imitation",
+        "manipulation",
+        "sensor",
+        "multimodal"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim",
+        "p_pl4",
+        "p_fusion",
+        "p_hw"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rl",
+        "m_dp"
+      ],
+      "cites": [],
+      "cited_by": []
+    },
+    {
+      "id": "1409.4972",
+      "title": "Inferring Object Properties with a Tactile Sensing Array Given Varying Joint Stiffness and Velocity",
+      "year": 2014,
+      "venue": "International Journal of Humanoid Robotics",
+      "tags": [
+        "tactile",
+        "manipulation",
+        "representation",
+        "rl"
+      ],
+      "problems": [
+        "p_perception",
+        "p_p2"
+      ],
+      "methods": [
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": [],
+      "key_insight": "LSTMs and HMMs generalize across varying robot motions; multi-feature tactile sensing (force + area + motion) outperforms single features",
+      "innovation_level": "foundational",
+      "limitations": [
+        "Simple reaching motion only",
+        "Limited object categories"
+      ]
+    },
+    {
+      "id": "2003.13165",
+      "title": "In-Hand Object-Dynamics Inference using Tactile Fingertips",
+      "year": 2020,
+      "venue": "IEEE Transactions on Robotics (T-RO)",
+      "tags": [
+        "tactile",
+        "dexterous",
+        "manipulation",
+        "sensor"
+      ],
+      "problems": [
+        "p_perception",
+        "p_p2",
+        "p_hw"
+      ],
+      "methods": [
+        "m_rl"
+      ],
+      "cites": [],
+      "cited_by": [],
+      "key_insight": "Factor graph fusing multi-finger tactile data enables friction and inertial parameter estimation without torque sensing",
+      "innovation_level": "significant",
+      "limitations": [
+        "Low mass objects only",
+        "Lab environment"
+      ]
+    },
+    {
+      "id": "2103.13460",
+      "title": "Under Pressure: Learning to Detect Slip with Barometric Tactile Sensors",
+      "year": 2021,
+      "venue": "IROS'21 RoboTac Workshop",
+      "tags": [
+        "tactile",
+        "sensor",
+        "manipulation"
+      ],
+      "problems": [
+        "p_p3",
+        "p_h1"
+      ],
+      "methods": [
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": [],
+      "key_insight": "Barometric tactile sensors (low-res but ultra-durable/cheap) achieve 91% slip detection accuracy with learning-based methods",
+      "innovation_level": "significant",
+      "limitations": [
+        "Low resolution sensor",
+        "Limited to slip detection"
+      ]
+    },
+    {
+      "id": "2304.00736",
+      "title": "TacGNN: Learning Tactile-based In-hand Manipulation with a Blind Robot",
+      "year": 2023,
+      "venue": "IEEE Robotics and Automation Letters (RAL)",
+      "tags": [
+        "tactile",
+        "dexterous",
+        "rl",
+        "manipulation",
+        "gnn"
+      ],
+      "problems": [
+        "p_perception",
+        "p_policy",
+        "p_pl3"
+      ],
+      "methods": [
+        "m_rl",
+        "m_rl1"
+      ],
+      "cites": [],
+      "cited_by": [],
+      "key_insight": "Graph neural network processes tactile signals for blind in-hand manipulation; Baoding ball task with 0.096cm RMSE, zero-shot sim-to-real",
+      "innovation_level": "significant",
+      "limitations": [
+        "Single task (Baoding ball)",
+        "Specific hand hardware"
+      ]
+    },
+    {
+      "id": "2312.09863",
+      "title": "Proprioceptive State Estimation for Amphibious Tactile Sensing",
+      "year": 2023,
+      "venue": "IEEE Transactions on Robotics",
+      "tags": [
+        "tactile",
+        "sensor",
+        "vision",
+        "manipulation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_p2",
+        "p_hw",
+        "p_h1"
+      ],
+      "methods": [
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": [],
+      "key_insight": "Vision-based proprioception in soft robotic finger achieves 1.96mm deformation accuracy; works in both terrestrial and aquatic environments",
+      "innovation_level": "breakthrough",
+      "limitations": [
+        "Single finger only",
+        "Soft finger specific"
+      ]
+    },
+    {
+      "id": "2505.13982",
+      "title": "AdapTac: Adaptive Visuo-Tactile Fusion with Predictive Force Attention for Dexterous Manipulation",
+      "year": 2025,
+      "venue": "arXiv (Peking University)",
+      "tags": [
+        "tactile",
+        "vision",
+        "multimodal",
+        "dexterous",
+        "diffusion",
+        "imitation"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_f1",
+        "p_pl3"
+      ],
+      "methods": [
+        "m_dp",
+        "m_dp2"
+      ],
+      "cites": [
+        "2410.24091",
+        "2410.24090"
+      ],
+      "cited_by": [],
+      "key_insight": "Force-guided attention adaptively weights vision vs tactile at different manipulation stages; 93% avg success rate across 3 dexterous tasks, vision-only baseline 73%",
+      "innovation_level": "breakthrough",
+      "limitations": [
+        "Single arm type",
+        "Limited to 3 tasks"
+      ]
+    },
+    {
+      "id": "2506.14754",
+      "title": "Sparsh-X: Tactile Beyond Pixels - Multisensory Touch Representations for Robot Manipulation",
+      "year": 2025,
+      "venue": "CoRL 2025 (Oral) - Meta FAIR + UW + CMU",
+      "tags": [
+        "tactile",
+        "representation",
+        "foundation",
+        "multimodal",
+        "sensor"
+      ],
+      "problems": [
+        "p_perception",
+        "p_p1",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rep",
+        "m_rep1",
+        "m_ssl",
+        "m_ssl1"
+      ],
+      "cites": [
+        "2410.24090"
+      ],
+      "cited_by": [],
+      "key_insight": "First multisensory touch backbone across 4 modalities (image/audio/motion/pressure); 63% policy improvement, 90% robustness boost, 48% physical property accuracy gain",
+      "innovation_level": "breakthrough",
+      "limitations": [
+        "Requires Digit 360 sensor",
+        "1M sample collection cost"
+      ]
+    },
+    {
+      "id": "2505.18472",
+      "title": "ManiFeel: Benchmarking and Understanding Visuotactile Manipulation Policy Learning",
+      "year": 2025,
+      "venue": "arXiv",
+      "tags": [
+        "tactile",
+        "vision",
+        "benchmark",
+        "policy",
+        "manipulation"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_pl2"
+      ],
+      "methods": [
+        "m_ssl"
+      ],
+      "cites": [],
+      "cited_by": [],
+      "key_insight": "First reproducible benchmark for visuotactile policy learning; supervised policies struggle with limited visual input - tactile becomes critical",
+      "innovation_level": "significant",
+      "limitations": [
+        "Simulation only",
+        "Limited task diversity"
+      ]
+    },
+    {
+      "id": "2505.11420",
+      "title": "Self-supervised Perception for Tactile Skin Covered Dexterous Hands",
+      "year": 2025,
+      "venue": "arXiv - Meta FAIR",
+      "tags": [
+        "tactile",
+        "representation",
+        "foundation",
+        "dexterous"
+      ],
+      "problems": [
+        "p_perception",
+        "p_f3"
+      ],
+      "methods": [
+        "m_rep",
+        "m_ssl"
+      ],
+      "cites": [
+        "2410.24090"
+      ],
+      "cited_by": [],
+      "key_insight": "Extends Sparsh to full-hand tactile skin; self-supervised learning across entire robotic hand surface",
+      "innovation_level": "significant",
+      "limitations": [
+        "Specific hand hardware"
+      ]
+    },
+    {
+      "id": "2505.08194",
+      "title": "CLTP: Contrastive Language-Tactile Pre-training for 3D Contact Geometry Understanding",
+      "year": 2025,
+      "venue": "arXiv",
+      "tags": [
+        "tactile",
+        "language",
+        "contrastive",
+        "3d",
+        "foundation"
+      ],
+      "problems": [
+        "p_perception",
+        "p_f1",
+        "p_f3"
+      ],
+      "methods": [
+        "m_ssl",
+        "m_ssl2"
+      ],
+      "cites": [],
+      "cited_by": [],
+      "key_insight": "Contrastive learning aligns tactile signals with language descriptions; enables zero-shot tactile understanding via text prompts",
+      "innovation_level": "significant",
+      "limitations": [
+        "Limited language vocabulary",
+        "Single sensor type"
+      ]
+    }
+  ],
+  "citation_edges": [
+    {
+      "from": "2403.03954",
+      "to": "2303.04137",
+      "context": ""
+    },
+    {
+      "from": "2403.03954",
+      "to": "2210.06118",
+      "context": ""
+    },
+    {
+      "from": "2410.10803",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2410.10803",
+      "to": "2303.04137",
+      "context": ""
+    },
+    {
+      "from": "2406.01586",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2406.01586",
+      "to": "2303.04137",
+      "context": ""
+    },
+    {
+      "from": "2412.04987",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2409.07343",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2409.14411",
+      "to": "2303.04137",
+      "context": ""
+    },
+    {
+      "from": "2410.24090",
+      "to": "2303.12076",
+      "context": ""
+    },
+    {
+      "from": "2410.24090",
+      "to": "2004.00136",
+      "context": ""
+    },
+    {
+      "from": "2410.24091",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2410.24091",
+      "to": "2303.12076",
+      "context": ""
+    },
+    {
+      "from": "2502.12191",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2502.12191",
+      "to": "2410.24091",
+      "context": ""
+    },
+    {
+      "from": "2303.12076",
+      "to": "2004.00136",
+      "context": ""
+    },
+    {
+      "from": "2503.07511",
+      "to": "2501.15830",
+      "context": ""
+    },
+    {
+      "from": "2503.08548",
+      "to": "2507.09160",
+      "context": ""
+    },
+    {
+      "from": "2505.22159",
+      "to": "2507.09160",
+      "context": ""
+    },
+    {
+      "from": "2508.08706",
+      "to": "2507.09160",
+      "context": ""
+    },
+    {
+      "from": "2508.08706",
+      "to": "2503.07511",
+      "context": ""
+    },
+    {
+      "from": "2507.09160",
+      "to": "2501.15830",
+      "context": ""
+    },
+    {
+      "from": "2507.09160",
+      "to": "2503.14734",
+      "context": ""
+    },
+    {
+      "from": "2603.04531",
+      "to": "2403.11898",
+      "context": ""
+    },
+    {
+      "from": "2603.04531",
+      "to": "2004.00136",
+      "context": ""
+    },
+    {
+      "from": "2403.11898",
+      "to": "2303.12076",
+      "context": ""
+    },
+    {
+      "from": "2403.11898",
+      "to": "2004.00136",
+      "context": ""
+    },
+    {
+      "from": "2404.15709",
+      "to": "2303.12076",
+      "context": ""
+    },
+    {
+      "from": "2509.17812",
+      "to": "2303.12076",
+      "context": ""
+    },
+    {
+      "from": "2509.17812",
+      "to": "2002.03236",
+      "context": ""
+    },
+    {
+      "from": "2503.02881",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2503.02881",
+      "to": "2409.00588",
+      "context": ""
+    },
+    {
+      "from": "2510.13324",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2510.13324",
+      "to": "2510.14647",
+      "context": ""
+    },
+    {
+      "from": "2510.14647",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2503.20020",
+      "to": "2503.14734",
+      "context": ""
+    },
+    {
+      "from": "2504.19341",
+      "to": "2008.05404",
+      "context": ""
+    },
+    {
+      "from": "2504.19341",
+      "to": "2410.24091",
+      "context": ""
+    },
+    {
+      "from": "2503.17501",
+      "to": "2002.03236",
+      "context": ""
+    },
+    {
+      "from": "2503.23835",
+      "to": "2305.04660",
+      "context": ""
+    },
+    {
+      "from": "2304.00736",
+      "to": "2303.12076",
+      "context": ""
+    },
+    {
+      "from": "2409.00588",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2409.11047",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2409.11047",
+      "to": "2303.04137",
+      "context": ""
+    },
+    {
+      "from": "2410.18647",
+      "to": "2409.00588",
+      "context": ""
+    },
+    {
+      "from": "2505.07455",
+      "to": "2410.24091",
+      "context": ""
+    },
+    {
+      "from": "2505.07455",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2510.10903",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2510.10903",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2510.10903",
+      "to": "2303.12076",
+      "context": ""
+    },
+    {
+      "from": "2510.10903",
+      "to": "2409.11047",
+      "context": ""
+    },
+    {
+      "from": "2511.05855",
+      "to": "2504.19341",
+      "context": ""
+    },
+    {
+      "from": "2511.05855",
+      "to": "2410.24091",
+      "context": ""
+    },
+    {
+      "from": "2511.05858",
+      "to": "2504.19341",
+      "context": ""
+    },
+    {
+      "from": "2512.01383",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2512.10946",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2512.10946",
+      "to": "2410.10803",
+      "context": ""
+    },
+    {
+      "from": "2512.22983",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2512.22983",
+      "to": "2501.15830",
+      "context": ""
+    },
+    {
+      "from": "2601.01003",
+      "to": "2403.03954",
+      "context": ""
+    },
+    {
+      "from": "2601.01675",
+      "to": "2410.24091",
+      "context": ""
+    },
+    {
+      "from": "2601.01675",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2505.13982",
+      "to": "2410.24091",
+      "context": ""
+    },
+    {
+      "from": "2505.13982",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2506.14754",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2505.11420",
+      "to": "2410.24090",
+      "context": ""
+    },
+    {
+      "from": "2505.11420",
+      "to": "2506.14754",
+      "context": ""
+    },
+    {
+      "from": "2506.14754",
+      "to": "2303.12076",
+      "context": ""
+    },
+    {
+      "from": "2505.08194",
+      "to": "2410.24090",
+      "context": ""
+    }
+  ]
+}
