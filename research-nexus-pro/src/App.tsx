@@ -7,6 +7,7 @@ import {
   Bookmark, Undo2, Redo2, Play
 } from 'lucide-react'
 import { useAppStore } from './store/appStore'
+import { useNexusStore } from './store/nexusStore'
 import ProblemTree from './components/ProblemTree'
 import MethodTree from './components/MethodTree'
 import MethodArrowView from './components/MethodArrowView'
@@ -79,6 +80,14 @@ function App() {
   useEffect(() => {
     import('./data/real_papers.json').then((data) => {
       loadData(data.default)
+      // Also sync to nexusStore for ProblemEvolutionView, ProblemTreeView, TreeView, etc.
+      const { loadData: nexusLoad } = useNexusStore.getState()
+      nexusLoad({
+        branches: data.default.branches || [],
+        problems: data.default.problems || [],
+        methods: data.default.methods || [],
+        papers: data.default.papers || [],
+      })
     })
   }, [])
 
