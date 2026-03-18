@@ -343,3 +343,95 @@ git add -A && git commit -m "update: 描述" && git push origin main
 
 *由 Research Nexus Pro 团队维护*
 *Paper Mining = 读论文 → 提取知识 → 构建图谱 → 可视化*
+
+---
+
+## 🐛 踩过的坑 / 数据格式规范（给新 Agent 的血泪教训）
+
+### 规则 1: branch ID 必须对齐
+
+问题的 `branch` 字段必须等于 branches 数组里某个 branch 的 `id`：
+
+```json
+// ✅ 正确
+"branches": [{"id": "perception", "name": "Tactile Perception", ...}]
+"problems": [{"id": "p1", "branch": "perception", ...}]
+
+// ❌ 错误（网站不显示问题树）
+"problems": [{"id": "p1", "branch": "b_perception", ...}]  // ID不匹配
+```
+
+当前有效的 branch ID: `manipulation`, `perception`, `policy`, `sim2real`, `hardware`, `fusion`
+
+### 规则 2: Methods 必须有 targets
+
+每个 method 必须有 `targets` 数组，指向它解决的问题 ID：
+
+```json
+// ✅ 正确
+{"id": "m_dp", "name": "Diffusion Policy", "targets": ["p_contact", "p_data"]}
+
+// ❌ 错误（网站显示"0 targets"）
+{"id": "m_dp", "name": "Diffusion Policy", "targets": []}
+```
+
+### 规则 3: Problems 必须有 children
+
+父问题必须有 `children` 数组列出子问题 ID：
+
+```json
+// ✅ 正确
+{"id": "p_root", "name": "Dexterous", "children": ["p_perception", "p_policy"]}
+
+// ❌ 错误（树展不开）
+{"id": "p_root", "name": "Dexterous", "children": []}
+```
+
+### 规则 4: Papers 必须连接到 problems 和 methods
+
+每个 paper 需要 `targets`（解决的问题）和 `methods`（使用的方法）：
+
+```json
+// ✅ 正确
+{"id": "2403.03954", "targets": ["p_generalize"], "methods": ["m_dp1"], "citations": ["2303.04137"]}
+
+// ❌ 错误（论文节点没连接）
+{"id": "2403.03954", "targets": [], "methods": [], "citations": []}
+```
+
+### 规则 5: Citation edges 用 paper ID
+
+```json
+// ✅ 正确
+{"from": "2403.03954", "to": "2303.04137"}
+
+// ❌ 错误
+{"from": "paper1", "to": "paper2"}
+```
+
+### 规则 6: Website 数据加载路径
+
+网站从 `research-nexus-pro/src/data/real_papers.json` 加载数据。
+
+格式：
+```json
+{
+  "problems": [...],
+  "methods": [...],
+  "papers": [...],
+  "branches": [...],
+  "citation_edges": [...]
+}
+```
+
+### 常见 Bug 及修复
+
+| Bug | 原因 | 修复 |
+|-----|------|------|
+| 问题树只有2个节点 | branch ID 不匹配 | 确保 problem.branch = branch.id |
+| 方法树全部显示 "Untested" | 缺少 status 字段 | 添加 status: "verified\|partial\|untested" |
+| 点击论文没反应 | papers 缺少连接 | 填充 targets, methods, citations |
+| 引用网络没有线 | citation_edges 为空或 ID 不对 | 用实际 arxiv ID 构建边 |
+| 时间轴点分布奇怪 | year 字段不准确 | 从 arxiv ID 提取正确年份 |
+| 方法树展不开 | methods 缺少 children | 从 parent 字段推导 children |
+
