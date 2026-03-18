@@ -1,626 +1,310 @@
-import React, { useState, useRef, useCallback, useMemo, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  ChevronRight, ChevronDown, CheckCircle2, AlertCircle, Circle,
-  ZoomIn, ZoomOut, Maximize2, RotateCcw, Expand, Minimize,
-  MousePointer2, Hand, Search, Filter, MoreHorizontal,
-  Eye, EyeOff, Star, Bookmark, Copy, ArrowUpRight, Clock, BookOpen
-} from 'lucide-react'
+import React, { useMemo, useCallback, useState, useEffect } from 'react'
+import ReactFlow, {
+  Background, Controls, Node, Edge, useNodesState, useEdgesState,
+  FitViewOptions, Handle, Position, NodeProps
+} from 'reactflow'
+import 'reactflow/dist/style.css'
 import { useAppStore } from '../store/appStore'
 import TimeEvolutionModal from './TimeEvolutionModal'
-import PaperSidebar from './PaperSidebar'
 
-// ============ Constants ============
-const NODE_W = 240
-const NODE_H = 52
-const LEVEL_GAP = 48
-const SIBLING_GAP = 12
-const STATUS_COLORS = {
-  solved: { bg: '#22c55e', ring: '#22c55e30', text: '#22c55e', label: 'Solved' },
-  partial: { bg: '#f59e0b', ring: '#f59e0b30', text: '#f59e0b', label: 'Partial' },
-  active: { bg: '#3b82f6', ring: '#3b82f630', text: '#3b82f6', label: 'Active' },
-  unsolved: { bg: '#ef4444', ring: '#ef444430', text: '#ef4444', label: 'Unsolved' },
+const FIT_VIEW: FitViewOptions = { padding: 0.3, duration: 500 }
+
+// Status colors
+const STATUS: Record<string, { fill: string; ring: string; label: string }> = {
+  solved:   { fill: '#22c55e', ring: '#22c55e40', label: 'Solved' },
+  partial:  { fill: '#f59e0b', ring: '#f59e0b40', label: 'Partial' },
+  active:   { fill: '#3b82f6', ring: '#3b82f640', label: 'Active' },
+  unsolved: { fill: '#ef4444', ring: '#ef444440', label: 'Unsolved' },
+}
+
+// ============ Custom Tree Node Component ============
+function TreeNode({ data, selected }: NodeProps) {
+  const { label, status, depth, hasChildren, isExpanded, paperCount, methodCount } = data
+  const s = STATUS[status] || STATUS.active
+  const radius = depth === 0 ? 28 : depth === 1 ? 22 : 17
+  const fontSize = depth === 0 ? 13 : depth === 1 ? 11 : 10
+
+  return (
+    <div style={{ position: 'relative', textAlign: 'center', cursor: 'pointer' }}>
+      {/* Connection handles */}
+      <Handle type="target" position={Position.Top} style={{ opacity: 0 }} />
+      
+      {/* Outer glow for selected */}
+      {selected && (
+        <div style={{
+          position: 'absolute', top: '50%', left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: radius * 2 + 16, height: radius * 2 + 16,
+          borderRadius: '50%', border: `2px solid ${s.fill}`, opacity: 0.5,
+          animation: 'pulse 2s infinite'
+        }} />
+      )}
+
+      {/* Main circle */}
+      <div style={{
+        width: radius * 2, height: radius * 2, borderRadius: '50%',
+        background: selected ? s.ring : '#18181b',
+        border: `2px solid ${selected ? s.fill : '#3f3f46'}`,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        transition: 'all 0.2s ease',
+        boxShadow: selected ? `0 0 20px ${s.ring}` : 'none',
+      }}>
+        {/* Inner status dot */}
+        <div style={{
+          width: radius * 0.5, height: radius * 0.5, borderRadius: '50%',
+          background: s.fill, opacity: 0.8
+        }} />
+      </div>
+
+      {/* Label below circle */}
+      <div style={{
+        marginTop: 6, fontSize, fontWeight: selected ? 600 : 400,
+        color: selected ? '#e4e4e7' : '#a1a1aa',
+        maxWidth: 120, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+      }}>
+        {label}
+      </div>
+
+      {/* Expand/collapse indicator */}
+      {hasChildren && (
+        <div style={{
+          position: 'absolute', bottom: -2, left: '50%', transform: 'translateX(-50%)',
+          fontSize: 10, color: '#71717a', background: '#0a0a0a', padding: '0 4px', borderRadius: 4,
+        }}>
+          {isExpanded ? '−' : '+'}
+        </div>
+      )}
+
+      {/* Stats badge */}
+      {(paperCount > 0 || methodCount > 0) && (
+        <div style={{
+          position: 'absolute', top: -4, right: -8,
+          fontSize: 9, color: '#71717a', background: '#27272a', padding: '1px 5px', borderRadius: 8,
+        }}>
+          {paperCount > 0 ? `${paperCount}📄` : ''}{methodCount > 0 ? `${methodCount}⚡` : ''}
+        </div>
+      )}
+
+      <Handle type="source" position={Position.Bottom} style={{ opacity: 0 }} />
+    </div>
+  )
+}
+
+const nodeTypes = { treeNode: TreeNode }
+
+// ============ Layout Algorithm ============
+function layoutTree(problems: any[], expandedNodes: Set<string>) {
+  const pos = new Map<string, { x: number; y: number }>()
+  const roots = problems.filter(p => !p.parentId || p.depth === 0)
+  
+  const H_GAP = 80  // horizontal gap between siblings
+  const V_GAP = 100 // vertical gap between levels
+  
+  let currentX = 0
+  
+  function layout(id: string, depth: number): { x: number; width: number } {
+    const node = problems.find(p => p.id === id)
+    if (!node) return { x: currentX, width: 0 }
+    
+    const kids = problems.filter(p => p.parentId === id)
+    const isExpanded = expandedNodes.has(id)
+    const visibleKids = isExpanded ? kids : []
+    
+    if (visibleKids.length === 0) {
+      // Leaf node
+      const x = currentX
+      pos.set(id, { x, y: depth * V_GAP })
+      currentX += H_GAP
+      return { x, width: H_GAP }
+    }
+    
+    // Layout children first
+    const childPositions: { x: number; width: number }[] = []
+    for (const kid of visibleKids) {
+      childPositions.push(layout(kid.id, depth + 1))
+    }
+    
+    // Center parent above children
+    const firstChild = childPositions[0]
+    const lastChild = childPositions[childPositions.length - 1]
+    const centerX = (firstChild.x + lastChild.x) / 2
+    
+    pos.set(id, { x: centerX, y: depth * V_GAP })
+    
+    return { x: centerX, width: lastChild.x - firstChild.x + H_GAP }
+  }
+  
+  roots.forEach(r => layout(r.id, 0))
+  return pos
 }
 
 // ============ Main Component ============
 export default function ProblemTree() {
   const problems = useAppStore(s => s.problems)
+  const papers = useAppStore(s => s.papers)
+  const methods = useAppStore(s => s.methods)
   const expandedNodes = useAppStore(s => s.expandedNodes)
-  const selectedNode = useAppStore(s => s.selectedNode)
-  const hoveredNode = useAppStore(s => s.hoveredNode)
-  const viewConfig = useAppStore(s => s.viewConfig)
+  const { toggleExpand, expandAll, collapseAll, selectNode } = useAppStore()
   
-  const { selectNode, hoverNode, toggleExpand, expandAll, collapseAll, updateViewConfig } = useAppStore()
-  
-  // Pan & Zoom
-  const [pan, setPan] = useState({ x: 60, y: 60 })
-  const [zoom, setZoom] = useState(1)
-  const isPanning = useRef(false)
-  const panStart = useRef({ x: 0, y: 0 })
-  const containerRef = useRef<HTMLDivElement>(null)
-  
-  // Context menu
-  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; nodeId: string } | null>(null)
-  
-  // Modals
-  const [showTimeEvolution, setShowTimeEvolution] = useState<string | null>(null)
-  const [showPaperSidebar, setShowPaperSidebar] = useState<string | null>(null)
-  
-  // Search
-  const [searchQuery, setSearchQuery] = useState('')
-  const [showSearch, setShowSearch] = useState(false)
+  const [nodes, setNodes, onNodesChange] = useNodesState([])
+  const [edges, setEdges, onEdgesChange] = useEdgesState([])
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [showTimeEvo, setShowTimeEvo] = useState<string | null>(null)
+  const [key, setKey] = useState(0)
 
-  // ============ Layout Calculation ============
-  const { positions, totalSize } = useMemo(() => {
-    const pos = new Map<string, { x: number; y: number }>()
-    let maxY = 0
-    let maxX = 0
-    
-    const roots = problems.filter(p => !p.parentId || p.depth === 0)
-    if (roots.length === 0) return { positions: pos, totalSize: { w: 1000, h: 800 } }
-    
-    let currentY = 20
-    
-    const layout = (id: string, level: number): number => {
-      const node = problems.find(p => p.id === id)
-      if (!node) return currentY
-      
-      const isExpanded = expandedNodes.has(id)
-      const kids = problems.filter(p => p.parentId === id)
-      const hasKids = kids.length > 0
-      
-      const x = level * LEVEL_GAP + 20
-      const y = currentY
-      
-      pos.set(id, { x, y })
-      if (x + NODE_W > maxX) maxX = x + NODE_W
-      currentY += NODE_H + SIBLING_GAP
-      
-      if (hasKids && isExpanded) {
-        kids.forEach(kid => layout(kid.id, level + 1))
-      }
-      
-      if (y > maxY) maxY = y
-      return currentY
-    }
-    
-    roots.forEach(r => layout(r.id, 0))
-    
-    return { 
-      positions: pos, 
-      totalSize: { w: maxX + 200, h: maxY + NODE_H + 200 } 
-    }
-  }, [problems, expandedNodes])
-
-  // ============ Event Handlers ============
-  const onPointerDown = useCallback((e: React.PointerEvent) => {
-    if ((e.target as HTMLElement).closest('.node-interactive')) return
-    isPanning.current = true
-    panStart.current = { x: e.clientX - pan.x, y: e.clientY - pan.y }
-    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
-  }, [pan])
-  
-  const onPointerMove = useCallback((e: React.PointerEvent) => {
-    if (!isPanning.current) return
-    setPan({ x: e.clientX - panStart.current.x, y: e.clientY - panStart.current.y })
-  }, [])
-  
-  const onPointerUp = useCallback(() => { isPanning.current = false }, [])
-  
-  const onWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault()
-    const delta = e.deltaY > 0 ? 0.92 : 1.08
-    setZoom(z => Math.max(0.15, Math.min(3, z * delta)))
-  }, [])
-  
-  const onContextMenu = useCallback((e: React.MouseEvent, nodeId: string) => {
-    e.preventDefault()
-    setContextMenu({ x: e.clientX, y: e.clientY, nodeId })
-  }, [])
-  
-  // Close context menu on click outside
+  // Build nodes and edges from data
   useEffect(() => {
-    const handler = () => setContextMenu(null)
-    window.addEventListener('click', handler)
-    return () => window.removeEventListener('click', handler)
+    if (problems.length === 0) {
+      setNodes([])
+      setEdges([])
+      return
+    }
+
+    const positions = layoutTree(problems, expandedNodes)
+
+    // Build nodes
+    const newNodes: Node[] = []
+    problems.forEach(p => {
+      const pos = positions.get(p.id)
+      if (!pos) return // Not visible (parent collapsed)
+      
+      const kids = problems.filter(pp => pp.parentId === p.id)
+      const paperCount = papers.filter(pp => pp.targets?.includes(p.id)).length
+      const methodCount = methods.filter(m => m.targets?.includes(p.id)).length
+      
+      newNodes.push({
+        id: p.id,
+        type: 'treeNode',
+        position: pos,
+        data: {
+          label: p.name || p.id,
+          status: p.status || 'active',
+          depth: p.depth || 0,
+          hasChildren: kids.length > 0,
+          isExpanded: expandedNodes.has(p.id),
+          paperCount,
+          methodCount,
+        },
+        draggable: false,
+      })
+    })
+
+    setNodes(newNodes)
+
+    // Build edges (parent → child)
+    const newEdges: Edge[] = []
+    problems.forEach(p => {
+      if (p.parentId && expandedNodes.has(p.parentId) && positions.has(p.id)) {
+        const parentStatus = problems.find(pp => pp.id === p.parentId)?.status || 'active'
+        const color = STATUS[parentStatus]?.fill || '#3f3f46'
+        newEdges.push({
+          id: `e-${p.parentId}-${p.id}`,
+          source: p.parentId,
+          target: p.id,
+          type: 'smoothstep',
+          style: { stroke: color, strokeWidth: 2, opacity: 0.5 },
+          animated: false,
+        })
+      }
+    })
+
+    setEdges(newEdges)
+    setTimeout(() => setKey(k => k + 1), 50)
+  }, [problems, papers, methods, expandedNodes, setNodes, setEdges])
+
+  // Click: expand/collapse or select
+  const onNodeClick = useCallback((_: any, node: Node) => {
+    const problem = problems.find(p => p.id === node.id)
+    if (!problem) return
+    
+    const kids = problems.filter(p => p.parentId === node.id)
+    if (kids.length > 0) {
+      toggleExpand(node.id)
+    }
+    setSelectedId(prev => prev === node.id ? null : node.id)
+    selectNode('problem', selectedId === node.id ? null : node.id)
+  }, [problems, toggleExpand, selectNode, selectedId])
+
+  // Double-click: open time evolution
+  const onNodeDoubleClick = useCallback((_: any, node: Node) => {
+    setShowTimeEvo(node.id)
   }, [])
 
-  // ============ Render Node ============
-  const renderNode = (id: string): JSX.Element | null => {
-    const node = problems.find(p => p.id === id)
-    const pos = positions.get(id)
-    if (!node || !pos) return null
-    
-    const isExpanded = expandedNodes.has(id)
-    const hasKids = node.children.length > 0
-    const isSelected = selectedNode?.id === id
-    const isHov = hoveredNode?.id === id
-    const status = STATUS_COLORS[node.status] || STATUS_COLORS.active
-    const isHighlighted = searchQuery && node.name.toLowerCase().includes(searchQuery.toLowerCase())
-    
-    return (
-      <g key={id}>
-        {/* Connection to parent */}
-        {node.parentId && positions.has(node.parentId) && (() => {
-          const pp = positions.get(node.parentId!)!
-          const parent = problems.find(p => p.id === node.parentId)
-          const pColor = parent ? (STATUS_COLORS[parent.status]?.bg || '#3f3f46') : '#3f3f46'
-          return (
-            <path
-              d={`M ${pp.x + NODE_W - 10} ${pp.y + NODE_H / 2} 
-                  C ${pp.x + NODE_W + 30} ${pp.y + NODE_H / 2}, 
-                    ${pos.x - 30} ${pos.y + NODE_H / 2}, 
-                    ${pos.x} ${pos.y + NODE_H / 2}`}
-              fill="none"
-              stroke={pColor}
-              strokeWidth={isHov || isSelected ? 2.5 : 1.5}
-              opacity={isHov || isSelected ? 0.7 : 0.2}
-              style={{ transition: 'all 0.2s ease' }}
-            />
-          )
-        })()}
-        
-        {/* Node card */}
-        <g
-          className="node-interactive"
-          style={{ cursor: 'pointer' }}
-          onClick={() => selectNode('problem', isSelected ? null : id)}
-          onDoubleClick={() => setShowTimeEvolution(id)}
-          onContextMenu={(e) => onContextMenu(e, id)}
-          onMouseEnter={() => hoverNode('problem', id)}
-          onMouseLeave={() => hoverNode('problem', null)}
-        >
-          {/* Selection glow */}
-          {(isSelected || isHighlighted) && (
-            <rect
-              x={pos.x - 4} y={pos.y - 4}
-              width={NODE_W + 8} height={NODE_H + 8}
-              rx={14} fill="none"
-              stroke={isHighlighted ? '#f59e0b' : '#6366f1'}
-              strokeWidth={2}
-              opacity={0.6}
-            />
-          )}
-          
-          {/* Hover glow */}
-          {isHov && !isSelected && (
-            <rect
-              x={pos.x - 2} y={pos.y - 2}
-              width={NODE_W + 4} height={NODE_H + 4}
-              rx={12} fill="none"
-              stroke="#3f3f46"
-              strokeWidth={1.5}
-            />
-          )}
-          
-          {/* Card background */}
-          <rect
-            x={pos.x} y={pos.y}
-            width={NODE_W} height={NODE_H}
-            rx={10}
-            fill={isSelected ? '#1e1b4b' : isHov ? '#1c1917' : '#0a0a0a'}
-            stroke={isSelected ? '#6366f1' : '#1f1f23'}
-            strokeWidth={isSelected ? 1.5 : 1}
-            style={{ transition: 'all 0.15s ease' }}
-          />
-          
-          {/* Status bar */}
-          <rect x={pos.x} y={pos.y} width={4} height={NODE_H} rx={2} fill={status.bg} />
-          
-          {/* Expand/collapse button */}
-          {hasKids && (
-            <g
-              className="node-interactive"
-              onClick={(e) => { e.stopPropagation(); toggleExpand(id) }}
-              style={{ cursor: 'pointer' }}
-            >
-              <rect x={pos.x + 8} y={pos.y + 14} width={24} height={24} rx={6}
-                fill="#18181b" stroke="#27272a" />
-              {isExpanded
-                ? <ChevronDown size={14} x={pos.x + 13} y={pos.y + 19} style={{ color: '#71717a', pointerEvents: 'none' }} />
-                : <ChevronRight size={14} x={pos.x + 13} y={pos.y + 19} style={{ color: '#71717a', pointerEvents: 'none' }} />
-              }
-            </g>
-          )}
-          
-          {/* Leaf dot */}
-          {!hasKids && (
-            <circle cx={pos.x + 20} cy={pos.y + NODE_H / 2} r={6} fill={status.bg} opacity={0.8} />
-          )}
-          
-          {/* Node name */}
-          <text
-            x={pos.x + (hasKids ? 40 : 36)}
-            y={pos.y + 22}
-            fill={isSelected ? '#e4e4e7' : '#a1a1aa'}
-            fontSize={12}
-            fontWeight={isSelected ? 600 : 400}
-          >
-            {node.name.length > 24 ? node.name.slice(0, 22) + '…' : node.name}
-          </text>
-          
-          {/* Year + status */}
-          <text x={pos.x + (hasKids ? 40 : 36)} y={pos.y + 40} fill="#52525b" fontSize={10} fontFamily="monospace">
-            {node.year} · {STATUS_COLORS[node.status]?.label}
-          </text>
-          
-          {/* Value score badge */}
-          <rect x={pos.x + NODE_W - 50} y={pos.y + 12} width={38} height={28} rx={7}
-            fill={`${status.bg}15`} />
-          <text x={pos.x + NODE_W - 31} y={pos.y + 30} textAnchor="middle"
-            fill={status.text} fontSize={11} fontWeight={700}>
-            {node.valueScore}
-          </text>
-        </g>
-        
-        {/* Children */}
-        {isExpanded && hasKids && problems
-          .filter(p => p.parentId === id)
-          .map(kid => renderNode(kid.id))
-        }
-      </g>
-    )
+  // Right-click: context menu
+  const onNodeContextMenu = useCallback((e: any, node: Node) => {
+    e.preventDefault()
+    // Could add context menu here
+  }, [])
+
+  const onPaneClick = useCallback(() => {
+    setSelectedId(null)
+    selectNode('problem', null)
+  }, [selectNode])
+
+  if (problems.length === 0) {
+    return <div className="h-full w-full flex items-center justify-center text-zinc-500">No data</div>
   }
 
-  const roots = problems.filter(p => !p.parentId || p.depth === 0)
-
   return (
-    <div className="h-full w-full flex bg-zinc-950 relative">
-      {/* Main canvas */}
-      <div className="flex-1 flex flex-col">
-        {/* Toolbar */}
-        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm">
-          <div className="flex items-center gap-1.5 mr-3">
-            <button onClick={() => setZoom(z => Math.min(3, z * 1.15))}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-              <ZoomIn size={15} className="text-zinc-400" />
-            </button>
-            <button onClick={() => setZoom(z => Math.max(0.15, z * 0.85))}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-              <ZoomOut size={15} className="text-zinc-400" />
-            </button>
-            <button onClick={() => { setZoom(1); setPan({ x: 60, y: 60 }) }}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-              <Maximize2 size={15} className="text-zinc-400" />
-            </button>
-            <span className="text-[11px] text-zinc-500 ml-1 w-12">{Math.round(zoom * 100)}%</span>
-          </div>
-          
-          <div className="w-px h-5 bg-zinc-800" />
-          
-          <button onClick={expandAll}
-            className="px-3 py-1.5 text-xs text-zinc-400 hover:bg-zinc-800 rounded-lg transition-colors flex items-center gap-1.5">
-            <Expand size={13} /> Expand All
-          </button>
-          <button onClick={collapseAll}
-            className="px-3 py-1.5 text-xs text-zinc-400 hover:bg-zinc-800 rounded-lg transition-colors flex items-center gap-1.5">
-            <Minimize size={13} /> Collapse
-          </button>
-          
-          <div className="w-px h-5 bg-zinc-800" />
-          
-          {/* Search */}
-          <div className="relative">
-            <button onClick={() => setShowSearch(!showSearch)}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-              <Search size={15} className="text-zinc-400" />
-            </button>
-            {showSearch && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-3 z-50">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search problems..."
-                  className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-200 placeholder-zinc-500 outline-none focus:border-indigo-500"
-                  autoFocus
-                />
-              </div>
-            )}
-          </div>
-          
-          <div className="ml-auto flex items-center gap-2">
-            <span className="text-[11px] text-zinc-500">
-              {problems.length} problems · {roots.length} roots
-            </span>
-          </div>
-        </div>
-        
-        {/* SVG Canvas */}
-        <div
-          ref={containerRef}
-          className="flex-1 overflow-hidden"
-          style={{ cursor: isPanning.current ? 'grabbing' : 'grab' }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onWheel={onWheel}
-        >
-          <svg
-            width="100%"
-            height="100%"
-            style={{
-              transform: `translate(${pan.x}px,${pan.y}px) scale(${zoom})`,
-              transformOrigin: '0 0',
-              minWidth: `${totalSize.w}px`,
-              minHeight: `${totalSize.h}px`,
-              touchAction: 'none',
-            }}
-          >
-            {/* Grid background */}
-            <defs>
-              <pattern id="grid" width={40} height={40} patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#18181b" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="10000" height="10000" x="-5000" y="-5000" fill="url(#grid)" />
-            
-            {/* Render all nodes */}
-            {roots.map(r => renderNode(r.id))}
-          </svg>
-        </div>
-      </div>
-      
-      {/* Detail panel */}
-      <AnimatePresence>
-        {selectedNode && selectedNode.type === 'problem' && !showPaperSidebar && (
-          <motion.div
-            initial={{ x: 400, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 400, opacity: 0 }}
-            transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-            className="w-[380px] border-l border-zinc-800 bg-zinc-900/60 backdrop-blur-xl overflow-y-auto shrink-0"
-          >
-            <ProblemDetailPanel 
-              nodeId={selectedNode.id} 
-              onOpenTimeEvolution={() => setShowTimeEvolution(selectedNode.id)}
-              onOpenPapers={() => setShowPaperSidebar(selectedNode.id)}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      {/* Paper Sidebar */}
-      <AnimatePresence>
-        {showPaperSidebar && (
-          <PaperSidebar
-            nodeId={showPaperSidebar}
-            nodeType="problem"
-            onClose={() => setShowPaperSidebar(null)}
-          />
-        )}
-      </AnimatePresence>
-      
-      {/* Time Evolution Modal */}
-      <AnimatePresence>
-        {showTimeEvolution && (
-          <TimeEvolutionModal
-            nodeId={showTimeEvolution}
-            nodeType="problem"
-            onClose={() => setShowTimeEvolution(null)}
-          />
-        )}
-      </AnimatePresence>
-      
-      {/* Context menu */}
-      <AnimatePresence>
-        {contextMenu && (
-          <ContextMenu
-            x={contextMenu.x}
-            y={contextMenu.y}
-            nodeId={contextMenu.nodeId}
-            onClose={() => setContextMenu(null)}
-            onOpenTimeEvolution={() => { setShowTimeEvolution(contextMenu.nodeId); setContextMenu(null) }}
-            onOpenPapers={() => { setShowPaperSidebar(contextMenu.nodeId); setContextMenu(null) }}
-          />
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
-
-// ============ Detail Panel ============
-function ProblemDetailPanel({ nodeId, onOpenTimeEvolution, onOpenPapers }: { 
-  nodeId: string
-  onOpenTimeEvolution: () => void
-  onOpenPapers: () => void
-}) {
-  const { getProblemById, getProblemChildren, getProblemMethods, selectNode } = useAppStore()
-  const node = getProblemById(nodeId)
-  if (!node) return null
-  
-  const children = getProblemChildren(nodeId)
-  const methods = getProblemMethods(nodeId)
-  const status = STATUS_COLORS[node.status] || STATUS_COLORS.active
-  
-  return (
-    <div className="p-5">
+    <div className="h-full w-full relative">
       {/* Header */}
-      <div className="flex items-start justify-between mb-5">
-        <div className="flex-1">
-          <h3 className="text-base font-bold text-white leading-tight">{node.name}</h3>
-          <p className="text-xs text-zinc-500 mt-1 font-mono">Est. {node.year} · Depth {node.depth}</p>
+      <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-2 bg-black/60 backdrop-blur-sm">
+        <div className="flex items-center gap-3">
+          <h2 className="text-sm font-medium text-zinc-200">Problem Tree</h2>
+          <span className="text-xs text-zinc-500">
+            {problems.length} problems · {expandedNodes.size} expanded
+          </span>
         </div>
-        <button onClick={() => selectNode('problem', null)}
-          className="text-zinc-500 hover:text-zinc-300 text-lg leading-none ml-3">✕</button>
-      </div>
-      
-      {/* Status badge */}
-      <div className="flex items-center gap-2 mb-5">
-        <span className="px-3 py-1 rounded-full text-xs font-medium"
-          style={{ background: `${status.bg}20`, color: status.text }}>
-          {status.label}
-        </span>
-        <span className="px-3 py-1 rounded-full text-xs bg-zinc-800 text-zinc-400">
-          {children.length} sub-problems
-        </span>
-        <span className="px-3 py-1 rounded-full text-xs bg-zinc-800 text-zinc-400">
-          {methods.length} methods
-        </span>
-      </div>
-      
-      {/* Action buttons */}
-      <div className="flex gap-2 mb-5">
-        <button onClick={onOpenTimeEvolution}
-          className="flex-1 px-3 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 rounded-lg text-xs text-indigo-300 flex items-center justify-center gap-2 transition-colors">
-          <Clock size={13} /> Time Evolution
-        </button>
-        <button onClick={onOpenPapers}
-          className="flex-1 px-3 py-2 bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 rounded-lg text-xs text-blue-300 flex items-center justify-center gap-2 transition-colors">
-          <BookOpen size={13} /> Papers ({node.papers.length})
-        </button>
-      </div>
-      <div className="grid grid-cols-2 gap-3 mb-5">
-        <MetricCard label="Value Score" value={node.valueScore}
-          color={node.valueScore > 70 ? '#22c55e' : node.valueScore > 40 ? '#f59e0b' : '#ef4444'} />
-        <MetricCard label="Unsolved Level" value={node.unsolvedLevel} color="#ef4444" />
-      </div>
-      
-      {/* Description */}
-      <div className="mb-5">
-        <h4 className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2">Description</h4>
-        <p className="text-sm text-zinc-300 leading-relaxed">{node.description || 'No description.'}</p>
-      </div>
-      
-      {/* Sub-problems */}
-      {children.length > 0 && (
-        <div className="mb-5">
-          <h4 className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2">
-            Sub-problems ({children.length})
-          </h4>
-          <div className="space-y-1.5">
-            {children.map(c => (
-              <div key={c.id}
-                onClick={() => selectNode('problem', c.id)}
-                className="p-2.5 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 cursor-pointer transition-all group">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full shrink-0"
-                    style={{ background: STATUS_COLORS[c.status]?.bg }} />
-                  <span className="text-sm text-zinc-200 flex-1 truncate">{c.name}</span>
-                  <span className="text-[10px] text-zinc-500 font-mono">{c.year}</span>
-                  <ArrowUpRight size={12} className="text-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      
-      {/* Methods */}
-      {methods.length > 0 && (
-        <div className="mb-5">
-          <h4 className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2">
-            Associated Methods ({methods.length})
-          </h4>
-          <div className="space-y-1.5">
-            {methods.map(m => (
-              <div key={m.id}
-                onClick={() => selectNode('method', m.id)}
-                className="p-2.5 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 cursor-pointer transition-all group">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full shrink-0"
-                    style={{ background: m.status === 'verified' ? '#3b82f6' : m.status === 'failed' ? '#6b7280' : '#f59e0b' }} />
-                  <span className="text-sm text-zinc-200 flex-1 truncate">{m.name}</span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded"
-                    style={{
-                      background: m.status === 'verified' ? '#3b82f620' : '#f59e0b20',
-                      color: m.status === 'verified' ? '#3b82f6' : '#f59e0b'
-                    }}>
-                    {m.status}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      
-      {/* Papers */}
-      {node.papers.length > 0 && (
-        <div>
-          <h4 className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2">
-            Related Papers ({node.papers.length})
-          </h4>
-          <div className="space-y-1.5">
-            {node.papers.slice(0, 5).map(pid => (
-              <div key={pid} className="p-2.5 bg-zinc-800/50 rounded-lg">
-                <p className="text-xs text-zinc-300 truncate">{pid.replace(/_/g, ' ')}</p>
-              </div>
-            ))}
-            {node.papers.length > 5 && (
-              <p className="text-xs text-zinc-500 text-center">+{node.papers.length - 5} more</p>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
-
-// ============ Context Menu ============
-function ContextMenu({ x, y, nodeId, onClose, onOpenTimeEvolution, onOpenPapers }: 
-  { x: number; y: number; nodeId: string; onClose: () => void; onOpenTimeEvolution?: () => void; onOpenPapers?: () => void }) {
-  const { toggleExpand, expandAll, collapseAll, selectNode, problems, expandedNodes } = useAppStore()
-  const node = problems.find(p => p.id === nodeId)
-  if (!node) return null
-  
-  const hasKids = node.children.length > 0
-  const isExpanded = expandedNodes.has(nodeId)
-  
-  const menuItems = [
-    { label: 'Select Node', icon: MousePointer2, action: () => selectNode('problem', nodeId) },
-    { label: 'Go to Parent', icon: ArrowUpRight, action: () => node.parentId && selectNode('problem', node.parentId), disabled: !node.parentId },
-    { divider: true },
-    { label: 'Time Evolution', icon: Clock, action: () => onOpenTimeEvolution?.() },
-    { label: 'View Papers', icon: BookOpen, action: () => onOpenPapers?.() },
-    { divider: true },
-    ...(hasKids ? [
-      { label: isExpanded ? 'Collapse' : 'Expand', icon: isExpanded ? ChevronDown : ChevronRight, action: () => toggleExpand(nodeId) },
-      { label: 'Expand All Children', icon: Expand, action: () => {/* expand all descendants */} },
-    ] : []),
-    { divider: true },
-    { label: 'Bookmark', icon: Bookmark, action: () => {} },
-    { label: 'Copy ID', icon: Copy, action: () => navigator.clipboard?.writeText(nodeId) },
-  ]
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.1 }}
-      className="fixed z-50 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl py-1.5 min-w-[180px]"
-      style={{ left: x, top: y }}
-      onClick={(e) => e.stopPropagation()}
-    >
-      {menuItems.map((item, i) => (
-        item.divider ? (
-          <div key={i} className="my-1.5 border-t border-zinc-800" />
-        ) : (
-          <button
-            key={i}
-            onClick={() => { item.action?.(); onClose() }}
-            disabled={item.disabled}
-            className="flex items-center gap-3 w-full px-4 py-2 text-sm text-zinc-300 hover:bg-zinc-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-          >
-            {item.icon && <item.icon size={14} className="text-zinc-500" />}
-            <span>{item.label}</span>
+        <div className="flex items-center gap-2">
+          <button onClick={expandAll}
+            className="text-xs px-2 py-1 rounded bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-zinc-700">
+            Expand All
           </button>
-        )
-      ))}
-    </motion.div>
-  )
-}
+          <button onClick={() => collapseAll()}
+            className="text-xs px-2 py-1 rounded bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-zinc-700">
+            Collapse
+          </button>
+        </div>
+      </div>
 
-// ============ Metric Card ============
-function MetricCard({ label, value, color }: { label: string; value: number; color: string }) {
-  return (
-    <div className="bg-zinc-800/50 rounded-xl p-3">
-      <div className="text-[10px] text-zinc-500 mb-1">{label}</div>
-      <div className="text-xl font-bold text-white">{value}</div>
-      <div className="w-full bg-zinc-700 rounded-full h-1 mt-2">
-        <div className="h-1 rounded-full transition-all duration-500"
-          style={{ width: `${value}%`, background: color }} />
+      <ReactFlow
+        key={key}
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onNodeClick={onNodeClick}
+        onNodeDoubleClick={onNodeDoubleClick}
+        onNodeContextMenu={onNodeContextMenu}
+        onPaneClick={onPaneClick}
+        nodeTypes={nodeTypes}
+        fitView
+        fitViewOptions={FIT_VIEW}
+        minZoom={0.05}
+        maxZoom={3}
+        proOptions={{ hideAttribution: true }}
+      >
+        <Background color="#27272a" gap={20} size={1} />
+        <Controls position="bottom-right" className="!bg-zinc-900 !border-zinc-800 !text-zinc-400" />
+      </ReactFlow>
+
+      {/* Time Evolution Modal */}
+      {showTimeEvo && (
+        <TimeEvolutionModal
+          nodeId={showTimeEvo}
+          nodeType="problem"
+          onClose={() => setShowTimeEvo(null)}
+        />
+      )}
+
+      {/* Legend */}
+      <div className="absolute bottom-4 left-4 z-10 flex gap-4 text-xs text-zinc-500">
+        {Object.entries(STATUS).map(([key, s]) => (
+          <div key={key} className="flex items-center gap-1">
+            <div className="w-3 h-3 rounded-full" style={{ background: s.fill }} />
+            {s.label}
+          </div>
+        ))}
       </div>
     </div>
   )
