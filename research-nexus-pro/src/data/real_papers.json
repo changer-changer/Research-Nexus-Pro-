@@ -4,7 +4,7 @@
       "id": "p_root",
       "name": "Dexterous Manipulation",
       "year": 2024,
-      "branch": "b_root",
+      "branch": "manipulation",
       "status": "active",
       "level": 0,
       "parent": null
@@ -13,7 +13,7 @@
       "id": "p_perception",
       "name": "Tactile Perception",
       "year": 2024,
-      "branch": "b_perception",
+      "branch": "perception",
       "status": "active",
       "level": 1,
       "parent": "p_root"
@@ -22,7 +22,7 @@
       "id": "p_fusion",
       "name": "Visuo-Tactile Fusion",
       "year": 2024,
-      "branch": "b_fusion",
+      "branch": "perception",
       "status": "active",
       "level": 1,
       "parent": "p_root"
@@ -31,7 +31,7 @@
       "id": "p_policy",
       "name": "Policy Learning",
       "year": 2024,
-      "branch": "b_policy",
+      "branch": "policy",
       "status": "active",
       "level": 1,
       "parent": "p_root"
@@ -40,7 +40,7 @@
       "id": "p_sim2real",
       "name": "Sim-to-Real Transfer",
       "year": 2024,
-      "branch": "b_sim2real",
+      "branch": "sim2real",
       "status": "active",
       "level": 1,
       "parent": "p_root"
@@ -49,7 +49,7 @@
       "id": "p_hardware",
       "name": "Sensor Hardware",
       "year": 2024,
-      "branch": "b_hardware",
+      "branch": "hardware",
       "status": "active",
       "level": 1,
       "parent": "p_root"
@@ -58,7 +58,7 @@
       "id": "p_cross_sensor",
       "name": "Cross-sensor Generalization",
       "year": 2024,
-      "branch": "b_perception",
+      "branch": "perception",
       "status": "active",
       "level": 2,
       "parent": "p_perception"
@@ -67,7 +67,7 @@
       "id": "p_force",
       "name": "Force Estimation",
       "year": 2024,
-      "branch": "b_perception",
+      "branch": "perception",
       "status": "active",
       "level": 2,
       "parent": "p_perception"
@@ -76,7 +76,7 @@
       "id": "p_slip",
       "name": "Slip Detection",
       "year": 2024,
-      "branch": "b_perception",
+      "branch": "perception",
       "status": "active",
       "level": 2,
       "parent": "p_perception"
@@ -85,7 +85,7 @@
       "id": "p_dynamic",
       "name": "Dynamic Tactile Perception",
       "year": 2024,
-      "branch": "b_perception",
+      "branch": "perception",
       "status": "active",
       "level": 2,
       "parent": "p_perception"
@@ -94,7 +94,7 @@
       "id": "p_align",
       "name": "Cross-modal Alignment",
       "year": 2024,
-      "branch": "b_fusion",
+      "branch": "perception",
       "status": "active",
       "level": 2,
       "parent": "p_fusion"
@@ -103,7 +103,7 @@
       "id": "p_temporal",
       "name": "Temporal Synchronization",
       "year": 2024,
-      "branch": "b_fusion",
+      "branch": "perception",
       "status": "active",
       "level": 2,
       "parent": "p_fusion"
@@ -112,7 +112,7 @@
       "id": "p_pretrain",
       "name": "Multimodal Pre-training",
       "year": 2024,
-      "branch": "b_fusion",
+      "branch": "perception",
       "status": "active",
       "level": 2,
       "parent": "p_fusion"
@@ -121,7 +121,7 @@
       "id": "p_data",
       "name": "Data Efficiency",
       "year": 2024,
-      "branch": "b_policy",
+      "branch": "policy",
       "status": "active",
       "level": 2,
       "parent": "p_policy"
@@ -130,7 +130,7 @@
       "id": "p_generalize",
       "name": "Cross-task Generalization",
       "year": 2024,
-      "branch": "b_policy",
+      "branch": "policy",
       "status": "active",
       "level": 2,
       "parent": "p_policy"
@@ -139,7 +139,7 @@
       "id": "p_contact",
       "name": "Contact-rich Policy",
       "year": 2024,
-      "branch": "b_policy",
+      "branch": "policy",
       "status": "active",
       "level": 2,
       "parent": "p_policy"
@@ -148,7 +148,7 @@
       "id": "p_fidelity",
       "name": "Simulation Fidelity",
       "year": 2024,
-      "branch": "b_sim2real",
+      "branch": "sim2real",
       "status": "active",
       "level": 2,
       "parent": "p_sim2real"
@@ -157,7 +157,7 @@
       "id": "p_distill",
       "name": "Privileged Knowledge Distillation",
       "year": 2024,
-      "branch": "b_sim2real",
+      "branch": "sim2real",
       "status": "active",
       "level": 2,
       "parent": "p_sim2real"
@@ -166,7 +166,7 @@
       "id": "p_cost",
       "name": "Low-cost Sensors",
       "year": 2024,
-      "branch": "b_hardware",
+      "branch": "hardware",
       "status": "active",
       "level": 2,
       "parent": "p_hardware"
@@ -175,7 +175,7 @@
       "id": "p_durability",
       "name": "Sensor Durability",
       "year": 2024,
-      "branch": "b_hardware",
+      "branch": "hardware",
       "status": "active",
       "level": 2,
       "parent": "p_hardware"
@@ -185,7 +185,10 @@
     {
       "id": "m_dp",
       "name": "Diffusion Policy",
-      "targets": [],
+      "targets": [
+        "p_contact",
+        "p_data"
+      ],
       "level": 0,
       "parent": null,
       "approach": "diffusion"
@@ -193,7 +196,10 @@
     {
       "id": "m_dp1",
       "name": "3D Diffusion Policy (DP3)",
-      "targets": [],
+      "targets": [
+        "p_generalize",
+        "p_contact"
+      ],
       "level": 1,
       "parent": "m_dp",
       "approach": "diffusion"
@@ -201,7 +207,10 @@
     {
       "id": "m_dp2",
       "name": "Tactile-conditioned Diffusion",
-      "targets": [],
+      "targets": [
+        "p_slip",
+        "p_force"
+      ],
       "level": 1,
       "parent": "m_dp",
       "approach": "diffusion"
@@ -209,7 +218,10 @@
     {
       "id": "m_dp3",
       "name": "Reactive Diffusion (slow-fast)",
-      "targets": [],
+      "targets": [
+        "p_contact",
+        "p_temporal"
+      ],
       "level": 1,
       "parent": "m_dp",
       "approach": "diffusion"
@@ -217,7 +229,10 @@
     {
       "id": "m_ssl",
       "name": "Self-supervised Learning",
-      "targets": [],
+      "targets": [
+        "p_cross_sensor",
+        "p_pretrain"
+      ],
       "level": 0,
       "parent": null,
       "approach": "contrastive"
@@ -225,7 +240,9 @@
     {
       "id": "m_ssl1",
       "name": "MAE (Masked Autoencoder)",
-      "targets": [],
+      "targets": [
+        "p_pretrain"
+      ],
       "level": 1,
       "parent": "m_ssl",
       "approach": "mae"
@@ -233,7 +250,10 @@
     {
       "id": "m_ssl2",
       "name": "Tactile-Visual Contrastive",
-      "targets": [],
+      "targets": [
+        "p_align",
+        "p_cross_sensor"
+      ],
       "level": 1,
       "parent": "m_ssl",
       "approach": "contrastive"
@@ -241,7 +261,10 @@
     {
       "id": "m_vla",
       "name": "Vision-Language-Action Models",
-      "targets": [],
+      "targets": [
+        "p_generalize",
+        "p_root"
+      ],
       "level": 0,
       "parent": null,
       "approach": "transformer"
@@ -249,7 +272,10 @@
     {
       "id": "m_vla1",
       "name": "Tactile-VLA",
-      "targets": [],
+      "targets": [
+        "p_force",
+        "p_fusion"
+      ],
       "level": 1,
       "parent": "m_vla",
       "approach": "transformer"
@@ -257,7 +283,10 @@
     {
       "id": "m_vla2",
       "name": "ForceVLA",
-      "targets": [],
+      "targets": [
+        "p_force",
+        "p_contact"
+      ],
       "level": 1,
       "parent": "m_vla",
       "approach": "transformer"
@@ -265,7 +294,10 @@
     {
       "id": "m_distill",
       "name": "Knowledge Distillation",
-      "targets": [],
+      "targets": [
+        "p_distill",
+        "p_sim2real"
+      ],
       "level": 0,
       "parent": null,
       "approach": "other"
@@ -273,7 +305,10 @@
     {
       "id": "m_distill1",
       "name": "Privileged Distillation (PTLD)",
-      "targets": [],
+      "targets": [
+        "p_distill",
+        "p_fidelity"
+      ],
       "level": 1,
       "parent": "m_distill",
       "approach": "other"
@@ -281,7 +316,10 @@
     {
       "id": "m_distill2",
       "name": "Tactile→Visual Distillation",
-      "targets": [],
+      "targets": [
+        "p_distill",
+        "p_cross_sensor"
+      ],
       "level": 1,
       "parent": "m_distill",
       "approach": "other"
@@ -289,7 +327,10 @@
     {
       "id": "m_rep",
       "name": "Tactile Representation Learning",
-      "targets": [],
+      "targets": [
+        "p_cross_sensor",
+        "p_pretrain"
+      ],
       "level": 0,
       "parent": null,
       "approach": "mae"
@@ -297,7 +338,10 @@
     {
       "id": "m_rep1",
       "name": "Sparsh (self-supervised)",
-      "targets": [],
+      "targets": [
+        "p_cross_sensor",
+        "p_pretrain"
+      ],
       "level": 1,
       "parent": "m_rep",
       "approach": "mae"
@@ -305,7 +349,10 @@
     {
       "id": "m_rep2",
       "name": "AnyTouch (multi-sensor)",
-      "targets": [],
+      "targets": [
+        "p_cross_sensor",
+        "p_pretrain"
+      ],
       "level": 1,
       "parent": "m_rep",
       "approach": "mae"
@@ -313,7 +360,10 @@
     {
       "id": "m_rep3",
       "name": "Sparsh-X (multisensory)",
-      "targets": [],
+      "targets": [
+        "p_cross_sensor",
+        "p_dynamic"
+      ],
       "level": 1,
       "parent": "m_rep",
       "approach": "mae"
@@ -337,8 +387,15 @@
         "2512.10946",
         "2512.22983"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_dp"
+      ]
     },
     {
       "id": "2503.08548",
@@ -356,8 +413,16 @@
         "2510.14647",
         "2512.22983"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_ssl"
+      ]
     },
     {
       "id": "2403.03954",
@@ -374,8 +439,14 @@
         "2510.10903",
         "2511.05855"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp",
+        "m_vla"
+      ]
     },
     {
       "id": "2503.14734",
@@ -392,7 +463,10 @@
         "2510.10903",
         "2512.22983"
       ],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -409,7 +483,13 @@
         "2510.14647",
         "2512.22983"
       ],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -425,8 +505,13 @@
         "2502.08449",
         "2510.10903"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp"
+      ]
     },
     {
       "id": "2503.20020",
@@ -441,7 +526,10 @@
         "2510.10903",
         "2512.22983"
       ],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -457,7 +545,12 @@
         "2508.08706",
         "2512.10946"
       ],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -472,8 +565,17 @@
         "2403.11898",
         "2502.08449"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_ssl",
+        "m_rep"
+      ]
     },
     {
       "id": "2403.11898",
@@ -487,8 +589,14 @@
         "2410.24091",
         "2505.07455"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl"
+      ]
     },
     {
       "id": "2409.11047",
@@ -502,7 +610,11 @@
         "2502.17432",
         "2505.22159"
       ],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -517,7 +629,10 @@
         "2502.08449",
         "2503.07511"
       ],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -532,7 +647,12 @@
         "2508.08706",
         "2511.05858"
       ],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -547,7 +667,10 @@
         "2503.07511",
         "2508.08706"
       ],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -562,8 +685,14 @@
         "2510.10903",
         "2512.10946"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_vla"
+      ]
     },
     {
       "id": "2505.07455",
@@ -577,8 +706,16 @@
         "2510.10903",
         "2510.13324"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_vla"
+      ]
     },
     {
       "id": "2509.18676",
@@ -592,8 +729,14 @@
         "2510.10903",
         "2512.22983"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ]
     },
     {
       "id": "2309.10886",
@@ -606,7 +749,10 @@
       "citations": [
         "2504.19341"
       ],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -620,7 +766,10 @@
       "citations": [
         "2510.10903"
       ],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -634,7 +783,10 @@
       "citations": [
         "2510.10903"
       ],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -648,8 +800,15 @@
       "citations": [
         "2508.08706"
       ],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_ssl",
+        "m_rep"
+      ]
     },
     {
       "id": "2503.07511",
@@ -662,7 +821,11 @@
       "citations": [
         "2505.22159"
       ],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -676,7 +839,11 @@
       "citations": [
         "2510.10903"
       ],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -690,7 +857,10 @@
       "citations": [
         "2510.10903"
       ],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -704,7 +874,13 @@
       "citations": [
         "2512.22983"
       ],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -716,7 +892,13 @@
       "arxivId": "1409.4972",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -728,7 +910,11 @@
       "arxivId": "1709.02924",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_slip",
+        "p_root",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -740,8 +926,14 @@
       "arxivId": "1809.05551",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_rep"
+      ]
     },
     {
       "id": "2002.03236",
@@ -752,7 +944,11 @@
       "arxivId": "2002.03236",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -764,7 +960,13 @@
       "arxivId": "2003.13165",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -776,8 +978,16 @@
       "arxivId": "2004.00136",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
+      ],
+      "methods": [
+        "m_rep"
+      ]
     },
     {
       "id": "2008.05404",
@@ -788,7 +998,12 @@
       "arxivId": "2008.05404",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -800,7 +1015,13 @@
       "arxivId": "2103.00410",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -812,7 +1033,11 @@
       "arxivId": "2103.13460",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion"
+      ],
       "methods": []
     },
     {
@@ -824,7 +1049,11 @@
       "arxivId": "2301.06698",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -836,7 +1065,14 @@
       "arxivId": "2304.00736",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -848,8 +1084,15 @@
       "arxivId": "2305.03051",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_rep"
+      ]
     },
     {
       "id": "2305.04660",
@@ -860,7 +1103,13 @@
       "arxivId": "2305.04660",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -872,7 +1121,11 @@
       "arxivId": "2306.05902",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -884,7 +1137,12 @@
       "arxivId": "2308.05386",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -896,7 +1154,12 @@
       "arxivId": "2312.09863",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -908,7 +1171,11 @@
       "arxivId": "2403.16764",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -920,8 +1187,15 @@
       "arxivId": "2404.15709",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ]
     },
     {
       "id": "2407.07885",
@@ -932,8 +1206,18 @@
       "arxivId": "2407.07885",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_vla"
+      ]
     },
     {
       "id": "2409.00588",
@@ -944,7 +1228,11 @@
       "arxivId": "2409.00588",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -956,7 +1244,9 @@
       "arxivId": "2409.09276",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_fusion"
+      ],
       "methods": []
     },
     {
@@ -968,7 +1258,10 @@
       "arxivId": "2409.14411",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -980,7 +1273,11 @@
       "arxivId": "2410.18647",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -992,7 +1289,13 @@
       "arxivId": "2410.24090",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -1004,7 +1307,11 @@
       "arxivId": "2411.12503",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion"
+      ],
       "methods": []
     },
     {
@@ -1016,7 +1323,10 @@
       "arxivId": "2412.04987",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -1028,8 +1338,16 @@
       "arxivId": "2502.08449",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp"
+      ]
     },
     {
       "id": "2502.11161",
@@ -1040,8 +1358,12 @@
       "arxivId": "2502.11161",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_contact"
+      ],
+      "methods": [
+        "m_vla"
+      ]
     },
     {
       "id": "2503.17501",
@@ -1052,7 +1374,13 @@
       "arxivId": "2503.17501",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -1064,7 +1392,14 @@
       "arxivId": "2503.23835",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -1076,8 +1411,16 @@
       "arxivId": "2504.19341",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp",
+        "m_vla"
+      ]
     },
     {
       "id": "2505.16062",
@@ -1088,7 +1431,12 @@
       "arxivId": "2505.16062",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -1100,7 +1448,10 @@
       "arxivId": "2505.18361",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_fusion"
+      ],
       "methods": []
     },
     {
@@ -1112,7 +1463,13 @@
       "arxivId": "2508.08706",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -1124,8 +1481,13 @@
       "arxivId": "2509.17684",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp"
+      ]
     },
     {
       "id": "2509.17812",
@@ -1136,7 +1498,14 @@
       "arxivId": "2509.17812",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_contact",
+        "p_force"
+      ],
       "methods": []
     },
     {
@@ -1148,8 +1517,16 @@
       "arxivId": "2510.13324",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_dp"
+      ]
     },
     {
       "id": "2510.14647",
@@ -1160,7 +1537,12 @@
       "arxivId": "2510.14647",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
       "methods": []
     },
     {
@@ -1172,8 +1554,17 @@
       "arxivId": "2511.05855",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ]
     },
     {
       "id": "2511.05858",
@@ -1184,8 +1575,17 @@
       "arxivId": "2511.05858",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_rep"
+      ]
     },
     {
       "id": "2512.01383",
@@ -1196,8 +1596,14 @@
       "arxivId": "2512.01383",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp"
+      ]
     },
     {
       "id": "2512.10946",
@@ -1208,8 +1614,14 @@
       "arxivId": "2512.10946",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_rep"
+      ]
     },
     {
       "id": "2512.22983",
@@ -1220,8 +1632,17 @@
       "arxivId": "2512.22983",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ]
     },
     {
       "id": "2601.01675",
@@ -1232,8 +1653,15 @@
       "arxivId": "2601.01675",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_root",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_rep"
+      ]
     },
     {
       "id": "2603.04531",
@@ -1244,8 +1672,17 @@
       "arxivId": "2603.04531",
       "authorityScore": 5,
       "citations": [],
-      "problems": [],
-      "methods": []
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_vla"
+      ]
     }
   ],
   "branches": [
