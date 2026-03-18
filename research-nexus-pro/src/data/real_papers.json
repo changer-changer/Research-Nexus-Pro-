@@ -31,7 +31,14 @@
       "methods": [],
       "description": "Research problem: Dexterous Manipulation",
       "month": 1,
-      "y_position": 1
+      "y_position": 1,
+      "branchId": "b_root",
+      "parentId": null,
+      "depth": 0,
+      "branchColor": "#6366f1",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_perception",
@@ -89,7 +96,14 @@
       "methods": [],
       "description": "Research problem: Tactile Perception",
       "month": 3,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_root",
+      "depth": 1,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_fusion",
@@ -167,7 +181,14 @@
       "methods": [],
       "description": "Research problem: Visuo-Tactile Fusion",
       "month": 6,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_root",
+      "depth": 1,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_policy",
@@ -186,7 +207,14 @@
       "methods": [],
       "description": "Research problem: Policy Learning",
       "month": 9,
-      "y_position": 7
+      "y_position": 7,
+      "branchId": "b_policy",
+      "parentId": "p_root",
+      "depth": 1,
+      "branchColor": "#f97316",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_sim2real",
@@ -233,7 +261,14 @@
       "methods": [],
       "description": "Research problem: Sim-to-Real Transfer",
       "month": 6,
-      "y_position": 10
+      "y_position": 10,
+      "branchId": "b_diffusion",
+      "parentId": "p_root",
+      "depth": 1,
+      "branchColor": "#22c55e",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_hardware",
@@ -251,7 +286,14 @@
       "methods": [],
       "description": "Research problem: Sensor Hardware",
       "month": 9,
-      "y_position": 13
+      "y_position": 13,
+      "branchId": "b_tactile",
+      "parentId": "p_root",
+      "depth": 1,
+      "branchColor": "#f59e0b",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_cross_sensor",
@@ -266,7 +308,14 @@
       "methods": [],
       "description": "Research problem: Cross-sensor Generalization",
       "month": 3,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_perception",
+      "depth": 2,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_force",
@@ -308,7 +357,14 @@
       "methods": [],
       "description": "Research problem: Force Estimation",
       "month": 9,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_perception",
+      "depth": 2,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_slip",
@@ -362,7 +418,14 @@
       "methods": [],
       "description": "Research problem: Slip Detection",
       "month": 12,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_perception",
+      "depth": 2,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_dynamic",
@@ -377,7 +440,14 @@
       "methods": [],
       "description": "Research problem: Dynamic Tactile Perception",
       "month": 6,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_perception",
+      "depth": 2,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_align",
@@ -392,7 +462,14 @@
       "methods": [],
       "description": "Research problem: Cross-modal Alignment",
       "month": 6,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_fusion",
+      "depth": 2,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_temporal",
@@ -407,7 +484,14 @@
       "methods": [],
       "description": "Research problem: Temporal Synchronization",
       "month": 3,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_fusion",
+      "depth": 2,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_pretrain",
@@ -422,7 +506,14 @@
       "methods": [],
       "description": "Research problem: Multimodal Pre-training",
       "month": 3,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_perception",
+      "parentId": "p_fusion",
+      "depth": 2,
+      "branchColor": "#8b5cf6",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_data",
@@ -437,7 +528,14 @@
       "methods": [],
       "description": "Research problem: Data Efficiency",
       "month": 9,
-      "y_position": 7
+      "y_position": 7,
+      "branchId": "b_policy",
+      "parentId": "p_policy",
+      "depth": 2,
+      "branchColor": "#f97316",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_generalize",
@@ -452,7 +550,14 @@
       "methods": [],
       "description": "Research problem: Cross-task Generalization",
       "month": 6,
-      "y_position": 7
+      "y_position": 7,
+      "branchId": "b_policy",
+      "parentId": "p_policy",
+      "depth": 2,
+      "branchColor": "#f97316",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_contact",
@@ -525,7 +630,14 @@
       "methods": [],
       "description": "Research problem: Contact-rich Policy",
       "month": 9,
-      "y_position": 7
+      "y_position": 7,
+      "branchId": "b_policy",
+      "parentId": "p_policy",
+      "depth": 2,
+      "branchColor": "#f97316",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_fidelity",
@@ -540,7 +652,14 @@
       "methods": [],
       "description": "Research problem: Simulation Fidelity",
       "month": 12,
-      "y_position": 10
+      "y_position": 10,
+      "branchId": "b_diffusion",
+      "parentId": "p_sim2real",
+      "depth": 2,
+      "branchColor": "#22c55e",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_distill",
@@ -555,7 +674,14 @@
       "methods": [],
       "description": "Research problem: Privileged Knowledge Distillation",
       "month": 6,
-      "y_position": 10
+      "y_position": 10,
+      "branchId": "b_diffusion",
+      "parentId": "p_sim2real",
+      "depth": 2,
+      "branchColor": "#22c55e",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_cost",
@@ -570,7 +696,14 @@
       "methods": [],
       "description": "Research problem: Low-cost Sensors",
       "month": 3,
-      "y_position": 13
+      "y_position": 13,
+      "branchId": "b_tactile",
+      "parentId": "p_hardware",
+      "depth": 2,
+      "branchColor": "#f59e0b",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     },
     {
       "id": "p_durability",
@@ -585,7 +718,14 @@
       "methods": [],
       "description": "Research problem: Sensor Durability",
       "month": 3,
-      "y_position": 13
+      "y_position": 13,
+      "branchId": "b_tactile",
+      "parentId": "p_hardware",
+      "depth": 2,
+      "branchColor": "#f59e0b",
+      "valueScore": 50,
+      "unsolvedLevel": 50,
+      "evolvedFrom": null
     }
   ],
   "methods": [
@@ -608,7 +748,10 @@
       "status": "untested",
       "description": "Method for Diffusion Policy",
       "year": 2023,
-      "month": 6
+      "month": 6,
+      "branchId": "b_diffusion",
+      "parentId": null,
+      "depth": 0
     },
     {
       "id": "m_dp1",
@@ -625,7 +768,10 @@
       "status": "untested",
       "description": "Method for 3D Diffusion Policy (DP3)",
       "year": 2024,
-      "month": 1
+      "month": 1,
+      "branchId": "b_diffusion",
+      "parentId": "m_dp",
+      "depth": 1
     },
     {
       "id": "m_dp2",
@@ -642,7 +788,10 @@
       "status": "untested",
       "description": "Method for Tactile-conditioned Diffusion",
       "year": 2024,
-      "month": 6
+      "month": 6,
+      "branchId": "b_diffusion",
+      "parentId": "m_dp",
+      "depth": 1
     },
     {
       "id": "m_dp3",
@@ -659,7 +808,10 @@
       "status": "untested",
       "description": "Method for Reactive Diffusion (slow-fast)",
       "year": 2025,
-      "month": 3
+      "month": 3,
+      "branchId": "b_diffusion",
+      "parentId": "m_dp",
+      "depth": 1
     },
     {
       "id": "m_ssl",
@@ -679,7 +831,10 @@
       "status": "untested",
       "description": "Method for Self-supervised Learning",
       "year": 2020,
-      "month": 3
+      "month": 3,
+      "branchId": "b_perception",
+      "parentId": null,
+      "depth": 0
     },
     {
       "id": "m_ssl1",
@@ -695,7 +850,10 @@
       "status": "untested",
       "description": "Method for MAE (Masked Autoencoder)",
       "year": 2021,
-      "month": 6
+      "month": 6,
+      "branchId": "b_perception",
+      "parentId": "m_ssl",
+      "depth": 1
     },
     {
       "id": "m_ssl2",
@@ -712,7 +870,10 @@
       "status": "untested",
       "description": "Method for Tactile-Visual Contrastive",
       "year": 2022,
-      "month": 3
+      "month": 3,
+      "branchId": "b_perception",
+      "parentId": "m_ssl",
+      "depth": 1
     },
     {
       "id": "m_vla",
@@ -732,7 +893,10 @@
       "status": "untested",
       "description": "Method for Vision-Language-Action Models",
       "year": 2023,
-      "month": 3
+      "month": 3,
+      "branchId": "b_vla",
+      "parentId": null,
+      "depth": 0
     },
     {
       "id": "m_vla1",
@@ -749,7 +913,10 @@
       "status": "untested",
       "description": "Method for Tactile-VLA",
       "year": 2024,
-      "month": 9
+      "month": 9,
+      "branchId": "b_vla",
+      "parentId": "m_vla",
+      "depth": 1
     },
     {
       "id": "m_vla2",
@@ -766,7 +933,10 @@
       "status": "untested",
       "description": "Method for ForceVLA",
       "year": 2025,
-      "month": 1
+      "month": 1,
+      "branchId": "b_vla",
+      "parentId": "m_vla",
+      "depth": 1
     },
     {
       "id": "m_distill",
@@ -786,7 +956,10 @@
       "status": "untested",
       "description": "Method for Knowledge Distillation",
       "year": 2021,
-      "month": 9
+      "month": 9,
+      "branchId": "b_tactile",
+      "parentId": null,
+      "depth": 0
     },
     {
       "id": "m_distill1",
@@ -803,7 +976,10 @@
       "status": "untested",
       "description": "Method for Privileged Distillation (PTLD)",
       "year": 2024,
-      "month": 6
+      "month": 6,
+      "branchId": "b_tactile",
+      "parentId": "m_distill",
+      "depth": 1
     },
     {
       "id": "m_distill2",
@@ -820,7 +996,10 @@
       "status": "untested",
       "description": "Method for Tactile→Visual Distillation",
       "year": 2023,
-      "month": 9
+      "month": 9,
+      "branchId": "b_tactile",
+      "parentId": "m_distill",
+      "depth": 1
     },
     {
       "id": "m_rep",
@@ -841,7 +1020,10 @@
       "status": "untested",
       "description": "Method for Tactile Representation Learning",
       "year": 2022,
-      "month": 6
+      "month": 6,
+      "branchId": "b_perception",
+      "parentId": null,
+      "depth": 0
     },
     {
       "id": "m_rep1",
@@ -858,7 +1040,10 @@
       "status": "untested",
       "description": "Method for Sparsh (self-supervised)",
       "year": 2023,
-      "month": 9
+      "month": 9,
+      "branchId": "b_perception",
+      "parentId": "m_rep",
+      "depth": 1
     },
     {
       "id": "m_rep2",
@@ -875,7 +1060,10 @@
       "status": "untested",
       "description": "Method for AnyTouch (multi-sensor)",
       "year": 2024,
-      "month": 3
+      "month": 3,
+      "branchId": "b_perception",
+      "parentId": "m_rep",
+      "depth": 1
     },
     {
       "id": "m_rep3",
@@ -892,7 +1080,10 @@
       "status": "untested",
       "description": "Method for Sparsh-X (multisensory)",
       "year": 2025,
-      "month": 6
+      "month": 6,
+      "branchId": "b_perception",
+      "parentId": "m_rep",
+      "depth": 1
     }
   ],
   "papers": [
@@ -930,7 +1121,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 12,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2503.08548",
@@ -967,7 +1160,9 @@
       ],
       "category": "Tactile",
       "month": 2,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2403.03954",
@@ -998,7 +1193,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 3,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2503.14734",
@@ -1026,7 +1223,9 @@
       ],
       "category": "Perception",
       "month": 6,
-      "y_position": 8
+      "y_position": 8,
+      "branchId": "b_perception",
+      "parentId": null
     },
     {
       "id": "2507.09160",
@@ -1061,7 +1260,9 @@
       ],
       "category": "Tactile",
       "month": 2,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2406.01586",
@@ -1089,7 +1290,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 4,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2503.20020",
@@ -1115,7 +1318,9 @@
       ],
       "category": "Other",
       "month": 5,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2505.22159",
@@ -1145,7 +1350,9 @@
       ],
       "category": "VLA",
       "month": 11,
-      "y_position": 6
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
     },
     {
       "id": "2303.12076",
@@ -1179,7 +1386,9 @@
       ],
       "category": "Tactile",
       "month": 6,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2403.11898",
@@ -1208,7 +1417,9 @@
       ],
       "category": "Tactile",
       "month": 1,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2409.11047",
@@ -1239,7 +1450,9 @@
       ],
       "category": "Tactile",
       "month": 2,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2410.10803",
@@ -1267,7 +1480,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 7,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2410.24091",
@@ -1298,7 +1513,9 @@
       ],
       "category": "Manipulation",
       "month": 3,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2501.15830",
@@ -1325,7 +1542,9 @@
       ],
       "category": "VLA",
       "month": 3,
-      "y_position": 6
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
     },
     {
       "id": "2502.17432",
@@ -1354,7 +1573,9 @@
       ],
       "category": "Other",
       "month": 7,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2505.07455",
@@ -1387,7 +1608,9 @@
       ],
       "category": "Other",
       "month": 11,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2509.18676",
@@ -1415,7 +1638,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 2,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2309.10886",
@@ -1441,7 +1666,9 @@
       ],
       "category": "Tactile",
       "month": 4,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2409.07343",
@@ -1465,7 +1692,9 @@
       ],
       "category": "Manipulation",
       "month": 7,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2411.03990",
@@ -1489,7 +1718,9 @@
       ],
       "category": "Other",
       "month": 5,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2502.12191",
@@ -1518,7 +1749,9 @@
       ],
       "category": "Other",
       "month": 12,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2503.07511",
@@ -1547,7 +1780,9 @@
       ],
       "category": "VLA",
       "month": 11,
-      "y_position": 6
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
     },
     {
       "id": "2504.01301",
@@ -1573,7 +1808,9 @@
       ],
       "category": "Policy",
       "month": 10,
-      "y_position": 10
+      "y_position": 10,
+      "branchId": "b_policy",
+      "parentId": null
     },
     {
       "id": "2507.22424",
@@ -1599,7 +1836,9 @@
       ],
       "category": "VLA",
       "month": 3,
-      "y_position": 6
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
     },
     {
       "id": "2510.10903",
@@ -1629,7 +1868,9 @@
       ],
       "category": "Manipulation",
       "month": 8,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "1409.4972",
@@ -1657,7 +1898,9 @@
       ],
       "category": "Other",
       "month": 4,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "1709.02924",
@@ -1683,7 +1926,9 @@
       ],
       "category": "Tactile",
       "month": 7,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "1809.05551",
@@ -1709,7 +1954,9 @@
       ],
       "category": "Tactile",
       "month": 7,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2002.03236",
@@ -1735,7 +1982,9 @@
       ],
       "category": "Tactile",
       "month": 1,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2003.13165",
@@ -1765,7 +2014,9 @@
       ],
       "category": "Tactile",
       "month": 2,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2004.00136",
@@ -1795,7 +2046,9 @@
       ],
       "category": "Tactile",
       "month": 9,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2008.05404",
@@ -1823,7 +2076,9 @@
       ],
       "category": "Tactile",
       "month": 12,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2103.00410",
@@ -1853,7 +2108,9 @@
       ],
       "category": "Tactile",
       "month": 4,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2103.13460",
@@ -1879,7 +2136,9 @@
       ],
       "category": "Tactile",
       "month": 7,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2301.06698",
@@ -1905,7 +2164,9 @@
       ],
       "category": "Tactile",
       "month": 5,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2304.00736",
@@ -1935,7 +2196,9 @@
       ],
       "category": "Other",
       "month": 5,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2305.03051",
@@ -1963,7 +2226,9 @@
       ],
       "category": "Tactile",
       "month": 8,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2305.04660",
@@ -1993,7 +2258,9 @@
       ],
       "category": "Tactile",
       "month": 11,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2306.05902",
@@ -2019,7 +2286,9 @@
       ],
       "category": "Tactile",
       "month": 3,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2308.05386",
@@ -2047,7 +2316,9 @@
       ],
       "category": "Tactile",
       "month": 12,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2312.09863",
@@ -2073,7 +2344,9 @@
       ],
       "category": "Other",
       "month": 7,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2403.16764",
@@ -2097,7 +2370,9 @@
       ],
       "category": "Tactile",
       "month": 10,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2404.15709",
@@ -2124,7 +2399,9 @@
       ],
       "category": "Manipulation",
       "month": 2,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2407.07885",
@@ -2158,7 +2435,9 @@
       ],
       "category": "Tactile",
       "month": 7,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2409.00588",
@@ -2185,7 +2464,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 9,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2409.09276",
@@ -2205,7 +2486,9 @@
       ],
       "category": "Other",
       "month": 8,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2409.14411",
@@ -2231,7 +2514,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 11,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2410.18647",
@@ -2255,7 +2540,9 @@
       ],
       "category": "Other",
       "month": 11,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2410.24090",
@@ -2287,7 +2574,9 @@
       ],
       "category": "Tactile",
       "month": 12,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2411.12503",
@@ -2311,7 +2600,9 @@
       ],
       "category": "Manipulation",
       "month": 5,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2412.04987",
@@ -2335,7 +2626,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 3,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2502.08449",
@@ -2365,7 +2658,9 @@
       ],
       "category": "Policy",
       "month": 11,
-      "y_position": 10
+      "y_position": 10,
+      "branchId": "b_policy",
+      "parentId": null
     },
     {
       "id": "2502.11161",
@@ -2387,7 +2682,9 @@
       ],
       "category": "Other",
       "month": 10,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2503.17501",
@@ -2415,7 +2712,9 @@
       ],
       "category": "Other",
       "month": 9,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2503.23835",
@@ -2445,7 +2744,9 @@
       ],
       "category": "Manipulation",
       "month": 11,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2504.19341",
@@ -2474,7 +2775,9 @@
       ],
       "category": "Tactile",
       "month": 8,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2505.16062",
@@ -2500,7 +2803,9 @@
       ],
       "category": "Other",
       "month": 7,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2505.18361",
@@ -2522,7 +2827,9 @@
       ],
       "category": "Other",
       "month": 7,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2508.08706",
@@ -2554,7 +2861,9 @@
       ],
       "category": "Tactile",
       "month": 9,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2509.17684",
@@ -2578,7 +2887,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 8,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2509.17812",
@@ -2610,7 +2921,9 @@
       ],
       "category": "Tactile",
       "month": 6,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2510.13324",
@@ -2640,7 +2953,9 @@
       ],
       "category": "Tactile",
       "month": 7,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2510.14647",
@@ -2668,7 +2983,9 @@
       ],
       "category": "Tactile",
       "month": 11,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2511.05855",
@@ -2699,7 +3016,9 @@
       ],
       "category": "VLA",
       "month": 5,
-      "y_position": 6
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
     },
     {
       "id": "2511.05858",
@@ -2731,7 +3050,9 @@
       ],
       "category": "Tactile",
       "month": 1,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     },
     {
       "id": "2512.01383",
@@ -2757,7 +3078,9 @@
       ],
       "category": "Other",
       "month": 4,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2512.10946",
@@ -2783,7 +3106,9 @@
       ],
       "category": "Diffusion/Flow",
       "month": 10,
-      "y_position": 2
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
     },
     {
       "id": "2512.22983",
@@ -2814,7 +3139,9 @@
       ],
       "category": "Manipulation",
       "month": 1,
-      "y_position": 4
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2601.01675",
@@ -2842,7 +3169,9 @@
       ],
       "category": "Other",
       "month": 7,
-      "y_position": 14
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
     },
     {
       "id": "2603.04531",
@@ -2874,51 +3203,59 @@
       ],
       "category": "Tactile",
       "month": 3,
-      "y_position": 0
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
     }
   ],
   "branches": [
     {
-      "id": "manipulation",
-      "name": "Dexterous Manipulation",
+      "id": "b_root",
+      "name": "Root Goal",
       "y_position": 0,
-      "color": "#6366f1",
-      "status": "active"
+      "color": "#6366f1"
     },
     {
-      "id": "perception",
-      "name": "Tactile Perception",
+      "id": "b_perception",
+      "name": "Perception",
       "y_position": 1,
-      "color": "#8b5cf6",
-      "status": "active"
+      "color": "#8b5cf6"
     },
     {
-      "id": "policy",
-      "name": "Policy Learning",
-      "y_position": 3,
-      "color": "#f59e0b",
-      "status": "active"
-    },
-    {
-      "id": "sim2real",
-      "name": "Sim-to-Real",
-      "y_position": 4,
-      "color": "#22c55e",
-      "status": "active"
-    },
-    {
-      "id": "hardware",
-      "name": "Sensor Hardware",
-      "y_position": 5,
-      "color": "#06b6d4",
-      "status": "active"
-    },
-    {
-      "id": "fusion",
-      "name": "Visuo-Tactile Fusion",
+      "id": "b_fusion",
+      "name": "Fusion",
       "y_position": 2,
-      "color": "#ec4899",
-      "status": "active"
+      "color": "#14b8a6"
+    },
+    {
+      "id": "b_policy",
+      "name": "Policy",
+      "y_position": 3,
+      "color": "#ec4899"
+    },
+    {
+      "id": "b_diffusion",
+      "name": "Diffusion",
+      "y_position": 4,
+      "color": "#22c55e"
+    },
+    {
+      "id": "b_tactile",
+      "name": "Tactile",
+      "y_position": 5,
+      "color": "#f59e0b"
+    },
+    {
+      "id": "b_vla",
+      "name": "VLA",
+      "y_position": 6,
+      "color": "#3b82f6"
+    },
+    {
+      "id": "b_manipulation",
+      "name": "Manipulation",
+      "y_position": 7,
+      "color": "#f97316"
     }
   ],
   "citation_edges": [
