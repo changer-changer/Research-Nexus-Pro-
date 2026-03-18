@@ -8,8 +8,20 @@ import { useAppStore } from '../store/appStore'
 
 const FIT_VIEW: FitViewOptions = { padding: 0.2, duration: 500 }
 const MIN_YEAR = 2016
+const MAX_YEAR = 2027
 const YEAR_W = 160
 const LANE_H = 130
+
+// Paper category → branch mapping
+const CAT_TO_BRANCH: Record<string, string> = {
+  'Tactile': 'b_tactile',
+  'Diffusion/Flow': 'b_diffusion',
+  'Manipulation': 'b_manipulation',
+  'VLA': 'b_vla',
+  'Policy': 'b_policy',
+  'Perception': 'b_perception',
+  'Other': 'b_root',
+}
 
 // Branch lane colors
 const BRANCH_COLORS: Record<string, { bg: string; border: string; name: string }> = {
@@ -35,7 +47,7 @@ function makeDomainNode(bid: string, idx: number): Node {
     position: { x: -YEAR_W * 1.5, y: idx * LANE_H },
     data: { label: info.name, color: info.bg },
     style: {
-      width: (2026 - MIN_YEAR + 2) * YEAR_W,
+      width: (MAX_YEAR - MIN_YEAR + 1) * YEAR_W,
       height: LANE_H - 20,
       background: `${info.bg}08`,
       border: `1px dashed ${info.bg}30`,
@@ -105,6 +117,29 @@ function makeMethodNode(m: any, laneIdx: number, selected: boolean, dimmed: bool
   }
 }
 
+function makePaperNode(paper: any, laneIdx: number, selected: boolean, dimmed: boolean): Node {
+  const year = paper.year || 2024
+  const bid = CAT_TO_BRANCH[paper.category || 'Other'] || 'b_root'
+  const info = BRANCH_COLORS[bid] || { bg: '#6b7280', border: '#9ca3af', name: '' }
+  const hash = paper.id.split('').reduce((a: number, c: string) => a + c.charCodeAt(0), 0)
+  const x = getNodeX(year) + (hash % 40) - 20
+  const y = laneIdx * LANE_H + 50 + (hash % 50)
+  return {
+    id: `paper-${paper.id}`,
+    position: { x, y },
+    data: { label: '' },
+    style: {
+      width: selected ? 12 : 6,
+      height: selected ? 12 : 6,
+      borderRadius: '50%',
+      background: selected ? info.border : info.bg,
+      border: selected ? `2px solid white` : 'none',
+      opacity: dimmed ? 0.1 : (selected ? 1 : 0.6),
+      padding: 0,
+    }
+  }
+}
+
 export default function ProblemEvolutionView() {
   const problems = useAppStore(s => s.problems)
   const methods = useAppStore(s => s.methods)
@@ -114,22 +149,18 @@ export default function ProblemEvolutionView() {
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [key, setKey] = useState(0)
 
-  // Build branch lanes (ordered by y_position)
+  // Build branch lanes (from problems + papers)
   const branchLanes = useMemo(() => {
-    const branchMap = new Map(problems.map(p => [p.branchId || 'b_root', true]))
-    const lanes: string[] = []
-    // Add branches that have problems, ordered by y_position from data
+    const branchSet = new Set<string>()
+    problems.forEach(p => branchSet.add(p.branchId || 'b_root'))
+    papers.forEach(p => branchSet.add(CAT_TO_BRANCH[p.category || 'Other'] || 'b_root'))
+    // Ordered: main domains first
     const ordered = ['b_root', 'b_perception', 'b_fusion', 'b_policy', 'b_diffusion', 'b_tactile', 'b_vla', 'b_manipulation']
-    ordered.forEach(bid => {
-      if (branchMap.has(bid)) lanes.push(bid)
-    })
-    // Also add any branches not in ordered list
-    problems.forEach(p => {
-      const bid = p.branchId || 'b_root'
-      if (!lanes.includes(bid)) lanes.push(bid)
-    })
+    const lanes: string[] = []
+    ordered.forEach(bid => { if (branchSet.has(bid)) lanes.push(bid) })
+    branchSet.forEach(bid => { if (!lanes.includes(bid)) lanes.push(bid) })
     return lanes
-  }, [problems])
+  }, [problems, papers])
 
   // Find connected nodes for selection
   const getConnected = useCallback((id: string) => {
@@ -199,7 +230,16 @@ export default function ProblemEvolutionView() {
       return makeMethodNode(m, lane, selected, dimmed)
     })
 
-    setNodes([...domainNodes, ...problemNodes, ...methodNodes])
+    // Paper nodes (small dots on timeline)
+    const paperNodes: Node[] = papers.map(paper => {
+      const bid = CAT_TO_BRANCH[paper.category || 'Other'] || 'b_root'
+      const lane = laneIdxMap.get(bid) ?? 0
+      const selected = selectedId === `paper-${paper.id}`
+      const dimmed = connected !== null && !connected.has(`paper-${paper.id}`)
+      return makePaperNode(paper, lane, selected, dimmed)
+    })
+
+    setNodes([...domainNodes, ...problemNodes, ...methodNodes, ...paperNodes])
 
     // Edges: problem → problem (parent-child)
     const ppEdges: Edge[] = problems
@@ -232,7 +272,21 @@ export default function ProblemEvolutionView() {
       })
     )
 
-    setEdges([...ppEdges, ...mpEdges])
+    // Edges: paper → problem (paper targets)
+    const paperEdges: Edge[] = papers.flatMap(paper =>
+      (paper.targets || []).map((tid: string) => {
+        const dimmed = connected !== null
+        return {
+          id: `pt-${paper.id}-${tid}`,
+          source: `paper-${paper.id}`,
+          target: tid,
+          type: 'straight' as const,
+          style: { stroke: '#27272a', strokeWidth: 0.5, opacity: dimmed ? 0.05 : 0.15 },
+        }
+      })
+    )
+
+    setEdges([...ppEdges, ...mpEdges, ...paperEdges])
     // Force fitView after data changes
     setTimeout(() => setKey(k => k + 1), 50)
   }, [problems, methods, branchLanes, selectedId, getConnected, setNodes, setEdges])
@@ -240,6 +294,10 @@ export default function ProblemEvolutionView() {
   const onNodeClick = useCallback((_: any, node: Node) => {
     if (node.id.startsWith('domain-')) {
       setSelectedId(null) // Click domain = reset selection
+    } else if (node.id.startsWith('paper-')) {
+      // Click a paper dot → show its connections
+      const paperId = node.id.replace('paper-', '')
+      setSelectedId(prev => prev === node.id ? null : node.id)
     } else {
       setSelectedId(prev => prev === node.id ? null : node.id)
     }
@@ -262,7 +320,7 @@ export default function ProblemEvolutionView() {
         <div className="flex items-center gap-3">
           <h2 className="text-sm font-medium text-zinc-200">Time Evolution Network</h2>
           <span className="text-xs text-zinc-500">
-            {problems.length} problems · {methods.length} methods · {branchLanes.length} domains
+            {problems.length} problems · {methods.length} methods · {papers.length} papers · {branchLanes.length} domains
           </span>
         </div>
         <div className="flex items-center gap-2">
