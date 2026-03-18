@@ -117,26 +117,29 @@ function makeMethodNode(m: any, laneIdx: number, selected: boolean, dimmed: bool
   }
 }
 
-function makePaperNode(paper: any, laneIdx: number, selected: boolean, dimmed: boolean): Node {
+function makePaperNode(paper: any, laneIdx: number, selected: boolean, dimmed: boolean, indexInYear: number, totalInYear: number): Node {
   const year = paper.year || 2024
   const bid = CAT_TO_BRANCH[paper.category || 'Other'] || 'b_root'
   const info = BRANCH_COLORS[bid] || { bg: '#6b7280', border: '#9ca3af', name: '' }
-  const hash = paper.id.split('').reduce((a: number, c: string) => a + c.charCodeAt(0), 0)
-  const x = getNodeX(year) + (hash % 40) - 20
-  const y = laneIdx * LANE_H + 50 + (hash % 50)
+  // Spread papers within same year using index-based grid layout
+  const cols = Math.ceil(Math.sqrt(totalInYear))
+  const row = Math.floor(indexInYear / cols)
+  const col = indexInYear % cols
+  const x = getNodeX(year) + 30 + col * 18
+  const y = laneIdx * LANE_H + 55 + row * 16
   return {
     id: `paper-${paper.id}`,
     position: { x, y },
     data: { label: '' },
     style: {
-      width: selected ? 16 : 10,
-      height: selected ? 16 : 10,
+      width: selected ? 14 : 9,
+      height: selected ? 14 : 9,
       borderRadius: '50%',
       background: selected ? info.border : info.bg,
-      border: selected ? `2px solid white` : `1px solid ${info.border}`,
-      opacity: dimmed ? 0.15 : (selected ? 1 : 0.8),
+      border: selected ? `2px solid white` : `1px solid ${info.border}60`,
+      opacity: dimmed ? 0.15 : (selected ? 1 : 0.75),
       padding: 0,
-      boxShadow: dimmed ? 'none' : `0 0 6px ${info.bg}60`,
+      boxShadow: dimmed ? 'none' : `0 0 4px ${info.bg}40`,
     }
   }
 }
@@ -231,13 +234,26 @@ export default function ProblemEvolutionView() {
       return makeMethodNode(m, lane, selected, dimmed)
     })
 
-    // Paper nodes (small dots on timeline)
+    // Paper nodes (small dots on timeline, spread by year/lane)
+    // Group papers by year+lane for grid layout
+    const paperGroups = new Map<string, any[]>()
+    papers.forEach(paper => {
+      const bid = CAT_TO_BRANCH[paper.category || 'Other'] || 'b_root'
+      const lane = laneIdxMap.get(bid) ?? 0
+      const key = `${paper.year}-${lane}`
+      if (!paperGroups.has(key)) paperGroups.set(key, [])
+      paperGroups.get(key)!.push(paper)
+    })
+
     const paperNodes: Node[] = papers.map(paper => {
       const bid = CAT_TO_BRANCH[paper.category || 'Other'] || 'b_root'
       const lane = laneIdxMap.get(bid) ?? 0
+      const key = `${paper.year}-${lane}`
+      const group = paperGroups.get(key) || [paper]
+      const idx = group.indexOf(paper)
       const selected = selectedId === `paper-${paper.id}`
       const dimmed = connected !== null && !connected.has(`paper-${paper.id}`)
-      return makePaperNode(paper, lane, selected, dimmed)
+      return makePaperNode(paper, lane, selected, dimmed, idx, group.length)
     })
 
     setNodes([...domainNodes, ...problemNodes, ...methodNodes, ...paperNodes])
