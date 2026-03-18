@@ -94,8 +94,13 @@ class PaperReaderPlus:
 
         return sections
 
-    def extract_images(self, output_dir: str, min_size: int = 100) -> list:
-        """Extract images from PDF, filtering out small decorative ones."""
+    def extract_images(self, output_dir: str, min_size: int = 300) -> list:
+        """Extract meaningful images from PDF, filtering decorative ones.
+        
+        Filtering rules:
+        - Skip images smaller than min_size on either dimension (icons, bullets)
+        - Keep images >= 300px (charts, diagrams, photos, tables rendered as images)
+        """
         os.makedirs(output_dir, exist_ok=True)
         images = []
         img_idx = 0
@@ -111,7 +116,7 @@ class PaperReaderPlus:
                         width = base_image.get("width", 0)
                         height = base_image.get("height", 0)
 
-                        # Filter small images (likely decorative)
+                        # Filter decorative images (icons, bullets, small markers)
                         if width < min_size or height < min_size:
                             continue
 
