@@ -139,7 +139,7 @@ export const useAppStore = create<AppState>()(
       activeView: 'problem-tree',
       selectedNode: null,
       hoveredNode: null,
-      expandedNodes: new Set(['root']),
+      expandedNodes: new Set(['p_root']),
       timelineFilter: { startYear: 2015, endYear: 2026, domain: null },
       viewConfig: { 
         darkMode: true, 
@@ -213,7 +213,7 @@ export const useAppStore = create<AppState>()(
         get().methods.forEach(m => all.add(m.id))
         set({ expandedNodes: all })
       },
-      collapseAll: () => set({ expandedNodes: new Set(['root']) }),
+      collapseAll: () => set({ expandedNodes: new Set(['p_root']) }),
       setTimelineFilter: (filter) => set({ timelineFilter: { ...get().timelineFilter, ...filter } }),
       updateViewConfig: (config) => set({ viewConfig: { ...get().viewConfig, ...config } }),
       
@@ -319,7 +319,7 @@ export const useAppStore = create<AppState>()(
       merge: (persisted: any, current) => ({
         ...current,
         ...persisted,
-        expandedNodes: new Set(persisted?.expandedNodes || ['root']),
+        expandedNodes: new Set(persisted?.expandedNodes || ['p_root']),
         bookmarks: persisted?.bookmarks || [],
       }),
     }
