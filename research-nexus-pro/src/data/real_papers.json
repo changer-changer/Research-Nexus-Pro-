@@ -186,7 +186,8 @@
         "p_vt_fusion_q28",
         "p_vt_fusion_q29",
         "p_vt_fusion_q30",
-        "p_vt_fusion_q31"
+        "p_vt_fusion_q31",
+        "p_vt_fusion_n32"
       ],
       "depth": 1,
       "branchId": "b_fusion",
@@ -681,7 +682,11 @@
         "p_vla_tactile_q20",
         "p_vla_tactile_q21",
         "p_vla_tactile_q22",
-        "p_vla_tactile_q23"
+        "p_vla_tactile_q23",
+        "p_vla_tactile_n24",
+        "p_vla_tactile_n25",
+        "p_vla_tactile_n26",
+        "p_vla_tactile_n27"
       ],
       "depth": 1,
       "branchId": "b_vla",
@@ -1149,7 +1154,15 @@
         "p_generalization_q118",
         "p_generalization_q119",
         "p_generalization_q120",
-        "p_generalization_q121"
+        "p_generalization_q121",
+        "p_generalization_n122",
+        "p_generalization_n123",
+        "p_generalization_n124",
+        "p_generalization_n125",
+        "p_generalization_n126",
+        "p_generalization_n127",
+        "p_generalization_n128",
+        "p_generalization_n129"
       ],
       "depth": 1,
       "branchId": "b_policy",
@@ -1614,7 +1627,9 @@
         "p_hardware_q51",
         "p_hardware_q52",
         "p_hardware_q53",
-        "p_hardware_q54"
+        "p_hardware_q54",
+        "p_hardware_n55",
+        "p_hardware_n56"
       ],
       "depth": 1,
       "branchId": "b_manipulation",
@@ -1929,7 +1944,10 @@
         "p_force_q69",
         "p_force_q70",
         "p_force_q71",
-        "p_force_q72"
+        "p_force_q72",
+        "p_force_n73",
+        "p_force_n74",
+        "p_force_n75"
       ],
       "depth": 1,
       "branchId": "b_tactile",
@@ -11816,6 +11834,258 @@
       ],
       "first_year": 2025,
       "latest_year": 2025
+    },
+    {
+      "id": "p_generalization_n122",
+      "name": "缺乏统一的视触觉操作仿真平台",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_generalization",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2602_10093"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_hardware_n55",
+      "name": "不同触觉传感器仿真差异大",
+      "parentId": "p_hardware",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_hardware",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2602_10093"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_generalization_n123",
+      "name": "Sim-to-Real迁移困难",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_generalization",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2602_10093"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_vla_tactile_n24",
+      "name": "VLA模型缺乏触觉感知能力",
+      "parentId": "p_vla_tactile",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla_tactile",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_14604"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_vt_fusion_n32",
+      "name": "重训练触觉融合计算开销大",
+      "parentId": "p_vt_fusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vt_fusion",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_14604"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_force_n73",
+      "name": "跨注意力机制参数过多",
+      "parentId": "p_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_force",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_14604"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_vla_tactile_n25",
+      "name": "VLA模型无法预测未来触觉状态",
+      "parentId": "p_vla_tactile",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla_tactile",
+      "year": 2025,
+      "status": "active",
+      "papers": [
+        "p_2512_23864"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_force_n74",
+      "name": "接触丰富任务需要前瞻性感知",
+      "parentId": "p_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_force",
+      "year": 2025,
+      "status": "active",
+      "papers": [
+        "p_2512_23864"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_generalization_n124",
+      "name": "触觉反馈延迟影响闭环控制",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_generalization",
+      "year": 2025,
+      "status": "active",
+      "papers": [
+        "p_2512_23864"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_vla_tactile_n26",
+      "name": "缺乏细粒度触觉-语言对齐表示",
+      "parentId": "p_vla_tactile",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla_tactile",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_10871"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_generalization_n125",
+      "name": "现有触觉表示粒度不足",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_generalization",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_10871"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_vla_tactile_n27",
+      "name": "触觉-语言跨模态对齐困难",
+      "parentId": "p_vla_tactile",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla_tactile",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_10871"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_generalization_n126",
+      "name": "精密装配任务视觉遮挡严重",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_generalization",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_09565"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_generalization_n127",
+      "name": "0.1mm间隙装配精度要求高",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_generalization",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_09565"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_force_n75",
+      "name": "接触状态动态变化复杂",
+      "parentId": "p_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_force",
+      "year": 2026,
+      "status": "active",
+      "papers": [
+        "p_2603_09565"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_hardware_n56",
+      "name": "缺乏大规模人形机器人操作数据集",
+      "parentId": "p_hardware",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_hardware",
+      "year": 2025,
+      "status": "active",
+      "papers": [
+        "p_2510_08807"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_generalization_n128",
+      "name": "日常操作任务数据稀缺",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_generalization",
+      "year": 2025,
+      "status": "active",
+      "papers": [
+        "p_2510_08807"
+      ],
+      "methods": []
+    },
+    {
+      "id": "p_generalization_n129",
+      "name": "跨任务泛化数据不足",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_generalization",
+      "year": 2025,
+      "status": "active",
+      "papers": [
+        "p_2510_08807"
+      ],
+      "methods": []
     }
   ],
   "methods": [
@@ -11977,7 +12247,20 @@
         "m_diffusion_m47",
         "m_diffusion_m48",
         "m_diffusion_m49",
-        "m_diffusion_m50"
+        "m_diffusion_m50",
+        "m_diffusion_n51",
+        "m_diffusion_n52",
+        "m_diffusion_n53",
+        "m_diffusion_n54",
+        "m_diffusion_n55",
+        "m_diffusion_n56",
+        "m_diffusion_n57",
+        "m_diffusion_n58",
+        "m_diffusion_n59",
+        "m_diffusion_n60",
+        "m_diffusion_n61",
+        "m_diffusion_n62",
+        "m_diffusion_n63"
       ],
       "depth": 1,
       "branchId": "b_diffusion",
@@ -12316,7 +12599,9 @@
         "m_vla_m31",
         "m_vla_m32",
         "m_vla_m33",
-        "m_vla_m34"
+        "m_vla_m34",
+        "m_vla_n35",
+        "m_vla_n36"
       ],
       "depth": 1,
       "branchId": "b_vla",
@@ -12541,7 +12826,8 @@
         "m_ssl_m9",
         "m_ssl_m10",
         "m_ssl_m11",
-        "m_ssl_m12"
+        "m_ssl_m12",
+        "m_ssl_n13"
       ],
       "depth": 1,
       "branchId": "b_perception",
@@ -13477,7 +13763,9 @@
         "m_hardware_m31",
         "m_hardware_m32",
         "m_hardware_m33",
-        "m_hardware_m34"
+        "m_hardware_m34",
+        "m_hardware_n35",
+        "m_hardware_n36"
       ],
       "depth": 1,
       "branchId": "b_manipulation",
@@ -27947,6 +28235,294 @@
       ],
       "first_year": 2025,
       "latest_year": 2025
+    },
+    {
+      "id": "m_diffusion_n51",
+      "name": "统一仿真平台UniVTAC",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2602_10093"
+      ]
+    },
+    {
+      "id": "m_hardware_n35",
+      "name": "多传感器统一接口",
+      "parentId": "m_hardware",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_hardware",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2602_10093"
+      ]
+    },
+    {
+      "id": "m_diffusion_n52",
+      "name": "8个代表性任务套件",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2602_10093"
+      ]
+    },
+    {
+      "id": "m_diffusion_n53",
+      "name": "轻量级FiLM触觉融合",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_14604"
+      ]
+    },
+    {
+      "id": "m_diffusion_n54",
+      "name": "Feature-wise Linear Modulation",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_14604"
+      ]
+    },
+    {
+      "id": "m_diffusion_n55",
+      "name": "后训练微调范式",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_14604"
+      ]
+    },
+    {
+      "id": "m_vla_n35",
+      "name": "DreamTacVLA触觉预测模型",
+      "parentId": "m_vla",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2512_23864"
+      ]
+    },
+    {
+      "id": "m_diffusion_n56",
+      "name": "触觉世界模型",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2512_23864"
+      ]
+    },
+    {
+      "id": "m_diffusion_n57",
+      "name": "未来触觉状态预测",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2512_23864"
+      ]
+    },
+    {
+      "id": "m_ssl_n13",
+      "name": "FG-CLTP细粒度对比预训练",
+      "parentId": "m_ssl",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_ssl",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_10871"
+      ]
+    },
+    {
+      "id": "m_vla_n36",
+      "name": "对比语言-触觉学习",
+      "parentId": "m_vla",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_10871"
+      ]
+    },
+    {
+      "id": "m_diffusion_n58",
+      "name": "定量接触状态编码",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_10871"
+      ]
+    },
+    {
+      "id": "m_diffusion_n59",
+      "name": "ReTac-ACT状态门控融合",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_09565"
+      ]
+    },
+    {
+      "id": "m_diffusion_n60",
+      "name": "状态感知的视觉触觉融合",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_09565"
+      ]
+    },
+    {
+      "id": "m_diffusion_n61",
+      "name": "NIST装配板基准",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2603_09565"
+      ]
+    },
+    {
+      "id": "m_hardware_n36",
+      "name": "Humanoid Everyday数据集",
+      "parentId": "m_hardware",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_hardware",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2510_08807"
+      ]
+    },
+    {
+      "id": "m_diffusion_n62",
+      "name": "10.3k轨迹收集",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2510_08807"
+      ]
+    },
+    {
+      "id": "m_diffusion_n63",
+      "name": "260任务云端评估",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": [],
+      "papers": [
+        "p_2510_08807"
+      ]
     }
   ],
   "papers": [
@@ -35979,6 +36555,372 @@
         }
       ],
       "kg_mappings": []
+    },
+    {
+      "id": "p_2602_10093",
+      "title": "UniVTAC: A Unified Simulation Platform for Visuo-Tactile Manipulation",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "status": "active",
+      "arxivId": "2602.10093",
+      "authorityScore": 0.85,
+      "citations": 0,
+      "problems": [],
+      "methods": [],
+      "targets": [],
+      "category": "Generalization",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_root",
+      "parentId": null,
+      "isBest": false,
+      "isLatest": true,
+      "kg_problems": [
+        {
+          "level": 0,
+          "description": "缺乏统一的视触觉操作仿真平台",
+          "type": "root"
+        },
+        {
+          "level": 1,
+          "description": "不同触觉传感器仿真差异大",
+          "type": "sub"
+        },
+        {
+          "level": 1,
+          "description": "Sim-to-Real迁移困难",
+          "type": "sub"
+        }
+      ],
+      "kg_methods": [
+        {
+          "level": 0,
+          "description": "统一仿真平台UniVTAC",
+          "type": "core"
+        },
+        {
+          "level": 1,
+          "description": "多传感器统一接口",
+          "type": "technique"
+        },
+        {
+          "level": 1,
+          "description": "8个代表性任务套件",
+          "type": "technique"
+        }
+      ],
+      "kg_mappings": [
+        {
+          "problem": "缺乏统一的视触觉操作仿真平台",
+          "method": "统一仿真平台UniVTAC",
+          "effect": "有效解决"
+        }
+      ]
+    },
+    {
+      "id": "p_2603_14604",
+      "title": "Tactile Modality Fusion for Vision-Language-Action Models",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "status": "active",
+      "arxivId": "2603.14604",
+      "authorityScore": 0.85,
+      "citations": 0,
+      "problems": [],
+      "methods": [],
+      "targets": [],
+      "category": "VLA",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_root",
+      "parentId": null,
+      "isBest": false,
+      "isLatest": true,
+      "kg_problems": [
+        {
+          "level": 0,
+          "description": "VLA模型缺乏触觉感知能力",
+          "type": "root"
+        },
+        {
+          "level": 1,
+          "description": "重训练触觉融合计算开销大",
+          "type": "sub"
+        },
+        {
+          "level": 1,
+          "description": "跨注意力机制参数过多",
+          "type": "sub"
+        }
+      ],
+      "kg_methods": [
+        {
+          "level": 0,
+          "description": "轻量级FiLM触觉融合",
+          "type": "core"
+        },
+        {
+          "level": 1,
+          "description": "Feature-wise Linear Modulation",
+          "type": "technique"
+        },
+        {
+          "level": 1,
+          "description": "后训练微调范式",
+          "type": "technique"
+        }
+      ],
+      "kg_mappings": [
+        {
+          "problem": "VLA模型缺乏触觉感知能力",
+          "method": "轻量级FiLM触觉融合",
+          "effect": "有效解决"
+        }
+      ]
+    },
+    {
+      "id": "p_2512_23864",
+      "title": "Learning to Feel the Future: DreamTacVLA for Contact-Rich Manipulation",
+      "year": 2025,
+      "venue": "arXiv preprint",
+      "status": "active",
+      "arxivId": "2512.23864",
+      "authorityScore": 0.85,
+      "citations": 0,
+      "problems": [],
+      "methods": [],
+      "targets": [],
+      "category": "VLA",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_root",
+      "parentId": null,
+      "isBest": false,
+      "isLatest": true,
+      "kg_problems": [
+        {
+          "level": 0,
+          "description": "VLA模型无法预测未来触觉状态",
+          "type": "root"
+        },
+        {
+          "level": 1,
+          "description": "接触丰富任务需要前瞻性感知",
+          "type": "sub"
+        },
+        {
+          "level": 1,
+          "description": "触觉反馈延迟影响闭环控制",
+          "type": "sub"
+        }
+      ],
+      "kg_methods": [
+        {
+          "level": 0,
+          "description": "DreamTacVLA触觉预测模型",
+          "type": "core"
+        },
+        {
+          "level": 1,
+          "description": "触觉世界模型",
+          "type": "technique"
+        },
+        {
+          "level": 1,
+          "description": "未来触觉状态预测",
+          "type": "technique"
+        }
+      ],
+      "kg_mappings": [
+        {
+          "problem": "VLA模型无法预测未来触觉状态",
+          "method": "DreamTacVLA触觉预测模型",
+          "effect": "有效解决"
+        }
+      ]
+    },
+    {
+      "id": "p_2603_10871",
+      "title": "FG-CLTP: Fine-Grained Contrastive Language Tactile Pretraining",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "status": "active",
+      "arxivId": "2603.10871",
+      "authorityScore": 0.85,
+      "citations": 0,
+      "problems": [],
+      "methods": [],
+      "targets": [],
+      "category": "VLA",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_root",
+      "parentId": null,
+      "isBest": false,
+      "isLatest": true,
+      "kg_problems": [
+        {
+          "level": 0,
+          "description": "缺乏细粒度触觉-语言对齐表示",
+          "type": "root"
+        },
+        {
+          "level": 1,
+          "description": "现有触觉表示粒度不足",
+          "type": "sub"
+        },
+        {
+          "level": 1,
+          "description": "触觉-语言跨模态对齐困难",
+          "type": "sub"
+        }
+      ],
+      "kg_methods": [
+        {
+          "level": 0,
+          "description": "FG-CLTP细粒度对比预训练",
+          "type": "core"
+        },
+        {
+          "level": 1,
+          "description": "对比语言-触觉学习",
+          "type": "technique"
+        },
+        {
+          "level": 1,
+          "description": "定量接触状态编码",
+          "type": "technique"
+        }
+      ],
+      "kg_mappings": [
+        {
+          "problem": "缺乏细粒度触觉-语言对齐表示",
+          "method": "FG-CLTP细粒度对比预训练",
+          "effect": "有效解决"
+        }
+      ]
+    },
+    {
+      "id": "p_2603_09565",
+      "title": "ReTac-ACT: State-Gated Vision-Tactile Fusion for Precision Assembly",
+      "year": 2026,
+      "venue": "arXiv preprint",
+      "status": "active",
+      "arxivId": "2603.09565",
+      "authorityScore": 0.85,
+      "citations": 0,
+      "problems": [],
+      "methods": [],
+      "targets": [],
+      "category": "Generalization",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_root",
+      "parentId": null,
+      "isBest": false,
+      "isLatest": true,
+      "kg_problems": [
+        {
+          "level": 0,
+          "description": "精密装配任务视觉遮挡严重",
+          "type": "root"
+        },
+        {
+          "level": 1,
+          "description": "0.1mm间隙装配精度要求高",
+          "type": "sub"
+        },
+        {
+          "level": 1,
+          "description": "接触状态动态变化复杂",
+          "type": "sub"
+        }
+      ],
+      "kg_methods": [
+        {
+          "level": 0,
+          "description": "ReTac-ACT状态门控融合",
+          "type": "core"
+        },
+        {
+          "level": 1,
+          "description": "状态感知的视觉触觉融合",
+          "type": "technique"
+        },
+        {
+          "level": 1,
+          "description": "NIST装配板基准",
+          "type": "technique"
+        }
+      ],
+      "kg_mappings": [
+        {
+          "problem": "精密装配任务视觉遮挡严重",
+          "method": "ReTac-ACT状态门控融合",
+          "effect": "有效解决"
+        }
+      ]
+    },
+    {
+      "id": "p_2510_08807",
+      "title": "Humanoid Everyday: Comprehensive Dataset for Humanoid Manipulation",
+      "year": 2025,
+      "venue": "arXiv preprint",
+      "status": "active",
+      "arxivId": "2510.08807",
+      "authorityScore": 0.85,
+      "citations": 0,
+      "problems": [],
+      "methods": [],
+      "targets": [],
+      "category": "Hardware",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_root",
+      "parentId": null,
+      "isBest": false,
+      "isLatest": true,
+      "kg_problems": [
+        {
+          "level": 0,
+          "description": "缺乏大规模人形机器人操作数据集",
+          "type": "root"
+        },
+        {
+          "level": 1,
+          "description": "日常操作任务数据稀缺",
+          "type": "sub"
+        },
+        {
+          "level": 1,
+          "description": "跨任务泛化数据不足",
+          "type": "sub"
+        }
+      ],
+      "kg_methods": [
+        {
+          "level": 0,
+          "description": "Humanoid Everyday数据集",
+          "type": "core"
+        },
+        {
+          "level": 1,
+          "description": "10.3k轨迹收集",
+          "type": "technique"
+        },
+        {
+          "level": 1,
+          "description": "260任务云端评估",
+          "type": "technique"
+        }
+      ],
+      "kg_mappings": [
+        {
+          "problem": "缺乏大规模人形机器人操作数据集",
+          "method": "Humanoid Everyday数据集",
+          "effect": "有效解决"
+        }
+      ]
     }
   ],
   "relationships": {
