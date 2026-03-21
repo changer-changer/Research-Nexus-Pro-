@@ -249,19 +249,19 @@ export default function ProblemTree() {
   }, [])
 
   if (problems.length === 0) {
-    return <div className="h-full w-full flex items-center justify-center text-zinc-500">No data</div>
+    return <div className={`h-full w-full flex items-center justify-center ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-400'}`}>No data</div>
   }
 
   return (
     <div className="h-full w-full relative">
-      <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-2 bg-black/60 backdrop-blur-sm">
+      <div className={`absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-2 backdrop-blur-sm ${viewConfig.darkMode ? 'bg-black/60' : 'bg-white/60'}`}>
         <div className="flex items-center gap-3">
-          <h2 className="text-sm font-medium text-zinc-200">Problem Tree</h2>
-          <span className="text-xs text-zinc-500">{problems.length} problems · {expandedNodes.size} expanded</span>
+          <h2 className={`text-sm font-medium ${viewConfig.darkMode ? 'text-zinc-200' : 'text-gray-800'}`}>Problem Tree</h2>
+          <span className={`text-xs ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>{problems.length} problems · {expandedNodes.size} expanded</span>
         </div>
         <div className="flex items-center gap-2">
-          <button onClick={expandAll} className="text-xs px-3 py-1 rounded bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-zinc-700">Expand All</button>
-          <button onClick={() => collapseAll()} className="text-xs px-3 py-1 rounded bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-zinc-700">Collapse</button>
+          <button onClick={expandAll} className={`text-xs px-3 py-1 rounded border ${viewConfig.darkMode ? 'bg-zinc-800 text-zinc-400 hover:text-zinc-200 border-zinc-700' : 'bg-gray-100 text-gray-600 hover:text-gray-800 border-gray-300'}`}>Expand All</button>
+          <button onClick={() => collapseAll()} className={`text-xs px-3 py-1 rounded border ${viewConfig.darkMode ? 'bg-zinc-800 text-zinc-400 hover:text-zinc-200 border-zinc-700' : 'bg-gray-100 text-gray-600 hover:text-gray-800 border-gray-300'}`}>Collapse</button>
         </div>
       </div>
 
@@ -281,16 +281,16 @@ export default function ProblemTree() {
         maxZoom={2}
         proOptions={{ hideAttribution: true }}
       >
-        <Background color="#1a1a1a" gap={24} size={1} />
-        <Controls position="bottom-right" className="!bg-zinc-900 !border-zinc-800 !text-zinc-400" />
+        <Background color={viewConfig.darkMode ? "#1a1a1a" : "#e5e5e5"} gap={24} size={1} />
+        <Controls position="bottom-right" className={viewConfig.darkMode ? "!bg-zinc-900 !border-zinc-800 !text-zinc-400" : "!bg-white !border-gray-200 !text-gray-600"} />
       </ReactFlow>
 
       {showTimeEvo && (
         <TimeEvolutionModal nodeId={showTimeEvo} nodeType="problem" onClose={() => setShowTimeEvo(null)} />
       )}
 
-      <div className="absolute bottom-4 left-4 z-10 flex gap-4 text-xs text-zinc-500">
-        <div className="text-zinc-600">Right click node to bookmark</div>
+      <div className={`absolute bottom-4 left-4 z-10 flex gap-4 text-xs ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>
+        <div className={viewConfig.darkMode ? 'text-zinc-600' : 'text-gray-400'}>Right click node to bookmark</div>
         {Object.entries(STATUS).map(([key, s]) => (
           <div key={key} className="flex items-center gap-1">
             <div className="w-2.5 h-2.5 rounded-full" style={{ background: s.fill }} />

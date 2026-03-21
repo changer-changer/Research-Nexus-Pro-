@@ -298,51 +298,51 @@ export default function MethodTree() {
     <div className={`h-full w-full flex ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
       <div className="flex-1 flex flex-col">
         {/* Toolbar */}
-        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm">
+        <div className={`flex items-center gap-2 px-4 py-2.5 border-b ${viewConfig.darkMode ? 'border-zinc-800/80 bg-zinc-900/40' : 'border-gray-200 bg-gray-100'} backdrop-blur-sm`}>
           <div className="flex items-center gap-1.5 mr-3">
             <button onClick={() => setZoom(z => Math.min(3, z * 1.15))}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-              <ZoomIn size={15} className="text-zinc-400" />
+              className={`p-2 rounded-lg transition-colors ${viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-gray-200 text-gray-600'}`}>
+              <ZoomIn size={15} />
             </button>
             <button onClick={() => setZoom(z => Math.max(0.15, z * 0.85))}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-              <ZoomOut size={15} className="text-zinc-400" />
+              className={`p-2 rounded-lg transition-colors ${viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-gray-200 text-gray-600'}`}>
+              <ZoomOut size={15} />
             </button>
             <button onClick={() => { setZoom(1); panRef.current = { x: 60, y: 60 }; if (svgGroupRef.current) svgGroupRef.current.style.transform = `translate(60px,60px) scale(1)` }}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-              <Maximize2 size={15} className="text-zinc-400" />
+              className={`p-2 rounded-lg transition-colors ${viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-gray-200 text-gray-600'}`}>
+              <Maximize2 size={15} />
             </button>
-            <span className="text-[11px] text-zinc-500 ml-1 w-12">{Math.round(zoom * 100)}%</span>
+            <span className={`text-[11px] ml-1 w-12 ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>{Math.round(zoom * 100)}%</span>
           </div>
           
-          <div className="w-px h-5 bg-zinc-800" />
+          <div className={`w-px h-5 ${viewConfig.darkMode ? 'bg-zinc-800' : 'bg-gray-300'}`} />
           
           <button onClick={expandAll}
-            className="px-3 py-1.5 text-xs text-zinc-400 hover:bg-zinc-800 rounded-lg transition-colors flex items-center gap-1.5">
+            className={`px-3 py-1.5 text-xs rounded-lg transition-colors flex items-center gap-1.5 ${viewConfig.darkMode ? 'text-zinc-400 hover:bg-zinc-800' : 'text-gray-600 hover:bg-gray-200'}`}>
             <Expand size={13} /> Expand All
           </button>
           <button onClick={collapseAll}
-            className="px-3 py-1.5 text-xs text-zinc-400 hover:bg-zinc-800 rounded-lg transition-colors flex items-center gap-1.5">
+            className={`px-3 py-1.5 text-xs rounded-lg transition-colors flex items-center gap-1.5 ${viewConfig.darkMode ? 'text-zinc-400 hover:bg-zinc-800' : 'text-gray-600 hover:bg-gray-200'}`}>
             <Minimize size={13} /> Collapse
           </button>
           
-          <div className="w-px h-5 bg-zinc-800" />
+          <div className={`w-px h-5 ${viewConfig.darkMode ? 'bg-zinc-800' : 'bg-gray-300'}`} />
           
           <div className="relative">
             <button onClick={() => setShowSearch(!showSearch)}
-              className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-              <Search size={15} className="text-zinc-400" />
+              className={`p-2 rounded-lg transition-colors ${viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-gray-200 text-gray-600'}`}>
+              <Search size={15} />
             </button>
             {showSearch && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-3 z-50">
+              <div className={`absolute top-full left-0 mt-2 w-64 border rounded-xl shadow-2xl p-3 z-50 ${viewConfig.darkMode ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-gray-200'}`}>
                 <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search methods..."
-                  className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-zinc-200 placeholder-zinc-500 outline-none focus:border-indigo-500" autoFocus />
+                  className={`w-full border rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500 ${viewConfig.darkMode ? 'bg-zinc-800 border-zinc-700 text-zinc-200 placeholder-zinc-500' : 'bg-gray-100 border-gray-300 text-gray-800 placeholder-gray-400'}`} autoFocus />
               </div>
             )}
           </div>
           
-          <div className="ml-auto flex items-center gap-3">
+          <div className={`ml-auto flex items-center gap-3 ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>
             {/* Linkage indicator */}
             {selectedNode && (
               <div className="flex items-center gap-2 px-3 py-1 bg-indigo-500/10 rounded-full border border-indigo-500/20">
@@ -352,10 +352,10 @@ export default function MethodTree() {
                 </span>
               </div>
             )}
-            <span className="text-[11px] text-zinc-500">
+            <span className="text-[11px]">
               {methods.length} methods · {methods.filter(m => m.status === 'verified').length} verified
             </span>
-            <span className="text-[11px] text-zinc-600">Right click node to bookmark</span>
+            <span className={`text-[11px] ${viewConfig.darkMode ? 'text-zinc-600' : 'text-gray-400'}`}>Right click node to bookmark</span>
           </div>
         </div>
         
@@ -373,7 +373,7 @@ export default function MethodTree() {
             {/* Grid */}
             <defs>
               <pattern id="methodGrid" width={40} height={40} patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#18181b" strokeWidth="1" />
+                <path d="M 40 0 L 0 0 0 40" fill="none" className={viewConfig.darkMode ? "stroke-zinc-900" : "stroke-gray-200"} strokeWidth="1" />
               </pattern>
             </defs>
             <rect width="10000" height="10000" x="-5000" y="-5000" fill="url(#methodGrid)" />
@@ -399,7 +399,7 @@ export default function MethodTree() {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 400, opacity: 0 }}
             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-            className="w-[380px] border-l border-zinc-800 bg-zinc-900/60 backdrop-blur-xl overflow-y-auto shrink-0">
+            className={`w-[380px] border-l backdrop-blur-xl overflow-y-auto shrink-0 ${viewConfig.darkMode ? 'border-zinc-800 bg-zinc-900/60' : 'border-gray-200 bg-white/80'}`}>
             <MethodDetailPanel nodeId={selectedNode.id} />
           </motion.div>
         )}
@@ -417,16 +417,17 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
   const linkedProblems = getMethodProblems(nodeId)
   const children = getMethodChildren(nodeId)
   const status = METHOD_STATUS[method.status] || METHOD_STATUS.untested
+  const isDark = viewConfig.darkMode
   
   return (
     <div className="p-5">
       <div className="flex items-start justify-between mb-5">
         <div>
-          <h3 className="text-base font-bold text-white">{method.name}</h3>
-          <p className="text-xs text-zinc-500 mt-1 font-mono">{method.year} · Depth {method.depth}</p>
+          <h3 className={`text-base font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{method.name}</h3>
+          <p className={`text-xs mt-1 font-mono ${isDark ? 'text-zinc-500' : 'text-gray-500'}`}>{method.year} · Depth {method.depth}</p>
         </div>
         <button onClick={() => selectNode('method', null)}
-          className="text-zinc-500 hover:text-zinc-300 text-lg">✕</button>
+          className={isDark ? 'text-zinc-500 hover:text-zinc-300' : 'text-gray-400 hover:text-gray-600'}>✕</button>
       </div>
       
       {/* Status */}
@@ -435,32 +436,32 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
           style={{ background: `${status.bg}20`, color: status.text }}>
           {status.label}
         </span>
-        <span className="px-3 py-1 rounded-full text-xs bg-zinc-800 text-zinc-400">
+        <span className={`px-3 py-1 rounded-full text-xs ${isDark ? 'bg-zinc-800 text-zinc-400' : 'bg-gray-200 text-gray-600'}`}>
           {method.targets.length} target problems
         </span>
       </div>
       
       {/* Description */}
       <div className="mb-5">
-        <h4 className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2">Description</h4>
-        <p className="text-sm text-zinc-300 leading-relaxed">{method.description}</p>
+        <h4 className={`text-[10px] uppercase tracking-wider mb-2 ${isDark ? 'text-zinc-500' : 'text-gray-500'}`}>Description</h4>
+        <p className={`text-sm leading-relaxed ${isDark ? 'text-zinc-300' : 'text-gray-700'}`}>{method.description}</p>
       </div>
       
       {/* Sub-methods */}
       {children.length > 0 && (
         <div className="mb-5">
-          <h4 className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2">
+          <h4 className={`text-[10px] uppercase tracking-wider mb-2 ${isDark ? 'text-zinc-500' : 'text-gray-500'}`}>
             Sub-methods ({children.length})
           </h4>
           <div className="space-y-1.5">
             {children.map(c => (
               <div key={c.id} onClick={() => selectNode('method', c.id)}
-                className="p-2.5 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 cursor-pointer transition-all group">
+                className={`p-2.5 rounded-lg cursor-pointer transition-all group ${isDark ? 'bg-zinc-800/50 hover:bg-zinc-800' : 'bg-gray-100 hover:bg-gray-200'}`}>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full shrink-0"
                     style={{ background: METHOD_STATUS[c.status]?.bg }} />
-                  <span className="text-sm text-zinc-200 flex-1">{c.name}</span>
-                  <ArrowRight size={12} className="text-zinc-600 opacity-0 group-hover:opacity-100" />
+                  <span className={`text-sm flex-1 ${isDark ? 'text-zinc-200' : 'text-gray-800'}`}>{c.name}</span>
+                  <ArrowRight size={12} className={`opacity-0 group-hover:opacity-100 ${isDark ? 'text-zinc-600' : 'text-gray-400'}`} />
                 </div>
               </div>
             ))}
@@ -471,19 +472,19 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
       {/* Target Problems - Core Linkage */}
       {linkedProblems.length > 0 && (
         <div className="mb-5">
-          <h4 className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <h4 className={`text-[10px] uppercase tracking-wider mb-2 flex items-center gap-1.5 ${isDark ? 'text-zinc-500' : 'text-gray-500'}`}>
             <Link2 size={10} /> Target Problems ({linkedProblems.length})
           </h4>
           <div className="space-y-1.5">
             {linkedProblems.map(p => (
               <div key={p.id} onClick={() => selectNode('problem', p.id)}
-                className="p-2.5 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 cursor-pointer transition-all group">
+                className={`p-2.5 rounded-lg cursor-pointer transition-all group ${isDark ? 'bg-zinc-800/50 hover:bg-zinc-800' : 'bg-gray-100 hover:bg-gray-200'}`}>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full shrink-0"
                     style={{ background: p.status === 'solved' ? '#22c55e' : p.status === 'unsolved' ? '#ef4444' : '#3b82f6' }} />
-                  <span className="text-sm text-zinc-200 flex-1">{p.name}</span>
-                  <span className="text-[10px] text-zinc-500">{p.year}</span>
-                  <ArrowRight size={12} className="text-zinc-600 opacity-0 group-hover:opacity-100" />
+                  <span className={`text-sm flex-1 ${isDark ? 'text-zinc-200' : 'text-gray-800'}`}>{p.name}</span>
+                  <span className={`text-[10px] ${isDark ? 'text-zinc-500' : 'text-gray-500'}`}>{p.year}</span>
+                  <ArrowRight size={12} className={`opacity-0 group-hover:opacity-100 ${isDark ? 'text-zinc-600' : 'text-gray-400'}`} />
                 </div>
               </div>
             ))}
@@ -494,13 +495,13 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
       {/* Cross-domain links */}
       {method.crossDomain.length > 0 && (
         <div>
-          <h4 className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <h4 className={`text-[10px] uppercase tracking-wider mb-2 flex items-center gap-1.5 ${isDark ? 'text-zinc-500' : 'text-gray-500'}`}>
             <Unlink size={10} /> Cross-domain Migrations
           </h4>
           <div className="space-y-1.5">
             {method.crossDomain.map((cd, i) => (
-              <div key={i} className="p-2.5 bg-zinc-800/30 rounded-lg border border-dashed border-zinc-700">
-                <span className="text-xs text-zinc-400">{cd}</span>
+              <div key={i} className={`p-2.5 rounded-lg border border-dashed ${isDark ? 'bg-zinc-800/30 border-zinc-700' : 'bg-gray-50 border-gray-300'}`}>
+                <span className={`text-xs ${isDark ? 'text-zinc-400' : 'text-gray-600'}`}>{cd}</span>
               </div>
             ))}
           </div>
