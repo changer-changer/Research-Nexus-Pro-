@@ -18,7 +18,6 @@ export default function PaperTimelineView() {
   const [pan, setPan] = useState({ x: 30, y: 30 })
   const [filterCat, setFilterCat] = useState<string>('all')
   const [hoveredPaper, setHoveredPaper] = useState<string | null>(null)
-  const [selectedPaper, setSelectedPaper] = useState<string | null>(null)
   const isPanning = useRef(false)
   const panStart = useRef({ x: 0, y: 0 })
 
@@ -76,8 +75,6 @@ export default function PaperTimelineView() {
     e.preventDefault()
     setZoom(z => Math.max(0.3, Math.min(2.5, z * (e.deltaY > 0 ? 0.93 : 1.07))))
   }, [])
-
-  const selectedPaperData = selectedPaper ? papers.find(p => p.id === selectedPaper) : null
 
   return (
     <div className={`h-full w-full flex flex-col ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
@@ -175,7 +172,7 @@ export default function PaperTimelineView() {
               const x = getX(paper.year) + (col - (cols - 1) / 2) * 16
               const y = getY(lanes.indexOf(lane)) + row * 14 - ((Math.ceil(total / cols) - 1) / 2) * 7
               const isHov = hoveredPaper === paper.id
-              const isSel = selectedPaper === paper.id
+              const isSel = selectedNode?.type === 'paper' && selectedNode?.id === paper.id
               const isBest = paper.isBest || (paper.authorityScore || 0) >= 8.5
               const isLatest = paper.isLatest || paper.year >= 2025
               const r = Math.max(10, Math.min(22, 8 + (paper.authorityScore || 5)))
@@ -183,7 +180,7 @@ export default function PaperTimelineView() {
             })
           ).map(({ paper, lane, x, y, isHov, isSel, isBest, isLatest, r }) => (
             <g key={paper.id} style={{ cursor: 'pointer' }}
-              onClick={() => setSelectedPaper(isSel ? null : paper.id)}
+              onClick={() => selectNode('paper', paper.id)}
               onMouseEnter={() => setHoveredPaper(paper.id)}
               onMouseLeave={() => setHoveredPaper(null)}>
               {(isHov || isSel) && (
@@ -208,39 +205,6 @@ export default function PaperTimelineView() {
           ))}
         </svg>
       </div>
-      
-      {/* Selected paper detail */}
-      {selectedPaperData && (
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="absolute bottom-4 left-4 right-4 bg-zinc-900/95 backdrop-blur-xl border border-zinc-800 rounded-xl p-4 max-w-2xl mx-auto">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <h3 className="text-white font-semibold">{selectedPaperData.title}</h3>
-              <div className="flex items-center gap-3 mt-2">
-                <span className="text-xs px-2 py-0.5 rounded-full"
-                  style={{ background: `${lanes.find(l => l.id === selectedPaperData.category)?.color || '#6b7280'}20`,
-                    color: lanes.find(l => l.id === selectedPaperData.category)?.color || '#6b7280' }}>
-                  {selectedPaperData.category}
-                </span>
-                <span className="text-xs text-zinc-500">{selectedPaperData.venue} · {selectedPaperData.year}</span>
-                <span className="text-xs text-zinc-500 flex items-center gap-1">
-                  <Award size={10} /> {selectedPaperData.authorityScore}
-                </span>
-              </div>
-              <p className="text-xs text-zinc-400 mt-2">Method: {selectedPaperData.methodology}</p>
-            </div>
-            <button onClick={() => setSelectedPaper(null)} className="text-zinc-500 hover:text-zinc-300 ml-4">✕</button>
-          </div>
-          {selectedPaperData.arxivId && (
-            <a href={`https://arxiv.org/abs/${selectedPaperData.arxivId}`} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300 mt-3">
-              View on arXiv <ExternalLink size={10} />
-            </a>
-          )}
-        </motion.div>
-      )}
       
       {/* Legend */}
       <div className="flex items-center gap-4 px-5 py-2 border-t border-zinc-800 bg-zinc-900/50">

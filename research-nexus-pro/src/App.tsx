@@ -19,6 +19,7 @@ const CitationView = lazy(() => import('./components/CitationView'))
 const PaperTimelineView = lazy(() => import('./components/PaperTimelineView'))
 const BookmarkPanel = lazy(() => import('./components/BookmarkPanel'))
 const NodeDetailPanel = lazy(() => import('./components/NodeDetailPanel'))
+const PaperDetailPanel = lazy(() => import('./components/PaperDetailPanel'))
 const PresentationMode = lazy(() => import('./components/PresentationMode'))
 
 type NavItem = {
@@ -493,6 +494,25 @@ function App() {
                 <NodeDetailPanel
                   nodeId={selectedNode.id}
                   nodeType={selectedNode.type as 'problem' | 'method'}
+                  onClose={() => selectNode('problem', '')}
+                />
+              </Suspense>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Paper Detail Panel */}
+        <AnimatePresence>
+          {selectedNode && selectedNode.type === 'paper' && (
+            <motion.div
+              initial={{ x: 480, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 480, opacity: 0 }}
+              className="absolute right-0 top-0 bottom-0 z-50"
+            >
+              <Suspense fallback={<LoadingFallback darkMode={viewConfig.darkMode} />}>
+                <PaperDetailPanel
+                  paperId={selectedNode.id}
                   onClose={() => selectNode('problem', '')}
                 />
               </Suspense>
