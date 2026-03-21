@@ -18,6 +18,7 @@ const TimelineView = lazy(() => import('./components/TimelineView'))
 const CitationView = lazy(() => import('./components/CitationView'))
 const PaperTimelineView = lazy(() => import('./components/PaperTimelineView'))
 const BookmarkPanel = lazy(() => import('./components/BookmarkPanel'))
+const NodeDetailPanel = lazy(() => import('./components/NodeDetailPanel'))
 const PresentationMode = lazy(() => import('./components/PresentationMode'))
 
 type NavItem = {
@@ -40,7 +41,7 @@ const NAV_ITEMS: NavItem[] = [
 ]
 
 function App() {
-  const { activeView, setActiveView, viewConfig, updateViewConfig, loadData, undo, redo } = useAppStore()
+  const { activeView, setActiveView, viewConfig, updateViewConfig, loadData, undo, redo, selectedNode, selectNode } = useAppStore()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [showExport, setShowExport] = useState(false)
   const [showBookmarks, setShowBookmarks] = useState(false)
@@ -90,6 +91,7 @@ function App() {
         setShowExport(false)
         setShowBookmarks(false)
         setShowPresentation(false)
+        selectNode('problem', '')
       }
     }
 
@@ -478,6 +480,26 @@ function App() {
           )}
         </AnimatePresence>
         
+        {/* Node Detail Panel */}
+        <AnimatePresence>
+          {selectedNode && selectedNode.type !== 'paper' && (
+            <motion.div
+              initial={{ x: 400, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 400, opacity: 0 }}
+              className="absolute right-0 top-0 bottom-0 w-96 z-50"
+            >
+              <Suspense fallback={<LoadingFallback darkMode={viewConfig.darkMode} />}>
+                <NodeDetailPanel
+                  nodeId={selectedNode.id}
+                  nodeType={selectedNode.type as 'problem' | 'method'}
+                  onClose={() => selectNode('problem', '')}
+                />
+              </Suspense>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Presentation Mode */}
         <AnimatePresence>
           {showPresentation && (
