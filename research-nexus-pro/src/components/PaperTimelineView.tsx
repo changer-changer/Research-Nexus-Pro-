@@ -21,7 +21,7 @@ export default function PaperTimelineView() {
   const isPanning = useRef(false)
   const panStart = useRef({ x: 0, y: 0 })
 
-  const minYear = 2021, maxYear = 2026, yearRange = maxYear - minYear
+  const minYear = 2019, maxYear = 2026, yearRange = maxYear - minYear
   const getX = (year: number) => LEFT + ((year - minYear) / yearRange) * (yearRange * YEAR_W)
 
   // Filter and categorize papers
