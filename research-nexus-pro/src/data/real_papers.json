@@ -58,7 +58,15 @@
         "p_sim2real",
         "p_force_control"
       ],
-      "domain": "root"
+      "domain": "root",
+      "depth": 0,
+      "branchId": "b_root",
+      "year": 2017,
+      "status": "active",
+      "valueScore": 10,
+      "unsolvedLevel": 1,
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_diffusion_policy",
@@ -69,7 +77,15 @@
       "children": [
         "p_diffusion_policy_l2_1"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 1,
+      "branchId": "b_diffusion",
+      "year": 2023,
+      "status": "partial",
+      "valueScore": 8,
+      "unsolvedLevel": 2,
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_diffusion_policy_l2_1",
@@ -80,7 +96,51 @@
       "children": [
         "p_diffusion_policy_l3_2"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_2",
@@ -91,7 +151,51 @@
       "children": [
         "p_diffusion_policy_l3_3"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_3",
@@ -102,7 +206,51 @@
       "children": [
         "p_diffusion_policy_l3_4"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_4",
@@ -113,7 +261,51 @@
       "children": [
         "p_diffusion_policy_l2_5"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l2_5",
@@ -124,7 +316,51 @@
       "children": [
         "p_diffusion_policy_l3_6"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_6",
@@ -135,7 +371,51 @@
       "children": [
         "p_diffusion_policy_l3_7"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_7",
@@ -146,7 +426,51 @@
       "children": [
         "p_diffusion_policy_l3_8"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_8",
@@ -157,7 +481,51 @@
       "children": [
         "p_diffusion_policy_l2_9"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l2_9",
@@ -168,7 +536,51 @@
       "children": [
         "p_diffusion_policy_l3_10"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_10",
@@ -179,7 +591,51 @@
       "children": [
         "p_diffusion_policy_l3_11"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_11",
@@ -190,7 +646,51 @@
       "children": [
         "p_diffusion_policy_l3_12"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l3_12",
@@ -201,7 +701,51 @@
       "children": [
         "p_diffusion_policy_l2_13"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l2_13",
@@ -212,7 +756,51 @@
       "children": [
         "p_diffusion_policy_l2_14"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_diffusion_policy_l2_14",
@@ -221,7 +809,51 @@
       "description": "扩散模型与机器人控制频率不匹配",
       "parentId": "p_diffusion_policy",
       "children": [],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2403_03954",
+        "p_2403_11898",
+        "p_2404_15709",
+        "p_2406_01586",
+        "p_2409_00588",
+        "p_2409_07343",
+        "p_2409_11047",
+        "p_2409_14411",
+        "p_2410_10803",
+        "p_2410_24091",
+        "p_2412_04987",
+        "p_2502_08449",
+        "p_2503_02881",
+        "p_2504_19341",
+        "p_2509_17684",
+        "p_2509_18676",
+        "p_2510_13324",
+        "p_2512_01383",
+        "p_2512_10946"
+      ],
+      "methods": [
+        "m_diffusion_policy",
+        "m_diffusion_policy_l2_1",
+        "m_diffusion_policy_l3_2",
+        "m_diffusion_policy_l3_3",
+        "m_diffusion_policy_l3_4",
+        "m_diffusion_policy_l3_5",
+        "m_diffusion_policy_l2_6",
+        "m_diffusion_policy_l3_7",
+        "m_diffusion_policy_l3_8",
+        "m_diffusion_policy_l3_9",
+        "m_diffusion_policy_l2_10",
+        "m_diffusion_policy_l3_11",
+        "m_diffusion_policy_l3_12",
+        "m_diffusion_policy_l3_13",
+        "m_diffusion_policy_l2_14"
+      ]
     },
     {
       "id": "p_vla",
@@ -232,7 +864,15 @@
       "children": [
         "p_vla_l2_15"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 1,
+      "branchId": "b_vla",
+      "year": 2024,
+      "status": "partial",
+      "valueScore": 8,
+      "unsolvedLevel": 2,
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_vla_l2_15",
@@ -243,7 +883,27 @@
       "children": [
         "p_vla_l3_16"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_16",
@@ -254,7 +914,27 @@
       "children": [
         "p_vla_l3_17"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_17",
@@ -265,7 +945,27 @@
       "children": [
         "p_vla_l3_18"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_18",
@@ -276,7 +976,27 @@
       "children": [
         "p_vla_l2_19"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l2_19",
@@ -287,7 +1007,27 @@
       "children": [
         "p_vla_l3_20"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_20",
@@ -298,7 +1038,27 @@
       "children": [
         "p_vla_l3_21"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_21",
@@ -309,7 +1069,27 @@
       "children": [
         "p_vla_l3_22"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_22",
@@ -320,7 +1100,27 @@
       "children": [
         "p_vla_l2_23"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l2_23",
@@ -331,7 +1131,27 @@
       "children": [
         "p_vla_l3_24"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_24",
@@ -342,7 +1162,27 @@
       "children": [
         "p_vla_l3_25"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_25",
@@ -353,7 +1193,27 @@
       "children": [
         "p_vla_l3_26"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l3_26",
@@ -364,7 +1224,27 @@
       "children": [
         "p_vla_l2_27"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 3,
+      "branchId": "b_vla",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l2_27",
@@ -375,7 +1255,27 @@
       "children": [
         "p_vla_l2_28"
       ],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_vla_l2_28",
@@ -384,7 +1284,27 @@
       "description": "触觉-视觉跨模态对齐困难",
       "parentId": "p_vla",
       "children": [],
-      "domain": "vla"
+      "domain": "vla",
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2501_15830",
+        "p_2503_07511",
+        "p_2503_08548",
+        "p_2503_14734",
+        "p_2503_20020",
+        "p_2505_22159",
+        "p_2507_09160",
+        "p_2507_22424",
+        "p_2508_08706",
+        "p_2510_10903",
+        "p_2512_22983"
+      ],
+      "methods": []
     },
     {
       "id": "p_tactile_representation",
@@ -395,7 +1315,15 @@
       "children": [
         "p_tactile_representation_l2_29"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 1,
+      "branchId": "b_tactile",
+      "year": 2020,
+      "status": "partial",
+      "valueScore": 8,
+      "unsolvedLevel": 2,
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_tactile_representation_l2_29",
@@ -406,7 +1334,38 @@
       "children": [
         "p_tactile_representation_l3_30"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l3_30",
@@ -417,7 +1376,38 @@
       "children": [
         "p_tactile_representation_l3_31"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l3_31",
@@ -428,7 +1418,38 @@
       "children": [
         "p_tactile_representation_l3_32"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l3_32",
@@ -439,7 +1460,38 @@
       "children": [
         "p_tactile_representation_l2_33"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l2_33",
@@ -450,7 +1502,38 @@
       "children": [
         "p_tactile_representation_l3_34"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l3_34",
@@ -461,7 +1544,38 @@
       "children": [
         "p_tactile_representation_l3_35"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l3_35",
@@ -472,7 +1586,38 @@
       "children": [
         "p_tactile_representation_l3_36"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l3_36",
@@ -483,7 +1628,38 @@
       "children": [
         "p_tactile_representation_l2_37"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l2_37",
@@ -494,7 +1670,38 @@
       "children": [
         "p_tactile_representation_l2_38"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_representation_l2_38",
@@ -503,7 +1710,38 @@
       "description": "自监督触觉预训练信号设计",
       "parentId": "p_tactile_representation",
       "children": [],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2004_00136",
+        "p_2303_12076",
+        "p_2304_00736",
+        "p_2312_09863",
+        "p_2410_24090",
+        "p_2502_12191",
+        "p_2505_16062",
+        "p_2505_18361",
+        "p_2510_14647"
+      ],
+      "methods": [
+        "m_tactile_representation",
+        "m_tactile_representation_l2_29",
+        "m_tactile_representation_l3_30",
+        "m_tactile_representation_l3_31",
+        "m_tactile_representation_l3_32",
+        "m_tactile_representation_l3_33",
+        "m_tactile_representation_l2_34",
+        "m_tactile_representation_l3_35",
+        "m_tactile_representation_l3_36",
+        "m_tactile_representation_l3_37",
+        "m_tactile_representation_l2_38",
+        "m_tactile_representation_l2_39"
+      ]
     },
     {
       "id": "p_tactile_hardware",
@@ -514,7 +1752,15 @@
       "children": [
         "p_tactile_hardware_l2_39"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 1,
+      "branchId": "b_manipulation",
+      "year": 2019,
+      "status": "partial",
+      "valueScore": 8,
+      "unsolvedLevel": 2,
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_tactile_hardware_l2_39",
@@ -525,7 +1771,47 @@
       "children": [
         "p_tactile_hardware_l3_40"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 2,
+      "branchId": "b_manipulation",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l3_40",
@@ -536,7 +1822,47 @@
       "children": [
         "p_tactile_hardware_l3_41"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l3_41",
@@ -547,7 +1873,47 @@
       "children": [
         "p_tactile_hardware_l3_42"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l3_42",
@@ -558,7 +1924,47 @@
       "children": [
         "p_tactile_hardware_l2_43"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l2_43",
@@ -569,7 +1975,47 @@
       "children": [
         "p_tactile_hardware_l3_44"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 2,
+      "branchId": "b_manipulation",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l3_44",
@@ -580,7 +2026,47 @@
       "children": [
         "p_tactile_hardware_l3_45"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l3_45",
@@ -591,7 +2077,47 @@
       "children": [
         "p_tactile_hardware_l3_46"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l3_46",
@@ -602,7 +2128,47 @@
       "children": [
         "p_tactile_hardware_l2_47"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2022,
+      "status": "unsolved",
+      "valueScore": 4,
+      "unsolvedLevel": 4,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l2_47",
@@ -613,7 +2179,47 @@
       "children": [
         "p_tactile_hardware_l2_48"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 2,
+      "branchId": "b_manipulation",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_tactile_hardware_l2_48",
@@ -622,7 +2228,47 @@
       "description": "传感器耐用性与可靠性不足",
       "parentId": "p_tactile_hardware",
       "children": [],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 2,
+      "branchId": "b_manipulation",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2002_03236",
+        "p_2003_13165",
+        "p_2008_05404",
+        "p_2103_00410",
+        "p_2103_13460",
+        "p_2301_06698",
+        "p_2305_03051",
+        "p_2305_04660",
+        "p_2306_05902",
+        "p_2308_05386",
+        "p_2309_10886",
+        "p_2403_16764",
+        "p_2407_07885",
+        "p_2409_09276",
+        "p_2411_12503",
+        "p_2503_17501",
+        "p_2503_23835",
+        "p_2509_17812"
+      ],
+      "methods": [
+        "m_tactile_hardware",
+        "m_tactile_hardware_l2_40",
+        "m_tactile_hardware_l3_41",
+        "m_tactile_hardware_l3_42",
+        "m_tactile_hardware_l3_43",
+        "m_tactile_hardware_l3_44",
+        "m_tactile_hardware_l2_45",
+        "m_tactile_hardware_l3_46",
+        "m_tactile_hardware_l3_47",
+        "m_tactile_hardware_l3_48",
+        "m_tactile_hardware_l2_49",
+        "m_tactile_hardware_l2_50"
+      ]
     },
     {
       "id": "p_sim2real",
@@ -633,7 +2279,15 @@
       "children": [
         "p_sim2real_l2_49"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 1,
+      "branchId": "b_policy",
+      "year": 2021,
+      "status": "partial",
+      "valueScore": 8,
+      "unsolvedLevel": 2,
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_sim2real_l2_49",
@@ -644,7 +2298,27 @@
       "children": [
         "p_sim2real_l2_50"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [],
+      "methods": [
+        "m_sim2real",
+        "m_sim2real_l2_51",
+        "m_sim2real_l3_52",
+        "m_sim2real_l3_53",
+        "m_sim2real_l3_54",
+        "m_sim2real_l2_55",
+        "m_sim2real_l2_56",
+        "m_sim2real_l3_57",
+        "m_sim2real_l3_58",
+        "m_sim2real_l3_59",
+        "m_sim2real_l2_60"
+      ]
     },
     {
       "id": "p_sim2real_l2_50",
@@ -655,7 +2329,27 @@
       "children": [
         "p_sim2real_l2_51"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [],
+      "methods": [
+        "m_sim2real",
+        "m_sim2real_l2_51",
+        "m_sim2real_l3_52",
+        "m_sim2real_l3_53",
+        "m_sim2real_l3_54",
+        "m_sim2real_l2_55",
+        "m_sim2real_l2_56",
+        "m_sim2real_l3_57",
+        "m_sim2real_l3_58",
+        "m_sim2real_l3_59",
+        "m_sim2real_l2_60"
+      ]
     },
     {
       "id": "p_sim2real_l2_51",
@@ -666,7 +2360,27 @@
       "children": [
         "p_sim2real_l2_52"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [],
+      "methods": [
+        "m_sim2real",
+        "m_sim2real_l2_51",
+        "m_sim2real_l3_52",
+        "m_sim2real_l3_53",
+        "m_sim2real_l3_54",
+        "m_sim2real_l2_55",
+        "m_sim2real_l2_56",
+        "m_sim2real_l3_57",
+        "m_sim2real_l3_58",
+        "m_sim2real_l3_59",
+        "m_sim2real_l2_60"
+      ]
     },
     {
       "id": "p_sim2real_l2_52",
@@ -675,7 +2389,27 @@
       "description": "Sim-to-Real触觉域迁移困难",
       "parentId": "p_sim2real",
       "children": [],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [],
+      "methods": [
+        "m_sim2real",
+        "m_sim2real_l2_51",
+        "m_sim2real_l3_52",
+        "m_sim2real_l3_53",
+        "m_sim2real_l3_54",
+        "m_sim2real_l2_55",
+        "m_sim2real_l2_56",
+        "m_sim2real_l3_57",
+        "m_sim2real_l3_58",
+        "m_sim2real_l3_59",
+        "m_sim2real_l2_60"
+      ]
     },
     {
       "id": "p_force_control",
@@ -686,7 +2420,15 @@
       "children": [
         "p_force_control_l2_53"
       ],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 1,
+      "branchId": "b_tactile",
+      "year": 2020,
+      "status": "partial",
+      "valueScore": 8,
+      "unsolvedLevel": 2,
+      "papers": [],
+      "methods": []
     },
     {
       "id": "p_force_control_l2_53",
@@ -697,7 +2439,24 @@
       "children": [
         "p_force_control_l2_54"
       ],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2502_17432",
+        "p_2504_01301"
+      ],
+      "methods": [
+        "m_force_control",
+        "m_force_control_l2_61",
+        "m_force_control_l2_62",
+        "m_force_control_l2_63",
+        "m_force_control_l2_64"
+      ]
     },
     {
       "id": "p_force_control_l2_54",
@@ -708,7 +2467,24 @@
       "children": [
         "p_force_control_l2_55"
       ],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2502_17432",
+        "p_2504_01301"
+      ],
+      "methods": [
+        "m_force_control",
+        "m_force_control_l2_61",
+        "m_force_control_l2_62",
+        "m_force_control_l2_63",
+        "m_force_control_l2_64"
+      ]
     },
     {
       "id": "p_force_control_l2_55",
@@ -717,7 +2493,24 @@
       "description": "动态接触环境下的力控制稳定性",
       "parentId": "p_force_control",
       "children": [],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "status": "unsolved",
+      "valueScore": 6,
+      "unsolvedLevel": 3,
+      "papers": [
+        "p_2502_17432",
+        "p_2504_01301"
+      ],
+      "methods": [
+        "m_force_control",
+        "m_force_control_l2_61",
+        "m_force_control_l2_62",
+        "m_force_control_l2_63",
+        "m_force_control_l2_64"
+      ]
     }
   ],
   "methods": [
@@ -735,7 +2528,13 @@
         "m_sim2real",
         "m_force_control"
       ],
-      "domain": "root"
+      "domain": "root",
+      "depth": 0,
+      "branchId": "b_root",
+      "year": 2019,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy",
@@ -746,7 +2545,28 @@
       "children": [
         "m_diffusion_policy_l2_1"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 1,
+      "branchId": "b_diffusion",
+      "year": 2023,
+      "status": "verified",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l2_1",
@@ -757,7 +2577,28 @@
       "children": [
         "m_diffusion_policy_l3_2"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_2",
@@ -768,7 +2609,28 @@
       "children": [
         "m_diffusion_policy_l3_3"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_3",
@@ -779,7 +2641,28 @@
       "children": [
         "m_diffusion_policy_l3_4"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_4",
@@ -790,7 +2673,28 @@
       "children": [
         "m_diffusion_policy_l3_5"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_5",
@@ -801,7 +2705,28 @@
       "children": [
         "m_diffusion_policy_l2_6"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l2_6",
@@ -812,7 +2737,28 @@
       "children": [
         "m_diffusion_policy_l3_7"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_7",
@@ -823,7 +2769,28 @@
       "children": [
         "m_diffusion_policy_l3_8"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_8",
@@ -834,7 +2801,28 @@
       "children": [
         "m_diffusion_policy_l3_9"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_9",
@@ -845,7 +2833,28 @@
       "children": [
         "m_diffusion_policy_l2_10"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l2_10",
@@ -856,7 +2865,28 @@
       "children": [
         "m_diffusion_policy_l3_11"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_11",
@@ -867,7 +2897,28 @@
       "children": [
         "m_diffusion_policy_l3_12"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_12",
@@ -878,7 +2929,28 @@
       "children": [
         "m_diffusion_policy_l3_13"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l3_13",
@@ -889,7 +2961,28 @@
       "children": [
         "m_diffusion_policy_l2_14"
       ],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 3,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_diffusion_policy_l2_14",
@@ -898,7 +2991,28 @@
       "description": "多模态动作分布建模",
       "parentId": "m_diffusion_policy",
       "children": [],
-      "domain": "diffusion_policy"
+      "domain": "diffusion_policy",
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile",
@@ -909,7 +3023,13 @@
       "children": [
         "m_vla_tactile_l2_15"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 1,
+      "branchId": "b_root",
+      "year": 2020,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l2_15",
@@ -920,7 +3040,13 @@
       "children": [
         "m_vla_tactile_l3_16"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 2,
+      "branchId": "b_root",
+      "year": 2023,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_16",
@@ -931,7 +3057,13 @@
       "children": [
         "m_vla_tactile_l3_17"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_17",
@@ -942,7 +3074,13 @@
       "children": [
         "m_vla_tactile_l3_18"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_18",
@@ -953,7 +3091,13 @@
       "children": [
         "m_vla_tactile_l3_19"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_19",
@@ -964,7 +3108,13 @@
       "children": [
         "m_vla_tactile_l2_20"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l2_20",
@@ -975,7 +3125,13 @@
       "children": [
         "m_vla_tactile_l3_21"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 2,
+      "branchId": "b_root",
+      "year": 2023,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_21",
@@ -986,7 +3142,13 @@
       "children": [
         "m_vla_tactile_l3_22"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_22",
@@ -997,7 +3159,13 @@
       "children": [
         "m_vla_tactile_l3_23"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_23",
@@ -1008,7 +3176,13 @@
       "children": [
         "m_vla_tactile_l2_24"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l2_24",
@@ -1019,7 +3193,13 @@
       "children": [
         "m_vla_tactile_l3_25"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 2,
+      "branchId": "b_root",
+      "year": 2023,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_25",
@@ -1030,7 +3210,13 @@
       "children": [
         "m_vla_tactile_l3_26"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_26",
@@ -1041,7 +3227,13 @@
       "children": [
         "m_vla_tactile_l3_27"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l3_27",
@@ -1052,7 +3244,13 @@
       "children": [
         "m_vla_tactile_l2_28"
       ],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 3,
+      "branchId": "b_root",
+      "year": 2024,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_vla_tactile_l2_28",
@@ -1061,7 +3259,13 @@
       "description": "触觉预测未来状态",
       "parentId": "m_vla_tactile",
       "children": [],
-      "domain": "vla_tactile"
+      "domain": "vla_tactile",
+      "depth": 2,
+      "branchId": "b_root",
+      "year": 2023,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation",
@@ -1072,7 +3276,24 @@
       "children": [
         "m_tactile_representation_l2_29"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 1,
+      "branchId": "b_tactile",
+      "year": 2022,
+      "status": "verified",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l2_29",
@@ -1083,7 +3304,24 @@
       "children": [
         "m_tactile_representation_l3_30"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l3_30",
@@ -1094,7 +3332,24 @@
       "children": [
         "m_tactile_representation_l3_31"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l3_31",
@@ -1105,7 +3360,24 @@
       "children": [
         "m_tactile_representation_l3_32"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l3_32",
@@ -1116,7 +3388,24 @@
       "children": [
         "m_tactile_representation_l3_33"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l3_33",
@@ -1127,7 +3416,24 @@
       "children": [
         "m_tactile_representation_l2_34"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l2_34",
@@ -1138,7 +3444,24 @@
       "children": [
         "m_tactile_representation_l3_35"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l3_35",
@@ -1149,7 +3472,24 @@
       "children": [
         "m_tactile_representation_l3_36"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l3_36",
@@ -1160,7 +3500,24 @@
       "children": [
         "m_tactile_representation_l3_37"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l3_37",
@@ -1171,7 +3528,24 @@
       "children": [
         "m_tactile_representation_l2_38"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 3,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l2_38",
@@ -1182,7 +3556,24 @@
       "children": [
         "m_tactile_representation_l2_39"
       ],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_representation_l2_39",
@@ -1191,7 +3582,24 @@
       "description": "触觉视频时序建模",
       "parentId": "m_tactile_representation",
       "children": [],
-      "domain": "tactile_representation"
+      "domain": "tactile_representation",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware",
@@ -1202,7 +3610,24 @@
       "children": [
         "m_tactile_hardware_l2_40"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 1,
+      "branchId": "b_manipulation",
+      "year": 2018,
+      "status": "verified",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l2_40",
@@ -1213,7 +3638,24 @@
       "children": [
         "m_tactile_hardware_l3_41"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 2,
+      "branchId": "b_manipulation",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l3_41",
@@ -1224,7 +3666,24 @@
       "children": [
         "m_tactile_hardware_l3_42"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l3_42",
@@ -1235,7 +3694,24 @@
       "children": [
         "m_tactile_hardware_l3_43"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l3_43",
@@ -1246,7 +3722,24 @@
       "children": [
         "m_tactile_hardware_l3_44"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l3_44",
@@ -1257,7 +3750,24 @@
       "children": [
         "m_tactile_hardware_l2_45"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l2_45",
@@ -1268,7 +3778,24 @@
       "children": [
         "m_tactile_hardware_l3_46"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 2,
+      "branchId": "b_manipulation",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l3_46",
@@ -1279,7 +3806,24 @@
       "children": [
         "m_tactile_hardware_l3_47"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l3_47",
@@ -1290,7 +3834,24 @@
       "children": [
         "m_tactile_hardware_l3_48"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l3_48",
@@ -1301,7 +3862,24 @@
       "children": [
         "m_tactile_hardware_l2_49"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 3,
+      "branchId": "b_manipulation",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l2_49",
@@ -1312,7 +3890,24 @@
       "children": [
         "m_tactile_hardware_l2_50"
       ],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 2,
+      "branchId": "b_manipulation",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_tactile_hardware_l2_50",
@@ -1321,7 +3916,24 @@
       "description": "柔性触觉皮肤设计",
       "parentId": "m_tactile_hardware",
       "children": [],
-      "domain": "tactile_hardware"
+      "domain": "tactile_hardware",
+      "depth": 2,
+      "branchId": "b_manipulation",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real",
@@ -1332,7 +3944,18 @@
       "children": [
         "m_sim2real_l2_51"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 1,
+      "branchId": "b_policy",
+      "year": 2021,
+      "status": "verified",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l2_51",
@@ -1343,7 +3966,18 @@
       "children": [
         "m_sim2real_l3_52"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l3_52",
@@ -1354,7 +3988,18 @@
       "children": [
         "m_sim2real_l3_53"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 3,
+      "branchId": "b_policy",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l3_53",
@@ -1365,7 +4010,18 @@
       "children": [
         "m_sim2real_l3_54"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 3,
+      "branchId": "b_policy",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l3_54",
@@ -1376,7 +4032,18 @@
       "children": [
         "m_sim2real_l2_55"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 3,
+      "branchId": "b_policy",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l2_55",
@@ -1387,7 +4054,18 @@
       "children": [
         "m_sim2real_l2_56"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l2_56",
@@ -1398,7 +4076,18 @@
       "children": [
         "m_sim2real_l3_57"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l3_57",
@@ -1409,7 +4098,18 @@
       "children": [
         "m_sim2real_l3_58"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 3,
+      "branchId": "b_policy",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l3_58",
@@ -1420,7 +4120,18 @@
       "children": [
         "m_sim2real_l3_59"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 3,
+      "branchId": "b_policy",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l3_59",
@@ -1431,7 +4142,18 @@
       "children": [
         "m_sim2real_l2_60"
       ],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 3,
+      "branchId": "b_policy",
+      "year": 2024,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_sim2real_l2_60",
@@ -1440,7 +4162,18 @@
       "description": "系统辨识与标定",
       "parentId": "m_sim2real",
       "children": [],
-      "domain": "sim2real"
+      "domain": "sim2real",
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_sim2real_l2_49",
+        "p_sim2real_l2_50",
+        "p_sim2real_l2_51",
+        "p_sim2real_l2_52"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_force_control",
@@ -1451,7 +4184,17 @@
       "children": [
         "m_force_control_l2_61"
       ],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 1,
+      "branchId": "b_tactile",
+      "year": 2019,
+      "status": "verified",
+      "targets": [
+        "p_force_control_l2_53",
+        "p_force_control_l2_54",
+        "p_force_control_l2_55"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_force_control_l2_61",
@@ -1462,7 +4205,17 @@
       "children": [
         "m_force_control_l2_62"
       ],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_force_control_l2_53",
+        "p_force_control_l2_54",
+        "p_force_control_l2_55"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_force_control_l2_62",
@@ -1473,7 +4226,17 @@
       "children": [
         "m_force_control_l2_63"
       ],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_force_control_l2_53",
+        "p_force_control_l2_54",
+        "p_force_control_l2_55"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_force_control_l2_63",
@@ -1484,7 +4247,17 @@
       "children": [
         "m_force_control_l2_64"
       ],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_force_control_l2_53",
+        "p_force_control_l2_54",
+        "p_force_control_l2_55"
+      ],
+      "crossDomain": []
     },
     {
       "id": "m_force_control_l2_64",
@@ -1493,7 +4266,1854 @@
       "description": "自适应力控制",
       "parentId": "m_force_control",
       "children": [],
-      "domain": "force_control"
+      "domain": "force_control",
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2023,
+      "status": "partial",
+      "targets": [
+        "p_force_control_l2_53",
+        "p_force_control_l2_54",
+        "p_force_control_l2_55"
+      ],
+      "crossDomain": []
+    }
+  ],
+  "papers": [
+    {
+      "id": "p_2002_03236",
+      "arxivId": "2002.03236",
+      "year": 2020,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "This paper develops closed-loop tactile controllers for dexterous robotic manipulation with a dual-palm robotic system. Tactile dexterity is an approach to dexterous manip- ulation that plans for robo",
+      "title": "This paper develops closed-loop tactile controllers for dext",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2003_13165",
+      "arxivId": "2003.13165",
+      "year": 2020,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Having the ability to estimate an object’s properties through interaction will enable robots to manipulate novel objects. Object’s dynamics, speciﬁcally the friction and inertial parameters have only ",
+      "title": "Having the ability to estimate an object’s properties throug",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2004_00136",
+      "arxivId": "2004.00136",
+      "year": 2020,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": "Deep learning and reinforcement learning meth- ods have been shown to enable learning of ﬂexible and complex robot controllers. However, the reliance on large amounts of training data often requires d",
+      "title": "Deep learning and reinforcement learning meth- ods have been",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2008_05404",
+      "arxivId": "2008.05404",
+      "year": 2020,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Sensing contacts throughout the ﬁngers is an essential capability for a robot to perform manipulation tasks in cluttered environments. However, existing tactile sensors either only have a ﬂat sensing ",
+      "title": "Sensing contacts throughout the ﬁngers is an essential capab",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2103_00410",
+      "arxivId": "2103.00410",
+      "year": 2021,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Reinforcement Learning (RL) methods have been widely applied for robotic manipulations via sim-to-real trans- fer, typically with proprioceptive and visual information. How- ever, the incorporation of",
+      "title": "Reinforcement Learning (RL) methods have been widely applied",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2103_13460",
+      "arxivId": "2103.13460",
+      "year": 2021,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Despite the utility of tactile information, tactile sensors have yet to be widely deployed in industrial robotics settings. Part of the challenge lies in identifying slip and other key events from the",
+      "title": "Despite the utility of tactile information, tactile sensors ",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2301_06698",
+      "arxivId": "2301.06698",
+      "year": 2023,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Humans can effortlessly perform very complex, dexterous manipulation tasks by reacting to sensor observa- tions. In contrast, robots can not perform reactive manipulation and they mostly operate in op",
+      "title": "Humans can effortlessly perform very complex, dexterous mani",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2303_12076",
+      "arxivId": "2303.12076",
+      "year": 2023,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": "Teaching dexterity to multi-ﬁngered robots has been a longstanding challenge in robotics. Most prominent work in this area focuses on learning controllers or policies that either operate on visual obs",
+      "title": "Teaching dexterity to multi-ﬁngered robots has been a longst",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2304_00736",
+      "arxivId": "2304.00736",
+      "year": 2023,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": "In this paper, we propose a novel framework for tactile-based dexterous manipulation learning with a blind an- thropomorphic robotic hand, i.e. without visual sensing. First, object-related states wer",
+      "title": "In this paper, we propose a novel framework for tactile-base",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2305_03051",
+      "arxivId": "2305.03051",
+      "year": 2023,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Deep generative models have various content creation ap- plications such as graphic design, e-commerce, and virtual Try-on. However, current works mainly focus on synthesizing realistic visual outputs",
+      "title": "Deep generative models have various content creation ap- pli",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2305_04660",
+      "arxivId": "2305.04660",
+      "year": 2023,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Adding tactile sensors to a robotic system is becoming a common practice to achieve more complex manip- ulation skills than those robotics systems that only use external cameras to manipulate objects.",
+      "title": "Adding tactile sensors to a robotic system is becoming a com",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2306_05902",
+      "arxivId": "2306.05902",
+      "year": 2023,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "The development of tactile sensing and its fusion with computer vision is expected to enhance robotic systems in handling complex tasks like deformable object manipulation. However, readily available ",
+      "title": "The development of tactile sensing and its fusion with compu",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2308_05386",
+      "arxivId": "2308.05386",
+      "year": 2023,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": ". Tactile sensing is of great importance during human hand usage such as object exploration, grasping and manipulation. Different types of tactile sensors have been designed during the past decades, w",
+      "title": ". Tactile sensing is of great importance during human hand u",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2309_10886",
+      "arxivId": "2309.10886",
+      "year": 2023,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "This paper presents GelSight Svelte Hand, a novel 3-finger 2-DoF tactile robotic hand that is capable of performing precision grasps, power grasps, and intermediate grasps. Rich tactile signals are ob",
+      "title": "This paper presents GelSight Svelte Hand, a novel 3-finger 2",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2312_09863",
+      "arxivId": "2312.09863",
+      "year": 2023,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": "This paper presents a novel vision-based proprioception approach for a soft robotic finger that can estimate and reconstruct tactile interactions in both terrestrial and aquatic environments. The key ",
+      "title": "This paper presents a novel vision-based proprioception appr",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": false,
+      "isBest": false
+    },
+    {
+      "id": "p_2403_03954",
+      "arxivId": "2403.03954",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Imitation learning provides an efficient way to teach robots dexterous skills; however, learning complex skills robustly and generalizablely usually consumes large amounts of human demonstrations. To ",
+      "title": "Imitation learning provides an efficient way to teach robots",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2403_11898",
+      "arxivId": "2403.11898",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Tactile information is a critical tool for dexterous manipulation. As humans, we rely heavily on tactile infor- mation to understand objects in our environments and how to interact with them. We use t",
+      "title": "Tactile information is a critical tool for dexterous manipul",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2403_16764",
+      "arxivId": "2403.16764",
+      "year": 2024,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Haptic feedback is essential for humans to success- fully perform complex and delicate manipulation tasks. A recent rise in tactile sensors has enabled robots to leverage the sense of touch and expand",
+      "title": "Haptic feedback is essential for humans to success- fully pe",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2404_15709",
+      "arxivId": "2404.15709",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "In this work, we aim to learn a unified vision-based policy for multi-fingered robot hands to manipulate a variety of objects in diverse poses. Though prior work has shown benefits of using human vide",
+      "title": "In this work, we aim to learn a unified vision-based policy ",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2406_01586",
+      "arxivId": "2406.01586",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Diffusion models have been verified to be effective in generating complex distributions from natural images to motion trajectories. Recent diffusion-based methods show im- pressive performance in 3D r",
+      "title": "Diffusion models have been verified to be effective in gener",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2407_07885",
+      "arxivId": "2407.07885",
+      "year": 2024,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Recent progress in reinforcement learning (RL) and tactile sensing has significantly advanced dexterous ma- nipulation. However, these methods often utilize simplified tactile signals due to the gap b",
+      "title": "Recent progress in reinforcement learning (RL) and tactile s",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2409_00588",
+      "arxivId": "2409.00588",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "We introduce Diffusion Policy Policy Optimization, DPPO, an algorithmic framework including best practices for fine-tuning diffusion-based policies (e.g. Diffusion Policy [20]) in continuous control a",
+      "title": "We introduce Diffusion Policy Policy Optimization, DPPO, an ",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2409_07343",
+      "arxivId": "2409.07343",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": ": Learning from expert demonstrations is a promising approach for train- ing robotic manipulation policies from limited data. However, imitation learning algorithms require a number of design choices ",
+      "title": ": Learning from expert demonstrations is a promising approac",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2409_09276",
+      "arxivId": "2409.09276",
+      "year": 2024,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Tactile perception is vital, especially when distin- guishing visually similar objects. We propose an approach to incorporate tactile data into a Vision-Language Model (VLM) for visuo-tactile zero-sho",
+      "title": "Tactile perception is vital, especially when distin- guishin",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2409_11047",
+      "arxivId": "2409.11047",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Assembly is a crucial skill for robots in both modern manufacturing and service robotics. However, master- ing transferable insertion skills that can handle a variety of high-precision assembly tasks ",
+      "title": "Assembly is a crucial skill for robots in both modern manufa",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2409_14411",
+      "arxivId": "2409.14411",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Diffusion Policy is a powerful technique tool for learning end-to-end visuomotor robot control. It is expected that Diffusion Policy possesses scalability, a key attribute for deep neural networks, ty",
+      "title": "Diffusion Policy is a powerful technique tool for learning e",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2410_10803",
+      "arxivId": "2410.10803",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Humanoid robots capable of autonomous opera- tion in diverse environments have long been a goal for roboti- cists. However, autonomous manipulation by humanoid robots has largely been restricted to on",
+      "title": "Humanoid robots capable of autonomous opera- tion in diverse",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2410_18647",
+      "arxivId": "2410.18647",
+      "year": 2024,
+      "domain": "general",
+      "branchId": "b_root",
+      "abstract": "Data scaling has revolutionized fields like natural language processing and com- puter vision, providing models with remarkable generalization capabilities. In this paper, we investigate whether simil",
+      "title": "Data scaling has revolutionized fields like natural language",
+      "venue": "arXiv",
+      "category": "general",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2410_24090",
+      "arxivId": "2410.24090",
+      "year": 2024,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": ": In this work, we introduce general purpose touch representations for the increasingly accessible class of vision-based tactile sensors. Such sensors have led to many recent advances in robot manipul",
+      "title": ": In this work, we introduce general purpose touch represent",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2410_24091",
+      "arxivId": "2410.24091",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": ": Tactile and visual perception are both crucial for humans to perform fine-grained interactions with their environment. Developing similar multi-modal sensing capabilities for robots can significantl",
+      "title": ": Tactile and visual perception are both crucial for humans ",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2411_12503",
+      "arxivId": "2411.12503",
+      "year": 2024,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "This article introduces the ManiSkill-ViTac Chal- lenge 2025, which focuses on learning contact-rich manipulation skills using both tactile and visual sensing. Expanding upon the 2024 challenge, ManiS",
+      "title": "This article introduces the ManiSkill-ViTac Chal- lenge 2025",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2412_04987",
+      "arxivId": "2412.04987",
+      "year": 2024,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Robots can acquire complex manipulation skills by learning policies from expert demonstrations, which is often known as vision-based imitation learning. Generating policies based on diffusion and flow",
+      "title": "Robots can acquire complex manipulation skills by learning p",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2501_15830",
+      "arxivId": "2501.15830",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "In this paper, we claim that spatial understanding is the keypoint in robot manipulation, and propose SpatialVLA to explore effective spatial representations for the robot foundation model. Specifical",
+      "title": "In this paper, we claim that spatial understanding is the ke",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2502_08449",
+      "arxivId": "2502.08449",
+      "year": 2025,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Achieving human-level dexterity in robots is a key objective in the field of robotic manipulation. Recent advance- ments in 3D-based imitation learning have shown promising results, providing an effec",
+      "title": "Achieving human-level dexterity in robots is a key objective",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2502_12191",
+      "arxivId": "2502.12191",
+      "year": 2025,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": "Visuo-tactile sensors aim to emulate human tactile perception, enabling robots to precisely understand and manipulate objects. Over time, numerous meticulously designed visuo-tactile sensors have been",
+      "title": "Visuo-tactile sensors aim to emulate human tactile perceptio",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2502_17432",
+      "arxivId": "2502.17432",
+      "year": 2025,
+      "domain": "force_control",
+      "branchId": "b_force_control",
+      "abstract": "Many contact-rich tasks humans perform, such as box pickup or rolling dough, rely on force feedback for reliable execution. However, this force information, which is readily avail- able in most robot ",
+      "title": "Many contact-rich tasks humans perform, such as box pickup o",
+      "venue": "arXiv",
+      "category": "force_control",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_force_control_l2_53",
+        "p_force_control_l2_54",
+        "p_force_control_l2_55"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2503_02881",
+      "arxivId": "2503.02881",
+      "year": 2025,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Humans can accomplish complex contact-rich tasks using vision and touch, with highly reactive capabilities such as fast response to external changes and adaptive control of contact forces; however, th",
+      "title": "Humans can accomplish complex contact-rich tasks using visio",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2503_07511",
+      "arxivId": "2503.07511",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "Vision-Language-Action (VLA) models excel at robotic tasks by leveraging large-scale 2D vision-language pre- training, but their reliance on RGB images limits spatial reasoning critical for real-world",
+      "title": "Vision-Language-Action (VLA) models excel at robotic tasks b",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2503_08548",
+      "arxivId": "2503.08548",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "Significant progress has been made in vision- language models. However, language-conditioned robotic ma- nipulation for contact-rich tasks remains underexplored, par- ticularly in terms of tactile sen",
+      "title": "Significant progress has been made in vision- language model",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2503_14734",
+      "arxivId": "2503.14734",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "General-purpose robots need a versatile body and an intelligent mind. Recent advancements in humanoid robots have shown great promise as a hardware platform for building generalist autonomy in the hum",
+      "title": "General-purpose robots need a versatile body and an intellig",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2503_17501",
+      "arxivId": "2503.17501",
+      "year": 2025,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "This paper presents a shear-based control scheme for grasping and manipulating delicate objects with a Pisa/IIT anthropomorphic SoftHand equipped with soft biomimetic tactile sensors on all five finge",
+      "title": "This paper presents a shear-based control scheme for graspin",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2503_20020",
+      "arxivId": "2503.20020",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "instructions like “clean the table”). We visualize rollouts and report the binary task success rates in Fig. 17. Our experiments suggest that strong steerability arises from a combination of high-qual",
+      "title": "instructions like “clean the table”). We visualize rollouts ",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2503_23835",
+      "arxivId": "2503.23835",
+      "year": 2025,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "Grasp-based manipulation tasks are fundamental to robots interacting with their environments, yet gripper state ambiguity significantly reduces the robustness of imitation learning policies for these ",
+      "title": "Grasp-based manipulation tasks are fundamental to robots int",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2504_01301",
+      "arxivId": "2504.01301",
+      "year": 2025,
+      "domain": "force_control",
+      "branchId": "b_force_control",
+      "abstract": "We present Bi-LAT, a novel imitation learning framework that unifies bilateral control with natural language processing to achieve precise force modulation in robotic ma- nipulation. Bi-LAT leverages ",
+      "title": "We present Bi-LAT, a novel imitation learning framework that",
+      "venue": "arXiv",
+      "category": "force_control",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_force_control_l2_53",
+        "p_force_control_l2_54",
+        "p_force_control_l2_55"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2504_19341",
+      "arxivId": "2504.19341",
+      "year": 2025,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Achieving robust dexterous manipulation in un- structured domestic environments remains a significant chal- lenge in robotics. Even with state-of-the-art robot learning methods, haptic-oblivious contr",
+      "title": "Achieving robust dexterous manipulation in un- structured do",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2505_16062",
+      "arxivId": "2505.16062",
+      "year": 2025,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": "The perception and recognition of the surroundings is one of the essential tasks for a robot. With preliminary knowledge about a target object, it can perform various ma- nipulation tasks such as roll",
+      "title": "The perception and recognition of the surroundings is one of",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2505_18361",
+      "arxivId": "2505.18361",
+      "year": 2025,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": "Tactile sensing remains far less understood in neuroscience and less effective in artificial systems compared to more mature modalities such as vision and lan- guage. We bridge these gaps by introduci",
+      "title": "Tactile sensing remains far less understood in neuroscience ",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2505_22159",
+      "arxivId": "2505.22159",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "Vision-Language-Action (VLA) models have advanced general-purpose robotic manipulation by leveraging pretrained visual and linguistic representations. How- ever, they struggle with contact-rich tasks ",
+      "title": "Vision-Language-Action (VLA) models have advanced general-pu",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2507_09160",
+      "arxivId": "2507.09160",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "Vision-Language-Action (VLA) models have shown remarkable achievements, driven by the rich implicit knowledge of their vision-language components. How- ever, achieving generalist robotic agents demand",
+      "title": "Vision-Language-Action (VLA) models have shown remarkable ac",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2507_22424",
+      "arxivId": "2507.22424",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "Vision-Language-Action (VLA) models have made substantial progress by leveraging the robust capabilities of Visual Language Mod- els (VLMs). However, VLMs’ significant pa- rameter size and autoregress",
+      "title": "Vision-Language-Action (VLA) models have made substantial pr",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2508_08706",
+      "arxivId": "2508.08706",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "",
+      "title": "",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2509_17684",
+      "arxivId": "2509.17684",
+      "year": 2025,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "This paper evaluates DINOv3, a recent large-scale self-supervised vision backbone, for visuomotor diffusion policy learning in robotic manipulation. We investigate whether a purely self-supervised enc",
+      "title": "This paper evaluates DINOv3, a recent large-scale self-super",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2509_17812",
+      "arxivId": "2509.17812",
+      "year": 2025,
+      "domain": "tactile_hardware",
+      "branchId": "b_tactile_hardware",
+      "abstract": "This paper proposes Tac2Motion, a contact-aware reinforcement learning framework to facilitate the learning of contact-rich in-hand manipulation tasks, such as removing a lid. To this end, we propose ",
+      "title": "This paper proposes Tac2Motion, a contact-aware reinforcemen",
+      "venue": "arXiv",
+      "category": "tactile_hardware",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_hardware_l2_39",
+        "p_tactile_hardware_l3_40",
+        "p_tactile_hardware_l3_41",
+        "p_tactile_hardware_l3_42",
+        "p_tactile_hardware_l2_43",
+        "p_tactile_hardware_l3_44",
+        "p_tactile_hardware_l3_45",
+        "p_tactile_hardware_l3_46",
+        "p_tactile_hardware_l2_47",
+        "p_tactile_hardware_l2_48"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2509_18676",
+      "arxivId": "2509.18676",
+      "year": 2025,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Learning robust visuomotor policies that general- ize across diverse objects and interaction dynamics remains a central challenge in robotic manipulation. Most existing approaches rely on direct obser",
+      "title": "Learning robust visuomotor policies that general- ize across",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2510_10903",
+      "arxivId": "2510.10903",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "| Embodied intelligence has witnessed remarkable progress in recent years, driven by advances in computer vision, natural language processing, and the rise of large-scale multimodal models. Among its ",
+      "title": "| Embodied intelligence has witnessed remarkable progress in",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2510_13324",
+      "arxivId": "2510.13324",
+      "year": 2025,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Contact-rich manipulation depends on applying the correct grasp forces throughout the manipulation task, especially when handling fragile or deformable objects. Most existing imitation learning approa",
+      "title": "Contact-rich manipulation depends on applying the correct gr",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2510_14647",
+      "arxivId": "2510.14647",
+      "year": 2025,
+      "domain": "tactile_representation",
+      "branchId": "b_tactile_representation",
+      "abstract": "Dexterous manipulation requires precise geomet- ric reasoning, yet existing visuo-tactile learning methods strug- gle with sub-millimeter precision tasks that are routine for traditional model-based a",
+      "title": "Dexterous manipulation requires precise geomet- ric reasonin",
+      "venue": "arXiv",
+      "category": "tactile_representation",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_tactile_representation_l2_29",
+        "p_tactile_representation_l3_30",
+        "p_tactile_representation_l3_31",
+        "p_tactile_representation_l3_32",
+        "p_tactile_representation_l2_33",
+        "p_tactile_representation_l3_34",
+        "p_tactile_representation_l3_35",
+        "p_tactile_representation_l3_36",
+        "p_tactile_representation_l2_37",
+        "p_tactile_representation_l2_38"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2512_01383",
+      "arxivId": "2512.01383",
+      "year": 2025,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Understanding dynamic 4D environments—3D space evolv- ing over time—is critical for robotic and interactive sys- tems. These applications demand systems that can pro- cess streaming point cloud video ",
+      "title": "Understanding dynamic 4D environments—3D space evolv- ing ov",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2512_10946",
+      "arxivId": "2512.10946",
+      "year": 2025,
+      "domain": "diffusion_policy",
+      "branchId": "b_diffusion_policy",
+      "abstract": "Human-level contact-rich manipulation relies on the distinct roles of two key modalities: vision provides spatially rich but temporally slow global context, while force sensing cap- tures rapid, high-",
+      "title": "Human-level contact-rich manipulation relies on the distinct",
+      "venue": "arXiv",
+      "category": "diffusion_policy",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_diffusion_policy_l2_1",
+        "p_diffusion_policy_l3_2",
+        "p_diffusion_policy_l3_3",
+        "p_diffusion_policy_l3_4",
+        "p_diffusion_policy_l2_5",
+        "p_diffusion_policy_l3_6",
+        "p_diffusion_policy_l3_7",
+        "p_diffusion_policy_l3_8",
+        "p_diffusion_policy_l2_9",
+        "p_diffusion_policy_l3_10",
+        "p_diffusion_policy_l3_11",
+        "p_diffusion_policy_l3_12",
+        "p_diffusion_policy_l2_13",
+        "p_diffusion_policy_l2_14"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
+    },
+    {
+      "id": "p_2512_22983",
+      "arxivId": "2512.22983",
+      "year": 2025,
+      "domain": "vla",
+      "branchId": "b_vla",
+      "abstract": "Recent advances in vision, language, and multimodal learning have substantially accelerated progress in robotic foun- dation models, with robot manipulation remaining a central and challenging problem",
+      "title": "Recent advances in vision, language, and multimodal learning",
+      "venue": "arXiv",
+      "category": "vla",
+      "methodology": "Learning-based",
+      "authorityScore": 0.8,
+      "targets": [
+        "p_vla_l2_15",
+        "p_vla_l3_16",
+        "p_vla_l3_17",
+        "p_vla_l3_18",
+        "p_vla_l2_19",
+        "p_vla_l3_20",
+        "p_vla_l3_21",
+        "p_vla_l3_22",
+        "p_vla_l2_23",
+        "p_vla_l3_24",
+        "p_vla_l3_25",
+        "p_vla_l3_26",
+        "p_vla_l2_27",
+        "p_vla_l2_28"
+      ],
+      "methods": [],
+      "citations": [],
+      "isLatest": true,
+      "isBest": false
     }
   ],
   "relationships": {
@@ -1834,487 +6454,5 @@
         "type": "related"
       }
     ]
-  },
-  "papers": [
-    {
-      "id": "p_2002_03236",
-      "arxivId": "2002.03236",
-      "year": 2020,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "This paper develops closed-loop tactile controllers for dexterous robotic manipulation with a dual-palm robotic system. Tactile dexterity is an approach to dexterous manip- ulation that plans for robo"
-    },
-    {
-      "id": "p_2003_13165",
-      "arxivId": "2003.13165",
-      "year": 2020,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Having the ability to estimate an object’s properties through interaction will enable robots to manipulate novel objects. Object’s dynamics, speciﬁcally the friction and inertial parameters have only "
-    },
-    {
-      "id": "p_2004_00136",
-      "arxivId": "2004.00136",
-      "year": 2020,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": "Deep learning and reinforcement learning meth- ods have been shown to enable learning of ﬂexible and complex robot controllers. However, the reliance on large amounts of training data often requires d"
-    },
-    {
-      "id": "p_2008_05404",
-      "arxivId": "2008.05404",
-      "year": 2020,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Sensing contacts throughout the ﬁngers is an essential capability for a robot to perform manipulation tasks in cluttered environments. However, existing tactile sensors either only have a ﬂat sensing "
-    },
-    {
-      "id": "p_2103_00410",
-      "arxivId": "2103.00410",
-      "year": 2021,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Reinforcement Learning (RL) methods have been widely applied for robotic manipulations via sim-to-real trans- fer, typically with proprioceptive and visual information. How- ever, the incorporation of"
-    },
-    {
-      "id": "p_2103_13460",
-      "arxivId": "2103.13460",
-      "year": 2021,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Despite the utility of tactile information, tactile sensors have yet to be widely deployed in industrial robotics settings. Part of the challenge lies in identifying slip and other key events from the"
-    },
-    {
-      "id": "p_2301_06698",
-      "arxivId": "2301.06698",
-      "year": 2023,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Humans can effortlessly perform very complex, dexterous manipulation tasks by reacting to sensor observa- tions. In contrast, robots can not perform reactive manipulation and they mostly operate in op"
-    },
-    {
-      "id": "p_2303_12076",
-      "arxivId": "2303.12076",
-      "year": 2023,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": "Teaching dexterity to multi-ﬁngered robots has been a longstanding challenge in robotics. Most prominent work in this area focuses on learning controllers or policies that either operate on visual obs"
-    },
-    {
-      "id": "p_2304_00736",
-      "arxivId": "2304.00736",
-      "year": 2023,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": "In this paper, we propose a novel framework for tactile-based dexterous manipulation learning with a blind an- thropomorphic robotic hand, i.e. without visual sensing. First, object-related states wer"
-    },
-    {
-      "id": "p_2305_03051",
-      "arxivId": "2305.03051",
-      "year": 2023,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Deep generative models have various content creation ap- plications such as graphic design, e-commerce, and virtual Try-on. However, current works mainly focus on synthesizing realistic visual outputs"
-    },
-    {
-      "id": "p_2305_04660",
-      "arxivId": "2305.04660",
-      "year": 2023,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Adding tactile sensors to a robotic system is becoming a common practice to achieve more complex manip- ulation skills than those robotics systems that only use external cameras to manipulate objects."
-    },
-    {
-      "id": "p_2306_05902",
-      "arxivId": "2306.05902",
-      "year": 2023,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "The development of tactile sensing and its fusion with computer vision is expected to enhance robotic systems in handling complex tasks like deformable object manipulation. However, readily available "
-    },
-    {
-      "id": "p_2308_05386",
-      "arxivId": "2308.05386",
-      "year": 2023,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": ". Tactile sensing is of great importance during human hand usage such as object exploration, grasping and manipulation. Different types of tactile sensors have been designed during the past decades, w"
-    },
-    {
-      "id": "p_2309_10886",
-      "arxivId": "2309.10886",
-      "year": 2023,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "This paper presents GelSight Svelte Hand, a novel 3-finger 2-DoF tactile robotic hand that is capable of performing precision grasps, power grasps, and intermediate grasps. Rich tactile signals are ob"
-    },
-    {
-      "id": "p_2312_09863",
-      "arxivId": "2312.09863",
-      "year": 2023,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": "This paper presents a novel vision-based proprioception approach for a soft robotic finger that can estimate and reconstruct tactile interactions in both terrestrial and aquatic environments. The key "
-    },
-    {
-      "id": "p_2403_03954",
-      "arxivId": "2403.03954",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Imitation learning provides an efficient way to teach robots dexterous skills; however, learning complex skills robustly and generalizablely usually consumes large amounts of human demonstrations. To "
-    },
-    {
-      "id": "p_2403_11898",
-      "arxivId": "2403.11898",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Tactile information is a critical tool for dexterous manipulation. As humans, we rely heavily on tactile infor- mation to understand objects in our environments and how to interact with them. We use t"
-    },
-    {
-      "id": "p_2403_16764",
-      "arxivId": "2403.16764",
-      "year": 2024,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Haptic feedback is essential for humans to success- fully perform complex and delicate manipulation tasks. A recent rise in tactile sensors has enabled robots to leverage the sense of touch and expand"
-    },
-    {
-      "id": "p_2404_15709",
-      "arxivId": "2404.15709",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "In this work, we aim to learn a unified vision-based policy for multi-fingered robot hands to manipulate a variety of objects in diverse poses. Though prior work has shown benefits of using human vide"
-    },
-    {
-      "id": "p_2406_01586",
-      "arxivId": "2406.01586",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Diffusion models have been verified to be effective in generating complex distributions from natural images to motion trajectories. Recent diffusion-based methods show im- pressive performance in 3D r"
-    },
-    {
-      "id": "p_2407_07885",
-      "arxivId": "2407.07885",
-      "year": 2024,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Recent progress in reinforcement learning (RL) and tactile sensing has significantly advanced dexterous ma- nipulation. However, these methods often utilize simplified tactile signals due to the gap b"
-    },
-    {
-      "id": "p_2409_00588",
-      "arxivId": "2409.00588",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "We introduce Diffusion Policy Policy Optimization, DPPO, an algorithmic framework including best practices for fine-tuning diffusion-based policies (e.g. Diffusion Policy [20]) in continuous control a"
-    },
-    {
-      "id": "p_2409_07343",
-      "arxivId": "2409.07343",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": ": Learning from expert demonstrations is a promising approach for train- ing robotic manipulation policies from limited data. However, imitation learning algorithms require a number of design choices "
-    },
-    {
-      "id": "p_2409_09276",
-      "arxivId": "2409.09276",
-      "year": 2024,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Tactile perception is vital, especially when distin- guishing visually similar objects. We propose an approach to incorporate tactile data into a Vision-Language Model (VLM) for visuo-tactile zero-sho"
-    },
-    {
-      "id": "p_2409_11047",
-      "arxivId": "2409.11047",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Assembly is a crucial skill for robots in both modern manufacturing and service robotics. However, master- ing transferable insertion skills that can handle a variety of high-precision assembly tasks "
-    },
-    {
-      "id": "p_2409_14411",
-      "arxivId": "2409.14411",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Diffusion Policy is a powerful technique tool for learning end-to-end visuomotor robot control. It is expected that Diffusion Policy possesses scalability, a key attribute for deep neural networks, ty"
-    },
-    {
-      "id": "p_2410_10803",
-      "arxivId": "2410.10803",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Humanoid robots capable of autonomous opera- tion in diverse environments have long been a goal for roboti- cists. However, autonomous manipulation by humanoid robots has largely been restricted to on"
-    },
-    {
-      "id": "p_2410_18647",
-      "arxivId": "2410.18647",
-      "year": 2024,
-      "domain": "general",
-      "branchId": "b_root",
-      "abstract": "Data scaling has revolutionized fields like natural language processing and com- puter vision, providing models with remarkable generalization capabilities. In this paper, we investigate whether simil"
-    },
-    {
-      "id": "p_2410_24090",
-      "arxivId": "2410.24090",
-      "year": 2024,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": ": In this work, we introduce general purpose touch representations for the increasingly accessible class of vision-based tactile sensors. Such sensors have led to many recent advances in robot manipul"
-    },
-    {
-      "id": "p_2410_24091",
-      "arxivId": "2410.24091",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": ": Tactile and visual perception are both crucial for humans to perform fine-grained interactions with their environment. Developing similar multi-modal sensing capabilities for robots can significantl"
-    },
-    {
-      "id": "p_2411_12503",
-      "arxivId": "2411.12503",
-      "year": 2024,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "This article introduces the ManiSkill-ViTac Chal- lenge 2025, which focuses on learning contact-rich manipulation skills using both tactile and visual sensing. Expanding upon the 2024 challenge, ManiS"
-    },
-    {
-      "id": "p_2412_04987",
-      "arxivId": "2412.04987",
-      "year": 2024,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Robots can acquire complex manipulation skills by learning policies from expert demonstrations, which is often known as vision-based imitation learning. Generating policies based on diffusion and flow"
-    },
-    {
-      "id": "p_2501_15830",
-      "arxivId": "2501.15830",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "In this paper, we claim that spatial understanding is the keypoint in robot manipulation, and propose SpatialVLA to explore effective spatial representations for the robot foundation model. Specifical"
-    },
-    {
-      "id": "p_2502_08449",
-      "arxivId": "2502.08449",
-      "year": 2025,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Achieving human-level dexterity in robots is a key objective in the field of robotic manipulation. Recent advance- ments in 3D-based imitation learning have shown promising results, providing an effec"
-    },
-    {
-      "id": "p_2502_12191",
-      "arxivId": "2502.12191",
-      "year": 2025,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": "Visuo-tactile sensors aim to emulate human tactile perception, enabling robots to precisely understand and manipulate objects. Over time, numerous meticulously designed visuo-tactile sensors have been"
-    },
-    {
-      "id": "p_2502_17432",
-      "arxivId": "2502.17432",
-      "year": 2025,
-      "domain": "force_control",
-      "branchId": "b_force_control",
-      "abstract": "Many contact-rich tasks humans perform, such as box pickup or rolling dough, rely on force feedback for reliable execution. However, this force information, which is readily avail- able in most robot "
-    },
-    {
-      "id": "p_2503_02881",
-      "arxivId": "2503.02881",
-      "year": 2025,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Humans can accomplish complex contact-rich tasks using vision and touch, with highly reactive capabilities such as fast response to external changes and adaptive control of contact forces; however, th"
-    },
-    {
-      "id": "p_2503_07511",
-      "arxivId": "2503.07511",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "Vision-Language-Action (VLA) models excel at robotic tasks by leveraging large-scale 2D vision-language pre- training, but their reliance on RGB images limits spatial reasoning critical for real-world"
-    },
-    {
-      "id": "p_2503_08548",
-      "arxivId": "2503.08548",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "Significant progress has been made in vision- language models. However, language-conditioned robotic ma- nipulation for contact-rich tasks remains underexplored, par- ticularly in terms of tactile sen"
-    },
-    {
-      "id": "p_2503_14734",
-      "arxivId": "2503.14734",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "General-purpose robots need a versatile body and an intelligent mind. Recent advancements in humanoid robots have shown great promise as a hardware platform for building generalist autonomy in the hum"
-    },
-    {
-      "id": "p_2503_17501",
-      "arxivId": "2503.17501",
-      "year": 2025,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "This paper presents a shear-based control scheme for grasping and manipulating delicate objects with a Pisa/IIT anthropomorphic SoftHand equipped with soft biomimetic tactile sensors on all five finge"
-    },
-    {
-      "id": "p_2503_20020",
-      "arxivId": "2503.20020",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "instructions like “clean the table”). We visualize rollouts and report the binary task success rates in Fig. 17. Our experiments suggest that strong steerability arises from a combination of high-qual"
-    },
-    {
-      "id": "p_2503_23835",
-      "arxivId": "2503.23835",
-      "year": 2025,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "Grasp-based manipulation tasks are fundamental to robots interacting with their environments, yet gripper state ambiguity significantly reduces the robustness of imitation learning policies for these "
-    },
-    {
-      "id": "p_2504_01301",
-      "arxivId": "2504.01301",
-      "year": 2025,
-      "domain": "force_control",
-      "branchId": "b_force_control",
-      "abstract": "We present Bi-LAT, a novel imitation learning framework that unifies bilateral control with natural language processing to achieve precise force modulation in robotic ma- nipulation. Bi-LAT leverages "
-    },
-    {
-      "id": "p_2504_19341",
-      "arxivId": "2504.19341",
-      "year": 2025,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Achieving robust dexterous manipulation in un- structured domestic environments remains a significant chal- lenge in robotics. Even with state-of-the-art robot learning methods, haptic-oblivious contr"
-    },
-    {
-      "id": "p_2505_16062",
-      "arxivId": "2505.16062",
-      "year": 2025,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": "The perception and recognition of the surroundings is one of the essential tasks for a robot. With preliminary knowledge about a target object, it can perform various ma- nipulation tasks such as roll"
-    },
-    {
-      "id": "p_2505_18361",
-      "arxivId": "2505.18361",
-      "year": 2025,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": "Tactile sensing remains far less understood in neuroscience and less effective in artificial systems compared to more mature modalities such as vision and lan- guage. We bridge these gaps by introduci"
-    },
-    {
-      "id": "p_2505_22159",
-      "arxivId": "2505.22159",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "Vision-Language-Action (VLA) models have advanced general-purpose robotic manipulation by leveraging pretrained visual and linguistic representations. How- ever, they struggle with contact-rich tasks "
-    },
-    {
-      "id": "p_2507_09160",
-      "arxivId": "2507.09160",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "Vision-Language-Action (VLA) models have shown remarkable achievements, driven by the rich implicit knowledge of their vision-language components. How- ever, achieving generalist robotic agents demand"
-    },
-    {
-      "id": "p_2507_22424",
-      "arxivId": "2507.22424",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "Vision-Language-Action (VLA) models have made substantial progress by leveraging the robust capabilities of Visual Language Mod- els (VLMs). However, VLMs’ significant pa- rameter size and autoregress"
-    },
-    {
-      "id": "p_2508_08706",
-      "arxivId": "2508.08706",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": ""
-    },
-    {
-      "id": "p_2509_17684",
-      "arxivId": "2509.17684",
-      "year": 2025,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "This paper evaluates DINOv3, a recent large-scale self-supervised vision backbone, for visuomotor diffusion policy learning in robotic manipulation. We investigate whether a purely self-supervised enc"
-    },
-    {
-      "id": "p_2509_17812",
-      "arxivId": "2509.17812",
-      "year": 2025,
-      "domain": "tactile_hardware",
-      "branchId": "b_tactile_hardware",
-      "abstract": "This paper proposes Tac2Motion, a contact-aware reinforcement learning framework to facilitate the learning of contact-rich in-hand manipulation tasks, such as removing a lid. To this end, we propose "
-    },
-    {
-      "id": "p_2509_18676",
-      "arxivId": "2509.18676",
-      "year": 2025,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Learning robust visuomotor policies that general- ize across diverse objects and interaction dynamics remains a central challenge in robotic manipulation. Most existing approaches rely on direct obser"
-    },
-    {
-      "id": "p_2510_10903",
-      "arxivId": "2510.10903",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "| Embodied intelligence has witnessed remarkable progress in recent years, driven by advances in computer vision, natural language processing, and the rise of large-scale multimodal models. Among its "
-    },
-    {
-      "id": "p_2510_13324",
-      "arxivId": "2510.13324",
-      "year": 2025,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Contact-rich manipulation depends on applying the correct grasp forces throughout the manipulation task, especially when handling fragile or deformable objects. Most existing imitation learning approa"
-    },
-    {
-      "id": "p_2510_14647",
-      "arxivId": "2510.14647",
-      "year": 2025,
-      "domain": "tactile_representation",
-      "branchId": "b_tactile_representation",
-      "abstract": "Dexterous manipulation requires precise geomet- ric reasoning, yet existing visuo-tactile learning methods strug- gle with sub-millimeter precision tasks that are routine for traditional model-based a"
-    },
-    {
-      "id": "p_2512_01383",
-      "arxivId": "2512.01383",
-      "year": 2025,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Understanding dynamic 4D environments—3D space evolv- ing over time—is critical for robotic and interactive sys- tems. These applications demand systems that can pro- cess streaming point cloud video "
-    },
-    {
-      "id": "p_2512_10946",
-      "arxivId": "2512.10946",
-      "year": 2025,
-      "domain": "diffusion_policy",
-      "branchId": "b_diffusion_policy",
-      "abstract": "Human-level contact-rich manipulation relies on the distinct roles of two key modalities: vision provides spatially rich but temporally slow global context, while force sensing cap- tures rapid, high-"
-    },
-    {
-      "id": "p_2512_22983",
-      "arxivId": "2512.22983",
-      "year": 2025,
-      "domain": "vla",
-      "branchId": "b_vla",
-      "abstract": "Recent advances in vision, language, and multimodal learning have substantially accelerated progress in robotic foun- dation models, with robot manipulation remaining a central and challenging problem"
-    }
-  ]
+  }
 }
