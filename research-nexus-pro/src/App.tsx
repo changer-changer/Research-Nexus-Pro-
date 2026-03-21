@@ -1,27 +1,29 @@
-import { useState, useEffect, useCallback } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
+import type { LucideIcon } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  GitBranch, Clock, Network, Layers, Download, Settings, Sparkles,
-  Sun, Moon, RotateCcw, Layout, PanelLeft, Eye, Filter,
-  BookOpen, Target, Workflow, ArrowRight, Image, FileJson,
-  Bookmark, Undo2, Redo2, Play
+  Download, Sparkles, Sun, Moon, Layout, PanelLeft,
+  ArrowRight, Image, FileJson, Bookmark, Undo2, Redo2, Play,
+  GitBranch, Clock, Workflow, BookOpen, Network, Target
 } from 'lucide-react'
 import { useAppStore } from './store/appStore'
 import { useNexusStore } from './store/nexusStore'
-import ProblemTree from './components/ProblemTree'
-import MethodTree from './components/MethodTree'
-import MethodArrowView from './components/MethodArrowView'
-import DualTreeView from './components/DualTreeView'
-import TimelineView from './components/TimelineView'
-import CitationView from './components/CitationView'
-import PaperTimelineView from './components/PaperTimelineView'
-import BookmarkPanel from './components/BookmarkPanel'
-import PresentationMode from './components/PresentationMode'
+
+const ProblemTree = lazy(() => import('./components/ProblemTree'))
+const MethodTree = lazy(() => import('./components/MethodTree'))
+const MethodArrowView = lazy(() => import('./components/MethodArrowView'))
+const MethodTimelineView = lazy(() => import('./components/MethodTimelineView'))
+const DualTreeView = lazy(() => import('./components/DualTreeView'))
+const TimelineView = lazy(() => import('./components/TimelineView'))
+const CitationView = lazy(() => import('./components/CitationView'))
+const PaperTimelineView = lazy(() => import('./components/PaperTimelineView'))
+const BookmarkPanel = lazy(() => import('./components/BookmarkPanel'))
+const PresentationMode = lazy(() => import('./components/PresentationMode'))
 
 type NavItem = {
   id: string
   label: string
-  icon: any
+  icon: LucideIcon
   badge?: string
   group: string
 }
@@ -31,7 +33,8 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'timeline', label: 'Time Evolution', icon: Clock, group: 'problems' },
   { id: 'method-arrows', label: 'Method → Problem', icon: ArrowRight, group: 'methods' },
   { id: 'method-tree', label: 'Method Tree', icon: Target, group: 'methods' },
-  { id: 'dual-tree', label: 'Dual Tree Fusion', icon: Workflow, group: 'methods', badge: 'NEW' },
+  { id: 'method-timeline', label: 'Method Evolution', icon: Clock, group: 'methods', badge: 'NEW' },
+  { id: 'dual-tree', label: 'Dual Tree Fusion', icon: Workflow, group: 'methods' },
   { id: 'paper-timeline', label: 'Paper Timeline', icon: BookOpen, group: 'papers' },
   { id: 'citation', label: 'Citation Network', icon: Network, group: 'papers' },
 ]
@@ -43,10 +46,34 @@ function App() {
   const [showBookmarks, setShowBookmarks] = useState(false)
   const [showPresentation, setShowPresentation] = useState(false)
   const [screenSize, setScreenSize] = useState<'desktop' | 'tablet' | 'mobile'>('desktop')
+  const [isDataLoading, setIsDataLoading] = useState(true)
+  const [dataLoadError, setDataLoadError] = useState<string | null>(null)
+
+  const hydrateData = useCallback(async () => {
+    const data = await import('./data/real_papers.json')
+    loadData(data.default)
+
+    // Keep nexusStore in sync for legacy/parallel views.
+    const { loadData: nexusLoad } = useNexusStore.getState()
+    nexusLoad({
+      branches: data.default.branches || [],
+      problems: data.default.problems || [],
+      methods: data.default.methods || [],
+      papers: data.default.papers || [],
+    })
+  }, [loadData])
 
   // Keyboard shortcuts
   useEffect(() => {
+    const isEditableTarget = (target: EventTarget | null) => {
+      if (!(target instanceof HTMLElement)) return false
+      const tag = target.tagName.toLowerCase()
+      return target.isContentEditable || tag === 'input' || tag === 'textarea' || tag === 'select'
+    }
+
     const handler = (e: KeyboardEvent) => {
+      if (isEditableTarget(e.target)) return
+
       if ((e.ctrlKey || e.metaKey) && e.key === 'z' && !e.shiftKey) {
         e.preventDefault()
         undo()
@@ -59,7 +86,13 @@ function App() {
         e.preventDefault()
         setShowBookmarks(v => !v)
       }
+      if (e.key === 'Escape') {
+        setShowExport(false)
+        setShowBookmarks(false)
+        setShowPresentation(false)
+      }
     }
+
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [undo, redo])
@@ -70,7 +103,7 @@ function App() {
       const w = window.innerWidth
       if (w < 640) { setScreenSize('mobile'); setSidebarCollapsed(true) }
       else if (w < 1024) { setScreenSize('tablet'); setSidebarCollapsed(true) }
-      else { setScreenSize('desktop') }
+      else { setScreenSize('desktop'); setSidebarCollapsed(false) }
     }
     check()
     window.addEventListener('resize', check)
@@ -78,53 +111,174 @@ function App() {
   }, [])
 
   useEffect(() => {
-    import('./data/real_papers.json').then((data) => {
-      loadData(data.default)
-      // Also sync to nexusStore for ProblemEvolutionView, ProblemTreeView, TreeView, etc.
-      const { loadData: nexusLoad } = useNexusStore.getState()
-      nexusLoad({
-        branches: data.default.branches || [],
-        problems: data.default.problems || [],
-        methods: data.default.methods || [],
-        papers: data.default.papers || [],
+    let cancelled = false
+
+    setIsDataLoading(true)
+    setDataLoadError(null)
+
+    hydrateData()
+      .catch((error) => {
+        if (!cancelled) {
+          const message = error instanceof Error ? error.message : 'Unknown error'
+          console.error('Failed to load research data:', error)
+          setDataLoadError(message)
+        }
       })
-    })
+      .finally(() => {
+        if (!cancelled) {
+          setIsDataLoading(false)
+        }
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [hydrateData])
+
+  const retryLoadData = useCallback(() => {
+    setIsDataLoading(true)
+    setDataLoadError(null)
+
+    hydrateData()
+      .catch((error) => {
+        const message = error instanceof Error ? error.message : 'Unknown error'
+        console.error('Retry failed while loading research data:', error)
+        setDataLoadError(message)
+      })
+      .finally(() => {
+        setIsDataLoading(false)
+      })
+  }, [hydrateData])
+
+  const downloadBlob = useCallback((blob: Blob, fileName: string) => {
+    const url = URL.createObjectURL(blob)
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.download = fileName
+    anchor.click()
+    window.setTimeout(() => URL.revokeObjectURL(url), 0)
   }, [])
 
   // Export functions
-  const exportPNG = useCallback(() => {
-    const svg = document.querySelector('svg')
-    if (!svg) return
-    const svgData = new XMLSerializer().serializeToString(svg)
-    const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
-    const img = new window.Image()
-    img.onload = () => {
-      canvas.width = img.width
-      canvas.height = img.height
-      ctx?.drawImage(img, 0, 0)
-      const a = document.createElement('a')
-      a.href = canvas.toDataURL('image/png')
-      a.download = `research-nexus-${activeView}-${Date.now()}.png`
-      a.click()
+  const exportPNG = useCallback(async () => {
+    const svg = Array
+      .from(document.querySelectorAll('main svg'))
+      .filter((candidate) => {
+        const rect = candidate.getBoundingClientRect()
+        return rect.width > 0 && rect.height > 0
+      })
+      .sort((a, b) => {
+        const aRect = a.getBoundingClientRect()
+        const bRect = b.getBoundingClientRect()
+        return bRect.width * bRect.height - aRect.width * aRect.height
+      })[0] as SVGSVGElement | undefined
+
+    if (!svg) {
+      console.error('No SVG canvas found for PNG export.')
+      return
     }
-    img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)))
-  }, [activeView])
+
+    const rect = svg.getBoundingClientRect()
+    const width = Math.max(1, Math.ceil(rect.width))
+    const height = Math.max(1, Math.ceil(rect.height))
+    const dpr = window.devicePixelRatio || 1
+
+    const clonedSvg = svg.cloneNode(true) as SVGSVGElement
+    clonedSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    clonedSvg.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    clonedSvg.setAttribute('width', String(width))
+    clonedSvg.setAttribute('height', String(height))
+
+    const svgBlob = new Blob(
+      [new XMLSerializer().serializeToString(clonedSvg)],
+      { type: 'image/svg+xml;charset=utf-8' },
+    )
+    const svgUrl = URL.createObjectURL(svgBlob)
+
+    const image = await new Promise<HTMLImageElement>((resolve, reject) => {
+      const img = new window.Image()
+      img.onload = () => resolve(img)
+      img.onerror = () => reject(new Error('Failed to decode SVG for PNG export.'))
+      img.src = svgUrl
+    }).catch((error) => {
+      console.error('PNG export failed:', error)
+      return null
+    })
+
+    if (!image) {
+      URL.revokeObjectURL(svgUrl)
+      return
+    }
+
+    const canvas = document.createElement('canvas')
+    canvas.width = Math.round(width * dpr)
+    canvas.height = Math.round(height * dpr)
+
+    const ctx = canvas.getContext('2d')
+    if (!ctx) {
+      console.error('Failed to create canvas context for PNG export.')
+      URL.revokeObjectURL(svgUrl)
+      return
+    }
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    ctx.clearRect(0, 0, width, height)
+    ctx.drawImage(image, 0, 0, width, height)
+
+    const pngBlob = await new Promise<Blob | null>((resolve) => {
+      canvas.toBlob(resolve, 'image/png')
+    })
+
+    if (!pngBlob) {
+      console.error('Failed to produce PNG blob from canvas.')
+      URL.revokeObjectURL(svgUrl)
+      return
+    }
+
+    downloadBlob(pngBlob, `research-nexus-${activeView}-${Date.now()}.png`)
+    URL.revokeObjectURL(svgUrl)
+  }, [activeView, downloadBlob])
 
   const exportJSON = useCallback(() => {
     const store = useAppStore.getState()
+    const nexusStore = useNexusStore.getState()
     const data = {
+      branches: nexusStore.branches,
       problems: store.problems,
       methods: store.methods,
       papers: store.papers,
+      bookmarks: store.bookmarks,
       exportedAt: new Date().toISOString()
     }
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = `research-nexus-data-${Date.now()}.json`
-    a.click()
-  }, [])
+    downloadBlob(blob, `research-nexus-data-${Date.now()}.json`)
+  }, [downloadBlob])
+
+  const renderActiveView = () => {
+    switch (activeView) {
+      case 'problem-tree':
+        return <ProblemTree />
+      case 'method-tree':
+        return <MethodTree />
+      case 'method-arrows':
+        return <MethodArrowView />
+      case 'method-timeline':
+        return <MethodTimelineView />
+      case 'dual-tree':
+        return <DualTreeView />
+      case 'timeline':
+        return <TimelineView />
+      case 'citation':
+        return <CitationView />
+      case 'paper-timeline':
+        return <PaperTimelineView />
+      default:
+        return <ProblemTree />
+    }
+  }
+
+  const bookmarkPanelWidthClass =
+    screenSize === 'mobile' ? 'w-full' : screenSize === 'tablet' ? 'w-96 max-w-full' : 'w-80'
 
   return (
     <div className={`h-screen w-screen flex overflow-hidden ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
@@ -152,7 +306,13 @@ function App() {
           )}
           {NAV_ITEMS.filter(i => i.group === 'problems').map(item => (
             <NavButton key={item.id} item={item} active={activeView === item.id}
-              onClick={() => setActiveView(item.id)} collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
+              onClick={() => {
+                setActiveView(item.id)
+                if (screenSize === 'mobile') {
+                  setSidebarCollapsed(true)
+                }
+              }}
+              collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
           ))}
           
           {!sidebarCollapsed && (
@@ -162,7 +322,13 @@ function App() {
           )}
           {NAV_ITEMS.filter(i => i.group === 'methods').map(item => (
             <NavButton key={item.id} item={item} active={activeView === item.id}
-              onClick={() => setActiveView(item.id)} collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
+              onClick={() => {
+                setActiveView(item.id)
+                if (screenSize === 'mobile') {
+                  setSidebarCollapsed(true)
+                }
+              }}
+              collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
           ))}
           
           {!sidebarCollapsed && (
@@ -172,7 +338,13 @@ function App() {
           )}
           {NAV_ITEMS.filter(i => i.group === 'papers').map(item => (
             <NavButton key={item.id} item={item} active={activeView === item.id}
-              onClick={() => setActiveView(item.id)} collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
+              onClick={() => {
+                setActiveView(item.id)
+                if (screenSize === 'mobile') {
+                  setSidebarCollapsed(true)
+                }
+              }}
+              collapsed={sidebarCollapsed} dark={viewConfig.darkMode} />
           ))}
         </nav>
 
@@ -207,32 +379,73 @@ function App() {
           <motion.div key={activeView}
             initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }} className="h-full">
-            {activeView === 'problem-tree' && <ProblemTree />}
-            {activeView === 'method-tree' && <MethodTree />}
-            {activeView === 'method-arrows' && <MethodArrowView />}
-            {activeView === 'dual-tree' && <DualTreeView />}
-            {activeView === 'timeline' && <TimelineView />}
-            {activeView === 'citation' && <CitationView />}
-            {activeView === 'paper-timeline' && <PaperTimelineView />}
+            <Suspense fallback={<LoadingFallback darkMode={viewConfig.darkMode} />}>
+              {renderActiveView()}
+            </Suspense>
           </motion.div>
         </AnimatePresence>
+
+        {(isDataLoading || dataLoadError) && (
+          <div className={`absolute inset-0 z-30 flex items-center justify-center backdrop-blur-sm ${
+            viewConfig.darkMode ? 'bg-zinc-950/80' : 'bg-white/80'
+          }`}>
+            <div className={`rounded-xl border px-5 py-4 text-center ${
+              viewConfig.darkMode
+                ? 'bg-zinc-900 border-zinc-800 text-zinc-200'
+                : 'bg-white border-gray-200 text-gray-700'
+            }`}>
+              {isDataLoading && (
+                <>
+                  <p className="text-sm font-medium">Loading research dataset…</p>
+                  <p className={`text-xs mt-1 ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>
+                    Please wait while the views initialize.
+                  </p>
+                </>
+              )}
+              {dataLoadError && (
+                <>
+                  <p className="text-sm font-medium text-red-500">Failed to load dataset</p>
+                  <p className={`text-xs mt-1 ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>
+                    {dataLoadError}
+                  </p>
+                  <button
+                    onClick={retryLoadData}
+                    className={`mt-3 rounded-md border px-3 py-1.5 text-xs transition-colors ${
+                      viewConfig.darkMode
+                        ? 'border-zinc-700 text-zinc-300 hover:bg-zinc-800'
+                        : 'border-gray-300 text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    Retry
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        )}
         
         {/* Export Panel */}
         <AnimatePresence>
           {showExport && (
             <motion.div
               initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }}
-              className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-zinc-900 border border-zinc-800 rounded-xl shadow-2xl p-4 flex items-center gap-3 z-50">
-              <button onClick={exportPNG}
-                className="px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 rounded-lg text-sm text-indigo-300 flex items-center gap-2 transition-colors">
+              className={`absolute bottom-4 left-1/2 -translate-x-1/2 rounded-xl shadow-2xl p-4 flex items-center gap-3 z-50 ${
+                viewConfig.darkMode
+                  ? 'bg-zinc-900 border border-zinc-800'
+                  : 'bg-white border border-gray-200'
+              }`}>
+              <button onClick={() => { void exportPNG() }}
+                className="px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/20 rounded-lg text-sm text-indigo-500 flex items-center gap-2 transition-colors">
                 <Image size={16} /> Export PNG
               </button>
               <button onClick={exportJSON}
-                className="px-4 py-2 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 rounded-lg text-sm text-green-300 flex items-center gap-2 transition-colors">
+                className="px-4 py-2 bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 rounded-lg text-sm text-green-500 flex items-center gap-2 transition-colors">
                 <FileJson size={16} /> Export JSON
               </button>
               <button onClick={() => setShowExport(false)}
-                className="p-2 hover:bg-zinc-800 rounded-lg text-zinc-500">✕</button>
+                className={`p-2 rounded-lg ${
+                  viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-500' : 'hover:bg-gray-100 text-gray-500'
+                }`}>✕</button>
             </motion.div>
           )}
         </AnimatePresence>
@@ -242,26 +455,59 @@ function App() {
           {showBookmarks && (
             <motion.div
               initial={{ x: 400, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 400, opacity: 0 }}
-              className="absolute right-0 top-0 bottom-0 w-80 bg-zinc-900/95 backdrop-blur-xl border-l border-zinc-800 overflow-y-auto z-40">
-              <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-800">
-                <h3 className="text-sm font-semibold text-white">Bookmarks</h3>
-                <button onClick={() => setShowBookmarks(false)} className="text-zinc-500 hover:text-zinc-300">✕</button>
+              className={`absolute right-0 top-0 bottom-0 ${bookmarkPanelWidthClass} overflow-y-auto z-40 ${
+                viewConfig.darkMode
+                  ? 'bg-zinc-900/95 backdrop-blur-xl border-l border-zinc-800'
+                  : 'bg-white/95 backdrop-blur-xl border-l border-gray-200'
+              }`}>
+              <div className={`flex items-center justify-between px-4 py-3 ${
+                viewConfig.darkMode ? 'border-b border-zinc-800' : 'border-b border-gray-200'
+              }`}>
+                <h3 className={`text-sm font-semibold ${viewConfig.darkMode ? 'text-white' : 'text-gray-900'}`}>Bookmarks</h3>
+                <button
+                  onClick={() => setShowBookmarks(false)}
+                  className={viewConfig.darkMode ? 'text-zinc-500 hover:text-zinc-300' : 'text-gray-500 hover:text-gray-700'}
+                >
+                  ✕
+                </button>
               </div>
-              <BookmarkPanel />
+              <Suspense fallback={<LoadingFallback darkMode={viewConfig.darkMode} />}>
+                <BookmarkPanel />
+              </Suspense>
             </motion.div>
           )}
         </AnimatePresence>
         
         {/* Presentation Mode */}
         <AnimatePresence>
-          {showPresentation && <PresentationMode onClose={() => setShowPresentation(false)} />}
+          {showPresentation && (
+            <Suspense fallback={<LoadingFallback darkMode={viewConfig.darkMode} />}>
+              <PresentationMode onClose={() => setShowPresentation(false)} />
+            </Suspense>
+          )}
         </AnimatePresence>
       </main>
     </div>
   )
 }
 
-const NavButton = ({ item, active, onClick, collapsed, dark }: any) => {
+const LoadingFallback = ({ darkMode }: { darkMode: boolean }) => (
+  <div className={`h-full w-full flex items-center justify-center text-sm ${
+    darkMode ? 'text-zinc-500' : 'text-gray-500'
+  }`}>
+    Loading view…
+  </div>
+)
+
+type NavButtonProps = {
+  item: NavItem
+  active: boolean
+  onClick: () => void
+  collapsed: boolean
+  dark: boolean
+}
+
+const NavButton = ({ item, active, onClick, collapsed, dark }: NavButtonProps) => {
   const Icon = item.icon
   return (
     <button onClick={onClick}
@@ -290,12 +536,27 @@ const NavButton = ({ item, active, onClick, collapsed, dark }: any) => {
   )
 }
 
-const ToolBtn = ({ icon: Icon, label, collapsed, dark, onClick }: any) => (
+type ToolBtnProps = {
+  icon: LucideIcon
+  label: string
+  collapsed: boolean
+  dark: boolean
+  onClick: () => void
+  active?: boolean
+}
+
+const ToolBtn = ({ icon: Icon, label, collapsed, dark, onClick, active = false }: ToolBtnProps) => (
   <button onClick={onClick}
     className={`flex items-center gap-3 w-full rounded-lg transition-all ${
       collapsed ? 'px-0 py-2 justify-center' : 'px-3 py-2'
     } ${
-      dark ? 'text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800/50' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
+      active
+        ? dark
+          ? 'text-indigo-300 bg-indigo-500/10'
+          : 'text-indigo-600 bg-indigo-50'
+        : dark
+          ? 'text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800/50'
+          : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
     }`}
     title={collapsed ? label : undefined}>
     <Icon size={14} />
