@@ -9,7 +9,7 @@ const METHOD_X = 500
 const V_GAP = 12
 
 export default function MethodArrowView() {
-  const { problems, methods, selectedNode, selectNode, isNodeHighlighted } = useAppStore()
+  const { problems, methods, selectedNode, selectNode, isNodeHighlighted, viewConfig } = useAppStore()
   
   const [zoom, setZoomState] = useState(1)
   const panRef = useRef({ x: 30, y: 30 })
@@ -171,7 +171,7 @@ export default function MethodArrowView() {
   }
 
   return (
-    <div className="h-full w-full flex flex-col bg-zinc-950">
+    <div className={`h-full w-full flex flex-col ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
       {/* Toolbar */}
       <div className="flex items-center gap-3 px-5 py-3 border-b border-zinc-800/80 bg-zinc-900/40">
         <ArrowRight size={16} className="text-indigo-400" />

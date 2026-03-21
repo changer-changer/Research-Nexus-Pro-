@@ -150,6 +150,7 @@ const nodeTypes = { treeNode: TreeNode }
 // ============ Main Component ============
 export default function ProblemTree() {
   const problems = useAppStore(s => s.problems)
+  const viewConfig = useAppStore(s => s.viewConfig)
   const expandedNodes = useAppStore(s => s.expandedNodes)
   const problemPapersMap = useAppStore(s => s.problemPapersMap)
   const problemMethodsMap = useAppStore(s => s.problemMethodsMap)

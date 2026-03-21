@@ -7,6 +7,7 @@ export default function TimelineView() {
   const selectedNode = useAppStore(s => s.selectedNode)
   const selectNode = useAppStore(s => s.selectNode)
   const isNodeHighlighted = useAppStore(s => s.isNodeHighlighted)
+  const viewConfig = useAppStore(s => s.viewConfig)
 
   const [zoom, setZoom] = useState(1)
   const [pan, setPan] = useState({ x: 30, y: 30 })
@@ -140,7 +141,7 @@ export default function TimelineView() {
   }
 
   return (
-    <div className="h-full w-full flex flex-col bg-zinc-950">
+    <div className={`h-full w-full flex flex-col ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
       {/* Toolbar */}
       <div className="flex items-center gap-3 px-5 py-3 border-b border-zinc-800 bg-zinc-900/60 backdrop-blur">
         <Clock size={16} className="text-indigo-400" />

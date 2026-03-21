@@ -11,6 +11,7 @@ const TOP = 60
 export default function PaperTimelineView() {
   const papers = useAppStore(s => s.papers)
   const problems = useAppStore(s => s.problems)
+  const viewConfig = useAppStore(s => s.viewConfig)
   const { selectNode, selectedNode } = useAppStore()
   
   const [zoom, setZoom] = useState(1)
@@ -79,7 +80,7 @@ export default function PaperTimelineView() {
   const selectedPaperData = selectedPaper ? papers.find(p => p.id === selectedPaper) : null
 
   return (
-    <div className="h-full w-full flex flex-col bg-zinc-950">
+    <div className={`h-full w-full flex flex-col ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
       {/* Toolbar */}
       <div className="flex items-center gap-3 px-5 py-3 border-b border-zinc-800/80 bg-zinc-900/40">
         <Calendar size={16} className="text-indigo-400" />

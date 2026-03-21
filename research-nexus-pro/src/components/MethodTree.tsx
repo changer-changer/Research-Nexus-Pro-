@@ -132,6 +132,7 @@ export default function MethodTree() {
   const expandedNodes = useAppStore(s => s.expandedNodes)
   const selectedNode = useAppStore(s => s.selectedNode)
   const hoveredNode = useAppStore(s => s.hoveredNode)
+  const viewConfig = useAppStore(s => s.viewConfig)
   
   const { selectNode, hoverNode, toggleExpand, expandAll, collapseAll } = useAppStore()
   
@@ -294,7 +295,7 @@ export default function MethodTree() {
   }
 
   return (
-    <div className="h-full w-full flex bg-zinc-950">
+    <div className={`h-full w-full flex ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
       <div className="flex-1 flex flex-col">
         {/* Toolbar */}
         <div className="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm">
@@ -409,7 +410,7 @@ export default function MethodTree() {
 
 // ============ Method Detail Panel ============
 function MethodDetailPanel({ nodeId }: { nodeId: string }) {
-  const { getMethodById, getMethodProblems, getMethodChildren, selectNode } = useAppStore()
+  const { getMethodById, getMethodProblems, getMethodChildren, selectNode, viewConfig } = useAppStore()
   const method = getMethodById(nodeId)
   if (!method) return null
   

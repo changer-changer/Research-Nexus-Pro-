@@ -9,7 +9,7 @@ interface NodeDetailPanelProps {
 }
 
 export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetailPanelProps) {
-  const { problems, methods, papers } = useAppStore()
+  const { problems, methods, papers, viewConfig } = useAppStore()
 
   if (!nodeId || !nodeType) return null
 
@@ -50,7 +50,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
       } as Record<string, string>)[node.status] || 'bg-zinc-500/20 text-zinc-400'
 
   return (
-    <div className="fixed inset-y-0 right-0 w-96 bg-zinc-950 border-l border-zinc-800 shadow-2xl z-50 flex flex-col">
+    <div className={`fixed inset-y-0 right-0 w-96 ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-white'} border-l border-zinc-800 shadow-2xl z-50 flex flex-col`}>
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-800 bg-zinc-900/50">
         <div className="flex items-center gap-2">

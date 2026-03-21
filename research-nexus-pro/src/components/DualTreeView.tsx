@@ -18,6 +18,7 @@ export default function DualTreeView() {
   const methods = useAppStore(s => s.methods)
   const expandedNodes = useAppStore(s => s.expandedNodes)
   const selectedNode = useAppStore(s => s.selectedNode)
+  const viewConfig = useAppStore(s => s.viewConfig)
   const { selectNode, toggleExpand, isNodeHighlighted } = useAppStore()
   
   const [zoom, setZoomState] = useState(1)
@@ -285,7 +286,7 @@ export default function DualTreeView() {
   }, [])
 
   return (
-    <div className="h-full w-full flex flex-col bg-zinc-950">
+    <div className={`h-full w-full flex flex-col ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
       {/* Toolbar */}
       <div className="flex items-center gap-2 px-4 py-2.5 border-b border-zinc-800/80 bg-zinc-900/40">
         <div className="flex items-center gap-1.5 mr-3">
