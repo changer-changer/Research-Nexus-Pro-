@@ -16,6 +16,15 @@ export interface Problem {
   description: string
   papers: string[]
   methods: string[]
+  // AI Generated Analysis
+  aiAnalysis?: {
+    problemDescription: string    // 问题具体描述
+    currentStatus: string         // 现状
+    solutionEffect: string        // 解决效果
+    rootCause: string            // 产生原因和原理
+    bottleneck: string           // 瓶颈分析
+    paperAttempts: string        // 不同论文的解决尝试
+  }
 }
 
 export interface Method {
@@ -30,6 +39,14 @@ export interface Method {
   year: number
   branchId: string
   crossDomain: string[]
+  // AI Generated Analysis
+  aiAnalysis?: {
+    methodPurpose: string         // 方法目的
+    methodEffect: string          // 方法作用
+    currentStatus: string         // 现状
+    contentDescription: string    // 具体内容描述
+    paperAttempts: string         // 不同论文的尝试
+  }
 }
 
 export interface Paper {
@@ -63,12 +80,82 @@ interface HistoryEntry {
   snapshot: string
 }
 
+interface UISnapshot {
+  expandedNodes: string[]
+  selectedNode: { type: 'problem' | 'method' | 'paper'; id: string } | null
+  activeView: string
+  bookmarks: Bookmark[]
+}
+
+const INITIAL_UI_SNAPSHOT: UISnapshot = {
+  expandedNodes: ['p_root'],
+  selectedNode: null,
+  activeView: 'problem-tree',
+  bookmarks: [],
+}
+
+const buildSnapshot = (state: {
+  expandedNodes: Set<string>
+  selectedNode: { type: 'problem' | 'method' | 'paper'; id: string } | null
+  activeView: string
+  bookmarks: Bookmark[]
+}): string => {
+  return JSON.stringify({
+    expandedNodes: Array.from(state.expandedNodes),
+    selectedNode: state.selectedNode,
+    activeView: state.activeView,
+    bookmarks: state.bookmarks,
+  } satisfies UISnapshot)
+}
+
+const parseSnapshot = (snapshot: string): UISnapshot | null => {
+  try {
+    const parsed = JSON.parse(snapshot) as Partial<UISnapshot>
+    if (!parsed || typeof parsed !== 'object') {
+      throw new Error('Snapshot payload is not an object.')
+    }
+    if (!Array.isArray(parsed.expandedNodes)) {
+      throw new Error('Snapshot.expandedNodes must be an array.')
+    }
+    if (typeof parsed.activeView !== 'string') {
+      throw new Error('Snapshot.activeView must be a string.')
+    }
+    if (!Array.isArray(parsed.bookmarks)) {
+      throw new Error('Snapshot.bookmarks must be an array.')
+    }
+
+    return {
+      expandedNodes: parsed.expandedNodes.filter((id): id is string => typeof id === 'string'),
+      selectedNode:
+        parsed.selectedNode &&
+        typeof parsed.selectedNode === 'object' &&
+        typeof parsed.selectedNode.id === 'string' &&
+        (parsed.selectedNode.type === 'problem' ||
+          parsed.selectedNode.type === 'method' ||
+          parsed.selectedNode.type === 'paper')
+          ? parsed.selectedNode as UISnapshot['selectedNode']
+          : null,
+      activeView: parsed.activeView,
+      bookmarks: parsed.bookmarks as Bookmark[],
+    }
+  } catch (error) {
+    console.error('Failed to parse UI history snapshot:', error)
+    return null
+  }
+}
+
 interface AppState {
   // Data
   problems: Problem[]
   methods: Method[]
   papers: Paper[]
   bookmarks: Bookmark[]
+  
+  // Adjacency Maps
+  problemPapersMap: Record<string, string[]>
+  problemMethodsMap: Record<string, string[]>
+  methodPapersMap: Record<string, string[]>
+  methodProblemsMap: Record<string, string[]>
   
   // UI State
   activeView: string
@@ -136,6 +223,10 @@ export const useAppStore = create<AppState>()(
       methods: [],
       papers: [],
       bookmarks: [],
+      problemPapersMap: {},
+      problemMethodsMap: {},
+      methodPapersMap: {},
+      methodProblemsMap: {},
       activeView: 'problem-tree',
       selectedNode: null,
       hoveredNode: null,
@@ -149,26 +240,30 @@ export const useAppStore = create<AppState>()(
         zoom: 1, 
         pan: { x: 0, y: 0 } 
       },
-      history: [],
-      historyIndex: -1,
+      history: [{
+        timestamp: Date.now(),
+        action: 'init',
+        snapshot: JSON.stringify(INITIAL_UI_SNAPSHOT),
+      }],
+      historyIndex: 0,
       
       // ============ Linkage ============
       getLinkedProblemIds: (nodeType, nodeId) => {
         const state = get()
-        if (nodeType === 'method') return state.methods.find(m => m.id === nodeId)?.targets || []
+        if (nodeType === 'method') return state.methodProblemsMap[nodeId] || []
         if (nodeType === 'paper') return state.papers.find(p => p.id === nodeId)?.targets || []
         return []
       },
       getLinkedMethodIds: (nodeType, nodeId) => {
         const state = get()
-        if (nodeType === 'problem') return state.methods.filter(m => m.targets.includes(nodeId)).map(m => m.id)
+        if (nodeType === 'problem') return state.problemMethodsMap[nodeId] || []
         if (nodeType === 'paper') return state.papers.find(p => p.id === nodeId)?.methods || []
         return []
       },
       getLinkedPaperIds: (nodeType, nodeId) => {
         const state = get()
-        if (nodeType === 'problem') return state.problems.find(p => p.id === nodeId)?.papers || []
-        if (nodeType === 'method') return state.papers.filter(p => p.methods.includes(nodeId)).map(p => p.id)
+        if (nodeType === 'problem') return state.problemPapersMap[nodeId] || []
+        if (nodeType === 'method') return state.methodPapersMap[nodeId] || []
         return []
       },
       isNodeHighlighted: (nodeType, nodeId) => {
@@ -178,12 +273,12 @@ export const useAppStore = create<AppState>()(
         if (active.type === nodeType && active.id === nodeId) return false
         
         if (active.type === 'problem') {
-          if (nodeType === 'method') return state.methods.find(m => m.id === nodeId)?.targets.includes(active.id) || false
-          if (nodeType === 'paper') return state.problems.find(p => p.id === active.id)?.papers.includes(nodeId) || false
+          if (nodeType === 'method') return state.problemMethodsMap[active.id]?.includes(nodeId) || false
+          if (nodeType === 'paper') return state.problemPapersMap[active.id]?.includes(nodeId) || false
         }
         if (active.type === 'method') {
-          if (nodeType === 'problem') return state.methods.find(m => m.id === active.id)?.targets.includes(nodeId) || false
-          if (nodeType === 'paper') return state.papers.find(p => p.id === nodeId)?.methods.includes(active.id) || false
+          if (nodeType === 'problem') return state.methodProblemsMap[active.id]?.includes(nodeId) || false
+          if (nodeType === 'paper') return state.methodPapersMap[active.id]?.includes(nodeId) || false
         }
         if (active.type === 'paper') {
           const paper = state.papers.find(p => p.id === active.id)
@@ -198,29 +293,85 @@ export const useAppStore = create<AppState>()(
         const problems = (data.problems || []).map((p: any) => ({ ...p, children: p.children || [], papers: p.papers || [], methods: p.methods || [] }))
         const methods = (data.methods || []).map((m: any) => ({ ...m, children: m.children || [], targets: m.targets || [], crossDomain: m.crossDomain || [] }))
         const papers = (data.papers || []).map((p: any) => ({ ...p, targets: p.targets || [], methods: p.methods || [], citations: p.citations || [] }))
-        set({ problems, methods, papers })
+        
+        const problemPapersMap: Record<string, string[]> = {}
+        const problemMethodsMap: Record<string, string[]> = {}
+        const methodPapersMap: Record<string, string[]> = {}
+        const methodProblemsMap: Record<string, string[]> = {}
+        
+        const ensure = (map: Record<string, string[]>, key: string) => { if (!map[key]) map[key] = [] }
+        const addUnique = (arr: string[], val: string) => { if (val && !arr.includes(val)) arr.push(val) }
+
+        problems.forEach((p: any) => { ensure(problemPapersMap, p.id); ensure(problemMethodsMap, p.id) })
+        methods.forEach((m: any) => { ensure(methodPapersMap, m.id); ensure(methodProblemsMap, m.id) })
+        
+        problems.forEach((p: any) => {
+          p.papers.forEach((pid: string) => addUnique(problemPapersMap[p.id], pid))
+          p.methods.forEach((mid: string) => {
+            addUnique(problemMethodsMap[p.id], mid)
+            ensure(methodProblemsMap, mid); addUnique(methodProblemsMap[mid], p.id)
+          })
+        })
+        
+        methods.forEach((m: any) => {
+          m.targets.forEach((tid: string) => {
+            ensure(methodProblemsMap, m.id); addUnique(methodProblemsMap[m.id], tid)
+            ensure(problemMethodsMap, tid); addUnique(problemMethodsMap[tid], m.id)
+          })
+        })
+        
+        papers.forEach((p: any) => {
+          p.targets.forEach((tid: string) => {
+            ensure(problemPapersMap, tid); addUnique(problemPapersMap[tid], p.id)
+          })
+          p.methods.forEach((mid: string) => {
+            ensure(methodPapersMap, mid); addUnique(methodPapersMap[mid], p.id)
+          })
+        })
+        
+        set({ problems, methods, papers, problemPapersMap, problemMethodsMap, methodPapersMap, methodProblemsMap })
       },
-      setActiveView: (view) => set({ activeView: view }),
-      selectNode: (type, id) => set({ selectedNode: id ? { type: type as any, id } : null }),
+      setActiveView: (view) => {
+        if (get().activeView === view) return
+        set({ activeView: view })
+        get().pushHistory('set active view')
+      },
+      selectNode: (type, id) => {
+        const selectedNode = id ? { type: type as any, id } : null
+        const current = get().selectedNode
+        if (current?.id === selectedNode?.id && current?.type === selectedNode?.type) return
+        set({ selectedNode })
+        get().pushHistory('select node')
+      },
       hoverNode: (type, id) => set({ hoveredNode: id ? { type: type as any, id } : null }),
       toggleExpand: (id) => {
         const next = new Set(get().expandedNodes)
         if (next.has(id)) next.delete(id); else next.add(id)
         set({ expandedNodes: next })
+        get().pushHistory('toggle expand')
       },
       expandAll: () => {
         const all = new Set<string>(get().problems.map(p => p.id))
         get().methods.forEach(m => all.add(m.id))
         set({ expandedNodes: all })
+        get().pushHistory('expand all')
       },
-      collapseAll: () => set({ expandedNodes: new Set(['p_root']) }),
+      collapseAll: () => {
+        set({ expandedNodes: new Set(['p_root']) })
+        get().pushHistory('collapse all')
+      },
       setTimelineFilter: (filter) => set({ timelineFilter: { ...get().timelineFilter, ...filter } }),
       updateViewConfig: (config) => set({ viewConfig: { ...get().viewConfig, ...config } }),
       
       // ============ Bookmarks ============
       addBookmark: (nodeType, nodeId, note = '', color = '#6366f1') => {
+        const existing = get().bookmarks.find(
+          b => b.nodeType === nodeType && b.nodeId === nodeId,
+        )
+        if (existing) return
+
         const bm: Bookmark = {
-          id: `bm_${Date.now()}`,
+          id: `bm_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
           nodeType: nodeType as any,
           nodeId,
           note,
@@ -242,11 +393,12 @@ export const useAppStore = create<AppState>()(
       // ============ Undo/Redo ============
       pushHistory: (action) => {
         const state = get()
-        const snapshot = JSON.stringify({
-          expandedNodes: Array.from(state.expandedNodes),
-          selectedNode: state.selectedNode,
-          activeView: state.activeView,
-        })
+        const snapshot = buildSnapshot(state)
+
+        if (state.history[state.historyIndex]?.snapshot === snapshot) {
+          return
+        }
+
         const history = state.history.slice(0, state.historyIndex + 1)
         history.push({ timestamp: Date.now(), action, snapshot })
         if (history.length > 50) history.shift()
@@ -256,30 +408,30 @@ export const useAppStore = create<AppState>()(
         const { historyIndex, history } = get()
         if (historyIndex > 0) {
           const entry = history[historyIndex - 1]
-          try {
-            const data = JSON.parse(entry.snapshot)
-            set({
-              expandedNodes: new Set(data.expandedNodes),
-              selectedNode: data.selectedNode,
-              activeView: data.activeView,
-              historyIndex: historyIndex - 1,
-            })
-          } catch {}
+          const data = parseSnapshot(entry.snapshot)
+          if (!data) return
+          set({
+            expandedNodes: new Set(data.expandedNodes),
+            selectedNode: data.selectedNode,
+            activeView: data.activeView,
+            bookmarks: data.bookmarks,
+            historyIndex: historyIndex - 1,
+          })
         }
       },
       redo: () => {
         const { historyIndex, history } = get()
         if (historyIndex < history.length - 1) {
           const entry = history[historyIndex + 1]
-          try {
-            const data = JSON.parse(entry.snapshot)
-            set({
-              expandedNodes: new Set(data.expandedNodes),
-              selectedNode: data.selectedNode,
-              activeView: data.activeView,
-              historyIndex: historyIndex + 1,
-            })
-          } catch {}
+          const data = parseSnapshot(entry.snapshot)
+          if (!data) return
+          set({
+            expandedNodes: new Set(data.expandedNodes),
+            selectedNode: data.selectedNode,
+            activeView: data.activeView,
+            bookmarks: data.bookmarks,
+            historyIndex: historyIndex + 1,
+          })
         }
       },
       
@@ -290,21 +442,25 @@ export const useAppStore = create<AppState>()(
       getProblemChildren: (id) => get().problems.filter(p => p.parentId === id),
       getMethodChildren: (id) => get().methods.filter(m => m.parentId === id),
       getProblemMethods: (id) => {
-        const problem = get().problems.find(p => p.id === id)
-        if (!problem) return []
-        return get().methods.filter(m => problem.methods.includes(m.id) || m.targets.includes(id))
+        const state = get()
+        const methodIds = state.problemMethodsMap[id] || []
+        return methodIds.map(mid => state.methods.find(m => m.id === mid)!).filter(Boolean)
       },
       getMethodProblems: (id) => {
-        const method = get().methods.find(m => m.id === id)
-        if (!method) return []
-        return get().problems.filter(p => method.targets.includes(p.id))
+        const state = get()
+        const problemIds = state.methodProblemsMap[id] || []
+        return problemIds.map(pid => state.problems.find(p => p.id === pid)!).filter(Boolean)
       },
       getProblemPapers: (id) => {
-        const problem = get().problems.find(p => p.id === id)
-        if (!problem) return []
-        return get().papers.filter(paper => problem.papers.includes(paper.id) || paper.targets.includes(id))
+        const state = get()
+        const paperIds = state.problemPapersMap[id] || []
+        return paperIds.map(pid => state.papers.find(p => p.id === pid)!).filter(Boolean)
       },
-      getMethodPapers: (id) => get().papers.filter(p => p.methods.includes(id)),
+      getMethodPapers: (id) => {
+        const state = get()
+        const paperIds = state.methodPapersMap[id] || []
+        return paperIds.map(pid => state.papers.find(p => p.id === pid)!).filter(Boolean)
+      },
     }),
     {
       name: 'research-nexus-pro-v3',

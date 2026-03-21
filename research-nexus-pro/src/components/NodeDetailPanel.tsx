@@ -128,6 +128,101 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
           </div>
         </div>
 
+        {/* AI Generated Analysis - Problem */}
+        {isProblem && (node as any).aiAnalysis && (
+          <div className="space-y-3">
+            <h3 className="text-xs font-medium text-indigo-400 mb-2 flex items-center gap-1.5">
+              <BookOpen size={12} /> AI深度解读
+            </h3>
+            
+            {(node as any).aiAnalysis.problemDescription && (
+              <div className="bg-indigo-950/20 rounded-lg p-3 border border-indigo-900/30">
+                <h4 className="text-xs font-medium text-indigo-300 mb-1">问题描述</h4>
+                <p className="text-sm text-indigo-200/80 leading-relaxed">{(node as any).aiAnalysis.problemDescription}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.currentStatus && (
+              <div className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800">
+                <h4 className="text-xs font-medium text-zinc-400 mb-1">研究现状</h4>
+                <p className="text-sm text-zinc-300 leading-relaxed">{(node as any).aiAnalysis.currentStatus}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.solutionEffect && (
+              <div className="bg-emerald-950/20 rounded-lg p-3 border border-emerald-900/30">
+                <h4 className="text-xs font-medium text-emerald-300 mb-1">解决价值</h4>
+                <p className="text-sm text-emerald-200/80 leading-relaxed">{(node as any).aiAnalysis.solutionEffect}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.rootCause && (
+              <div className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800">
+                <h4 className="text-xs font-medium text-zinc-400 mb-1">本质原因</h4>
+                <p className="text-sm text-zinc-300 leading-relaxed">{(node as any).aiAnalysis.rootCause}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.bottleneck && (
+              <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-900/30">
+                <h4 className="text-xs font-medium text-amber-300 mb-1">核心瓶颈</h4>
+                <p className="text-sm text-amber-200/80 leading-relaxed">{(node as any).aiAnalysis.bottleneck}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.paperAttempts && (
+              <div className="bg-blue-950/20 rounded-lg p-3 border border-blue-900/30">
+                <h4 className="text-xs font-medium text-blue-300 mb-1">研究尝试</h4>
+                <p className="text-sm text-blue-200/80 leading-relaxed">{(node as any).aiAnalysis.paperAttempts}</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* AI Generated Analysis - Method */}
+        {!isProblem && (node as any).aiAnalysis && (
+          <div className="space-y-3">
+            <h3 className="text-xs font-medium text-emerald-400 mb-2 flex items-center gap-1.5">
+              <BookOpen size={12} /> AI深度解读
+            </h3>
+            
+            {(node as any).aiAnalysis.methodPurpose && (
+              <div className="bg-emerald-950/20 rounded-lg p-3 border border-emerald-900/30">
+                <h4 className="text-xs font-medium text-emerald-300 mb-1">方法目的</h4>
+                <p className="text-sm text-emerald-200/80 leading-relaxed">{(node as any).aiAnalysis.methodPurpose}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.methodEffect && (
+              <div className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800">
+                <h4 className="text-xs font-medium text-zinc-400 mb-1">方法作用</h4>
+                <p className="text-sm text-zinc-300 leading-relaxed">{(node as any).aiAnalysis.methodEffect}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.currentStatus && (
+              <div className="bg-blue-950/20 rounded-lg p-3 border border-blue-900/30">
+                <h4 className="text-xs font-medium text-blue-300 mb-1">应用现状</h4>
+                <p className="text-sm text-blue-200/80 leading-relaxed">{(node as any).aiAnalysis.currentStatus}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.contentDescription && (
+              <div className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800">
+                <h4 className="text-xs font-medium text-zinc-400 mb-1">技术内容</h4>
+                <p className="text-sm text-zinc-300 leading-relaxed">{(node as any).aiAnalysis.contentDescription}</p>
+              </div>
+            )}
+            
+            {(node as any).aiAnalysis.paperAttempts && (
+              <div className="bg-indigo-950/20 rounded-lg p-3 border border-indigo-900/30">
+                <h4 className="text-xs font-medium text-indigo-300 mb-1">典型实现</h4>
+                <p className="text-sm text-indigo-200/80 leading-relaxed">{(node as any).aiAnalysis.paperAttempts}</p>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Current Bottleneck */}
         {isProblem && (
           <div className="bg-amber-950/20 rounded-lg p-3 border border-amber-900/30">
