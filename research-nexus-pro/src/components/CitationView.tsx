@@ -164,7 +164,7 @@ export default function CitationView() {
           id: `cite-${activePaper.id}-${targetId}`,
           source: activePaper.id,
           target: targetId,
-          type: 'smoothstep',
+          type: 'straight',
           style: { stroke: '#6366f1', strokeWidth: 2, opacity: 0.8 },
           markerEnd: { type: MarkerType.ArrowClosed, color: '#6366f1', width: 14, height: 14 },
         })
@@ -176,7 +176,7 @@ export default function CitationView() {
           id: `cite-${paper.id}-${activePaper.id}`,
           source: paper.id,
           target: activePaper.id,
-          type: 'smoothstep',
+          type: 'straight',
           style: { stroke: '#10b981', strokeWidth: 1.5, opacity: 0.7 },
           markerEnd: { type: MarkerType.ArrowClosed, color: '#10b981', width: 12, height: 12 },
         })
@@ -199,16 +199,16 @@ export default function CitationView() {
           // Color based on whether it's cross-domain or same-domain
           const isCrossDomain = source.category !== target.category
           const color = isCrossDomain ? '#6366f1' : '#52525b'
-          const opacity = isCrossDomain ? 0.5 : 0.25
+          const opacity = isCrossDomain ? 0.4 : 0.2
           const width = isCrossDomain ? 1.5 : 0.8
           
           nextEdges.push({
             id: `cite-${source.id}-${targetId}`,
             source: source.id,
             target: targetId,
-            type: 'smoothstep',
+            type: 'straight',
             style: { stroke: color, strokeWidth: width, opacity },
-            markerEnd: { type: MarkerType.ArrowClosed, color, width: 10, height: 10 },
+            markerEnd: { type: MarkerType.ArrowClosed, color, width: 8, height: 8 },
           })
         })
       })
