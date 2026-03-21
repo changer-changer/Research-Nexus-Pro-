@@ -192,7 +192,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
                 {node.status}
               </span>
               
-              {node.year &> (
+              {node.year && (
                 <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium ${
                   darkMode ? 'bg-zinc-800/60 text-zinc-400' : 'bg-gray-100 text-gray-600'
                 }`}>
@@ -201,7 +201,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
               )}
               
               
-              {(node as any).branchId &> (
+              {(node as any).branchId && (
                 <span className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium ${
                   darkMode ? 'bg-zinc-800/60 text-zinc-400' : 'bg-gray-100 text-gray-600'
                 }`}>
@@ -212,7 +212,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
           </motion.div>
 
           {/* Value Score */}
-          {(node as any).valueScore !== undefined &> (
+          {(node as any).valueScore !== undefined && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -245,7 +245,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
           )}
 
           {/* Description */}
-          {(node as any).description &> (
+          {(node as any).description && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -263,7 +263,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
           )}
 
           {/* AI Analysis Section */}
-          {(node as any).aiAnalysis &> (
+          {(node as any).aiAnalysis && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -275,21 +275,21 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
                 <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-indigo-400' : 'text-indigo-600'}`}>AI Analysis</span>
               </div>
 
-              {(node as any).aiAnalysis.problemDescription &> (
+              {(node as any).aiAnalysis.problemDescription && (
                 <div className={`rounded-2xl p-4 border ${darkMode ? 'bg-indigo-950/20 border-indigo-900/30' : 'bg-indigo-50 border-indigo-200'}`}>
                   <p className={`text-xs font-medium mb-2 ${darkMode ? 'text-indigo-400' : 'text-indigo-700'}`}>Problem Description</p>
                   <p className={`text-sm leading-relaxed ${darkMode ? 'text-indigo-200/80' : 'text-indigo-900/80'}`}>{(node as any).aiAnalysis.problemDescription}</p>
                 </div>
               )}
 
-              {(node as any).aiAnalysis.currentStatus &> (
+              {(node as any).aiAnalysis.currentStatus && (
                 <div className={`rounded-2xl p-4 border ${cardBaseClass}`}>
                   <p className={`text-xs font-medium mb-2 ${darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>Current Status</p>
                   <p className={`text-sm leading-relaxed ${darkMode ? 'text-zinc-300' : 'text-gray-700'}`}>{(node as any).aiAnalysis.currentStatus}</p>
                 </div>
               )}
 
-              {(node as any).aiAnalysis.bottleneck &> (
+              {(node as any).aiAnalysis.bottleneck && (
                 <div className={`rounded-2xl p-4 border ${darkMode ? 'bg-amber-950/20 border-amber-900/30' : 'bg-amber-50 border-amber-200'}`}>
                   <p className={`text-xs font-medium mb-2 ${darkMode ? 'text-amber-400' : 'text-amber-700'}`}>Key Bottleneck</p>
                   <p className={`text-sm leading-relaxed ${darkMode ? 'text-amber-200/80' : 'text-amber-900/80'}`}>{(node as any).aiAnalysis.bottleneck}</p>
@@ -301,7 +301,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
           {/* Related Methods / Problems */}
           <AnimatePresence mode="wait">
             {isProblem ? (
-              relatedMethods.length > 0 &> (
+              relatedMethods.length > 0 && (
                 <motion.div
                   key="methods"
                   initial={{ opacity: 0, y: 10 }}
@@ -341,7 +341,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
                 </motion.div>
               )
             ) : (
-              relatedProblems.length > 0 &> (
+              relatedProblems.length > 0 && (
                 <motion.div
                   key="problems"
                   initial={{ opacity: 0, y: 10 }}
@@ -385,7 +385,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
           </AnimatePresence>
 
           {/* Related Papers */}
-          {relatedPapers.length > 0 &> (
+          {relatedPapers.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -424,7 +424,7 @@ export default function NodeDetailPanel({ nodeId, nodeType, onClose }: NodeDetai
                   </motion.div>
                 ))}
                 
-                {relatedPapers.length > 5 &> (
+                {relatedPapers.length > 5 && (
                   <p className={`text-xs text-center py-2 ${darkMode ? 'text-zinc-600' : 'text-gray-400'}`}>
                     + {relatedPapers.length - 5} more papers
                   </p>

@@ -148,7 +148,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
                 {paper.venue}
               </span>
 
-              {paper.arxivId &> (
+              {paper.arxivId && (
                 <a 
                   href={`https://arxiv.org/abs/${paper.arxivId}`}
                   target="_blank"
@@ -190,7 +190,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
           </motion.div>
 
           {/* Authority Score */}
-          {paper.authorityScore &> (
+          {paper.authorityScore && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -239,7 +239,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
             transition={{ delay: 0.3 }}
             className="flex flex-wrap gap-2"
           >
-            {paper.isLatest &> (
+            {paper.isLatest && (
               <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold border ${
                 darkMode 
                   ? 'bg-orange-500/10 text-orange-400 border-orange-500/20' 
@@ -249,7 +249,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
               </span>
             )}
 
-            {paper.isBest &> (
+            {paper.isBest && (
               <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-semibold border ${
                 darkMode 
                   ? 'bg-violet-500/10 text-violet-400 border-violet-500/20' 
@@ -261,7 +261,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
           </motion.div>
 
           {/* Problems Addressed */}
-          {relatedProblems.length > 0 &> (
+          {relatedProblems.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -305,7 +305,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
           )}
 
           {/* Methods Used */}
-          {relatedMethods.length > 0 &> (
+          {relatedMethods.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -349,7 +349,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
           )}
 
           {/* Citations */}
-          {paper.citations && paper.citations.length > 0 &> (
+          {paper.citations && paper.citations.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
