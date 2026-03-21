@@ -44,7 +44,7 @@ export default function TimelineView() {
   }, [displayProblems, filterDomain])
 
   const minYear = 2015, maxYear = 2026, yearRange = 11
-  const LANE_H = 130, YEAR_W = 130, LEFT = 180, TOP = 70
+  const LANE_H = 160, YEAR_W = 140, LEFT = 180, TOP = 70
   const getX = (year: number) => LEFT + ((year - minYear) / yearRange) * (yearRange * YEAR_W)
   const getY = (di: number) => TOP + di * LANE_H + LANE_H / 2
   const getDomainIndex = (bid: string) => domains.findIndex(d => d.id === bid)
@@ -75,13 +75,13 @@ export default function TimelineView() {
       const siblings = gridCells.get(key) || []
       
       if (siblings.length > 1) {
-        // Grid layout for overlapping nodes
+        // Grid layout for overlapping nodes - larger spacing
         const idx = siblings.indexOf(node.id)
         const cols = Math.ceil(Math.sqrt(siblings.length))
         const col = idx % cols
         const row = Math.floor(idx / cols)
-        const offsetX = (col - (cols - 1) / 2) * 35
-        const offsetY = (row - (siblings.length / cols - 1) / 2) * 30
+        const offsetX = (col - (cols - 1) / 2) * 50  // increased from 35
+        const offsetY = (row - (siblings.length / cols - 1) / 2) * 40  // increased from 30
         positions.set(node.id, { x: baseX + offsetX, y: baseY + offsetY })
       } else {
         positions.set(node.id, { x: baseX, y: baseY })
@@ -221,39 +221,68 @@ export default function TimelineView() {
             const isHov = hoveredNode === node.id
             const isSel = selectedNode?.id === node.id
             const color = statusColor(node.status)
-            const r = Math.max(10, Math.min(22, 8 + (node.valueScore || 50) / 12))
+            const r = Math.max(12, Math.min(24, 10 + (node.valueScore || 50) / 10))
 
             return (
               <g key={node.id} className="tl-node" style={{ cursor: 'pointer' }}
                 onClick={() => selectNode('problem', isSel ? null : node.id)}
                 onMouseEnter={() => setHoveredNode(node.id)}
                 onMouseLeave={() => setHoveredNode(null)}>
+                
+                {/* Selection ring */}
                 {(isSel || isHov) && (
-                  <circle cx={x} cy={y} r={r + 5} fill="none" stroke={color} strokeWidth={2} opacity={0.4}
+                  <circle cx={x} cy={y} r={r + 6} fill="none" stroke={color} strokeWidth={2} opacity={0.5}
                     style={{ transition: 'r 0.15s' }} />
                 )}
+                
+                {/* Main node */}
                 <circle cx={x} cy={y} r={r} fill={color}
-                  opacity={node.status === 'solved' ? 0.85 : 0.6}
+                  opacity={node.status === 'solved' ? 0.9 : 0.7}
                   style={{ transition: 'opacity 0.15s' }} />
-                <circle cx={x - r * 0.2} cy={y - r * 0.2} r={r * 0.2} fill="white" opacity={0.1} />
-                <text x={x} y={y + r + 16} textAnchor="middle"
-                  fill={isHov ? '#e4e4e7' : '#52525b'}
-                  fontSize={isHov ? 11 : 9} fontWeight={isHov ? 600 : 400}
-                  style={{ transition: 'fill 0.15s, font-size 0.15s' }}>
-                  {node.name.length > 18 ? node.name.slice(0, 16) + '…' : node.name}
-                </text>
-                {(isHov || isSel) && (
-                  <g style={{ transition: 'opacity 0.15s' }}>
-                    <rect x={x - 50} y={y - r - 30} width={100} height={22} rx={6} fill="#18181b" stroke="#3f3f46" />
-                    <text x={x} y={y - r - 15} textAnchor="middle" fill={color} fontSize={10} fontWeight={600}>
-                      {node.name.length > 12 ? node.name.slice(0, 10) + '…' : node.name} ({node.year})
-                    </text>
-                  </g>
-                )}
+                
+                {/* Shine effect */}
+                <circle cx={x - r * 0.25} cy={y - r * 0.25} r={r * 0.25} fill="white" opacity={0.15} />
+                
+                {/* Unsolved indicator */}
                 {node.status === 'unsolved' && (
                   <g>
-                    <circle cx={x + r * 0.65} cy={y - r * 0.65} r={7} fill="#ef4444" />
-                    <text x={x + r * 0.65} y={y - r * 0.65 + 4} textAnchor="middle" fill="white" fontSize={8} fontWeight={700}>!</text>
+                    <circle cx={x + r * 0.7} cy={y - r * 0.7} r={8} fill="#ef4444" />
+                    <text x={x + r * 0.7} y={y - r * 0.7 + 4} textAnchor="middle" fill="white" fontSize={9} fontWeight={700}>!</text>
+                  </g>
+                )}
+                
+                {/* Hover/Selected tooltip - positioned above to avoid overlap */}
+                {(isHov || isSel) && (
+                  <g style={{ transition: 'opacity 0.15s' }}>
+                    {/* Background rect */}
+                    <rect 
+                      x={x - 80} 
+                      y={y - r - 55} 
+                      width={160} 
+                      height={40} 
+                      rx={8} 
+                      fill="#18181b" 
+                      stroke={color}
+                      strokeWidth={1.5}
+                      opacity={0.98}
+                    />
+                    {/* Title */}
+                    <text x={x} y={y - r - 38} textAnchor="middle" fill="#e4e4e7" fontSize={11} fontWeight={600}>
+                      {node.name.length > 26 ? node.name.slice(0, 24) + '…' : node.name}
+                    </text>
+                    {/* Year and status */}
+                    <text x={x} y={y - r - 24} textAnchor="middle" fill={color} fontSize={10}>
+                      {node.year} · {node.status}
+                    </text>
+                    {/* Leader line */}
+                    <line 
+                      x1={x} 
+                      y1={y - r - 15} 
+                      x2={x} 
+                      y2={y - r - 2} 
+                      stroke={color} 
+                      strokeWidth={1.5} 
+                    />
                   </g>
                 )}
               </g>
