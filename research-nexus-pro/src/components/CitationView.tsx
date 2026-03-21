@@ -120,20 +120,34 @@ export default function CitationView() {
       const isActive = selectedId === paper.id
       const isConnected = connectedIds.has(paper.id)
       const isDimmed = selectedId !== null && !isConnected
+      
+      // Calculate node size based on citation count
+      const citationCount = (paper.citations || []).length
+      const citedByCount = visiblePapers.filter(p => p.citations?.includes(paper.id)).length
+      const influence = Math.min(30, 10 + (citationCount + citedByCount) * 2)
+      const size = isActive ? influence + 6 : isConnected ? influence + 3 : influence
 
       return {
         id: paper.id,
         position,
-        data: { label: '' },
+        data: { 
+          label: isActive || isConnected ? ((paper as any).title || paper.id).slice(0, 20) : '',
+          paper
+        },
         style: {
           borderRadius: '50%',
-          width: isActive ? 16 : isConnected ? 12 : 10,
-          height: isActive ? 16 : isConnected ? 12 : 10,
+          width: size,
+          height: size,
           background: isBest ? '#a855f7' : isLatest ? '#f97316' : color,
-          border: isActive ? '2px solid white' : `1px solid ${color}80`,
-          opacity: isDimmed ? 0.1 : 0.85,
-          boxShadow: isActive ? `0 0 12px ${color}` : isConnected ? `0 0 6px ${color}40` : 'none',
+          border: isActive ? '3px solid white' : isConnected ? '2px solid white' : `1px solid ${color}80`,
+          opacity: isDimmed ? 0.15 : 0.9,
+          boxShadow: isActive 
+            ? `0 0 20px ${color}, 0 0 40px ${color}40`
+            : isConnected 
+              ? `0 0 10px ${color}60`
+              : `0 0 4px ${color}30`,
           cursor: 'pointer',
+          transition: 'all 0.2s ease',
         },
       }
     })
@@ -141,31 +155,64 @@ export default function CitationView() {
 
   const computedEdges = useMemo<Edge[]>(() => {
     const nextEdges: Edge[] = []
-    if (!activePaper) return nextEdges
-
-    ;(activePaper.citations || []).forEach((targetId: string) => {
-      if (!visiblePaperIds.has(targetId)) return
-      nextEdges.push({
-        id: `cite-${activePaper.id}-${targetId}`,
-        source: activePaper.id,
-        target: targetId,
-        type: 'straight',
-        style: { stroke: '#6366f1', strokeWidth: 1.5, opacity: 0.6 },
-        markerEnd: { type: MarkerType.ArrowClosed, color: '#6366f1', width: 12, height: 12 },
+    
+    // If a paper is selected, show its citation neighborhood
+    if (activePaper) {
+      ;(activePaper.citations || []).forEach((targetId: string) => {
+        if (!visiblePaperIds.has(targetId)) return
+        nextEdges.push({
+          id: `cite-${activePaper.id}-${targetId}`,
+          source: activePaper.id,
+          target: targetId,
+          type: 'smoothstep',
+          style: { stroke: '#6366f1', strokeWidth: 2, opacity: 0.8 },
+          markerEnd: { type: MarkerType.ArrowClosed, color: '#6366f1', width: 14, height: 14 },
+        })
       })
-    })
 
-    visiblePapers.forEach((paper) => {
-      if (!paper.citations?.includes(activePaper.id)) return
-      nextEdges.push({
-        id: `cite-${paper.id}-${activePaper.id}`,
-        source: paper.id,
-        target: activePaper.id,
-        type: 'straight',
-        style: { stroke: '#52525b', strokeWidth: 1, opacity: 0.4 },
-        markerEnd: { type: MarkerType.ArrowClosed, color: '#52525b', width: 10, height: 10 },
+      visiblePapers.forEach((paper) => {
+        if (!paper.citations?.includes(activePaper.id)) return
+        nextEdges.push({
+          id: `cite-${paper.id}-${activePaper.id}`,
+          source: paper.id,
+          target: activePaper.id,
+          type: 'smoothstep',
+          style: { stroke: '#10b981', strokeWidth: 1.5, opacity: 0.7 },
+          markerEnd: { type: MarkerType.ArrowClosed, color: '#10b981', width: 12, height: 12 },
+        })
       })
-    })
+    } else {
+      // No paper selected: show domain-level citation backbone
+      // Connect papers that cite each other within visible set
+      const edgeSet = new Set<string>()
+      visiblePapers.forEach((source) => {
+        (source.citations || []).forEach((targetId: string) => {
+          if (!visiblePaperIds.has(targetId)) return
+          // Avoid duplicate edges
+          const edgeKey = source.id < targetId ? `${source.id}-${targetId}` : `${targetId}-${source.id}`
+          if (edgeSet.has(edgeKey)) return
+          edgeSet.add(edgeKey)
+          
+          const target = visiblePapers.find(p => p.id === targetId)
+          if (!target) return
+          
+          // Color based on whether it's cross-domain or same-domain
+          const isCrossDomain = source.category !== target.category
+          const color = isCrossDomain ? '#6366f1' : '#52525b'
+          const opacity = isCrossDomain ? 0.5 : 0.25
+          const width = isCrossDomain ? 1.5 : 0.8
+          
+          nextEdges.push({
+            id: `cite-${source.id}-${targetId}`,
+            source: source.id,
+            target: targetId,
+            type: 'smoothstep',
+            style: { stroke: color, strokeWidth: width, opacity },
+            markerEnd: { type: MarkerType.ArrowClosed, color, width: 10, height: 10 },
+          })
+        })
+      })
+    }
 
     return nextEdges
   }, [activePaper, visiblePapers, visiblePaperIds])
@@ -195,40 +242,92 @@ export default function CitationView() {
 
   return (
     <div className="h-full w-full relative">
-      <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-2 bg-black/60 backdrop-blur-sm">
-        <div className="flex items-center gap-3">
-          <h2 className="text-sm font-medium text-zinc-200">Citation Network</h2>
+      <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-3 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+        <div className="flex items-center gap-4">
+          <h2 className="text-sm font-semibold text-zinc-100">Citation Network</h2>
+          <span className="text-xs text-zinc-500 bg-zinc-900 px-2 py-1 rounded-full">
+            {visiblePapers.length} papers visible
+          </span>
           <span className="text-xs text-zinc-500">
-            {visiblePapers.length}/{papers.length} papers · Click to inspect citation neighborhood
+            {edges.length} citation links
           </span>
         </div>
-        <select
-          value={filterCat}
-          onChange={(e) => setFilterCat(e.target.value)}
-          className="text-xs bg-zinc-800 border border-zinc-700 rounded px-2 py-1 text-zinc-300"
-        >
-          <option value="all">All ({papers.length})</option>
-          {categories.map((cat) => {
-            const count = papers.filter((p) => (p.category || 'Other') === cat).length
-            return (
-              <option key={cat} value={cat}>
-                {cat} ({count})
-              </option>
-            )
-          })}
-        </select>
+        
+        <div className="flex items-center gap-3">
+          <select
+            value={filterCat}
+            onChange={(e) => setFilterCat(e.target.value)}
+            className="text-xs bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-1.5 text-zinc-300 outline-none focus:border-indigo-500"
+          >
+            <option value="all">All Categories ({papers.length})</option>
+            {categories.map((cat) => {
+              const count = papers.filter((p) => (p.category || 'Other') === cat).length
+              return (
+                <option key={cat} value={cat}>
+                  {cat} ({count})
+                </option>
+              )
+            })}
+          </select>
+        </div>
       </div>
 
       {activePaper && (
-        <div className="absolute top-12 left-4 z-10 bg-zinc-900/90 border border-zinc-700 rounded-lg p-3 max-w-sm">
-          <div className="text-sm font-medium text-zinc-200">{(activePaper as any).title || activePaper.id}</div>
-          <div className="text-xs text-zinc-400 mt-1">
-            {(activePaper as any).authors?.join(', ')} · {activePaper.year}
+        <div className="absolute top-14 left-4 z-10 bg-zinc-900/95 border border-zinc-700 rounded-xl p-4 max-w-md shadow-2xl">
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <div className="text-sm font-semibold text-zinc-100 leading-tight">
+                {(activePaper as any).title || activePaper.id}
+              </div>
+              <div className="flex items-center gap-2 mt-2">
+                <span 
+                  className="text-[10px] px-2 py-0.5 rounded-full font-medium"
+                  style={{ 
+                    background: `${CAT_COLORS[activePaper.category || 'Other']}20`,
+                    color: CAT_COLORS[activePaper.category || 'Other']
+                  }}
+                >
+                  {activePaper.category || 'Other'}
+                </span>
+                <span className="text-[11px] text-zinc-400">{activePaper.year}</span>
+                {(activePaper as any).isBest && (
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400">★ Best</span>
+                )}
+              </div>
+            </div>
+            <button 
+              onClick={() => setSelectedId(null)} 
+              className="text-zinc-500 hover:text-zinc-300 ml-3 p-1 hover:bg-zinc-800 rounded"
+            >
+              ✕
+            </button>
           </div>
-          <div className="flex gap-3 mt-2 text-xs">
-            <span className="text-indigo-400">Cites (visible): {citationCount}</span>
-            <span className="text-zinc-500">Cited by: {citedByCount}</span>
+          
+          <div className="grid grid-cols-3 gap-3 mt-4 pt-3 border-t border-zinc-800">
+            <div className="text-center">
+              <div className="text-lg font-bold text-indigo-400">{citationCount}</div>
+              <div className="text-[10px] text-zinc-500">Cites others</div>
+            </div>
+            <div className="text-center border-x border-zinc-800">
+              <div className="text-lg font-bold text-emerald-400">{citedByCount}</div>
+              <div className="text-[10px] text-zinc-500">Cited by</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-amber-400">{(activePaper as any).authorityScore || '-'}</div>
+              <div className="text-[10px] text-zinc-500">Authority</div>
+            </div>
           </div>
+          
+          {(activePaper as any).arxivId && (
+            <a 
+              href={`https://arxiv.org/abs/${(activePaper as any).arxivId}`} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 mt-3 px-3 py-1.5 bg-indigo-500/10 rounded-lg hover:bg-indigo-500/20 transition-colors"
+            >
+              View on arXiv →
+            </a>
+          )}
         </div>
       )}
 
@@ -249,13 +348,34 @@ export default function CitationView() {
         <Controls position="bottom-right" className="!bg-zinc-900 !border-zinc-800 !text-zinc-400" />
       </ReactFlow>
 
-      <div className="absolute bottom-4 left-4 z-10 flex gap-3 text-xs text-zinc-500">
-        {Object.entries(CAT_COLORS).map(([cat, color]) => (
-          <div key={cat} className="flex items-center gap-1">
-            <div className="w-2.5 h-2.5 rounded-full" style={{ background: color }} />
-            {cat}
+      <div className="absolute bottom-4 left-4 z-10 bg-zinc-950/90 backdrop-blur-md border border-zinc-800 rounded-xl p-3 shadow-xl">
+        <div className="text-[10px] font-medium text-zinc-400 mb-2 uppercase tracking-wider">Categories</div>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+          {Object.entries(CAT_COLORS).map(([cat, color]) => (
+            <div key={cat} className="flex items-center gap-2">
+              <div 
+                className="w-2.5 h-2.5 rounded-full" 
+                style={{ background: color, boxShadow: `0 0 6px ${color}60` }} 
+              />
+              <span className="text-[11px] text-zinc-300">{cat}</span>
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-3 pt-3 border-t border-zinc-800 space-y-1">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-0.5 bg-indigo-500 rounded" />
+            <span className="text-[10px] text-zinc-400">Cross-domain citation</span>
           </div>
-        ))}
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-0.5 bg-zinc-600 rounded" />
+            <span className="text-[10px] text-zinc-400">Same-domain citation</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-purple-500" />
+            <span className="text-[10px] text-zinc-400">High impact paper</span>
+          </div>
+        </div>      
       </div>
     </div>
   )
