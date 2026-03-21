@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { useAppStore } from './store/appStore'
 import { useNexusStore } from './store/nexusStore'
+import './styles/design-system.css'
 
 const ProblemTree = lazy(() => import('./components/ProblemTree'))
 const MethodTree = lazy(() => import('./components/MethodTree'))
@@ -284,18 +285,58 @@ function App() {
     screenSize === 'mobile' ? 'w-full' : screenSize === 'tablet' ? 'w-96 max-w-full' : 'w-80'
 
   return (
-    <div className={`h-screen w-screen flex overflow-hidden ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
-      {/* Sidebar */}
-      <aside className={`${sidebarCollapsed ? 'w-16' : 'w-60'} border-r ${viewConfig.darkMode ? 'border-zinc-800 bg-zinc-950' : 'border-gray-200 bg-white'} flex flex-col shrink-0 transition-all duration-300`}>
-        {/* Logo */}
-        <div className={`p-4 border-b ${viewConfig.darkMode ? 'border-zinc-800' : 'border-gray-200'} flex items-center gap-3`}>
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/20 shrink-0">
-            <Sparkles size={18} />
-          </div>
+    <div 
+      className={`h-screen w-screen flex overflow-hidden transition-colors duration-500 ${
+        viewConfig.darkMode ? 'bg-[#020204]' : 'bg-[#f8fafc]'
+      }`}
+      data-theme={viewConfig.darkMode ? 'dark' : 'light'}
+    >
+      {/* 环境光效 */}
+      <div 
+        className="ds-ambient-glow"
+        style={{ 
+          top: '10%', 
+          left: '20%',
+          background: viewConfig.darkMode 
+            ? 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)'
+        }} 
+      />
+      <div 
+        className="ds-ambient-glow"
+        style={{ 
+          bottom: '10%', 
+          right: '10%',
+          background: viewConfig.darkMode 
+            ? 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)'
+        }} 
+      />
+
+      {/* Sidebar - 空间化设计 */}
+      <aside className={`${sidebarCollapsed ? 'w-16' : 'w-60'} flex flex-col shrink-0 transition-all duration-500 ds-spatial-sidebar z-20`}>
+        {/* Logo - 全息效果 */}
+        <div className={`p-4 border-b ${viewConfig.darkMode ? 'border-white/5' : 'border-black/5'} flex items-center gap-3`}>
+          <motion.div 
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-white shrink-0 relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)',
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {/* 光晕效果 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent" />
+            <Sparkles size={20} className="relative z-10" />
+          </motion.div>
           {!sidebarCollapsed && (
             <div>
-              <h1 className={`font-bold text-sm tracking-tight ${viewConfig.darkMode ? 'text-white' : 'text-gray-900'}`}>Research Nexus</h1>
-              <p className={`text-[10px] font-mono tracking-widest ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-400'}`}>PRO v2.2</p>
+              <h1 className={`font-bold text-sm tracking-tight ${viewConfig.darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <span className="ds-text-gradient-accent">Research</span> Nexus
+              </h1>
+              <p className={`text-[10px] font-mono tracking-widest ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-400'}`}>
+                PRO v2.2
+              </p>
             </div>
           )}
         </div>
