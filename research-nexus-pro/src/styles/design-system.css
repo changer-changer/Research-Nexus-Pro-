@@ -1,253 +1,804 @@
-/* 顶级设计系统 - Deep Space */
+/*
+ * Deep Space 2.0 Design System
+ * 参考: Apple Design, Stripe, Linear, Vercel
+ * 原则: 空间化、光效、玻璃拟态、微交互
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   CSS VARIABLES - CORE TOKENS
+   ============================================ */
 
 :root {
-  /* 深色主题 - 宇宙深空 */
+  /* Deep Space Background Palette */
   --ds-bg-void: #020204;
-  --ds-bg-depth: #080810;
-  --ds-bg-surface: #0f0f1a;
-  --ds-bg-elevated: #151524;
+  --ds-bg-depth-1: #050508;
+  --ds-bg-depth-2: #0a0a0f;
+  --ds-bg-surface: #111118;
+  --ds-bg-elevated: #181820;
+  --ds-bg-overlay: #202028;
   
-  /* 光效系统 */
+  /* Light Theme */
+  --ds-light-bg: #fafafa;
+  --ds-light-surface: #ffffff;
+  --ds-light-elevated: #f5f5f5;
+  --ds-light-border: #e5e5e5;
+
+  /* Neon Glow System - 科技光效 */
   --ds-glow-primary: #6366f1;
+  --ds-glow-primary-light: #818cf8;
   --ds-glow-secondary: #8b5cf6;
   --ds-glow-accent: #06b6d4;
-  --ds-glow-warm: #f59e0b;
+  --ds-glow-success: #22c55e;
+  --ds-glow-warning: #f59e0b;
+  --ds-glow-error: #ef4444;
+  --ds-glow-warm: #f97316;
   
-  /* 文字层级 */
-  --ds-text-primary: #f8fafc;
-  --ds-text-secondary: #94a3b8;
-  --ds-text-tertiary: #64748b;
-  --ds-text-muted: #475569;
+  /* Gradient Presets */
+  --ds-gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  --ds-gradient-aurora: linear-gradient(180deg, rgba(99,102,241,0.15) 0%, rgba(139,92,246,0.1) 50%, transparent 100%);
+  --ds-gradient-cosmic: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.2) 0%, transparent 50%);
+  --ds-gradient-shine: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+
+  /* Text Hierarchy */
+  --ds-text-primary: #fafafa;
+  --ds-text-secondary: #a1a1aa;
+  --ds-text-tertiary: #71717a;
+  --ds-text-muted: #52525b;
+  --ds-text-disabled: #3f3f46;
+
+  /* Spacing - 8px Grid with Golden Ratio */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 20px;
+  --ds-space-6: 24px;
+  --ds-space-8: 32px;
+  --ds-space-10: 40px;
+  --ds-space-12: 48px;
+  --ds-space-16: 64px;
   
-  /* 间距系统 - 黄金比例 */
-  --ds-space-xs: 0.25rem;
-  --ds-space-sm: 0.618rem;
-  --ds-space-md: 1rem;
-  --ds-space-lg: 1.618rem;
-  --ds-space-xl: 2.618rem;
-  --ds-space-2xl: 4.236rem;
+  /* Golden Ratio Spacing */
+  --ds-golden-sm: 0.618rem;
+  --ds-golden-md: 1rem;
+  --ds-golden-lg: 1.618rem;
+  --ds-golden-xl: 2.618rem;
+
+  /* Typography */
+  --ds-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ds-font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
   
-  /* 动画曲线 */
+  --ds-text-xs: 11px;
+  --ds-text-sm: 13px;
+  --ds-text-base: 14px;
+  --ds-text-md: 16px;
+  --ds-text-lg: 18px;
+  --ds-text-xl: 20px;
+  --ds-text-2xl: 24px;
+  
+  /* Letter Spacing */
+  --ds-tracking-tight: -0.02em;
+  --ds-tracking-normal: 0;
+  --ds-tracking-wide: 0.02em;
+  --ds-tracking-wider: 0.05em;
+
+  /* Easing Curves - Premium Motion */
   --ds-ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --ds-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  --ds-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ds-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ds-ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ds-ease-expo-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ds-ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   
-  /* 模糊效果 */
+  /* Durations */
+  --ds-duration-fast: 150ms;
+  --ds-duration-normal: 250ms;
+  --ds-duration-slow: 350ms;
+  --ds-duration-slower: 500ms;
+
+  /* Blur Effects */
+  --ds-blur-xs: 4px;
   --ds-blur-sm: 8px;
   --ds-blur-md: 16px;
   --ds-blur-lg: 24px;
   --ds-blur-xl: 40px;
+  --ds-blur-xxl: 80px;
+
+  /* Border Radius */
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+  --ds-radius-xl: 16px;
+  --ds-radius-2xl: 24px;
+  --ds-radius-full: 9999px;
+
+  /* Shadows - Deep Space */
+  --ds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --ds-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --ds-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --ds-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --ds-shadow-glow-sm: 0 0 20px rgba(99, 102, 241, 0.3);
+  --ds-shadow-glow-md: 0 0 40px rgba(99, 102, 241, 0.4);
+  --ds-shadow-glow-lg: 0 0 60px rgba(99, 102, 241, 0.5);
+  
+  /* Z-Index Scale */
+  --ds-z-base: 0;
+  --ds-z-dropdown: 100;
+  --ds-z-sticky: 200;
+  --ds-z-fixed: 300;
+  --ds-z-overlay: 400;
+  --ds-z-modal: 500;
+  --ds-z-tooltip: 600;
+  --ds-z-toast: 700;
 }
 
-/* 浅色主题 - 纯净光 */
-[data-theme="light"] {
-  --ds-bg-void: #ffffff;
-  --ds-bg-depth: #f8fafc;
-  --ds-bg-surface: #f1f5f9;
-  --ds-bg-elevated: #e2e8f0;
-  --ds-text-primary: #0f172a;
-  --ds-text-secondary: #475569;
-  --ds-text-tertiary: #64748b;
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
 }
 
-/* 全局光效 */
+html {
+  font-family: var(--ds-font-sans);
+  font-size: var(--ds-text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--ds-bg-void);
+  color: var(--ds-text-primary);
+  overflow-x: hidden;
+}
+
+/* ============================================
+   AMBIENT GLOW - 环境光效
+   ============================================ */
+
 .ds-ambient-glow {
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 800px;
+  height: 800px;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--ds-glow-primary) 0%, transparent 70%);
-  opacity: 0.03;
   pointer-events: none;
-  filter: blur(100px);
+  filter: blur(120px);
+  opacity: 0.06;
+  z-index: 0;
+  animation: ds-float-glow 20s ease-in-out infinite;
 }
 
-/* 玻璃拟态卡片 */
-.ds-glass-card {
-  background: rgba(15, 15, 26, 0.6);
+.ds-ambient-glow-1 {
+  top: -20%;
+  left: -10%;
+  background: radial-gradient(circle, var(--ds-glow-primary) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+
+.ds-ambient-glow-2 {
+  top: 40%;
+  right: -15%;
+  background: radial-gradient(circle, var(--ds-glow-secondary) 0%, transparent 70%);
+  animation-delay: -7s;
+}
+
+.ds-ambient-glow-3 {
+  bottom: -20%;
+  left: 30%;
+  background: radial-gradient(circle, var(--ds-glow-accent) 0%, transparent 70%);
+  animation-delay: -14s;
+}
+
+@keyframes ds-float-glow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.06;
+  }
+  25% {
+    transform: translate(50px, -30px) scale(1.1);
+    opacity: 0.08;
+  }
+  50% {
+    transform: translate(-30px, 40px) scale(0.95);
+    opacity: 0.05;
+  }
+  75% {
+    transform: translate(40px, 30px) scale(1.05);
+    opacity: 0.07;
+  }
+}
+
+/* ============================================
+   GLASS MORPHISM - 玻璃拟态
+   ============================================ */
+
+.ds-glass {
+  background: rgba(17, 17, 24, 0.6);
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 
     0 4px 6px -1px rgba(0, 0, 0, 0.3),
     0 2px 4px -1px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-[data-theme="light"] .ds-glass-card {
+.ds-glass-light {
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-/* 全息节点效果 */
+.ds-glass-card {
+  composes: ds-glass;
+  border-radius: var(--ds-radius-lg);
+  transition: all var(--ds-duration-normal) var(--ds-ease-expo-out);
+}
+
+.ds-glass-card:hover {
+  background: rgba(24, 24, 32, 0.7);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 24px -4px rgba(0, 0, 0, 0.4),
+    0 4px 8px -2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   HOLOGRAPHIC NODE - 全息节点 2.0
+   ============================================ */
+
 .ds-holo-node {
   position: relative;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.8), rgba(99, 102, 241, 0.2));
-  box-shadow: 
-    0 0 20px rgba(99, 102, 241, 0.5),
-    0 0 40px rgba(99, 102, 241, 0.3),
-    0 0 60px rgba(99, 102, 241, 0.1),
-    inset 0 0 20px rgba(255, 255, 255, 0.1);
-  animation: ds-pulse-glow 3s ease-in-out infinite;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
-@keyframes ds-pulse-glow {
-  0%, 100% { 
-    box-shadow: 
-      0 0 20px rgba(99, 102, 241, 0.5),
-      0 0 40px rgba(99, 102, 241, 0.3),
-      0 0 60px rgba(99, 102, 241, 0.1);
-  }
-  50% { 
-    box-shadow: 
-      0 0 30px rgba(99, 102, 241, 0.7),
-      0 0 60px rgba(99, 102, 241, 0.4),
-      0 0 90px rgba(99, 102, 241, 0.2);
-  }
+.ds-holo-node-core {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  transition: transform var(--ds-duration-normal) var(--ds-ease-spring);
 }
 
-/* 流动连线 */
-.ds-flow-line {
-  stroke-dasharray: 5, 5;
-  animation: ds-flow 2s linear infinite;
-}
-
-@keyframes ds-flow {
-  to { stroke-dashoffset: -10; }
-}
-
-/* 悬浮信息卡片 */
-.ds-info-tooltip {
+.ds-holo-node::before {
+  content: '';
   position: absolute;
-  padding: 1rem 1.25rem;
-  border-radius: 12px;
-  background: rgba(8, 8, 16, 0.95);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  inset: -20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--ds-glow-primary) 0%, transparent 70%);
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity var(--ds-duration-normal) var(--ds-ease-smooth);
+}
+
+.ds-holo-node:hover::before {
+  opacity: 0.4;
+}
+
+/* 外圈脉动光环 */
+.ds-holo-node-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--ds-glow-primary);
+  opacity: 0.3;
+  animation: ds-pulse-ring 3s ease-in-out infinite;
+}
+
+@keyframes ds-pulse-ring {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.15;
+  }
+}
+
+/* 选中状态 */
+.ds-holo-node-selected {
+  animation: ds-selected-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ds-selected-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 0 rgba(99, 102, 241, 0.4),
+      0 0 30px rgba(99, 102, 241, 0.6);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 8px rgba(99, 102, 241, 0),
+      0 0 50px rgba(99, 102, 241, 0.8);
+  }
+}
+
+/* ============================================
+   FLOWING EDGE - 流动连线 2.0
+   ============================================ */
+
+.ds-flow-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ds-flow-particle {
+  fill: var(--ds-glow-primary);
+  filter: drop-shadow(0 0 6px var(--ds-glow-primary));
+}
+
+.ds-flow-glow {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* 数据流动动画 */
+@keyframes ds-flow-motion {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.ds-flow-animated {
+  animation: ds-flow-motion 2s linear infinite;
+}
+
+/* ============================================
+   SPATIAL SIDEBAR - 空间化侧边栏
+   ============================================ */
+
+.ds-spatial-sidebar {
+  background: linear-gradient(180deg, 
+    rgba(5, 5, 8, 0.98) 0%, 
+    rgba(8, 8, 12, 0.95) 50%,
+    rgba(11, 11, 16, 0.98) 100%
+  );
+  backdrop-filter: blur(24px);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(99, 102, 241, 0.2);
-  transform-origin: bottom center;
-  animation: ds-float-in 0.3s var(--ds-ease-expo);
+    4px 0 24px rgba(0, 0, 0, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.02);
 }
 
-@keyframes ds-float-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.ds-sidebar-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--ds-space-3);
+  padding: var(--ds-space-2) var(--ds-space-3);
+  border-radius: var(--ds-radius-md);
+  font-size: var(--ds-text-sm);
+  font-weight: 500;
+  color: var(--ds-text-secondary);
+  transition: all var(--ds-duration-fast) var(--ds-ease-smooth);
+  cursor: pointer;
 }
 
-/* 磁吸按钮 */
+.ds-sidebar-nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--ds-gradient-primary);
+  border-radius: 0 2px 2px 0;
+  transition: height var(--ds-duration-normal) var(--ds-ease-expo-out);
+}
+
+.ds-sidebar-nav-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ds-text-primary);
+}
+
+.ds-sidebar-nav-item-active {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--ds-glow-primary-light);
+}
+
+.ds-sidebar-nav-item-active::before {
+  height: 60%;
+}
+
+/* ============================================
+   TIMELINE - 时光隧道效果
+   ============================================ */
+
+.ds-timeline-container {
+  position: relative;
+}
+
+.ds-timeline-track {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    var(--ds-glow-primary) 15%,
+    var(--ds-glow-secondary) 50%,
+    var(--ds-glow-primary) 85%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+.ds-timeline-node {
+  position: relative;
+  z-index: 10;
+}
+
+.ds-timeline-node::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--ds-gradient-primary);
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity var(--ds-duration-normal) var(--ds-ease-smooth);
+}
+
+.ds-timeline-node:hover::before {
+  opacity: 0.6;
+}
+
+/* ============================================
+   FOCUS MODE - 焦点模式
+   ============================================ */
+
+.ds-focus-mode .ds-unfocused {
+  opacity: 0.15;
+  filter: blur(4px) grayscale(0.5);
+  transition: all var(--ds-duration-slow) var(--ds-ease-smooth);
+}
+
+.ds-focus-mode .ds-focused {
+  transform: scale(1.02);
+  z-index: 100;
+}
+
+/* ============================================
+   MAGNETIC BUTTON - 磁吸按钮
+   ============================================ */
+
 .ds-magnetic-btn {
   position: relative;
-  transition: transform 0.3s var(--ds-ease-smooth);
-}
-
-.ds-magnetic-btn:hover {
-  transform: scale(1.05);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2);
+  padding: var(--ds-space-2) var(--ds-space-4);
+  font-size: var(--ds-text-sm);
+  font-weight: 500;
+  border-radius: var(--ds-radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--ds-text-secondary);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--ds-duration-fast) var(--ds-ease-smooth);
 }
 
 .ds-magnetic-btn::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, var(--ds-glow-primary), var(--ds-glow-secondary));
+  inset: 0;
+  background: var(--ds-gradient-primary);
   opacity: 0;
-  transition: opacity 0.3s;
-  z-index: -1;
+  transition: opacity var(--ds-duration-normal) var(--ds-ease-smooth);
+}
+
+.ds-magnetic-btn:hover {
+  color: var(--ds-text-primary);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-1px);
+  box-shadow: var(--ds-shadow-glow-sm);
 }
 
 .ds-magnetic-btn:hover::before {
-  opacity: 0.5;
+  opacity: 0.1;
 }
 
-/* 空间化侧边栏 */
-.ds-spatial-sidebar {
-  background: linear-gradient(180deg, 
-    rgba(8, 8, 16, 0.95) 0%, 
-    rgba(8, 8, 16, 0.98) 100%
-  );
-  backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+.ds-magnetic-btn:active {
+  transform: translateY(0);
 }
 
-/* 焦点模式 */
-.ds-focus-mode {
-  transition: all 0.5s var(--ds-ease-expo);
+/* Primary Button Variant */
+.ds-btn-primary {
+  background: var(--ds-gradient-primary);
+  border: none;
+  color: white;
 }
 
-.ds-focus-mode .ds-unfocused {
-  opacity: 0.2;
-  filter: blur(2px);
+.ds-btn-primary:hover {
+  box-shadow: var(--ds-shadow-glow-md);
 }
 
-/* 时间轴里程碑 */
-.ds-milestone {
-  position: relative;
+.ds-btn-primary::before {
+  display: none;
 }
 
-.ds-milestone::before {
+/* ============================================
+   TOOLTIP - 悬浮提示
+   ============================================ */
+
+.ds-tooltip {
+  position: absolute;
+  padding: var(--ds-space-3) var(--ds-space-4);
+  background: rgba(8, 8, 12, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: 
+    0 20px 40px -8px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(99, 102, 241, 0.1);
+  font-size: var(--ds-text-sm);
+  color: var(--ds-text-primary);
+  z-index: var(--ds-z-tooltip);
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transition: all var(--ds-duration-normal) var(--ds-ease-expo-out);
+  pointer-events: none;
+}
+
+.ds-tooltip-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Tooltip arrow */
+.ds-tooltip::after {
   content: '';
   position: absolute;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, 
-    transparent 0%,
-    var(--ds-glow-primary) 20%,
-    var(--ds-glow-primary) 80%,
-    transparent 100%
-  );
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(8, 8, 12, 0.95);
 }
 
-/* 文字渐变效果 */
+/* ============================================
+   TEXT EFFECTS
+   ============================================ */
+
 .ds-text-gradient {
-  background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 50%, #f8fafc 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #a1a1aa 50%, #f8fafc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .ds-text-gradient-accent {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  background: var(--ds-gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* 滚动条美化 */
+.ds-text-glow {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+/* ============================================
+   SCROLLBAR - 滚动条美化
+   ============================================ */
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--ds-bg-depth);
+  background: var(--ds-bg-depth-2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.25);
   border-radius: 3px;
+  transition: background var(--ds-duration-fast);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.5);
+  background: rgba(99, 102, 241, 0.4);
 }
 
-/* 响应式字体 */
-.ds-fluid-text {
-  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.25) var(--ds-bg-depth-2);
 }
 
-.ds-fluid-heading {
-  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+/* ============================================
+   STATUS BADGES
+   ============================================ */
+
+.ds-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-space-1);
+  padding: var(--ds-space-1) var(--ds-space-2);
+  font-size: var(--ds-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--ds-tracking-wider);
+  border-radius: var(--ds-radius-full);
+  border: 1px solid;
+}
+
+.ds-badge-solved {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--ds-glow-success);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.ds-badge-partial {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--ds-glow-warning);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.ds-badge-active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.ds-badge-unsolved {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--ds-glow-error);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.ds-badge-verified {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--ds-glow-success);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.ds-badge-untested {
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--ds-glow-secondary);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+/* ============================================
+   ANIMATIONS - 微交互
+   ============================================ */
+
+@keyframes ds-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ds-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ds-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ds-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ds-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.ds-animate-fade-in {
+  animation: ds-fade-in var(--ds-duration-normal) var(--ds-ease-smooth);
+}
+
+.ds-animate-fade-in-up {
+  animation: ds-fade-in-up var(--ds-duration-slow) var(--ds-ease-expo-out);
+}
+
+.ds-animate-scale-in {
+  animation: ds-scale-in var(--ds-duration-normal) var(--ds-ease-spring);
+}
+
+.ds-animate-slide-in-right {
+  animation: ds-slide-in-right var(--ds-duration-slow) var(--ds-ease-expo-out);
+}
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+   ============================================ */
+
+[data-theme="light"] {
+  --ds-text-primary: #18181b;
+  --ds-text-secondary: #52525b;
+  --ds-text-tertiary: #71717a;
+  --ds-text-muted: #a1a1aa;
+}
+
+[data-theme="light"] .ds-glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .ds-spatial-sidebar {
+  background: linear-gradient(180deg, 
+    rgba(250, 250, 250, 0.98) 0%, 
+    rgba(245, 245, 245, 0.95) 50%,
+    rgba(250, 250, 250, 0.98) 100%
+  );
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.ds-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ds-transition-colors {
+  transition: color var(--ds-duration-fast) var(--ds-ease-smooth),
+              background-color var(--ds-duration-fast) var(--ds-ease-smooth),
+              border-color var(--ds-duration-fast) var(--ds-ease-smooth);
+}
+
+.ds-transition-transform {
+  transition: transform var(--ds-duration-normal) var(--ds-ease-spring);
+}
+
+.ds-transition-all {
+  transition: all var(--ds-duration-normal) var(--ds-ease-smooth);
 }
