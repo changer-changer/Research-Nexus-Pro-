@@ -8,7 +8,7 @@ interface PaperDetailPanelProps {
 }
 
 export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelProps) {
-  const { papers, problems, methods, viewConfig } = useAppStore()
+  const { papers, problems, methods, viewConfig, selectNode } = useAppStore()
 
   const paper = papers.find(p => p.id === paperId)
 
@@ -124,7 +124,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
                   className={`flex items-center gap-3 p-3 rounded-xl border transition-all cursor-pointer hover:scale-[1.02] ${
                     isDark ? 'bg-zinc-900/50 border-zinc-800 hover:bg-zinc-800' : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
                   }`}
-                  onClick={() => {/* Could navigate to problem */}}
+                  onClick={() => selectNode('problem', p.id)}
                 >
                   <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
                     p.status === 'solved' ? 'bg-green-500' : 
@@ -165,7 +165,7 @@ export default function PaperDetailPanel({ paperId, onClose }: PaperDetailPanelP
                   className={`flex items-center gap-3 p-3 rounded-xl border transition-all cursor-pointer hover:scale-[1.02] ${
                     isDark ? 'bg-zinc-900/50 border-zinc-800 hover:bg-zinc-800' : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
                   }`}
-                  onClick={() => {/* Could navigate to method */}}
+                  onClick={() => selectNode('method', m.id)}
                 >
                   <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
                     m.status === 'verified' ? 'bg-green-500' : 
