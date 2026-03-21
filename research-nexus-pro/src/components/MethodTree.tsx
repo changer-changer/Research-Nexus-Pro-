@@ -1,9 +1,9 @@
 import React, { useState, useRef, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  ChevronRight, ChevronDown, CheckCircle2, AlertCircle, Circle, XCircle,
+  ChevronRight, ChevronDown,
   ZoomIn, ZoomOut, Maximize2, Expand, Minimize, Search, ArrowRight,
-  Link2, Unlink, Eye, EyeOff, RotateCcw
+  Link2, Unlink
 } from 'lucide-react'
 import { useAppStore } from '../store/appStore'
 
@@ -20,139 +20,27 @@ const METHOD_STATUS = {
   untested: { bg: '#8b5cf6', ring: '#8b5cf630', text: '#a78bfa', label: 'Untested' },
 }
 
-// ============ Main Component ============
-export default function MethodTree() {
-  const methods = useAppStore(s => s.methods)
-  const problems = useAppStore(s => s.problems)
-  const expandedNodes = useAppStore(s => s.expandedNodes)
-  const selectedNode = useAppStore(s => s.selectedNode)
-  const hoveredNode = useAppStore(s => s.hoveredNode)
-  
-  const { selectNode, hoverNode, toggleExpand, expandAll, collapseAll } = useAppStore()
-  
-  // Pan & Zoom
-  const [pan, setPan] = useState({ x: 60, y: 60 })
-  const [zoom, setZoom] = useState(1)
-  const isPanning = useRef(false)
-  const panStart = useRef({ x: 0, y: 0 })
-  const [searchQuery, setSearchQuery] = useState('')
-  const [showSearch, setShowSearch] = useState(false)
-  
-  // Build method tree structure
-  const methodTree = useMemo(() => {
-    const roots = methods.filter(m => !m.parentId || m.depth === 0)
-    return roots
-  }, [methods])
-
-  // Layout calculation
-  const { positions, totalSize } = useMemo(() => {
-    const pos = new Map<string, { x: number; y: number }>()
-    let maxY = 0, maxX = 0
-    let currentY = 20
-    
-    const layout = (id: string, level: number) => {
-      const node = methods.find(m => m.id === id)
-      if (!node) return
-      
-      const x = level * LEVEL_GAP + 20
-      const y = currentY
-      pos.set(id, { x, y })
-      
-      if (x + NODE_W > maxX) maxX = x + NODE_W
-      currentY += NODE_H + SIBLING_GAP
-      if (y > maxY) maxY = y
-      
-      if (expandedNodes.has(id)) {
-        const kids = methods.filter(m => m.parentId === id)
-        kids.forEach(k => layout(k.id, level + 1))
-      }
-    }
-    
-    methodTree.forEach(r => layout(r.id, 0))
-    return { positions: pos, totalSize: { w: maxX + 300, h: maxY + NODE_H + 200 } }
-  }, [methods, methodTree, expandedNodes])
-
-  // === Core Linkage: Get linked problems for a method ===
-  const getLinkedProblems = useCallback((methodId: string) => {
-    const method = methods.find(m => m.id === methodId)
-    if (!method) return []
-    return problems.filter(p => method.targets.includes(p.id))
-  }, [methods, problems])
-
-  // === Core Linkage: Check if node should be highlighted based on selection ===
-  const isLinked = useCallback((methodId: string) => {
-    if (!selectedNode) return false
-    if (selectedNode.type === 'problem') {
-      const method = methods.find(m => m.id === methodId)
-      return method?.targets.includes(selectedNode.id) || false
-    }
-    if (selectedNode.type === 'method') {
-      const selected = methods.find(m => m.id === selectedNode.id)
-      if (!selected) return false
-      // Check if this method targets the same problems
-      const selectedMethod = methods.find(m => m.id === selectedNode.id)
-      return selectedMethod?.targets.some(t => 
-        methods.find(m => m.id === methodId)?.targets.includes(t)
-      ) || false
-    }
-    return false
-  }, [selectedNode, methods])
-
-  // Pan handlers
-  const onPointerDown = (e: React.PointerEvent) => {
-    if ((e.target as HTMLElement).closest('.node-interactive')) return
-    isPanning.current = true
-    panStart.current = { x: e.clientX - pan.x, y: e.clientY - pan.y }
-    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
-  }
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!isPanning.current) return
-    setPan({ x: e.clientX - panStart.current.x, y: e.clientY - panStart.current.y })
-  }
-  const onPointerUp = () => { isPanning.current = false }
-  const onWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault()
-    setZoom(z => Math.max(0.15, Math.min(3, z * (e.deltaY > 0 ? 0.92 : 1.08))))
-  }, [])
-
-  // Render node
-  const renderNode = (id: string): JSX.Element | null => {
-    const node = methods.find(m => m.id === id)
-    const pos = positions.get(id)
-    if (!node || !pos) return null
-    
-    const isExpanded = expandedNodes.has(id)
-    const hasKids = methods.some(m => m.parentId === id)
-    const isSelected = selectedNode?.id === id
-    const isHov = hoveredNode?.id === id
-    const linked = isLinked(id)
-    const status = METHOD_STATUS[node.status] || METHOD_STATUS.untested
-    const linkedProblems = getLinkedProblems(id)
-    
-    // Highlight if linked to selected problem
-    const shouldHighlight = linked || isSelected || isHov
-    const isSearchMatch = searchQuery && node.name.toLowerCase().includes(searchQuery.toLowerCase())
-    
-    return (
-      <g key={id}>
+// ============ Memoized Node Component ============
+const MethodNodeInner = React.memo(({ 
+  id, pos, parentPos, pColor, node, hasKids, isExpanded,
+  isSelected, isHov, linked, status, linkedProblems,
+  shouldHighlight, isSearchMatch, selectNode, hoverNode, toggleExpand, onContextMenu, children
+}: any) => {
+  return (
+      <g>
         {/* Connection to parent */}
-        {node.parentId && positions.has(node.parentId) && (() => {
-          const pp = positions.get(node.parentId!)!
-          const parent = methods.find(m => m.id === node.parentId)
-          const pColor = parent ? (METHOD_STATUS[parent.status]?.bg || '#3f3f46') : '#3f3f46'
-          return (
-            <path
-              d={`M ${pp.x + NODE_W - 10} ${pp.y + NODE_H / 2}
-                  C ${pp.x + NODE_W + 25} ${pp.y + NODE_H / 2},
-                    ${pos.x - 25} ${pos.y + NODE_H / 2},
-                    ${pos.x} ${pos.y + NODE_H / 2}`}
-              fill="none" stroke={pColor}
-              strokeWidth={shouldHighlight ? 2.5 : 1.5}
-              opacity={shouldHighlight ? 0.7 : 0.2}
-              style={{ transition: 'all 0.2s ease' }}
-            />
-          )
-        })()}
+        {parentPos && (
+          <path
+            d={`M ${parentPos.x + NODE_W - 10} ${parentPos.y + NODE_H / 2}
+                C ${parentPos.x + NODE_W + 25} ${parentPos.y + NODE_H / 2},
+                  ${pos.x - 25} ${pos.y + NODE_H / 2},
+                  ${pos.x} ${pos.y + NODE_H / 2}`}
+            fill="none" stroke={pColor}
+            strokeWidth={shouldHighlight ? 2.5 : 1.5}
+            opacity={shouldHighlight ? 0.7 : 0.2}
+            style={{ transition: 'all 0.2s ease' }}
+          />
+        )}
         
         {/* Node card */}
         <g
@@ -160,13 +48,8 @@ export default function MethodTree() {
           style={{ cursor: 'pointer' }}
           onClick={() => {
             selectNode('method', isSelected ? null : id)
-            // Core Linkage: When selecting method, also highlight linked problems
-            if (!isSelected && linkedProblems.length > 0) {
-              // Auto-highlight first linked problem
-              const firstProblem = linkedProblems[0]
-              // Store handles the linkage highlighting
-            }
           }}
+          onContextMenu={(event) => onContextMenu(event, id)}
           onDoubleClick={() => {/* Open method timeline */}}
           onMouseEnter={() => hoverNode('method', id)}
           onMouseLeave={() => hoverNode('method', null)}
@@ -228,7 +111,7 @@ export default function MethodTree() {
           </text>
           
           {/* Link indicator for linked problems */}
-          {linkedProblems.length > 0 && selectedNode?.type === 'problem' && linked && (
+          {linkedProblems.length > 0 && linked && (
             <g>
               <circle cx={pos.x + NODE_W - 8} cy={pos.y + 8} r={8} fill="#22c55e" />
               <Link2 size={10} x={pos.x + NODE_W - 13} y={pos.y + 3} style={{ color: '#fff', pointerEvents: 'none' }} />
@@ -237,10 +120,176 @@ export default function MethodTree() {
         </g>
         
         {/* Children */}
-        {isExpanded && hasKids && methods
+        {children}
+      </g>
+  )
+})
+
+// ============ Main Component ============
+export default function MethodTree() {
+  const methods = useAppStore(s => s.methods)
+  const problems = useAppStore(s => s.problems)
+  const expandedNodes = useAppStore(s => s.expandedNodes)
+  const selectedNode = useAppStore(s => s.selectedNode)
+  const hoveredNode = useAppStore(s => s.hoveredNode)
+  
+  const { selectNode, hoverNode, toggleExpand, expandAll, collapseAll } = useAppStore()
+  
+  // Pan & Zoom
+  const [zoom, setZoomState] = useState(1)
+  const panRef = useRef({ x: 60, y: 60 })
+  const zoomRef = useRef(1)
+  const isPanning = useRef(false)
+  const panStart = useRef({ x: 0, y: 0 })
+  const svgGroupRef = useRef<SVGGElement>(null)
+  
+  const [searchQuery, setSearchQuery] = useState('')
+  const [showSearch, setShowSearch] = useState(false)
+  
+  const setZoom = useCallback((v: React.SetStateAction<number>) => {
+    setZoomState(prev => {
+      const nextZ = typeof v === 'function' ? v(prev) : v
+      zoomRef.current = nextZ
+      if (svgGroupRef.current) {
+        svgGroupRef.current.style.transform = `translate(${panRef.current.x}px,${panRef.current.y}px) scale(${nextZ})`
+      }
+      return nextZ
+    })
+  }, [])
+  
+  // Build method tree structure
+  const methodTree = useMemo(() => {
+    const roots = methods.filter(m => !m.parentId || m.depth === 0)
+    return roots
+  }, [methods])
+
+  // Layout calculation
+  const { positions, totalSize } = useMemo(() => {
+    const pos = new Map<string, { x: number; y: number }>()
+    const methodMap = new Map<string, any>()
+    const childrenMap = new Map<string, any[]>()
+    
+    methods.forEach(m => {
+      methodMap.set(m.id, m)
+      if (m.parentId) {
+        if (!childrenMap.has(m.parentId)) childrenMap.set(m.parentId, [])
+        childrenMap.get(m.parentId)!.push(m)
+      }
+    })
+
+    let maxY = 0, maxX = 0
+    let currentY = 20
+    
+    const layout = (id: string, level: number) => {
+      const node = methodMap.get(id)
+      if (!node) return
+      
+      const x = level * LEVEL_GAP + 20
+      const y = currentY
+      pos.set(id, { x, y })
+      
+      if (x + NODE_W > maxX) maxX = x + NODE_W
+      currentY += NODE_H + SIBLING_GAP
+      if (y > maxY) maxY = y
+      
+      if (expandedNodes.has(id)) {
+        const kids = childrenMap.get(id) || []
+        kids.forEach(k => layout(k.id, level + 1))
+      }
+    }
+    
+    methodTree.forEach(r => layout(r.id, 0))
+    return { positions: pos, totalSize: { w: maxX + 300, h: maxY + NODE_H + 200 } }
+  }, [methods, methodTree, expandedNodes])
+
+  // === Core Linkage: Get linked problems for a method ===
+  const getLinkedProblems = useCallback((methodId: string) => {
+    const state = useAppStore.getState()
+    const problemIds = state.methodProblemsMap[methodId] || []
+    return problemIds.map(pid => state.problems.find(p => p.id === pid)!).filter(Boolean)
+  }, [])
+
+  // === Core Linkage: Check if node should be highlighted based on selection ===
+  const isLinked = useCallback((methodId: string) => {
+    if (!selectedNode) return false
+    const state = useAppStore.getState()
+    if (selectedNode.type === 'problem') {
+      return state.problemMethodsMap[selectedNode.id]?.includes(methodId) || false
+    }
+    if (selectedNode.type === 'method') {
+      const activeTargets = state.methodProblemsMap[selectedNode.id] || []
+      const myTargets = state.methodProblemsMap[methodId] || []
+      return activeTargets.some(t => myTargets.includes(t))
+    }
+    return false
+  }, [selectedNode])
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if ((e.target as HTMLElement).closest('.node-interactive')) return
+    isPanning.current = true
+    panStart.current = { x: e.clientX - panRef.current.x, y: e.clientY - panRef.current.y }
+    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+  }
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isPanning.current) return
+    const nextX = e.clientX - panStart.current.x
+    const nextY = e.clientY - panStart.current.y
+    panRef.current = { x: nextX, y: nextY }
+    if (svgGroupRef.current) {
+      svgGroupRef.current.style.transform = `translate(${nextX}px,${nextY}px) scale(${zoomRef.current})`
+    }
+  }
+  const onPointerUp = () => { isPanning.current = false }
+  const onWheel = useCallback((e: React.WheelEvent) => {
+    e.preventDefault()
+    setZoom(z => Math.max(0.15, Math.min(3, z * (e.deltaY > 0 ? 0.92 : 1.08))))
+  }, [])
+
+  const onNodeContextMenu = useCallback((event: React.MouseEvent, nodeId: string) => {
+    event.preventDefault()
+    const state = useAppStore.getState()
+    if (!state.isBookmarked(nodeId)) {
+      state.addBookmark('method', nodeId, 'Added from Method Tree')
+    }
+  }, [])
+
+  // Render node
+  const renderNode = (id: string): JSX.Element | null => {
+    const state = useAppStore.getState()
+    const node = state.methods.find(m => m.id === id)
+    const pos = positions.get(id)
+    if (!node || !pos) return null
+    
+    const isExpanded = expandedNodes.has(id)
+    const hasKids = methods.some(m => m.parentId === id)
+    const isSelected = selectedNode?.id === id
+    const isHov = hoveredNode?.id === id
+    const linked = isLinked(id)
+    const status = METHOD_STATUS[node.status] || METHOD_STATUS.untested
+    const linkedProblems = getLinkedProblems(id)
+    
+    // Highlight if linked to selected problem
+    const shouldHighlight = linked || isSelected || isHov
+    const isSearchMatch = searchQuery && node.name.toLowerCase().includes(searchQuery.toLowerCase())
+    
+    const parentPos = node.parentId ? positions.get(node.parentId) : null
+    const parent = node.parentId ? state.methods.find(m => m.id === node.parentId) : null
+    const pColor = parent ? (METHOD_STATUS[parent.status]?.bg || '#3f3f46') : '#3f3f46'
+    
+    return (
+      <MethodNodeInner
+        key={id} id={id} pos={pos} parentPos={parentPos} pColor={pColor}
+        node={node} hasKids={hasKids} isExpanded={isExpanded}
+        isSelected={isSelected} isHov={isHov} linked={linked}
+        status={status} linkedProblems={linkedProblems}
+        shouldHighlight={shouldHighlight} isSearchMatch={isSearchMatch}
+        selectNode={selectNode} hoverNode={hoverNode} toggleExpand={toggleExpand}
+        onContextMenu={onNodeContextMenu}
+      >
+        {isExpanded && hasKids && state.methods
           .filter(m => m.parentId === id)
           .map(kid => renderNode(kid.id))}
-      </g>
+      </MethodNodeInner>
     )
   }
 
@@ -258,7 +307,7 @@ export default function MethodTree() {
               className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
               <ZoomOut size={15} className="text-zinc-400" />
             </button>
-            <button onClick={() => { setZoom(1); setPan({ x: 60, y: 60 }) }}
+            <button onClick={() => { setZoom(1); panRef.current = { x: 60, y: 60 }; if (svgGroupRef.current) svgGroupRef.current.style.transform = `translate(60px,60px) scale(1)` }}
               className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
               <Maximize2 size={15} className="text-zinc-400" />
             </button>
@@ -305,6 +354,7 @@ export default function MethodTree() {
             <span className="text-[11px] text-zinc-500">
               {methods.length} methods · {methods.filter(m => m.status === 'verified').length} verified
             </span>
+            <span className="text-[11px] text-zinc-600">Right click node to bookmark</span>
           </div>
         </div>
         
@@ -317,10 +367,6 @@ export default function MethodTree() {
           onWheel={onWheel}>
           <svg width="100%" height="100%"
             style={{
-              transform: `translate(${pan.x}px,${pan.y}px) scale(${zoom})`,
-              transformOrigin: '0 0',
-              minWidth: `${totalSize.w}px`,
-              minHeight: `${totalSize.h}px`,
               touchAction: 'none',
             }}>
             {/* Grid */}
@@ -331,8 +377,15 @@ export default function MethodTree() {
             </defs>
             <rect width="10000" height="10000" x="-5000" y="-5000" fill="url(#methodGrid)" />
             
-            {/* Render nodes */}
-            {methodTree.map(r => renderNode(r.id))}
+            <g ref={svgGroupRef} style={{
+              transform: `translate(${panRef.current.x}px,${panRef.current.y}px) scale(${zoomRef.current})`,
+              transformOrigin: '0 0',
+              minWidth: `${totalSize.w}px`,
+              minHeight: `${totalSize.h}px`,
+            }}>
+              {/* Render nodes */}
+              {methodTree.map(r => renderNode(r.id))}
+            </g>
           </svg>
         </div>
       </div>

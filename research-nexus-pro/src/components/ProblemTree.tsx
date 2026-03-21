@@ -1,7 +1,7 @@
-import React, { useMemo, useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import ReactFlow, {
   Background, Controls, Node, Edge, useNodesState, useEdgesState,
-  FitViewOptions, Handle, Position, NodeProps, MarkerType
+  FitViewOptions, Handle, Position, NodeProps
 } from 'reactflow'
 import 'reactflow/dist/style.css'
 import { useAppStore } from '../store/appStore'
@@ -16,19 +16,24 @@ const STATUS: Record<string, { fill: string; ring: string; label: string }> = {
   unsolved: { fill: '#ef4444', ring: '#ef444430', label: 'Unsolved' },
 }
 
-// ============ Tree Layout Algorithm ============
-interface LayoutNode { id: string; x: number; y: number; width: number }
-
 function computeTreeLayout(problems: any[], expandedNodes: Set<string>): Map<string, {x:number;y:number}> {
   const pos = new Map<string, {x:number;y:number}>()
   const H_SPACING = 30   // min horizontal gap between subtrees
   const V_SPACING = 120   // vertical gap between levels
   const NODE_W = 180      // assumed node width for spacing
   
+  const childrenMap = new Map<string, any[]>()
+  problems.forEach(p => {
+    if (p.parentId) {
+      if (!childrenMap.has(p.parentId)) childrenMap.set(p.parentId, [])
+      childrenMap.get(p.parentId)!.push(p)
+    }
+  })
+
   // Measure width of each subtree
   function measureWidth(id: string): number {
     if (!expandedNodes.has(id)) return NODE_W
-    const kids = problems.filter(p => p.parentId === id)
+    const kids = childrenMap.get(id) || []
     if (kids.length === 0) return NODE_W
     const kidsWidth = kids.reduce((sum, k) => sum + measureWidth(k.id) + H_SPACING, -H_SPACING)
     return Math.max(NODE_W, kidsWidth)
@@ -42,7 +47,7 @@ function computeTreeLayout(problems: any[], expandedNodes: Set<string>): Map<str
     pos.set(id, { x, y })
     
     if (expandedNodes.has(id)) {
-      const kids = problems.filter(p => p.parentId === id)
+      const kids = childrenMap.get(id) || []
       if (kids.length > 0) {
         let childLeft = left
         for (const kid of kids) {
@@ -145,29 +150,38 @@ const nodeTypes = { treeNode: TreeNode }
 // ============ Main Component ============
 export default function ProblemTree() {
   const problems = useAppStore(s => s.problems)
-  const papers = useAppStore(s => s.papers)
-  const methods = useAppStore(s => s.methods)
   const expandedNodes = useAppStore(s => s.expandedNodes)
+  const problemPapersMap = useAppStore(s => s.problemPapersMap)
+  const problemMethodsMap = useAppStore(s => s.problemMethodsMap)
   const { toggleExpand, expandAll, collapseAll, selectNode } = useAppStore()
   
   const [nodes, setNodes, onNodesChange] = useNodesState([])
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [showTimeEvo, setShowTimeEvo] = useState<string | null>(null)
-  const [key, setKey] = useState(0)
 
   useEffect(() => {
     if (problems.length === 0) { setNodes([]); setEdges([]); return }
     
     const positions = computeTreeLayout(problems, expandedNodes)
     
+    const problemMap = new Map<string, any>()
+    const childrenMap = new Map<string, any[]>()
+    problems.forEach(p => {
+      problemMap.set(p.id, p)
+      if (p.parentId) {
+        if (!childrenMap.has(p.parentId)) childrenMap.set(p.parentId, [])
+        childrenMap.get(p.parentId)!.push(p)
+      }
+    })
+    
     const newNodes: Node[] = []
     positions.forEach((pos, id) => {
-      const p = problems.find(pp => pp.id === id)
+      const p = problemMap.get(id)
       if (!p) return
       
-      const kids = problems.filter(pp => pp.parentId === p.id)
-      const paperCount = papers.filter(pp => pp.targets?.includes(p.id)).length
-      const methodCount = methods.filter(m => m.targets?.includes(p.id)).length
+      const kids = childrenMap.get(id) || []
+      const paperCount = (problemPapersMap[p.id] || []).length
+      const methodCount = (problemMethodsMap[p.id] || []).length
       
       newNodes.push({
         id: p.id,
@@ -192,11 +206,11 @@ export default function ProblemTree() {
     // Edges: parent → child
     const newEdges: Edge[] = []
     positions.forEach((pos, id) => {
-      const p = problems.find(pp => pp.id === id)
+      const p = problemMap.get(id)
       if (!p?.parentId || !expandedNodes.has(p.parentId)) return
       if (!positions.has(p.parentId)) return
       
-      const parent = problems.find(pp => pp.id === p.parentId)
+      const parent = problemMap.get(p.parentId)
       const color = STATUS[parent?.status || 'active']?.fill || '#3f3f46'
       
       newEdges.push({
@@ -210,8 +224,7 @@ export default function ProblemTree() {
     })
     
     setEdges(newEdges)
-    setTimeout(() => setKey(k => k + 1), 80)
-  }, [problems, papers, methods, expandedNodes, setNodes, setEdges])
+  }, [problems, expandedNodes, problemPapersMap, problemMethodsMap, setNodes, setEdges])
 
   const onNodeClick = useCallback((_: any, node: Node) => {
     const kids = problems.filter(p => p.parentId === node.id)
@@ -225,6 +238,14 @@ export default function ProblemTree() {
   const onPaneClick = useCallback(() => {
     selectNode('problem', null)
   }, [selectNode])
+
+  const onNodeContextMenu = useCallback((event: React.MouseEvent, node: Node) => {
+    event.preventDefault()
+    const state = useAppStore.getState()
+    if (!state.isBookmarked(node.id)) {
+      state.addBookmark('problem', node.id, 'Added from Problem Tree')
+    }
+  }, [])
 
   if (problems.length === 0) {
     return <div className="h-full w-full flex items-center justify-center text-zinc-500">No data</div>
@@ -244,13 +265,13 @@ export default function ProblemTree() {
       </div>
 
       <ReactFlow
-        key={key}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onNodeClick={onNodeClick}
         onNodeDoubleClick={onNodeDoubleClick}
+        onNodeContextMenu={onNodeContextMenu}
         onPaneClick={onPaneClick}
         nodeTypes={nodeTypes}
         fitView
@@ -268,6 +289,7 @@ export default function ProblemTree() {
       )}
 
       <div className="absolute bottom-4 left-4 z-10 flex gap-4 text-xs text-zinc-500">
+        <div className="text-zinc-600">Right click node to bookmark</div>
         {Object.entries(STATUS).map(([key, s]) => (
           <div key={key} className="flex items-center gap-1">
             <div className="w-2.5 h-2.5 rounded-full" style={{ background: s.fill }} />

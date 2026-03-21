@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Bookmark, Trash2, Edit3, Check, X, Star, ExternalLink } from 'lucide-react'
 import { useAppStore } from '../store/appStore'
 
@@ -7,6 +7,8 @@ export default function BookmarkPanel() {
   const { bookmarks, removeBookmark, updateBookmarkNote, selectNode, setActiveView, problems, methods } = useAppStore()
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editNote, setEditNote] = useState('')
+
+  const sortedBookmarks = [...bookmarks].sort((a, b) => b.createdAt - a.createdAt)
 
   const getNodeName = (bm: any) => {
     if (bm.nodeType === 'problem') return problems.find(p => p.id === bm.nodeId)?.name || bm.nodeId
@@ -34,6 +36,10 @@ export default function BookmarkPanel() {
     setEditingId(null)
   }
 
+  const trimName = (name: string, maxLen = 30) => {
+    return name.length > maxLen ? `${name.slice(0, maxLen - 1)}…` : name
+  }
+
   if (bookmarks.length === 0) {
     return (
       <div className="p-6 text-center">
@@ -49,7 +55,7 @@ export default function BookmarkPanel() {
       <h3 className="text-xs text-zinc-500 uppercase tracking-wider mb-3 flex items-center gap-2">
         <Star size={12} /> Bookmarks ({bookmarks.length})
       </h3>
-      {bookmarks.map(bm => (
+      {sortedBookmarks.map(bm => (
         <motion.div
           key={bm.id}
           layout
@@ -66,7 +72,7 @@ export default function BookmarkPanel() {
                   {bm.nodeType}
                 </span>
                 <span className="text-sm text-zinc-200 truncate flex-1">
-                  {getNodeName(bm).slice(0, 30)}
+                  {trimName(getNodeName(bm))}
                 </span>
               </div>
               

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback, useMemo } from 'react'
-import { motion } from 'framer-motion'
-import { ZoomIn, ZoomOut, Maximize2, ArrowRight, Link2, Eye, Filter, Target, GitBranch } from 'lucide-react'
+import { ZoomIn, ZoomOut, Maximize2, ArrowRight, Filter } from 'lucide-react'
 import { useAppStore } from '../store/appStore'
 
 const NODE_W = 220
@@ -10,14 +9,33 @@ const METHOD_X = 500
 const V_GAP = 12
 
 export default function MethodArrowView() {
-  const { problems, methods, selectedNode, selectNode, hoverNode, isNodeHighlighted } = useAppStore()
+  const { problems, methods, selectedNode, selectNode, isNodeHighlighted } = useAppStore()
   
-  const [zoom, setZoom] = useState(1)
-  const [pan, setPan] = useState({ x: 30, y: 30 })
+  const [zoom, setZoomState] = useState(1)
+  const panRef = useRef({ x: 30, y: 30 })
+  const zoomRef = useRef(1)
   const [filterStatus, setFilterStatus] = useState<string>('all')
   const [hoveredArrow, setHoveredArrow] = useState<string | null>(null)
   const isPanning = useRef(false)
   const panStart = useRef({ x: 0, y: 0 })
+  const svgGroupRef = useRef<SVGGElement>(null)
+
+  const setZoom = useCallback((v: React.SetStateAction<number>) => {
+    setZoomState(prev => {
+      const nextZ = typeof v === 'function' ? v(prev) : v
+      zoomRef.current = nextZ
+      if (svgGroupRef.current) {
+        svgGroupRef.current.style.transform = `translate(${panRef.current.x}px,${panRef.current.y}px) scale(${nextZ})`
+      }
+      return nextZ
+    })
+  }, [])
+  
+  const problemMap = useMemo(() => {
+    const map = new Map<string, any>()
+    problems.forEach(p => map.set(p.id, p))
+    return map
+  }, [problems])
 
   // Get active problems (those with methods)
   const activeProblems = useMemo(() => {
@@ -52,14 +70,21 @@ export default function MethodArrowView() {
     }
   }
 
+  // Precompute problem indices for O(1) layout
+  const problemIndices = useMemo(() => {
+    const map = new Map<string, number>()
+    activeProblems.forEach((p, idx) => map.set(p.id, idx))
+    return map
+  }, [activeProblems])
+
   // Render arrows
   const renderArrows = () => {
     const arrows: JSX.Element[] = []
     
     activeMethods.forEach((method, mIdx) => {
       method.targets.forEach(targetId => {
-        const pIdx = activeProblems.findIndex(p => p.id === targetId)
-        if (pIdx === -1) return
+        const pIdx = problemIndices.get(targetId)
+        if (pIdx === undefined) return
         
         const x1 = PROBLEM_X + NODE_W
         const y1 = getProblemY(pIdx) + NODE_H / 2
@@ -70,7 +95,7 @@ export default function MethodArrowView() {
         const isHov = hoveredArrow === `${method.id}-${targetId}` ||
                       selectedNode?.id === method.id || selectedNode?.id === targetId
         const methodColor = statusColor(method.status)
-        const problem = problems.find(p => p.id === targetId)
+        const problem = problemMap.get(targetId)
         const problemColor = problem ? statusColor(problem.status) : '#3f3f46'
         
         arrows.push(
@@ -99,8 +124,8 @@ export default function MethodArrowView() {
                 <rect x={midX - 60} y={(y1 + y2) / 2 - 10} width={120} height={20} rx={5}
                   fill="#18181b" stroke="#3f3f46" />
                 <text x={midX} y={(y1 + y2) / 2 + 4} textAnchor="middle"
-                  fill={methodColor} fontSize={9} fontWeight={600}>
-                  {method.name} → {problem?.name.slice(0, 15)}
+                  fill={problemColor} fontSize={9} fontWeight={600}>
+                  {method.name} → {(problem?.name || targetId).slice(0, 15)}
                 </text>
               </g>
             )}
@@ -115,18 +140,35 @@ export default function MethodArrowView() {
   const onPointerDown = (e: React.PointerEvent) => {
     if ((e.target as HTMLElement).closest('.node-item')) return
     isPanning.current = true
-    panStart.current = { x: e.clientX - pan.x, y: e.clientY - pan.y }
+    panStart.current = { x: e.clientX - panRef.current.x, y: e.clientY - panRef.current.y }
     ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+    if (svgGroupRef.current) svgGroupRef.current.style.pointerEvents = 'none'
   }
   const onPointerMove = (e: React.PointerEvent) => {
     if (!isPanning.current) return
-    setPan({ x: e.clientX - panStart.current.x, y: e.clientY - panStart.current.y })
+    const nextX = e.clientX - panStart.current.x
+    const nextY = e.clientY - panStart.current.y
+    panRef.current = { x: nextX, y: nextY }
+    if (svgGroupRef.current) {
+      svgGroupRef.current.style.transform = `translate(${nextX}px,${nextY}px) scale(${zoomRef.current})`
+    }
   }
-  const onPointerUp = () => { isPanning.current = false }
+  const onPointerUp = () => { 
+    isPanning.current = false 
+    if (svgGroupRef.current) svgGroupRef.current.style.pointerEvents = 'auto'
+  }
   const onWheel = useCallback((e: React.WheelEvent) => {
     e.preventDefault()
     setZoom(z => Math.max(0.2, Math.min(2.5, z * (e.deltaY > 0 ? 0.93 : 1.07))))
   }, [])
+
+  const onNodeContextMenu = (event: React.MouseEvent, nodeType: 'problem' | 'method', nodeId: string) => {
+    event.preventDefault()
+    const state = useAppStore.getState()
+    if (!state.isBookmarked(nodeId)) {
+      state.addBookmark(nodeType, nodeId, 'Added from Method Arrow View')
+    }
+  }
 
   return (
     <div className="h-full w-full flex flex-col bg-zinc-950">
@@ -154,7 +196,7 @@ export default function MethodArrowView() {
           <button onClick={() => setZoom(z => Math.max(0.2, z * 0.85))} className="p-2 hover:bg-zinc-800 rounded-lg">
             <ZoomOut size={14} className="text-zinc-400" />
           </button>
-          <button onClick={() => { setZoom(1); setPan({ x: 30, y: 30 }) }} className="p-2 hover:bg-zinc-800 rounded-lg">
+          <button onClick={() => { setZoom(1); panRef.current = { x: 30, y: 30 }; if (svgGroupRef.current) svgGroupRef.current.style.transform = 'translate(30px, 30px) scale(1)' }} className="p-2 hover:bg-zinc-800 rounded-lg">
             <Maximize2 size={14} className="text-zinc-400" />
           </button>
           <span className="text-xs text-zinc-500 ml-2">{Math.round(zoom * 100)}%</span>
@@ -174,11 +216,13 @@ export default function MethodArrowView() {
         onWheel={onWheel}>
         <svg width="100%" height="100%"
           style={{
-            transform: `translate(${pan.x}px,${pan.y}px) scale(${zoom})`,
+            touchAction: 'none',
+          }}>
+          <g ref={svgGroupRef} style={{
+            transform: `translate(${panRef.current.x}px,${panRef.current.y}px) scale(${zoomRef.current})`,
             transformOrigin: '0 0',
             minWidth: '800px',
             minHeight: `${totalHeight}px`,
-            touchAction: 'none',
           }}>
           {/* Column headers */}
           <text x={PROBLEM_X + NODE_W / 2} y={30} textAnchor="middle" fill="#6b7280" fontSize={12} fontWeight={700}>
@@ -217,6 +261,15 @@ export default function MethodArrowView() {
                 <text x={x + NODE_W - 24} y={y + 27} textAnchor="middle" fill={color} fontSize={10} fontWeight={700}>
                   {p.valueScore}
                 </text>
+                <rect
+                  x={x}
+                  y={y}
+                  width={NODE_W}
+                  height={NODE_H}
+                  rx={8}
+                  fill="transparent"
+                  onContextMenu={(event) => onNodeContextMenu(event, 'problem', p.id)}
+                />
               </g>
             )
           })}
@@ -247,9 +300,19 @@ export default function MethodArrowView() {
                 <text x={x + 22} y={y + 27} textAnchor="middle" fill={color} fontSize={10} fontWeight={700}>
                   {m.status === 'verified' ? '✓' : m.status === 'failed' ? '✗' : '?'}
                 </text>
+                <rect
+                  x={x}
+                  y={y}
+                  width={NODE_W}
+                  height={NODE_H}
+                  rx={8}
+                  fill="transparent"
+                  onContextMenu={(event) => onNodeContextMenu(event, 'method', m.id)}
+                />
               </g>
             )
           })}
+          </g>
         </svg>
       </div>
     </div>

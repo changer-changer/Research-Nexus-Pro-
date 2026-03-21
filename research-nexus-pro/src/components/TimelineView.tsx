@@ -48,6 +48,48 @@ export default function TimelineView() {
   const getX = (year: number) => LEFT + ((year - minYear) / yearRange) * (yearRange * YEAR_W)
   const getY = (di: number) => TOP + di * LANE_H + LANE_H / 2
   const getDomainIndex = (bid: string) => domains.findIndex(d => d.id === bid)
+
+  // Calculate node positions with grid layout to avoid overlaps
+  const nodePositions = useMemo(() => {
+    const positions = new Map<string, { x: number; y: number }>()
+    const gridCells = new Map<string, string[]>() // key: "year-domain" -> node ids
+    
+    // Group nodes by (year, domain)
+    displayProblems.forEach(node => {
+      const di = getDomainIndex(node.branchId)
+      if (di === -1) return
+      const key = `${node.year}-${node.branchId}`
+      if (!gridCells.has(key)) gridCells.set(key, [])
+      gridCells.get(key)!.push(node.id)
+    })
+    
+    // Calculate positions with offset for overlapping nodes
+    displayProblems.forEach(node => {
+      const di = getDomainIndex(node.branchId)
+      if (di === -1) return
+      
+      const baseX = getX(node.year)
+      const baseY = getY(di)
+      
+      const key = `${node.year}-${node.branchId}`
+      const siblings = gridCells.get(key) || []
+      
+      if (siblings.length > 1) {
+        // Grid layout for overlapping nodes
+        const idx = siblings.indexOf(node.id)
+        const cols = Math.ceil(Math.sqrt(siblings.length))
+        const col = idx % cols
+        const row = Math.floor(idx / cols)
+        const offsetX = (col - (cols - 1) / 2) * 35
+        const offsetY = (row - (siblings.length / cols - 1) / 2) * 30
+        positions.set(node.id, { x: baseX + offsetX, y: baseY + offsetY })
+      } else {
+        positions.set(node.id, { x: baseX, y: baseY })
+      }
+    })
+    
+    return positions
+  }, [displayProblems, domains])
   const statusColor = (s: string) => s === 'solved' ? '#22c55e' : s === 'partial' ? '#f59e0b' : s === 'active' ? '#3b82f6' : '#ef4444'
 
   // Canvas pan
@@ -75,19 +117,18 @@ export default function TimelineView() {
       if (!node.parentId) return
       const parent = displayProblems.find(p => p.id === node.parentId)
       if (!parent) return
-      const pDi = getDomainIndex(parent.branchId)
-      const nDi = getDomainIndex(node.branchId)
-      if (pDi === -1 || nDi === -1) return
+      
+      const nodePos = nodePositions.get(node.id)
+      const parentPos = nodePositions.get(parent.id)
+      if (!nodePos || !parentPos) return
 
-      const x1 = getX(parent.year), y1 = getY(pDi)
-      const x2 = getX(node.year), y2 = getY(nDi)
       const isHov = hoveredNode === node.id || hoveredNode === parent.id
       const color = parent.status === 'solved' ? '#22c55e' : '#ef4444'
-      const mx = (x1 + x2) / 2
+      const mx = (parentPos.x + nodePos.x) / 2
 
       edges.push(
         <path key={`e-${node.id}`}
-          d={`M ${x1 + 14} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2 - 14} ${y2}`}
+          d={`M ${parentPos.x + 14} ${parentPos.y} C ${mx} ${parentPos.y}, ${mx} ${nodePos.y}, ${nodePos.x - 14} ${nodePos.y}`}
           fill="none" stroke={color}
           strokeWidth={isHov ? 2.5 : 1.5}
           opacity={isHov ? 0.6 : 0.2}
@@ -172,10 +213,11 @@ export default function TimelineView() {
 
           {/* Nodes */}
           {displayProblems.map(node => {
-            const di = getDomainIndex(node.branchId)
-            if (di === -1) return null
-            const x = getX(node.year)
-            const y = getY(di)
+            const pos = nodePositions.get(node.id)
+            if (!pos) return null
+            
+            const x = pos.x
+            const y = pos.y
             const isHov = hoveredNode === node.id
             const isSel = selectedNode?.id === node.id
             const color = statusColor(node.status)

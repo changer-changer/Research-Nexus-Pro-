@@ -56,17 +56,25 @@ function makeDomainNode(bid: string, idx: number): Node {
   }
 }
 
-function makeProblemNode(p: any, laneIdx: number, selected: boolean, dimmed: boolean): Node {
+function makeProblemNode(p: any, laneIdx: number, selected: boolean, dimmed: boolean, indexInYear: number = 0, totalInYear: number = 1): Node {
   const year = p.year || 2024
   const bid = p.branchId || 'b_root'
   const info = BRANCH_COLORS[bid] || { bg: '#6b7280', border: '#9ca3af', name: bid }
   const opacity = dimmed ? 0.2 : 1
   const isLeaf = !p.children || p.children.length === 0
+  
+  // Grid layout for overlapping nodes
+  const cols = Math.ceil(Math.sqrt(totalInYear))
+  const row = Math.floor(indexInYear / cols)
+  const col = indexInYear % cols
+  const offsetX = totalInYear > 1 ? (col - (cols - 1) / 2) * 80 : 0
+  const offsetY = totalInYear > 1 ? (row - (Math.ceil(totalInYear / cols) - 1) / 2) * 30 : 0
+  
   return {
     id: p.id,
     position: {
-      x: getNodeX(year) + 40,
-      y: laneIdx * LANE_H + (isLeaf ? 60 : 20)
+      x: getNodeX(year) + 40 + offsetX,
+      y: laneIdx * LANE_H + (isLeaf ? 60 : 20) + offsetY
     },
     data: { label: p.name || p.id },
     style: {
@@ -87,15 +95,16 @@ function makeProblemNode(p: any, laneIdx: number, selected: boolean, dimmed: boo
   }
 }
 
-function makeMethodNode(m: any, laneIdx: number, selected: boolean, dimmed: boolean): Node {
+function makeMethodNode(m: any, laneIdx: number, selected: boolean, dimmed: boolean, indexInLane: number = 0, totalInLane: number = 1): Node {
   const info = BRANCH_COLORS[m.branchId] || { bg: '#6b7280', border: '#9ca3af', name: '' }
-  // Methods don't have year, place them near their parent problem or at a fixed offset
-  const hash = m.id.split('').reduce((a: number, c: string) => a + c.charCodeAt(0), 0)
-  const offsetX = (hash % 6) * 20 - 30  // small random offset
+  // Spread methods horizontally within lane
+  const year = m.year || 2020
+  const spreadX = totalInLane > 1 ? (indexInLane - (totalInLane - 1) / 2) * 100 : 0
+  
   return {
     id: m.id,
     position: {
-      x: getNodeX(2020 + (hash % 6)) + offsetX,
+      x: getNodeX(year) + spreadX,
       y: laneIdx * LANE_H + (m.level === 0 ? 15 : 75)
     },
     data: { label: m.name || m.id },
@@ -218,20 +227,44 @@ export default function ProblemEvolutionView() {
     // Domain lane headers
     const domainNodes: Node[] = branchLanes.map((bid, i) => makeDomainNode(bid, i))
 
+    // Group problems by year+lane for grid layout
+    const problemGroups = new Map<string, any[]>()
+    problems.forEach(p => {
+      const lane = laneIdxMap.get(p.branchId || 'b_root') ?? 0
+      const key = `${p.year}-${lane}`
+      if (!problemGroups.has(key)) problemGroups.set(key, [])
+      problemGroups.get(key)!.push(p)
+    })
+
     // Problem nodes
     const problemNodes: Node[] = problems.map(p => {
       const lane = laneIdxMap.get(p.branchId || 'b_root') ?? 0
+      const key = `${p.year}-${lane}`
+      const group = problemGroups.get(key) || [p]
+      const idx = group.indexOf(p)
       const selected = selectedId === p.id
       const dimmed = connected !== null && !connected.has(p.id)
-      return makeProblemNode(p, lane, selected, dimmed)
+      return makeProblemNode(p, lane, selected, dimmed, idx, group.length)
+    })
+
+    // Group methods by lane for spread layout
+    const methodGroups = new Map<string, any[]>()
+    methods.forEach(m => {
+      const lane = laneIdxMap.get(m.branchId || 'b_root') ?? 0
+      const key = `${lane}`
+      if (!methodGroups.has(key)) methodGroups.set(key, [])
+      methodGroups.get(key)!.push(m)
     })
 
     // Method nodes
     const methodNodes: Node[] = methods.map(m => {
       const lane = laneIdxMap.get(m.branchId || 'b_root') ?? 0
+      const key = `${lane}`
+      const group = methodGroups.get(key) || [m]
+      const idx = group.indexOf(m)
       const selected = selectedId === m.id
       const dimmed = connected !== null && !connected.has(m.id)
-      return makeMethodNode(m, lane, selected, dimmed)
+      return makeMethodNode(m, lane, selected, dimmed, idx, group.length)
     })
 
     // Paper nodes (small dots on timeline, spread by year/lane)
