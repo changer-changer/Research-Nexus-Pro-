@@ -1,0 +1,2880 @@
+{
+  "branches": [
+    {
+      "id": "b_root",
+      "name": "Root Goal",
+      "y_position": 0,
+      "color": "#6366f1"
+    },
+    {
+      "id": "b_perception",
+      "name": "Perception",
+      "y_position": 1,
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "b_fusion",
+      "name": "Fusion",
+      "y_position": 2,
+      "color": "#14b8a6"
+    },
+    {
+      "id": "b_policy",
+      "name": "Policy",
+      "y_position": 3,
+      "color": "#ec4899"
+    },
+    {
+      "id": "b_diffusion",
+      "name": "Diffusion",
+      "y_position": 4,
+      "color": "#22c55e"
+    },
+    {
+      "id": "b_tactile",
+      "name": "Tactile",
+      "y_position": 5,
+      "color": "#f59e0b"
+    },
+    {
+      "id": "b_vla",
+      "name": "VLA",
+      "y_position": 6,
+      "color": "#3b82f6"
+    },
+    {
+      "id": "b_manipulation",
+      "name": "Manipulation",
+      "y_position": 7,
+      "color": "#f97316"
+    }
+  ],
+  "problems": [
+    {
+      "id": "p_root",
+      "name": "多模态机器人操作",
+      "parentId": null,
+      "children": [
+        "p_vt_fusion",
+        "p_tactile_repr",
+        "p_policy",
+        "p_generalization",
+        "p_hardware",
+        "p_force"
+      ],
+      "depth": 0,
+      "branchId": "b_root",
+      "year": 2017,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_vt_fusion",
+      "name": "视触觉融合",
+      "parentId": "p_root",
+      "children": [
+        "p_fusion_arch",
+        "p_cross_modal",
+        "p_occlusion"
+      ],
+      "depth": 1,
+      "branchId": "b_fusion",
+      "year": 2019,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_tactile_repr",
+      "name": "触觉表征学习",
+      "parentId": "p_root",
+      "children": [
+        "p_tactile_ssl",
+        "p_3d_tactile",
+        "p_cross_sensor"
+      ],
+      "depth": 1,
+      "branchId": "b_perception",
+      "year": 2020,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_policy",
+      "name": "策略学习与优化",
+      "parentId": "p_root",
+      "children": [
+        "p_diffusion_3d",
+        "p_vla_tactile",
+        "p_reactive"
+      ],
+      "depth": 1,
+      "branchId": "b_diffusion",
+      "year": 2022,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_generalization",
+      "name": "泛化与迁移",
+      "parentId": "p_root",
+      "children": [
+        "p_sim2real",
+        "p_data_scaling",
+        "p_few_shot"
+      ],
+      "depth": 1,
+      "branchId": "b_policy",
+      "year": 2021,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_hardware",
+      "name": "硬件与传感器",
+      "parentId": "p_root",
+      "children": [
+        "p_sensor_design",
+        "p_low_cost"
+      ],
+      "depth": 1,
+      "branchId": "b_hardware",
+      "year": 2017,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_force",
+      "name": "力觉感知与控制",
+      "parentId": "p_root",
+      "children": [
+        "p_force_estimation",
+        "p_force_control",
+        "p_slip"
+      ],
+      "depth": 1,
+      "branchId": "b_tactile",
+      "year": 2020,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_fusion_arch",
+      "name": "融合架构设计",
+      "parentId": "p_vt_fusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_fusion",
+      "year": 2022,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_cross_modal",
+      "name": "跨模态对齐与语义锚定",
+      "parentId": "p_vt_fusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_fusion",
+      "year": 2023,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_occlusion",
+      "name": "遮挡下的位姿估计",
+      "parentId": "p_vt_fusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_fusion",
+      "year": 2021,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_tactile_ssl",
+      "name": "触觉自监督预训练",
+      "parentId": "p_tactile_repr",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2023,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_3d_tactile",
+      "name": "3D触觉点云表征",
+      "parentId": "p_tactile_repr",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2024,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_cross_sensor",
+      "name": "跨传感器泛化",
+      "parentId": "p_tactile_repr",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2022,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_diffusion_3d",
+      "name": "3D点云条件扩散策略",
+      "parentId": "p_policy",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_vla_tactile",
+      "name": "触觉增强VLA",
+      "parentId": "p_policy",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2025,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_reactive",
+      "name": "高频反应式策略",
+      "parentId": "p_policy",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_sim2real",
+      "name": "仿真到真实迁移",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2020,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_data_scaling",
+      "name": "数据扩展定律",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2024,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_few_shot",
+      "name": "少样本学习",
+      "parentId": "p_generalization",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2023,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_sensor_design",
+      "name": "高灵敏度传感器设计",
+      "parentId": "p_hardware",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_hardware",
+      "year": 2018,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_low_cost",
+      "name": "低成本传感器方案",
+      "parentId": "p_hardware",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_hardware",
+      "year": 2019,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_force_estimation",
+      "name": "接触力估计",
+      "parentId": "p_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_force_control",
+      "name": "力控策略集成",
+      "parentId": "p_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    },
+    {
+      "id": "p_slip",
+      "name": "滑移检测与预防",
+      "parentId": "p_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2020,
+      "status": "active",
+      "papers": [],
+      "methods": []
+    }
+  ],
+  "methods": [
+    {
+      "id": "m_root",
+      "name": "多模态操作方法集",
+      "parentId": null,
+      "children": [
+        "m_diffusion",
+        "m_vla",
+        "m_ssl",
+        "m_force",
+        "m_distill",
+        "m_3d"
+      ],
+      "depth": 0,
+      "branchId": "b_root",
+      "year": 2020,
+      "level": 0,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_diffusion",
+      "name": "扩散模型方法",
+      "parentId": "m_root",
+      "children": [
+        "m_dp_base",
+        "m_dp_3d",
+        "m_flow",
+        "m_dppo",
+        "m_rdp"
+      ],
+      "depth": 1,
+      "branchId": "b_diffusion",
+      "year": 2023,
+      "level": 0,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_vla",
+      "name": "VLA方法",
+      "parentId": "m_root",
+      "children": [
+        "m_tactile_vla",
+        "m_force_vla",
+        "m_spec_vla",
+        "m_point_vla"
+      ],
+      "depth": 1,
+      "branchId": "b_vla",
+      "year": 2024,
+      "level": 0,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_ssl",
+      "name": "自监督表征",
+      "parentId": "m_root",
+      "children": [
+        "m_sparsh",
+        "m_anytouch",
+        "m_mae"
+      ],
+      "depth": 1,
+      "branchId": "b_perception",
+      "year": 2022,
+      "level": 0,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_force",
+      "name": "力觉方法",
+      "parentId": "m_root",
+      "children": [
+        "m_feats",
+        "m_implicit_force",
+        "m_grip_force"
+      ],
+      "depth": 1,
+      "branchId": "b_tactile",
+      "year": 2021,
+      "level": 0,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_distill",
+      "name": "蒸馏与压缩",
+      "parentId": "m_root",
+      "children": [
+        "m_priv_distill",
+        "m_tac_distill"
+      ],
+      "depth": 1,
+      "branchId": "b_policy",
+      "year": 2023,
+      "level": 0,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_3d",
+      "name": "3D表征方法",
+      "parentId": "m_root",
+      "children": [
+        "m_pointnet4d",
+        "m_dp3_enc",
+        "m_4dmap"
+      ],
+      "depth": 1,
+      "branchId": "b_perception",
+      "year": 2024,
+      "level": 0,
+      "status": "verified",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_dp_base",
+      "name": "Diffusion Policy",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2023,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_dp_3d",
+      "name": "DP3 / iDP3",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_flow",
+      "name": "Flow Matching",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_dppo",
+      "name": "DPPO策略优化",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_rdp",
+      "name": "Reactive Diffusion",
+      "parentId": "m_diffusion",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_diffusion",
+      "year": 2024,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_tactile_vla",
+      "name": "Tactile-VLA",
+      "parentId": "m_vla",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_force_vla",
+      "name": "ForceVLA",
+      "parentId": "m_vla",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_spec_vla",
+      "name": "Spec-VLA",
+      "parentId": "m_vla",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_point_vla",
+      "name": "PointVLA",
+      "parentId": "m_vla",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_vla",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_sparsh",
+      "name": "Sparsh",
+      "parentId": "m_ssl",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2024,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_anytouch",
+      "name": "AnyTouch",
+      "parentId": "m_ssl",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_mae",
+      "name": "MAE / JEPA",
+      "parentId": "m_ssl",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2023,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_feats",
+      "name": "FEATS力估计",
+      "parentId": "m_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2022,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_implicit_force",
+      "name": "隐式力控",
+      "parentId": "m_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_grip_force",
+      "name": "握力控制",
+      "parentId": "m_force",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_tactile",
+      "year": 2024,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_priv_distill",
+      "name": "特权知识蒸馏",
+      "parentId": "m_distill",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2026,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_tac_distill",
+      "name": "触觉→视觉蒸馏",
+      "parentId": "m_distill",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_policy",
+      "year": 2023,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_pointnet4d",
+      "name": "PointNet4D",
+      "parentId": "m_3d",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_dp3_enc",
+      "name": "DP3编码器",
+      "parentId": "m_3d",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2024,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    },
+    {
+      "id": "m_4dmap",
+      "name": "4DMAP预训练",
+      "parentId": "m_3d",
+      "children": [],
+      "depth": 2,
+      "branchId": "b_perception",
+      "year": 2025,
+      "level": 1,
+      "status": "partial",
+      "targets": [],
+      "crossDomain": []
+    }
+  ],
+  "papers": [
+    {
+      "id": "2503.02881",
+      "title": "Reactive Diffusion Policy:",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2503.02881",
+      "authorityScore": 10,
+      "citations": [
+        "2505.07455",
+        "2507.09160",
+        "2508.08706",
+        "2510.10903",
+        "2511.05855",
+        "2512.10946",
+        "2512.22983"
+      ],
+      "problems": [
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "targets": [
+        "p_slip",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 12,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2503.08548",
+      "title": "TLA: Tactile-Language-Action Model for Contact-Rich Manipulation",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2503.08548",
+      "authorityScore": 10,
+      "citations": [
+        "2505.22159",
+        "2507.09160",
+        "2508.08706",
+        "2510.10903",
+        "2510.14647",
+        "2512.22983"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_ssl"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion"
+      ],
+      "category": "Tactile",
+      "month": 2,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2403.03954",
+      "title": "3D Diffusion Policy:",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2403.03954",
+      "authorityScore": 10,
+      "citations": [
+        "2410.10803",
+        "2411.03990",
+        "2509.18676",
+        "2510.10903",
+        "2511.05855"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp",
+        "m_vla"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 3,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2503.14734",
+      "title": "GR00T N1: An Open Foundation Model for Generalist",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2503.14734",
+      "authorityScore": 10,
+      "citations": [
+        "2505.22159",
+        "2508.08706",
+        "2509.18676",
+        "2510.10903",
+        "2512.22983"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Perception",
+      "month": 6,
+      "y_position": 8,
+      "branchId": "b_perception",
+      "parentId": null
+    },
+    {
+      "id": "2507.09160",
+      "title": "TACTILE-VLA:",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2507.09160",
+      "authorityScore": 9,
+      "citations": [
+        "2508.08706",
+        "2510.10903",
+        "2510.14647",
+        "2512.22983"
+      ],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 2,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2406.01586",
+      "title": "ManiCM: Real-time 3D Diffusion Policy via Consistency Model for",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2406.01586",
+      "authorityScore": 8,
+      "citations": [
+        "2412.04987",
+        "2502.08449",
+        "2510.10903"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 4,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2503.20020",
+      "title": "Gemini Robotics: Bringing AI into the Physical",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2503.20020",
+      "authorityScore": 8,
+      "citations": [
+        "2508.08706",
+        "2510.10903",
+        "2512.22983"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Other",
+      "month": 5,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2505.22159",
+      "title": "ForceVLA: Enhancing VLA Models with a",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2505.22159",
+      "authorityScore": 8,
+      "citations": [
+        "2507.09160",
+        "2508.08706",
+        "2512.10946"
+      ],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_force_control",
+        "p_sim2real"
+      ],
+      "category": "VLA",
+      "month": 11,
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
+    },
+    {
+      "id": "2303.12076",
+      "title": "Dexterity from Touch: Self-Supervised Pre-Training",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2303.12076",
+      "authorityScore": 7,
+      "citations": [
+        "2403.11898",
+        "2502.08449"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_ssl",
+        "m_rep"
+      ],
+      "targets": [
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_vt_fusion",
+        "p_root",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 6,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2403.11898",
+      "title": "VITaL Pretraining: Visuo-Tactile Pretraining for Tactile and Non-Tactile",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2403.11898",
+      "authorityScore": 7,
+      "citations": [
+        "2410.24091",
+        "2505.07455"
+      ],
+      "problems": [
+        "p_perception",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2409.11047",
+      "title": "TacDiffusion: Force-domain Diffusion Policy for Precise Tactile",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2409.11047",
+      "authorityScore": 7,
+      "citations": [
+        "2502.17432",
+        "2505.22159"
+      ],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1",
+        "m_dp1",
+        "m_dp"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control",
+        "p_sim2real"
+      ],
+      "category": "Tactile",
+      "month": 2,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2410.10803",
+      "title": "Generalizable Humanoid Manipulation with 3D Diffusion Policies",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2410.10803",
+      "authorityScore": 7,
+      "citations": [
+        "2502.08449",
+        "2503.07511"
+      ],
+      "problems": [
+        "p_sim2real",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp1",
+        "m_dp"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_sim2real"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 7,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2410.24091",
+      "title": "3D-ViTac: Learning Fine-Grained Manipulation",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2410.24091",
+      "authorityScore": 7,
+      "citations": [
+        "2508.08706",
+        "2511.05858"
+      ],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp1"
+      ],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_force_control",
+        "p_sim2real"
+      ],
+      "category": "Manipulation",
+      "month": 3,
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2501.15830",
+      "title": "SpatialVLA: Exploring Spatial Representations",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2501.15830",
+      "authorityScore": 7,
+      "citations": [
+        "2503.07511",
+        "2508.08706"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_rep"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "VLA",
+      "month": 3,
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
+    },
+    {
+      "id": "2502.17432",
+      "title": "FACTR: Force-Attending Curriculum Training for",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2502.17432",
+      "authorityScore": 7,
+      "citations": [
+        "2510.10903",
+        "2512.10946"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_vla"
+      ],
+      "targets": [
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2505.07455",
+      "title": "arXiv:2505.07455v1  [cs.RO]  12 May 2025",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2505.07455",
+      "authorityScore": 7,
+      "citations": [
+        "2510.10903",
+        "2510.13324"
+      ],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_vla"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Other",
+      "month": 11,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2509.18676",
+      "title": "3D Flow Diffusion Policy:",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2509.18676",
+      "authorityScore": 7,
+      "citations": [
+        "2510.10903",
+        "2512.22983"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 2,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2309.10886",
+      "title": "GelSight Svelte Hand: A Three-finger, Two-DoF, Tactile-rich, Low-cost",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2309.10886",
+      "authorityScore": 6,
+      "citations": [
+        "2504.19341"
+      ],
+      "problems": [
+        "p_perception",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 4,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2409.07343",
+      "title": "Learning Robotic Manipulation Policies from",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2409.07343",
+      "authorityScore": 6,
+      "citations": [
+        "2510.10903"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Manipulation",
+      "month": 7,
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2411.03990",
+      "title": "Published as a conference paper at ICLR 2025",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2411.03990",
+      "authorityScore": 6,
+      "citations": [
+        "2510.10903"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Other",
+      "month": 5,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2502.12191",
+      "title": "Published as a conference paper at ICLR 2025",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2502.12191",
+      "authorityScore": 6,
+      "citations": [
+        "2508.08706"
+      ],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_ssl",
+        "m_rep"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_tactile_repr",
+        "p_sim2real"
+      ],
+      "category": "Other",
+      "month": 12,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2503.07511",
+      "title": "PointVLA: Injecting the 3D World into Vision-Language-Action Models",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2503.07511",
+      "authorityScore": 6,
+      "citations": [
+        "2505.22159"
+      ],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp1",
+        "m_vla1"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control",
+        "p_sim2real"
+      ],
+      "category": "VLA",
+      "month": 11,
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
+    },
+    {
+      "id": "2504.01301",
+      "title": "Bi-LAT: Bilateral Control-Based Imitation Learning via Natural",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2504.01301",
+      "authorityScore": 6,
+      "citations": [
+        "2510.10903"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Policy",
+      "month": 10,
+      "y_position": 10,
+      "branchId": "b_policy",
+      "parentId": null
+    },
+    {
+      "id": "2507.22424",
+      "title": "Spec-VLA: Speculative Decoding for Vision-Language-Action Models with",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2507.22424",
+      "authorityScore": 6,
+      "citations": [
+        "2510.10903"
+      ],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_vla1"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "VLA",
+      "month": 3,
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
+    },
+    {
+      "id": "2510.10903",
+      "title": "A Comprehensive Survey on Robot Manipulation",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2510.10903",
+      "authorityScore": 6,
+      "citations": [
+        "2512.22983"
+      ],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_force_control",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Manipulation",
+      "month": 8,
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "1409.4972",
+      "title": "November 22, 2021",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "1409.4972",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Other",
+      "month": 4,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "1709.02924",
+      "title": "Robust Object Manipulation for Tactile-based Blind Grasping",
+      "year": 2017,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "1709.02924",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_slip",
+        "p_root",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_root",
+        "p_slip",
+        "p_force_control"
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "1809.05551",
+      "title": "Non-Matrix Tactile Sensors: How Can Be Exploited Their Local",
+      "year": 2018,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "1809.05551",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_rep"
+      ],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2002.03236",
+      "title": "Tactile Dexterity: Manipulation Primitives with Tactile Feedback",
+      "year": 2020,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2002.03236",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_slip",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2003.13165",
+      "title": "In-Hand Object-Dynamics Inference using Tactile Fingertips",
+      "year": 2020,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2003.13165",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 2,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2004.00136",
+      "title": "Sim-to-Real Transfer for Optical Tactile Sensing",
+      "year": 2020,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2004.00136",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
+      ],
+      "methods": [
+        "m_rep"
+      ],
+      "targets": [
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 9,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2008.05404",
+      "title": "GelTip: A Finger-shaped Optical Tactile Sensor for Robotic",
+      "year": 2020,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2008.05404",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 12,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2103.00410",
+      "title": "Sim-to-Real Transfer for Robotic Manipulation with Tactile Sensory",
+      "year": 2021,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2103.00410",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 4,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2103.13460",
+      "title": "Under Pressure: Learning to Detect Slip with Barometric Tactile Sensors",
+      "year": 2021,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2103.13460",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2301.06698",
+      "title": "Tactile Tool Manipulation",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2301.06698",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_slip",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 5,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2304.00736",
+      "title": "IEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED MARCH, 2023",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2304.00736",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_root",
+        "p_slip"
+      ],
+      "category": "Other",
+      "month": 5,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2305.03051",
+      "title": "Controllable Visual-Tactile Synthesis",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2305.03051",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_rep"
+      ],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 8,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2305.04660",
+      "title": "Rotational Slippage Prediction from Segmentation of Tactile Images",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2305.04660",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 11,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2306.05902",
+      "title": "Augmenting Off-the-Shelf Grippers with Tactile",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2306.05902",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_slip",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 3,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2308.05386",
+      "title": "A novel tactile palm for robotic object",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2308.05386",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_root",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_root",
+        "p_force_estimation",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 12,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2312.09863",
+      "title": "PROPRIOCEPTIVE STATE ESTIMATION FOR",
+      "year": 2023,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2312.09863",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2403.16764",
+      "title": "Low-Cost Teleoperation with Haptic Feedback through Vision-based",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2403.16764",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_slip",
+        "p_force_estimation",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 10,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2404.15709",
+      "title": "ViViDex: Learning Vision-based Dexterous Manipulation",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2404.15709",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ],
+      "targets": [
+        "p_root",
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Manipulation",
+      "month": 2,
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2407.07885",
+      "title": "Learning In-Hand Translation Using Tactile Skin With Shear and",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2407.07885",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_vla"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_root",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2409.00588",
+      "title": "Diffusion Policy Policy Optimization",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2409.00588",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp1",
+        "m_dp"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control",
+        "p_sim2real"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 9,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2409.09276",
+      "title": "© 2024 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2409.09276",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_fusion"
+      ],
+      "methods": [],
+      "targets": [
+        "p_vt_fusion"
+      ],
+      "category": "Other",
+      "month": 8,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2409.14411",
+      "title": "Scaling Diffusion Policy in Transformer to 1 Billion Parameters",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2409.14411",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_vla",
+        "m_dp1",
+        "m_dp"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 11,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2410.18647",
+      "title": "Published as a conference paper at ICLR 2025",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2410.18647",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Other",
+      "month": 11,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2410.24090",
+      "title": "Sparsh: Self-supervised touch representations",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2410.24090",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_rep",
+        "m_ssl",
+        "m_rep1"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 12,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2411.12503",
+      "title": "ManiSkill-ViTac 2025: Challenge on Manipulation",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2411.12503",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion"
+      ],
+      "methods": [],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_sim2real"
+      ],
+      "category": "Manipulation",
+      "month": 5,
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2412.04987",
+      "title": "FlowPolicy: Enabling Fast and Robust 3D Flow-based Policy via Consistency Flow",
+      "year": 2024,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2412.04987",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp1"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 3,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2502.08449",
+      "title": "CordViP: Correspondence-based Visuomotor Policy",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2502.08449",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_sim2real",
+        "p_vt_fusion",
+        "p_root",
+        "p_slip"
+      ],
+      "category": "Policy",
+      "month": 11,
+      "y_position": 10,
+      "branchId": "b_policy",
+      "parentId": null
+    },
+    {
+      "id": "2502.11161",
+      "title": "arXiv:2502.11161v3  [cs.RO]  28 Jun 2025",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2502.11161",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_contact"
+      ],
+      "methods": [
+        "m_vla"
+      ],
+      "targets": [
+        "p_force_control"
+      ],
+      "category": "Other",
+      "month": 10,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2503.17501",
+      "title": "IEEE TRANSACTIONS ON ROBOTICS, VOL. XX, NO. X, XXXX",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2503.17501",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Other",
+      "month": 9,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2503.23835",
+      "title": "Disambiguate Gripper State in Grasp-Based Tasks:",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2503.23835",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Manipulation",
+      "month": 11,
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2504.19341",
+      "title": "PolyTouch: A Robust Multi-Modal Tactile Sensor for Contact-rich",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2504.19341",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp",
+        "m_vla"
+      ],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 8,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2505.16062",
+      "title": "arXiv:2505.16062v1  [cs.RO]  21 May 2025",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2505.16062",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [],
+      "targets": [
+        "p_slip",
+        "p_force_estimation",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2505.18361",
+      "title": "Task-Optimized Convolutional Recurrent Networks",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2505.18361",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_fusion"
+      ],
+      "methods": [],
+      "targets": [
+        "p_vt_fusion",
+        "p_tactile_repr"
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2508.08706",
+      "title": "OmniVTLA: Vision-Tactile-Language-Action Model",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2508.08706",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1",
+        "m_vla1",
+        "m_ssl2"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_vt_fusion",
+        "p_root",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 9,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2509.17684",
+      "title": "DINOv3-Diffusion Policy: Self-Supervised Large Visual Model for",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2509.17684",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 8,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2509.17812",
+      "title": "Tac2Motion: Contact-Aware Reinforcement Learning with Tactile",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2509.17812",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_root",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 6,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2510.13324",
+      "title": "Tactile-Conditioned Diffusion Policy for",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2510.13324",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 7,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2510.14647",
+      "title": "Spatially-anchored Tactile Awareness for Robust Dexterous",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2510.14647",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_slip",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_ssl1"
+      ],
+      "targets": [
+        "p_slip",
+        "p_vt_fusion",
+        "p_force_control",
+        "p_tactile_repr"
+      ],
+      "category": "Tactile",
+      "month": 11,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2511.05855",
+      "title": "Gentle Manipulation Policy Learning via Demonstrations from VLM Planned",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2511.05855",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion"
+      ],
+      "category": "VLA",
+      "month": 5,
+      "y_position": 6,
+      "branchId": "b_vla",
+      "parentId": null
+    },
+    {
+      "id": "2511.05858",
+      "title": "ViTaMIn-B: A Reliable and Efficient Visuo-Tactile Bimanual",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2511.05858",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_rep"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 1,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    },
+    {
+      "id": "2512.01383",
+      "title": "PointNet4D: A Lightweight 4D Point Cloud Video Backbone for Online and",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2512.01383",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_sim2real",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_dp"
+      ],
+      "targets": [
+        "p_vt_fusion",
+        "p_force_control",
+        "p_sim2real"
+      ],
+      "category": "Other",
+      "month": 4,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2512.10946",
+      "title": "ImplicitRDP: An End-to-End Visual-Force Diffusion Policy",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2512.10946",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_rep"
+      ],
+      "targets": [
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_force_control"
+      ],
+      "category": "Diffusion/Flow",
+      "month": 10,
+      "y_position": 2,
+      "branchId": "b_diffusion",
+      "parentId": null
+    },
+    {
+      "id": "2512.22983",
+      "title": "Embodied Robot Manipulation in the Era of Foundation Models:",
+      "year": 2025,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2512.22983",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_sim2real",
+        "p_slip",
+        "p_fusion",
+        "p_contact",
+        "p_force"
+      ],
+      "methods": [
+        "m_dp",
+        "m_rep"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_sim2real",
+        "p_force_estimation",
+        "p_vt_fusion",
+        "p_slip"
+      ],
+      "category": "Manipulation",
+      "month": 1,
+      "y_position": 4,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2601.01675",
+      "title": "IEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED JANUARY, 2022",
+      "year": 2026,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2601.01675",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_root",
+        "p_fusion"
+      ],
+      "methods": [
+        "m_rep"
+      ],
+      "targets": [
+        "p_root",
+        "p_vt_fusion",
+        "p_tactile_repr",
+        "p_sim2real"
+      ],
+      "category": "Other",
+      "month": 7,
+      "y_position": 14,
+      "branchId": "b_manipulation",
+      "parentId": null
+    },
+    {
+      "id": "2603.04531",
+      "title": "PTLD: Sim-to-Real Privileged Tactile Latent",
+      "year": 2026,
+      "venue": "arXiv",
+      "status": "survived",
+      "arxivId": "2603.04531",
+      "authorityScore": 5,
+      "citations": [],
+      "problems": [
+        "p_perception",
+        "p_sim2real",
+        "p_slip",
+        "p_root",
+        "p_fusion",
+        "p_contact"
+      ],
+      "methods": [
+        "m_vla"
+      ],
+      "targets": [
+        "p_force_control",
+        "p_tactile_repr",
+        "p_sim2real",
+        "p_vt_fusion",
+        "p_root",
+        "p_slip"
+      ],
+      "category": "Tactile",
+      "month": 3,
+      "y_position": 0,
+      "branchId": "b_tactile",
+      "parentId": null
+    }
+  ]
+}
