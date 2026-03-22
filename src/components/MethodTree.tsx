@@ -1,405 +1,271 @@
-import React, { useState, useRef, useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useState, useMemo } from 'react'
+import ReactFlow, {
+  Background, Controls, Node, Edge, useNodesState, useEdgesState,
+  FitViewOptions, Handle, Position, NodeProps, ConnectionLineType
+} from 'reactflow'
+import 'reactflow/dist/style.css'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  ChevronRight, ChevronDown,
-  ZoomIn, ZoomOut, Maximize2, Expand, Minimize, Search, ArrowRight,
-  Link2, Unlink
-} from 'lucide-react'
+import { ChevronRight, ChevronDown, ArrowRight, Link2, Unlink } from 'lucide-react'
 import { useAppStore } from '../store/appStore'
 
-// ============ Constants ============
-const NODE_W = 260
-const NODE_H = 50
-const LEVEL_GAP = 44
-const SIBLING_GAP = 10
+const FIT_VIEW: FitViewOptions = { padding: 0.2, duration: 600 }
 
-const METHOD_STATUS = {
-  verified: { bg: '#3b82f6', ring: '#3b82f630', text: '#60a5fa', label: 'Verified' },
-  partial: { bg: '#f59e0b', ring: '#f59e0b30', text: '#fbbf24', label: 'Partial' },
-  failed: { bg: '#6b7280', ring: '#6b728030', text: '#9ca3af', label: 'Failed' },
-  untested: { bg: '#8b5cf6', ring: '#8b5cf630', text: '#a78bfa', label: 'Untested' },
+const STATUS: Record<string, { fill: string; ring: string; text: string; label: string }> = {
+  verified: { fill: '#3b82f6', ring: '#3b82f630', text: '#60a5fa', label: 'Verified' },
+  partial:  { fill: '#f59e0b', ring: '#f59e0b30', text: '#fbbf24', label: 'Partial' },
+  failed:   { fill: '#6b7280', ring: '#6b728030', text: '#9ca3af', label: 'Failed' },
+  untested: { fill: '#8b5cf6', ring: '#8b5cf630', text: '#a78bfa', label: 'Untested' },
 }
 
-// ============ Memoized Node Component ============
-const MethodNodeInner = React.memo(({ 
-  id, pos, parentPos, pColor, node, hasKids, isExpanded,
-  isSelected, isHov, linked, status, linkedProblems,
-  shouldHighlight, isSearchMatch, selectNode, hoverNode, toggleExpand, onContextMenu, children
-}: any) => {
+// ============ Tree Layout Algorithm ============
+function computeTreeLayout(methods: any[], expandedNodes: Set<string>): Map<string, {x:number;y:number}> {
+  const pos = new Map<string, {x:number;y:number}>()
+  const H_SPACING = 40     // 水平间距
+  const V_SPACING = 100    // 垂直层级间距
+  const NODE_W = 200       // 节点宽度
+  
+  const childrenMap = new Map<string, any[]>()
+  methods.forEach(m => {
+    if (m.parentId) {
+      if (!childrenMap.has(m.parentId)) childrenMap.set(m.parentId, [])
+      childrenMap.get(m.parentId)!.push(m)
+    }
+  })
+
+  // 测量子树宽度
+  function measureWidth(id: string): number {
+    if (!expandedNodes.has(id)) return NODE_W
+    const kids = childrenMap.get(id) || []
+    if (kids.length === 0) return NODE_W
+    const kidsWidth = kids.reduce((sum, k) => sum + measureWidth(k.id) + H_SPACING, -H_SPACING)
+    return Math.max(NODE_W, kidsWidth)
+  }
+  
+  // 放置子树
+  function placeSubtree(id: string, left: number, depth: number): number {
+    const width = measureWidth(id)
+    const x = left + width / 2
+    const y = depth * V_SPACING
+    pos.set(id, { x, y })
+    
+    if (expandedNodes.has(id)) {
+      const kids = childrenMap.get(id) || []
+      if (kids.length > 0) {
+        let childLeft = left
+        for (const kid of kids) {
+          const childWidth = measureWidth(kid.id)
+          placeSubtree(kid.id, childLeft, depth + 1)
+          childLeft += childWidth + H_SPACING
+        }
+      }
+    }
+    return width
+  }
+  
+  // 布局根节点
+  const roots = methods.filter(m => !m.parentId || m.depth === 0)
+  let totalLeft = 0
+  for (const root of roots) {
+    const width = measureWidth(root.id)
+    placeSubtree(root.id, totalLeft, 0)
+    totalLeft += width + H_SPACING * 3
+  }
+  
+  return pos
+}
+
+// ============ Custom Tree Node ============
+function TreeNode({ data }: NodeProps) {
+  const { label, status, depth, isExpanded, hasChildren, targetCount, nodeId } = data
+  const s = STATUS[status] || STATUS.untested
+  const isRoot = depth === 0
+  
+  const { toggleExpand, selectedNode, selectNode, viewConfig } = useAppStore()
+  const isSelected = selectedNode?.type === 'method' && selectedNode?.id === nodeId
+  const isDark = viewConfig.darkMode
+  
+  const handleClick = useCallback(() => {
+    if (hasChildren) {
+      toggleExpand(nodeId)
+    }
+    selectNode('method', nodeId)
+  }, [hasChildren, nodeId, toggleExpand, selectNode])
+  
   return (
-      <g>
-        {/* Connection to parent */}
-        {parentPos && (
-          <path
-            d={`M ${parentPos.x + NODE_W - 10} ${parentPos.y + NODE_H / 2}
-                C ${parentPos.x + NODE_W + 25} ${parentPos.y + NODE_H / 2},
-                  ${pos.x - 25} ${pos.y + NODE_H / 2},
-                  ${pos.x} ${pos.y + NODE_H / 2}`}
-            fill="none" stroke={pColor}
-            strokeWidth={shouldHighlight ? 2.5 : 1.5}
-            opacity={shouldHighlight ? 0.7 : 0.2}
-            style={{ transition: 'all 0.2s ease' }}
-          />
-        )}
-        
-        {/* Node card */}
-        <g
-          className="node-interactive"
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
-            selectNode('method', isSelected ? null : id)
-          }}
-          onContextMenu={(event) => onContextMenu(event, id)}
-          onDoubleClick={() => {/* Open method timeline */}}
-          onMouseEnter={() => hoverNode('method', id)}
-          onMouseLeave={() => hoverNode('method', null)}
-        >
-          {/* Selection/linkage glow */}
-          {(shouldHighlight || isSearchMatch) && (
-            <rect x={pos.x - 4} y={pos.y - 4} width={NODE_W + 8} height={NODE_H + 8}
-              rx={14} fill="none"
-              stroke={isSearchMatch ? '#f59e0b' : linked ? status.bg : '#6366f1'}
-              strokeWidth={linked ? 2 : 2} opacity={linked ? 0.8 : 0.5} />
-          )}
-          
-          {/* Card bg */}
-          <rect x={pos.x} y={pos.y} width={NODE_W} height={NODE_H} rx={10}
-            fill={isSelected ? '#1e1b4b' : isHov ? '#1c1917' : '#0a0a0a'}
-            stroke={isSelected ? '#6366f1' : '#1f1f23'} strokeWidth={isSelected ? 1.5 : 1}
-            style={{ transition: 'all 0.15s ease' }} />
-          
-          {/* Status bar */}
-          <rect x={pos.x} y={pos.y} width={4} height={NODE_H} rx={2} fill={status.bg} />
-          
-          {/* Expand/collapse */}
-          {hasKids && (
-            <g className="node-interactive"
-              onClick={(e) => { e.stopPropagation(); toggleExpand(id) }}
-              style={{ cursor: 'pointer' }}>
-              <rect x={pos.x + 8} y={pos.y + 13} width={24} height={24} rx={6}
-                fill="#18181b" stroke="#27272a" />
-              {isExpanded
-                ? <ChevronDown size={14} x={pos.x + 13} y={pos.y + 18} style={{ color: '#71717a', pointerEvents: 'none' }} />
-                : <ChevronRight size={14} x={pos.x + 13} y={pos.y + 18} style={{ color: '#71717a', pointerEvents: 'none' }} />}
-            </g>
-          )}
-          
-          {/* Leaf dot */}
-          {!hasKids && (
-            <circle cx={pos.x + 20} cy={pos.y + NODE_H / 2} r={6} fill={status.bg} opacity={0.8} />
-          )}
-          
-          {/* Name */}
-          <text x={pos.x + (hasKids ? 40 : 36)} y={pos.y + 22}
-            fill={isSelected ? '#e4e4e7' : '#a1a1aa'} fontSize={12}
-            fontWeight={isSelected ? 600 : 400}>
-            {node.name.length > 22 ? node.name.slice(0, 20) + '…' : node.name}
-          </text>
-          
-          {/* Status + targets */}
-          <text x={pos.x + (hasKids ? 40 : 36)} y={pos.y + 40}
-            fill="#52525b" fontSize={10} fontFamily="monospace">
-            {status.label} · {node.targets.length} targets
-          </text>
-          
-          {/* Status badge */}
-          <rect x={pos.x + NODE_W - 48} y={pos.y + 12} width={36} height={26} rx={6}
-            fill={`${status.bg}15`} />
-          <text x={pos.x + NODE_W - 30} y={pos.y + 30} textAnchor="middle"
-            fill={status.text} fontSize={10} fontWeight={600}>
-            {node.status === 'verified' ? '✓' : node.status === 'failed' ? '✗' : '?'}
-          </text>
-          
-          {/* Link indicator for linked problems */}
-          {linkedProblems.length > 0 && linked && (
-            <g>
-              <circle cx={pos.x + NODE_W - 8} cy={pos.y + 8} r={8} fill="#22c55e" />
-              <Link2 size={10} x={pos.x + NODE_W - 13} y={pos.y + 3} style={{ color: '#fff', pointerEvents: 'none' }} />
-            </g>
-          )}
-        </g>
-        
-        {/* Children */}
-        {children}
-      </g>
+    <div style={{
+      position: 'relative',
+      width: isRoot ? 220 : 180,
+      padding: isRoot ? '14px 18px' : '10px 14px',
+      background: isDark ? '#0a0a0a' : '#ffffff',
+      border: `2px solid ${isSelected ? s.fill : s.fill}40`,
+      borderRadius: isRoot ? 16 : 10,
+      textAlign: 'center',
+      cursor: 'pointer',
+      transition: 'all 0.2s ease',
+      boxShadow: isSelected ? `0 0 20px ${s.ring}` : 'none',
+    }} onClick={handleClick}>
+      <Handle type="target" position={Position.Top} style={{ opacity: 0 }} />
+      
+      {/* Status bar at top */}
+      <div style={{
+        position: 'absolute', top: 0, left: 0, right: 0, height: 3,
+        background: s.fill, borderRadius: isRoot ? '14px 14px 0 0' : '8px 8px 0 0', opacity: 0.8
+      }} />
+      
+      {/* Expand/collapse indicator */}
+      {hasChildren && (
+        <div style={{
+          position: 'absolute',
+          left: -12, top: '50%', transform: 'translateY(-50%)',
+          width: 24, height: 24,
+          background: isDark ? '#18181b' : '#f3f4f6',
+          border: `1px solid ${isDark ? '#27272a' : '#e5e7eb'}`,
+          borderRadius: 6,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {isExpanded ? <ChevronDown size={14} color={s.fill} /> : <ChevronRight size={14} color={s.fill} />}
+        </div>
+      )}
+      
+      {/* Content */}
+      <div style={{ fontSize: isRoot ? 15 : 13, fontWeight: isRoot ? 700 : 600, 
+        color: isDark ? '#e4e4e7' : '#18181b', marginBottom: 4 }}>
+        {label}
+      </div>
+      
+      {/* Meta info */}
+      <div style={{ fontSize: 10, color: isDark ? '#71717a' : '#6b7280', display: 'flex', 
+        gap: 8, justifyContent: 'center', alignItems: 'center' }}>
+        <span style={{ background: `${s.fill}20`, color: s.text, padding: '2px 8px', 
+          borderRadius: 10, fontSize: 9 }}>{s.label}</span>
+        {targetCount > 0 && <span>{targetCount} targets</span>}
+      </div>
+      
+      <Handle type="source" position={Position.Bottom} style={{ opacity: 0 }} />
+    </div>
   )
-})
+}
+
+const nodeTypes = { treeNode: TreeNode }
 
 // ============ Main Component ============
 export default function MethodTree() {
-  const methods = useAppStore(s => s.methods)
-  const problems = useAppStore(s => s.problems)
-  const expandedNodes = useAppStore(s => s.expandedNodes)
-  const selectedNode = useAppStore(s => s.selectedNode)
-  const hoveredNode = useAppStore(s => s.hoveredNode)
-  const viewConfig = useAppStore(s => s.viewConfig)
+  const { 
+    methods, expandedNodes, toggleExpand, selectedNode, selectNode,
+    viewConfig 
+  } = useAppStore()
   
-  const { selectNode, hoverNode, toggleExpand, expandAll, collapseAll } = useAppStore()
+  const [nodes, setNodes, onNodesChange] = useNodesState([])
+  const [edges, setEdges, onEdgesChange] = useEdgesState([])
+  const [reactFlowInstance, setReactFlowInstance] = useState<any>(null)
   
-  // Pan & Zoom
-  const [zoom, setZoomState] = useState(1)
-  const panRef = useRef({ x: 60, y: 60 })
-  const zoomRef = useRef(1)
-  const isPanning = useRef(false)
-  const panStart = useRef({ x: 0, y: 0 })
-  const svgGroupRef = useRef<SVGGElement>(null)
+  // Compute layout
+  const layout = useMemo(() => {
+    return computeTreeLayout(methods, expandedNodes)
+  }, [methods, expandedNodes])
   
-  const [searchQuery, setSearchQuery] = useState('')
-  const [showSearch, setShowSearch] = useState(false)
-  
-  const setZoom = useCallback((v: React.SetStateAction<number>) => {
-    setZoomState(prev => {
-      const nextZ = typeof v === 'function' ? v(prev) : v
-      zoomRef.current = nextZ
-      if (svgGroupRef.current) {
-        svgGroupRef.current.style.transform = `translate(${panRef.current.x}px,${panRef.current.y}px) scale(${nextZ})`
-      }
-      return nextZ
-    })
-  }, [])
-  
-  // Build method tree structure
-  const methodTree = useMemo(() => {
-    const roots = methods.filter(m => !m.parentId || m.depth === 0)
-    return roots
-  }, [methods])
-
-  // Layout calculation
-  const { positions, totalSize } = useMemo(() => {
-    const pos = new Map<string, { x: number; y: number }>()
-    const methodMap = new Map<string, any>()
-    const childrenMap = new Map<string, any[]>()
-    
-    methods.forEach(m => {
-      methodMap.set(m.id, m)
-      if (m.parentId) {
-        if (!childrenMap.has(m.parentId)) childrenMap.set(m.parentId, [])
-        childrenMap.get(m.parentId)!.push(m)
+  // Build nodes and edges
+  useEffect(() => {
+    const newNodes: Node[] = methods.map(m => {
+      const pos = layout.get(m.id) || { x: 0, y: 0 }
+      const hasChildren = methods.some(child => child.parentId === m.id)
+      
+      return {
+        id: m.id,
+        type: 'treeNode',
+        position: pos,
+        data: {
+          label: m.name,
+          status: m.status,
+          depth: m.depth,
+          isExpanded: expandedNodes.has(m.id),
+          hasChildren,
+          targetCount: m.targets?.length || 0,
+          nodeId: m.id,
+        },
       }
     })
-
-    let maxY = 0, maxX = 0
-    let currentY = 20
     
-    const layout = (id: string, level: number) => {
-      const node = methodMap.get(id)
-      if (!node) return
-      
-      const x = level * LEVEL_GAP + 20
-      const y = currentY
-      pos.set(id, { x, y })
-      
-      if (x + NODE_W > maxX) maxX = x + NODE_W
-      currentY += NODE_H + SIBLING_GAP
-      if (y > maxY) maxY = y
-      
-      if (expandedNodes.has(id)) {
-        const kids = childrenMap.get(id) || []
-        kids.forEach(k => layout(k.id, level + 1))
-      }
+    const newEdges: Edge[] = methods
+      .filter(m => m.parentId && expandedNodes.has(m.parentId))
+      .map(m => ({
+        id: `${m.parentId}-${m.id}`,
+        source: m.parentId!,
+        target: m.id,
+        type: 'smoothstep',
+        style: { 
+          stroke: viewConfig.darkMode ? '#52525b' : '#d1d5db', 
+          strokeWidth: 2,
+        },
+        animated: false,
+      }))
+    
+    setNodes(newNodes)
+    setEdges(newEdges)
+  }, [layout, methods, expandedNodes, viewConfig.darkMode, setNodes, setEdges])
+  
+  // Fit view on mount
+  useEffect(() => {
+    if (reactFlowInstance && nodes.length > 0) {
+      setTimeout(() => {
+        reactFlowInstance.fitView(FIT_VIEW)
+      }, 100)
     }
-    
-    methodTree.forEach(r => layout(r.id, 0))
-    return { positions: pos, totalSize: { w: maxX + 300, h: maxY + NODE_H + 200 } }
-  }, [methods, methodTree, expandedNodes])
-
-  // === Core Linkage: Get linked problems for a method ===
-  const getLinkedProblems = useCallback((methodId: string) => {
-    const state = useAppStore.getState()
-    const problemIds = state.methodProblemsMap[methodId] || []
-    return problemIds.map(pid => state.problems.find(p => p.id === pid)!).filter(Boolean)
-  }, [])
-
-  // === Core Linkage: Check if node should be highlighted based on selection ===
-  const isLinked = useCallback((methodId: string) => {
-    if (!selectedNode) return false
-    const state = useAppStore.getState()
-    if (selectedNode.type === 'problem') {
-      return state.problemMethodsMap[selectedNode.id]?.includes(methodId) || false
-    }
-    if (selectedNode.type === 'method') {
-      const activeTargets = state.methodProblemsMap[selectedNode.id] || []
-      const myTargets = state.methodProblemsMap[methodId] || []
-      return activeTargets.some(t => myTargets.includes(t))
-    }
-    return false
-  }, [selectedNode])
-
-  const onPointerDown = (e: React.PointerEvent) => {
-    if ((e.target as HTMLElement).closest('.node-interactive')) return
-    isPanning.current = true
-    panStart.current = { x: e.clientX - panRef.current.x, y: e.clientY - panRef.current.y }
-    ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
-  }
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!isPanning.current) return
-    const nextX = e.clientX - panStart.current.x
-    const nextY = e.clientY - panStart.current.y
-    panRef.current = { x: nextX, y: nextY }
-    if (svgGroupRef.current) {
-      svgGroupRef.current.style.transform = `translate(${nextX}px,${nextY}px) scale(${zoomRef.current})`
-    }
-  }
-  const onPointerUp = () => { isPanning.current = false }
-  const onWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault()
-    setZoom(z => Math.max(0.15, Math.min(3, z * (e.deltaY > 0 ? 0.92 : 1.08))))
-  }, [])
-
-  const onNodeContextMenu = useCallback((event: React.MouseEvent, nodeId: string) => {
-    event.preventDefault()
-    const state = useAppStore.getState()
-    if (!state.isBookmarked(nodeId)) {
-      state.addBookmark('method', nodeId, 'Added from Method Tree')
-    }
-  }, [])
-
-  // Render node
-  const renderNode = (id: string): JSX.Element | null => {
-    const state = useAppStore.getState()
-    const node = state.methods.find(m => m.id === id)
-    const pos = positions.get(id)
-    if (!node || !pos) return null
-    
-    const isExpanded = expandedNodes.has(id)
-    const hasKids = methods.some(m => m.parentId === id)
-    const isSelected = selectedNode?.id === id
-    const isHov = hoveredNode?.id === id
-    const linked = isLinked(id)
-    const status = METHOD_STATUS[node.status] || METHOD_STATUS.untested
-    const linkedProblems = getLinkedProblems(id)
-    
-    // Highlight if linked to selected problem
-    const shouldHighlight = linked || isSelected || isHov
-    const isSearchMatch = searchQuery && node.name.toLowerCase().includes(searchQuery.toLowerCase())
-    
-    const parentPos = node.parentId ? positions.get(node.parentId) : null
-    const parent = node.parentId ? state.methods.find(m => m.id === node.parentId) : null
-    const pColor = parent ? (METHOD_STATUS[parent.status]?.bg || '#3f3f46') : '#3f3f46'
-    
-    return (
-      <MethodNodeInner
-        key={id} id={id} pos={pos} parentPos={parentPos} pColor={pColor}
-        node={node} hasKids={hasKids} isExpanded={isExpanded}
-        isSelected={isSelected} isHov={isHov} linked={linked}
-        status={status} linkedProblems={linkedProblems}
-        shouldHighlight={shouldHighlight} isSearchMatch={isSearchMatch}
-        selectNode={selectNode} hoverNode={hoverNode} toggleExpand={toggleExpand}
-        onContextMenu={onNodeContextMenu}
-      >
-        {isExpanded && hasKids && state.methods
-          .filter(m => m.parentId === id)
-          .map(kid => renderNode(kid.id))}
-      </MethodNodeInner>
-    )
-  }
-
+  }, [reactFlowInstance, nodes.length])
+  
+  const isDark = viewConfig.darkMode
+  
   return (
-    <div className={`h-full w-full flex ${viewConfig.darkMode ? 'bg-zinc-950' : 'bg-gray-50'}`}>
-      <div className="flex-1 flex flex-col">
-        {/* Toolbar */}
-        <div className={`flex items-center gap-2 px-4 py-2.5 border-b ${viewConfig.darkMode ? 'border-zinc-800/80 bg-zinc-900/40' : 'border-gray-200 bg-gray-100'} backdrop-blur-sm`}>
-          <div className="flex items-center gap-1.5 mr-3">
-            <button onClick={() => setZoom(z => Math.min(3, z * 1.15))}
-              className={`p-2 rounded-lg transition-colors ${viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-gray-200 text-gray-600'}`}>
-              <ZoomIn size={15} />
-            </button>
-            <button onClick={() => setZoom(z => Math.max(0.15, z * 0.85))}
-              className={`p-2 rounded-lg transition-colors ${viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-gray-200 text-gray-600'}`}>
-              <ZoomOut size={15} />
-            </button>
-            <button onClick={() => { setZoom(1); panRef.current = { x: 60, y: 60 }; if (svgGroupRef.current) svgGroupRef.current.style.transform = `translate(60px,60px) scale(1)` }}
-              className={`p-2 rounded-lg transition-colors ${viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-gray-200 text-gray-600'}`}>
-              <Maximize2 size={15} />
-            </button>
-            <span className={`text-[11px] ml-1 w-12 ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>{Math.round(zoom * 100)}%</span>
-          </div>
-          
-          <div className={`w-px h-5 ${viewConfig.darkMode ? 'bg-zinc-800' : 'bg-gray-300'}`} />
-          
-          <button onClick={expandAll}
-            className={`px-3 py-1.5 text-xs rounded-lg transition-colors flex items-center gap-1.5 ${viewConfig.darkMode ? 'text-zinc-400 hover:bg-zinc-800' : 'text-gray-600 hover:bg-gray-200'}`}>
-            <Expand size={13} /> Expand All
-          </button>
-          <button onClick={collapseAll}
-            className={`px-3 py-1.5 text-xs rounded-lg transition-colors flex items-center gap-1.5 ${viewConfig.darkMode ? 'text-zinc-400 hover:bg-zinc-800' : 'text-gray-600 hover:bg-gray-200'}`}>
-            <Minimize size={13} /> Collapse
-          </button>
-          
-          <div className={`w-px h-5 ${viewConfig.darkMode ? 'bg-zinc-800' : 'bg-gray-300'}`} />
-          
-          <div className="relative">
-            <button onClick={() => setShowSearch(!showSearch)}
-              className={`p-2 rounded-lg transition-colors ${viewConfig.darkMode ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-gray-200 text-gray-600'}`}>
-              <Search size={15} />
-            </button>
-            {showSearch && (
-              <div className={`absolute top-full left-0 mt-2 w-64 border rounded-xl shadow-2xl p-3 z-50 ${viewConfig.darkMode ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-gray-200'}`}>
-                <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search methods..."
-                  className={`w-full border rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500 ${viewConfig.darkMode ? 'bg-zinc-800 border-zinc-700 text-zinc-200 placeholder-zinc-500' : 'bg-gray-100 border-gray-300 text-gray-800 placeholder-gray-400'}`} autoFocus />
-              </div>
-            )}
-          </div>
-          
-          <div className={`ml-auto flex items-center gap-3 ${viewConfig.darkMode ? 'text-zinc-500' : 'text-gray-500'}`}>
-            {/* Linkage indicator */}
-            {selectedNode && (
-              <div className="flex items-center gap-2 px-3 py-1 bg-indigo-500/10 rounded-full border border-indigo-500/20">
-                <Link2 size={12} className="text-indigo-400" />
-                <span className="text-xs text-indigo-300">
-                  Linked to {selectedNode.type}: {selectedNode.id.slice(0, 15)}...
-                </span>
-              </div>
-            )}
-            <span className="text-[11px]">
-              {methods.length} methods · {methods.filter(m => m.status === 'verified').length} verified
-            </span>
-            <span className={`text-[11px] ${viewConfig.darkMode ? 'text-zinc-600' : 'text-gray-400'}`}>Right click node to bookmark</span>
-          </div>
-        </div>
-        
-        {/* SVG Canvas */}
-        <div className="flex-1 overflow-hidden"
-          style={{ cursor: isPanning.current ? 'grabbing' : 'grab' }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onWheel={onWheel}>
-          <svg width="100%" height="100%"
-            style={{
-              touchAction: 'none',
-            }}>
-            {/* Grid */}
-            <defs>
-              <pattern id="methodGrid" width={40} height={40} patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" className={viewConfig.darkMode ? "stroke-zinc-900" : "stroke-gray-200"} strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="10000" height="10000" x="-5000" y="-5000" fill="url(#methodGrid)" />
-            
-            <g ref={svgGroupRef} style={{
-              transform: `translate(${panRef.current.x}px,${panRef.current.y}px) scale(${zoomRef.current})`,
-              transformOrigin: '0 0',
-              minWidth: `${totalSize.w}px`,
-              minHeight: `${totalSize.h}px`,
-            }}>
-              {/* Render nodes */}
-              {methodTree.map(r => renderNode(r.id))}
-            </g>
-          </svg>
+    <div className="w-full h-full relative">
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onInit={setReactFlowInstance}
+        nodeTypes={nodeTypes}
+        fitView
+        fitViewOptions={FIT_VIEW}
+        attributionPosition="bottom-left"
+        minZoom={0.1}
+        maxZoom={2}
+        defaultEdgeOptions={{
+          type: 'smoothstep',
+          style: { stroke: isDark ? '#52525b' : '#d1d5db', strokeWidth: 2 },
+        }}
+      >
+        <Background 
+          color={isDark ? '#27272a' : '#e5e7eb'} 
+          gap={20} 
+          size={1}
+        />
+        <Controls className={isDark ? 'bg-zinc-900/80 border-zinc-800' : 'bg-white/80 border-gray-200'} />
+      </ReactFlow>
+      
+      {/* Legend */}
+      <div className={`absolute top-4 left-4 px-4 py-3 rounded-xl border backdrop-blur-sm
+        ${isDark ? 'bg-zinc-900/80 border-zinc-800' : 'bg-white/80 border-gray-200'}`}>
+        <div className="text-xs font-medium mb-2 opacity-60">Method Status</div>
+        <div className="flex flex-wrap gap-3">
+          {Object.entries(STATUS).map(([key, s]) => (
+            <div key={key} className="flex items-center gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full" style={{ background: s.fill }} />
+              <span className="text-[10px] opacity-80">{s.label}</span>
+            </div>
+          ))}
         </div>
       </div>
       
-      {/* Detail panel */}
+      {/* Detail Panel */}
       <AnimatePresence>
-        {selectedNode?.type === 'method' && (
+        {selectedNode?.type === 'method' && selectedNode?.id && (
           <motion.div
             initial={{ x: 400, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 400, opacity: 0 }}
             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-            className={`w-[380px] border-l backdrop-blur-xl overflow-y-auto shrink-0 ${viewConfig.darkMode ? 'border-zinc-800 bg-zinc-900/60' : 'border-gray-200 bg-white/80'}`}>
+            className={`absolute top-0 right-0 h-full w-[380px] border-l backdrop-blur-xl overflow-y-auto
+              ${isDark ? 'border-zinc-800 bg-zinc-900/60' : 'border-gray-200 bg-white/80'}`}>
             <MethodDetailPanel nodeId={selectedNode.id} />
           </motion.div>
         )}
@@ -416,7 +282,7 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
   
   const linkedProblems = getMethodProblems(nodeId)
   const children = getMethodChildren(nodeId)
-  const status = METHOD_STATUS[method.status] || METHOD_STATUS.untested
+  const status = STATUS[method.status] || STATUS.untested
   const isDark = viewConfig.darkMode
   
   return (
@@ -433,7 +299,7 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
       {/* Status */}
       <div className="flex items-center gap-2 mb-5">
         <span className="px-3 py-1 rounded-full text-xs font-medium"
-          style={{ background: `${status.bg}20`, color: status.text }}>
+          style={{ background: `${status.fill}20`, color: status.text }}>
           {status.label}
         </span>
         <span className={`px-3 py-1 rounded-full text-xs ${isDark ? 'bg-zinc-800 text-zinc-400' : 'bg-gray-200 text-gray-600'}`}>
@@ -459,7 +325,7 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
                 className={`p-2.5 rounded-lg cursor-pointer transition-all group ${isDark ? 'bg-zinc-800/50 hover:bg-zinc-800' : 'bg-gray-100 hover:bg-gray-200'}`}>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full shrink-0"
-                    style={{ background: METHOD_STATUS[c.status]?.bg }} />
+                    style={{ background: STATUS[c.status]?.fill }} />
                   <span className={`text-sm flex-1 ${isDark ? 'text-zinc-200' : 'text-gray-800'}`}>{c.name}</span>
                   <ArrowRight size={12} className={`opacity-0 group-hover:opacity-100 ${isDark ? 'text-zinc-600' : 'text-gray-400'}`} />
                 </div>
@@ -469,7 +335,7 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
         </div>
       )}
       
-      {/* Target Problems - Core Linkage */}
+      {/* Target Problems */}
       {linkedProblems.length > 0 && (
         <div className="mb-5">
           <h4 className={`text-[10px] uppercase tracking-wider mb-2 flex items-center gap-1.5 ${isDark ? 'text-zinc-500' : 'text-gray-500'}`}>
@@ -484,7 +350,6 @@ function MethodDetailPanel({ nodeId }: { nodeId: string }) {
                     style={{ background: p.status === 'solved' ? '#22c55e' : p.status === 'unsolved' ? '#ef4444' : '#3b82f6' }} />
                   <span className={`text-sm flex-1 ${isDark ? 'text-zinc-200' : 'text-gray-800'}`}>{p.name}</span>
                   <span className={`text-[10px] ${isDark ? 'text-zinc-500' : 'text-gray-500'}`}>{p.year}</span>
-                  <ArrowRight size={12} className={`opacity-0 group-hover:opacity-100 ${isDark ? 'text-zinc-600' : 'text-gray-400'}`} />
                 </div>
               </div>
             ))}
