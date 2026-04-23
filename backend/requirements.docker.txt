@@ -1,6 +1,5 @@
-# Research-Nexus Backend - Zero-Docker Requirements
-# No Docker needed - uses SQLite + NetworkX + NumPy
-# For Neo4j/Qdrant/OpenAI stack, see requirements.docker.txt
+# Full-stack requirements (Docker mode)
+# Includes Neo4j, Qdrant, OpenAI for production deployments
 
 # Web Framework
 fastapi==0.104.1
@@ -10,11 +9,17 @@ python-multipart==0.0.6
 # Data Validation
 pydantic==2.5.0
 
-# Graph Database (Local)
+# Graph Database
+neo4j==5.15.0
 networkx==3.2.1
 
-# Vector Storage (Local)
+# Vector Storage
+qdrant-client==1.7.0
 numpy==1.26.0
+
+# LLM
+openai==1.3.0
+tiktoken==0.5.1
 
 # HTTP Client
 httpx==0.25.0
