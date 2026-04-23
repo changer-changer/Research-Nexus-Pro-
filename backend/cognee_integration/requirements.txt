@@ -1,0 +1,18 @@
+# Cognee Integration Requirements
+# Add these to your existing requirements.txt
+
+# Core
+cognee==0.5.5
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# FastEmbed for local embeddings
+fastembed>=0.3.0
+
+# API
+fastapi>=0.100.0
+uvicorn>=0.23.0
+
+# Utilities
+numpy>=1.24.0
+networkx>=3.0

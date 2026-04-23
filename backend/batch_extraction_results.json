@@ -1,0 +1,199 @@
+[
+  {
+    "paper_id": "paper_2503.17309",
+    "filename": "2503.17309.pdf",
+    "pages": 8,
+    "total_chars": 44761,
+    "chunks": 64,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 91.4,
+    "claims_extracted": 7,
+    "claim_types": {
+      "experiment_result": 4,
+      "future_work": 3
+    },
+    "llm_status": "success",
+    "elapsed_sec": 28.9
+  },
+  {
+    "paper_id": "paper_2505.15685",
+    "filename": "2505.15685.pdf",
+    "pages": 17,
+    "total_chars": 61861,
+    "chunks": 93,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 94.3,
+    "claims_extracted": 9,
+    "claim_types": {
+      "problem_statement": 1,
+      "limitation": 1,
+      "future_work": 1,
+      "experiment_result": 2,
+      "method_mechanism": 4
+    },
+    "llm_status": "success",
+    "elapsed_sec": 52.7
+  },
+  {
+    "paper_id": "paper_2506.00083",
+    "filename": "2506.00083.pdf",
+    "pages": 26,
+    "total_chars": 79595,
+    "chunks": 114,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 96.3,
+    "claims_extracted": 7,
+    "claim_types": {
+      "method_mechanism": 2,
+      "experiment_result": 3,
+      "limitation": 2
+    },
+    "llm_status": "success",
+    "elapsed_sec": 54.6
+  },
+  {
+    "paper_id": "paper_2507.16815",
+    "filename": "2507.16815.pdf",
+    "pages": 22,
+    "total_chars": 76225,
+    "chunks": 108,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 95.6,
+    "claims_extracted": 5,
+    "claim_types": {
+      "method_mechanism": 3,
+      "experiment_result": 2
+    },
+    "llm_status": "success",
+    "elapsed_sec": 49.0
+  },
+  {
+    "paper_id": "paper_2510.24109",
+    "filename": "2510.24109.pdf",
+    "pages": 8,
+    "total_chars": 47022,
+    "chunks": 67,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 92.9,
+    "claims_extracted": 16,
+    "claim_types": {
+      "experiment_result": 10,
+      "method_mechanism": 6
+    },
+    "llm_status": "success",
+    "elapsed_sec": 65.9
+  },
+  {
+    "paper_id": "paper_2512.00797",
+    "filename": "2512.00797.pdf",
+    "pages": 21,
+    "total_chars": 87476,
+    "chunks": 123,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 95.7,
+    "claims_extracted": 14,
+    "claim_types": {
+      "method_mechanism": 9,
+      "experiment_result": 5
+    },
+    "llm_status": "success",
+    "elapsed_sec": 92.1
+  },
+  {
+    "paper_id": "paper_2601.20334",
+    "filename": "2601.20334.pdf",
+    "pages": 8,
+    "total_chars": 43866,
+    "chunks": 64,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 91.5,
+    "claims_extracted": 14,
+    "claim_types": {
+      "experiment_result": 7,
+      "method_mechanism": 4,
+      "limitation": 2,
+      "future_work": 1
+    },
+    "llm_status": "success",
+    "elapsed_sec": 128.6
+  },
+  {
+    "paper_id": "paper_2602.06038",
+    "filename": "2602.06038.pdf",
+    "pages": 8,
+    "total_chars": 46568,
+    "chunks": 66,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 92.3,
+    "claims_extracted": 9,
+    "claim_types": {
+      "method_mechanism": 9
+    },
+    "llm_status": "success",
+    "elapsed_sec": 47.7
+  },
+  {
+    "paper_id": "paper_2602.21161",
+    "filename": "2602.21161.pdf",
+    "pages": 8,
+    "total_chars": 39300,
+    "chunks": 58,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 91.0,
+    "claims_extracted": 0,
+    "claim_types": {},
+    "llm_status": "error: JSONDecodeError",
+    "elapsed_sec": 63.1
+  },
+  {
+    "paper_id": "paper_2603.01414",
+    "filename": "2603.01414.pdf",
+    "pages": 14,
+    "total_chars": 87869,
+    "chunks": 128,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 95.8,
+    "claims_extracted": 6,
+    "claim_types": {
+      "experiment_result": 2,
+      "method_mechanism": 1,
+      "future_work": 2,
+      "problem_statement": 1
+    },
+    "llm_status": "success",
+    "elapsed_sec": 66.3
+  },
+  {
+    "paper_id": "paper_2603.03148",
+    "filename": "2603.03148.pdf",
+    "pages": 8,
+    "total_chars": 43576,
+    "chunks": 65,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 92.5,
+    "claims_extracted": 7,
+    "claim_types": {
+      "experiment_result": 3,
+      "future_work": 2,
+      "method_mechanism": 2
+    },
+    "llm_status": "success",
+    "elapsed_sec": 51.2
+  },
+  {
+    "paper_id": "paper_2604.04664",
+    "filename": "2604.04664.pdf",
+    "pages": 8,
+    "total_chars": 40590,
+    "chunks": 58,
+    "chunks_to_llm": 5,
+    "token_savings_pct": 90.9,
+    "claims_extracted": 10,
+    "claim_types": {
+      "limitation": 2,
+      "method_mechanism": 8
+    },
+    "llm_status": "success",
+    "elapsed_sec": 65.5
+  }
+]

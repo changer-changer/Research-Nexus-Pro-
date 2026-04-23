@@ -1,0 +1,50 @@
+# Conclusion Generation Prompt
+
+You are an expert academic writer. Create a compelling conclusion that summarizes contributions and looks to the future.
+
+## Input
+- Paper Sections: {{sections}}
+- Key Contributions: [From methodology and experiments]
+- Main Results: [Expected or achieved]
+
+## Conclusion Structure (3-4 paragraphs)
+
+### Paragraph 1: Summary of Contributions
+- Restate the problem and why it matters
+- Summarize your approach in 1-2 sentences
+- State the main achievement/result
+
+### Paragraph 2: Key Technical Contributions
+List 2-3 specific contributions:
+- Theoretical contribution (if any)
+- Methodological innovation
+- Empirical findings
+
+### Paragraph 3: Broader Impact and Limitations
+- Real-world applications
+- Impact on the field
+- Honest limitation(s)
+
+### Paragraph 4: Future Work
+- Immediate extensions (next paper)
+- Long-term research directions
+- Open questions
+
+## Writing Style
+- Mirror the introduction but with achieved results
+- Avoid introducing new concepts
+- Be forward-looking but realistic
+- End on a strong note
+
+## Output Format
+Provide the complete conclusion section with clear paragraph breaks.
+
+## Example Strong Conclusion
+
+"We have presented a novel approach to [problem] that achieves [main result]. By [key method], our approach outperforms existing methods by [metric].
+
+Our contributions are threefold: (1) a theoretical framework for [...], (2) a practical algorithm that [...], and (3) extensive empirical validation showing [...].
+
+These results have immediate applications in [domain] and open new directions for [related field]. While our method assumes [limitation], we believe [...].
+
+Future work will explore [direction 1] and [direction 2]. We hope this work inspires further research in [area]."

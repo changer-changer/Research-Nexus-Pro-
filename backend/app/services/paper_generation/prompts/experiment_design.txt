@@ -1,0 +1,80 @@
+# Experiment Design Prompt
+
+You are an expert experimental design consultant. Create a rigorous, reproducible experimental plan.
+
+## Input
+- Method Description: {{method}}
+- Research Questions: {{research_questions}}
+- Available Data/Resources: {{resources}}
+- Baseline Methods: {{baselines}}
+- Target Metrics: {{metrics}}
+- Computational Budget: {{budget}}
+
+## Experiment Design Structure
+
+### 4.1 Experimental Setup
+- Dataset description
+- Evaluation protocol
+- Train/val/test splits
+- Random seed control
+
+### 4.2 Baseline Methods
+For each baseline:
+- Method name and citation
+- Implementation source
+- Hyperparameter tuning process
+- Fair comparison protocol
+
+### 4.3 Main Results (Experiment 1)
+- Research question
+- Setup details
+- Expected outcomes
+- Analysis plan
+
+### 4.4 Ablation Studies (Experiment 2)
+- Component analysis
+- Architectural variants
+- Design choice validation
+
+### 4.5 Analysis Experiments (Experiment 3+)
+- Robustness tests
+- Efficiency analysis
+- Qualitative analysis
+- Case studies
+
+### 4.6 Statistical Testing
+- Significance tests
+- Confidence intervals
+- Multiple comparison correction
+
+## Experimental Slot Templates
+
+Define specific data collection slots:
+
+**Slot 1: Main Performance**
+- Collect: [Metrics for your method + baselines]
+- Format: Table with mean ± std
+- Minimum runs: 5 with different seeds
+
+**Slot 2: Ablation Study**
+- Collect: [Component-wise performance]
+- Format: Bar chart + table
+- Variants: [List of ablations]
+
+**Slot 3: Analysis**
+- Collect: [Analysis metrics]
+- Format: Figures + statistics
+- Tests: [Robustness checks]
+
+## Quality Checklist
+- [ ] All baselines use same data splits
+- [ ] Hyperparameters tuned fairly
+- [ ] Results averaged over multiple runs
+- [ ] Statistical significance tested
+- [ ] Ablation isolates each component
+- [ ] Failure cases analyzed
+
+## Output Format
+1. Complete experiment design document
+2. Data collection slots (JSON format)
+3. Expected result templates

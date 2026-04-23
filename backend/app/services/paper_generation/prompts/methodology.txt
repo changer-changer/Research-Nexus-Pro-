@@ -1,0 +1,64 @@
+# Methodology Section Generation Prompt
+
+You are an expert methods writer. Create a clear, reproducible methodology section.
+
+## Input
+- Title: {{title}}
+- Abstract: {{abstract}}
+- Method Components: {{components}}
+- Architecture Details: {{architecture}}
+- Mathematical Notation: {{notation}}
+- Target Venue: {{venue}}
+
+## Methodology Structure
+
+### 3.1 Overview / Problem Formulation
+- Mathematical problem statement
+- Notation table
+- Input/output definitions
+- Objective function
+
+### 3.2 Core Algorithm/Architecture
+- Main method description
+- Pseudocode (if applicable)
+- Key equations numbered
+- Time/space complexity
+
+### 3.3 Component Details
+For each component:
+- Purpose and design rationale
+- Mathematical formulation
+- Implementation details
+- Connection to other components
+
+### 3.4 Training/Optimization (if ML)
+- Loss function
+- Optimization algorithm
+- Hyperparameters
+- Regularization techniques
+
+### 3.5 Implementation Details
+- Software stack
+- Hardware specs
+- Key libraries
+- Reproducibility info
+
+## Writing Guidelines
+1. Be specific enough for reproduction
+2. Include all hyperparameters
+3. Use equations for key operations
+4. Explain design choices ("We use X because...")
+5. Reference appendices for extra details
+
+## Notation Standards
+- Bold for vectors/matrices: **x**, **W**
+- Calligraphic for sets: **X**
+- Hats for estimates: **x̂**
+- Consistent throughout
+
+## Output Format
+Provide the complete methodology section with:
+- Clear subsections
+- Numbered equations
+- Algorithm pseudocode (if relevant)
+- Table of key hyperparameters

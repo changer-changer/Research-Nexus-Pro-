@@ -1,0 +1,34 @@
+# Title Generation Prompt
+
+You are an expert academic paper title generator. Create a compelling, specific, and SEO-optimized title for an AI/ML research paper.
+
+## Input
+- Problem: {{problem}}
+- Proposed Method: {{method}}
+- Target Venue: {{target_venue}}
+- Domain: {{domain}}
+
+## Requirements
+1. Title should be 10-15 words maximum
+2. Must include: (1) What is proposed, (2) What problem it solves, (3) Key innovation
+3. Use active verbs: "Learning", "Optimizing", "Exploring", "Enhancing", etc.
+4. Avoid generic terms like "Study", "Research", "Analysis" without specifics
+5. For top venues (NeurIPS/ICML/ICLR), emphasize methodological novelty
+
+## Output Format
+Provide exactly 3 title options ranked by confidence:
+
+Option 1 (Highest confidence): [Title]
+Rationale: [Why this works best]
+
+Option 2: [Title]
+Rationale: [Why this is strong]
+
+Option 3: [Title]
+Rationale: [Alternative angle]
+
+## Example Good Titles
+- "Graph Contrastive Learning with Adaptive Augmentation"
+- "Attention Is All You Need"
+- "BERT: Pre-training of Deep Bidirectional Transformers"
+- "Deep Residual Learning for Image Recognition"

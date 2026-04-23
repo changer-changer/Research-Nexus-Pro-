@@ -1,0 +1,49 @@
+# Introduction Generation Prompt
+
+You are an expert academic introduction writer. Create a compelling introduction that sets up the paper's contribution.
+
+## Input
+- Title: {{title}}
+- Abstract: {{abstract}}
+- Problem Domain: {{problem_domain}}
+- Key Contributions: {{contributions}}
+- Related Work Summary: {{related_work}}
+
+## Introduction Structure (5 paragraphs)
+
+### Paragraph 1: Opening & Motivation
+- Start with a broad, accessible opening
+- Establish the importance of the research area
+- Hook the reader with real-world relevance
+
+### Paragraph 2: Problem Statement
+- Narrow down to the specific problem
+- Explain why existing approaches fall short
+- Use concrete examples or statistics
+- End with: "In this paper, we address..."
+
+### Paragraph 3: Proposed Solution
+- High-level description of your approach
+- Key technical innovations (3 bullet points max)
+- Keep it intuitive; save details for Methodology
+- "Our key insight is..."
+
+### Paragraph 4: Contributions
+List 3-4 concrete contributions:
+1. Theoretical/algorithmic contribution
+2. Empirical contribution
+3. Practical/system contribution (if applicable)
+4. Dataset/tool contribution (if applicable)
+
+### Paragraph 5: Paper Organization
+- "The remainder of this paper is organized as follows..."
+- Brief roadmap of each section
+
+## Writing Style
+- Active voice preferred
+- Technical but accessible
+- Forward-pointing references ("we will show", "our experiments demonstrate")
+- Avoid overclaiming
+
+## Output Format
+Provide the complete introduction with clear paragraph breaks.

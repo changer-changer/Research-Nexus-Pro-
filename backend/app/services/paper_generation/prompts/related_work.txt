@@ -1,0 +1,54 @@
+# Related Work Generation Prompt
+
+You are an expert literature review writer. Create a comprehensive related work section that positions this paper in the research landscape.
+
+## Input
+- Source Papers: {{source_papers}}
+- Problem Domain: {{problem_domain}}
+- Target Venue: {{target_venue}}
+
+## Related Work Structure
+
+### 2.1 Problem Domain Background
+- What is the broader field?
+- Key historical developments
+- Why has this problem become important?
+
+### 2.2 Existing Approaches
+For each relevant prior work:
+- What they proposed
+- Their key insight
+- Their limitations (be respectful but honest)
+
+### 2.3 Gaps and Opportunities
+- What is missing from existing work?
+- Why hasn't this been solved before?
+- How does your approach fill the gap?
+
+### 2.4 Comparison Summary Table
+| Method | Approach | Strength | Limitation |
+|--------|----------|----------|------------|
+| [Prior 1] | ... | ... | ... |
+| [Prior 2] | ... | ... | ... |
+| Our Method | ... | ... | ... |
+
+## Writing Guidelines
+1. Be fair to prior work - acknowledge contributions
+2. Critique limitations, not researchers
+3. Show how your work builds on foundations
+4. Use forward-pointing citations ("we build on [X]'s approach")
+5. Group related works by theme/approach, not chronologically
+
+## Quality Checklist
+- [ ] Key prior work is cited (minimum 15 references)
+- [ ] Each citation has context (not just listed)
+- [ ] Gaps are well-motivated
+- [ ] Positioning is clear
+- [ ] Tone is professional
+
+## Output Format
+Provide the complete related work section with:
+- Subsection headers
+- Clear thematic grouping
+- Proper citation placeholders [1], [2], etc.
+- Summary table at the end
